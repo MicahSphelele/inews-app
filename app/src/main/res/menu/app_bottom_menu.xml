@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/businessFragment"
+        android:icon="@drawable/ic_business"
+        android:enabled="true"
+        android:orderInCategory="1"
+        android:title="@string/business" />
+    <item
+        android:id="@+id/healthFragment"
+        android:icon="@drawable/ic_health"
+        android:orderInCategory="2"
+        android:title="@string/health" />
+    <item
+        android:id="@+id/sportFragment"
+        android:icon="@drawable/ic_sports"
+        android:orderInCategory="3"
+        android:title="@string/sport" />
+    <item
+        android:id="@+id/technologyFragment"
+        android:icon="@drawable/ic_technology"
+        android:orderInCategory="4"
+        android:title="@string/technology" />
+    <item
+        android:id="@+id/entertainmentFragment"
+        android:icon="@drawable/ic_entertainment"
+        android:orderInCategory="5"
+        android:title="@string/entertainment" />
+</menu>

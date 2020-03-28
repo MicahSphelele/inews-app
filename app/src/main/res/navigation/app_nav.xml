@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+        app:startDestination="@id/businessFragment"
+    android:id="@+id/app_nav">
+
+    <fragment
+        android:id="@+id/businessFragment"
+        android:name="sphe.inews.ui.main.business.BusinessFragment"
+        android:label="Business"
+        tools:layout="@layout/fragment_business" />
+
+    <fragment
+        android:id="@+id/healthFragment"
+        android:name="sphe.inews.ui.main.health.HealthFragment"
+        android:label="Health"
+        tools:layout="@layout/fragment_health" />
+
+    <fragment
+        android:id="@+id/sportFragment"
+        android:name="sphe.inews.ui.main.sport.SportFragment"
+        android:label="Sport"
+        tools:layout="@layout/fragment_sport" />
+
+    <fragment
+        android:id="@+id/technologyFragment"
+        android:name="sphe.inews.ui.main.technology.TechnologyFragment"
+        android:label="Technology"
+        tools:layout="@layout/fragment_technology" />
+
+    <fragment
+        android:id="@+id/entertainmentFragment"
+        android:name="sphe.inews.ui.main.entertainment.EntertainmentFragment"
+        android:label="Entertainment"
+        tools:layout="@layout/fragment_entertainment" />
+</navigation>

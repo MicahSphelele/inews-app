@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">I News</string>
+    <string name="business">Business</string>
+    <string name="health">Health</string>
+    <string name="sport">Sport</string>
+    <string name="technology">Technology</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="filter_by">Filter By</string>
+    <string name="top_headlines">Top Headlines</string>
+    <string name="everything">Everything</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="retry">Retry</string>
+    <string name="todo">TODO</string>
+    <string name="place_holder_content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida lorem vitae sem lobortis, quis faucibus lacus auctor. Mauris viverra quam fringilla mi egestas consequat. Nulla cursus iaculis aliquet....."</string>
+    <string name="about">About</string>
+</resources>
