@@ -9,5 +9,6 @@ class BaseApplication : DaggerApplication() {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerAppComponent.builder().application(this).build()
+        //A simple news app demo using Dagger 2 and MVVM
     }
 }
