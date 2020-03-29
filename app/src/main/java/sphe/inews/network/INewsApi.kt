@@ -12,15 +12,15 @@ interface INewsApi {
     fun getBusinessNews(@Query("country")country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
 
     @GET("top-headlines?category=${Constants.HEALTH}")//health
-    fun getHealthNews(@Query("country")country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
+    fun getHealthNews(@Query("country") country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
 
     @GET("top-headlines?category=${Constants.SPORTS}")//sports
-    fun getSportNews(@Query("country")country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
+    fun getSportNews(@Query("country") country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
 
     @GET("top-headlines?category=${Constants.TECHNOLOGY}")//technology
-    fun getTechNews(@Query("country")country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
+    fun getTechNews(@Query("country") country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
 
     @GET("top-headlines?category=${Constants.ENTERTAINMENT}")//entertainment
-    fun getEntertainmentNews(@Query("country")country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
+    fun getEntertainmentNews(@Query("country") country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
 
 }
