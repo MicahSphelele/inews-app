@@ -59,6 +59,15 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
             listener.onShareClicked(article)
         }
 
+         if(article.source.name == "Youtube.com"){
+
+             holder.youtube.visibility = View.VISIBLE
+
+         }else{
+             holder.youtube.visibility = View.GONE
+         }
+
+
 
      }
 
@@ -76,6 +85,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
           var title : TextView = v.findViewById(R.id.title)
           var source : TextView = v.findViewById(R.id.source)
           var share : ImageButton = v.findViewById(R.id.share)
+          var youtube: ImageButton = v.findViewById(R.id.youtube)
 
      }
 

@@ -3,6 +3,7 @@ package sphe.inews.ui.main
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -54,6 +55,9 @@ class MainActivity : BaseActivity() {
         when(item.itemId){
             R.id.action_about -> {
                 aboutFragmentDialog.show(supportFragmentManager,"aboutFragmentDialog")
+            }
+            R.id.action_corona -> {
+                Toast.makeText(this,"Feature coming soon. Will show COVID-19 stats based on country",Toast.LENGTH_SHORT).show()
             }
         }
         return super.onOptionsItemSelected(item)
