@@ -1,6 +1,5 @@
 package sphe.inews.ui.main.adapters
 
-import android.media.Image
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -68,7 +67,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
         this.listener = listener
     }
 
-     class ViewHolder(@NonNull v: View):RecyclerView.ViewHolder(v){
+    class ViewHolder(@NonNull v: View):RecyclerView.ViewHolder(v){
           var image : ImageView = v.findViewById(R.id.image)
           var title : TextView = v.findViewById(R.id.title)
           var source : TextView = v.findViewById(R.id.source)

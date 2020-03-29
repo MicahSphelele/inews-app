@@ -30,9 +30,9 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     @Inject
     lateinit var adapter: ArticleAdapter
 
-    lateinit var viewModel: BusinessViewModel
+    private lateinit var viewModel: BusinessViewModel
 
-    lateinit var mainContext : Context
+    private lateinit var mainContext : Context
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_business, container, false)
@@ -48,8 +48,8 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
         viewModel = ViewModelProvider(this, providerFactory).get(BusinessViewModel::class.java)
 
-        btn_retry.setOnClickListener{
-            getBusinessNews()
+        btn_retry.setOnClickListener {
+            this.getBusinessNews()
         }
 
         this.setButtonRetryVisibility(false)
@@ -60,7 +60,7 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     }
 
     override fun onArticleClicked(article: Article) {
-        Toast.makeText(mainContext,""+article.title,Toast.LENGTH_SHORT).show()
+        Toast.makeText(mainContext,""+article.publishedAt,Toast.LENGTH_SHORT).show()
     }
 
     private fun getBusinessNews(){
@@ -68,20 +68,20 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         viewModel.observeBusinessNews("za")?.observe(viewLifecycleOwner, Observer { res ->
            when(res.status){
                INewResource.Status.LOADING -> {
-                   setButtonRetryVisibility(false)
-                   setTextViewMessageVisibility(false)
-                   setShimmerLayoutVisibility(true)
+                   this.setButtonRetryVisibility(false)
+                   this.setTextViewMessageVisibility(false)
+                   this.setShimmerLayoutVisibility(true)
                }
                INewResource.Status.ERROR -> {
-                   setButtonRetryVisibility(true)
-                   setTextViewMessageVisibility(true)
-                   setShimmerLayoutVisibility(false)
+                   this.setButtonRetryVisibility(true)
+                   this.setTextViewMessageVisibility(true)
+                   this.setShimmerLayoutVisibility(false)
                    txt_message.text = mainContext.resources?.getString(R.string.msg_error)
                }
                INewResource.Status.SUCCESS -> {
                    this.setButtonRetryVisibility(false)
                    this.setTextViewMessageVisibility(false)
-                   setShimmerLayoutVisibility(false)
+                   this.setShimmerLayoutVisibility(false)
                    recyclerView.adapter = adapter
                    adapter.setArticles(res.data?.articles)
                }

@@ -70,6 +70,8 @@
 
             <include layout="@layout/item_article_placeholder" />
 
+            <include layout="@layout/item_article_placeholder" />
+
         </LinearLayout>
 
     </com.facebook.shimmer.ShimmerFrameLayout>
