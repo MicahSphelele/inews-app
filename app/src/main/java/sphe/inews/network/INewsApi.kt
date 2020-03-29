@@ -7,10 +7,19 @@ import sphe.inews.models.NewsResponse
 
 interface INewsApi {
 
-
-    //http://newsapi.org/v2/
-    // top-headlines
-    // ?country=za&category=health&apiKey=4e3afc02ff264ee49676fb2240c398c8
     @GET("top-headlines?category=business")
     fun getBusinessNews(@Query("country")country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
+
+    @GET("top-headlines?category=health")
+    fun getHealthNews(@Query("country")country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
+
+    @GET("top-headlines?category=sports")
+    fun getSportNews(@Query("country")country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
+
+    @GET("top-headlines?category=technology")
+    fun getTechNews(@Query("country")country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
+
+    @GET("top-headlines?category=entertainment")
+    fun getEntertainmentNews(@Query("country")country: String, @Query("apiKey") apiKey :String): Flowable<NewsResponse>?
+
 }

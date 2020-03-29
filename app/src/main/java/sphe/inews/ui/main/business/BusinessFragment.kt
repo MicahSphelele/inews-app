@@ -55,7 +55,6 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         this.setButtonRetryVisibility(false)
         this.setTextViewMessageVisibility(false)
         this.setShimmerLayoutVisibility(false)
-
         this.getBusinessNews()
 
     }
@@ -65,9 +64,9 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     }
 
     private fun getBusinessNews(){
-        viewModel.observeBusinessNews()?.removeObservers(this)
-        viewModel.observeBusinessNews()?.observe(viewLifecycleOwner, Observer { it ->
-           when(it.status){
+        viewModel.observeBusinessNews("za")?.removeObservers(this)
+        viewModel.observeBusinessNews("za")?.observe(viewLifecycleOwner, Observer { res ->
+           when(res.status){
                INewResource.Status.LOADING -> {
                    setButtonRetryVisibility(false)
                    setTextViewMessageVisibility(false)
@@ -84,7 +83,7 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                    this.setTextViewMessageVisibility(false)
                    setShimmerLayoutVisibility(false)
                    recyclerView.adapter = adapter
-                   adapter.setArticles(it.data?.articles)
+                   adapter.setArticles(res.data?.articles)
                }
 
            }

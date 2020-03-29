@@ -14,14 +14,14 @@ class BusinessViewModel @Inject constructor(private var api:INewsApi) : ViewMode
 
     private var newsResponse: MediatorLiveData<INewResource<NewsResponse>>? = null
 
-    fun observeBusinessNews(): LiveData<INewResource<NewsResponse>>? {
+    fun observeBusinessNews(country:String): LiveData<INewResource<NewsResponse>>? {
 
         newsResponse = MediatorLiveData<INewResource<NewsResponse>>()
         newsResponse?.value =  INewResource.loading(NewsResponse(null,"loading",0))
 
         val source: LiveData<INewResource<NewsResponse>?> =
             LiveDataReactiveStreams.fromPublisher(
-                api.getBusinessNews("za", String(Constants.PACKS))
+                api.getBusinessNews(country, String(Constants.PACKS))
                     ?.onErrorReturn { throwable ->
                         throwable.stackTrace
                         Log.e("@BusinessViewModel","apply error: $throwable")
