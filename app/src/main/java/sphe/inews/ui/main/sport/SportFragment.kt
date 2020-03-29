@@ -1,6 +1,7 @@
 package sphe.inews.ui.main.sport
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -67,7 +68,12 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     }
 
     override fun onShareClicked(article: Article) {
-        Toast.makeText(mainContext,"Share : ${article.url}",Toast.LENGTH_SHORT).show()
+        val shareIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, article.url)
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(shareIntent, null))
     }
 
     private fun getSportNews(){
