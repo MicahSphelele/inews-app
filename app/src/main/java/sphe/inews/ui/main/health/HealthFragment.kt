@@ -10,23 +10,27 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_entertainment.*
 import sphe.inews.R
 import sphe.inews.models.Article
 import sphe.inews.network.INewResource
 import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.util.Constants
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
+import javax.inject.Named
 
 /**
  * A simple [Fragment] subclass.
  */
-class HealthFragment : Fragment(), ArticleAdapter.ArticleListener {
+class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
+    @Named(Constants.HEALTH)
     lateinit var adapter: ArticleAdapter
 
     private lateinit var viewModel: HealthViewModel
@@ -52,6 +56,11 @@ class HealthFragment : Fragment(), ArticleAdapter.ArticleListener {
             this.getHealthNews()
         }
 
+        this.setButtonRetryVisibility(false)
+        this.setTextViewMessageVisibility(false)
+        this.setShimmerLayoutVisibility(false)
+        this.getHealthNews()
+
     }
 
     override fun onArticleClicked(article: Article) {
@@ -59,7 +68,7 @@ class HealthFragment : Fragment(), ArticleAdapter.ArticleListener {
     }
 
     private fun getHealthNews(){
-        viewModel.observeHealthNews("za")?.removeObservers(viewLifecycleOwner)
+        viewModel.observeHealthNews("za")?.removeObservers(this)
         viewModel.observeHealthNews("za")?.observe(viewLifecycleOwner, Observer { res->
             when(res.status){
                 INewResource.Status.LOADING -> {

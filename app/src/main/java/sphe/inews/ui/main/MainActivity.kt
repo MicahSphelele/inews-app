@@ -8,6 +8,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import kotlinx.android.synthetic.main.activity_main.*
+import sphe.inews.BaseApplication
 import sphe.inews.R
 import sphe.inews.ui.BaseActivity
 

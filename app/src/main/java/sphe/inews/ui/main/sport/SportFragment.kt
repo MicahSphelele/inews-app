@@ -2,6 +2,7 @@ package sphe.inews.ui.main.sport
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,23 +11,27 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_sport.*
 import sphe.inews.R
 import sphe.inews.models.Article
 import sphe.inews.network.INewResource
 import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.util.Constants
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
+import javax.inject.Named
 
 /**
  * A simple [Fragment] subclass.
  */
-class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
+class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
+    @Named(Constants.SPORT)
     lateinit var adapter: ArticleAdapter
 
     private lateinit var viewModel: SportViewModel
@@ -43,7 +48,7 @@ class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
         mainContext = view.context
 
         recyclerView?.layoutManager = LinearLayoutManager(activity)
-
+        adapter = ArticleAdapter()
         adapter.setListener(this)
 
         viewModel = ViewModelProvider(this, providerFactory).get(SportViewModel::class.java)
@@ -51,6 +56,11 @@ class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
         btn_retry.setOnClickListener {
             this.getSportNews()
         }
+
+        this.setButtonRetryVisibility(false)
+        this.setTextViewMessageVisibility(false)
+        this.setShimmerLayoutVisibility(false)
+        this.getSportNews()
     }
 
     override fun onArticleClicked(article: Article) {
@@ -58,21 +68,24 @@ class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
     }
 
     private fun getSportNews(){
-        viewModel.observeSportNews("za")?.removeObservers(viewLifecycleOwner)
+        viewModel.observeSportNews("za")?.removeObservers(this)
         viewModel.observeSportNews("za")?.observe(viewLifecycleOwner, Observer {res ->
 
             when(res.status){
                 INewResource.Status.LOADING -> {
+                    Log.d("@Sport","LOADING...")
                     this.setButtonRetryVisibility(false)
                     this.setTextViewMessageVisibility(false)
                     this.setShimmerLayoutVisibility(true)
                 }
                 INewResource.Status.ERROR -> {
+                    Log.d("@Sport","ERROR...")
                     this.setButtonRetryVisibility(true)
                     this.setTextViewMessageVisibility(true)
                     this.setShimmerLayoutVisibility(false)
                 }
                 INewResource.Status.SUCCESS -> {
+                    Log.d("@Sport","SUCCESS...")
                     this.setButtonRetryVisibility(false)
                     this.setTextViewMessageVisibility(false)
                     this.setShimmerLayoutVisibility(false)

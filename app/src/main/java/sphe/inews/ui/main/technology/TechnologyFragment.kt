@@ -10,28 +10,27 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_sport.*
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_technology.*
-import kotlinx.android.synthetic.main.fragment_technology.btn_retry
-import kotlinx.android.synthetic.main.fragment_technology.recyclerView
-import kotlinx.android.synthetic.main.fragment_technology.shimmer_view_container
-import kotlinx.android.synthetic.main.fragment_technology.txt_message
 import sphe.inews.R
 import sphe.inews.models.Article
 import sphe.inews.network.INewResource
 import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.util.Constants
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
+import javax.inject.Named
 
 /**
  * A simple [Fragment] subclass.
  */
-class TechnologyFragment : Fragment(), ArticleAdapter.ArticleListener {
+class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
+    @Named(Constants.TECHNOLOGY)
     lateinit var adapter: ArticleAdapter
 
     private lateinit var viewModel: TechnologyViewModel
@@ -56,6 +55,10 @@ class TechnologyFragment : Fragment(), ArticleAdapter.ArticleListener {
         btn_retry.setOnClickListener {
             this.getTechnologyNews()
         }
+        this.setButtonRetryVisibility(false)
+        this.setTextViewMessageVisibility(false)
+        this.setShimmerLayoutVisibility(false)
+        this.getTechnologyNews()
     }
 
     override fun onArticleClicked(article: Article) {
@@ -63,7 +66,7 @@ class TechnologyFragment : Fragment(), ArticleAdapter.ArticleListener {
     }
 
     private fun getTechnologyNews(){
-        viewModel.observeTechnologyNews("za")?.removeObservers(viewLifecycleOwner)
+        viewModel.observeTechnologyNews("za")?.removeObservers(this)
         viewModel.observeTechnologyNews("za")?.observe(viewLifecycleOwner, Observer { res ->
 
             when(res.status){

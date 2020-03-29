@@ -10,23 +10,27 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_entertainment.*
 import sphe.inews.R
 import sphe.inews.models.Article
 import sphe.inews.network.INewResource
 import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.util.Constants
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
+import javax.inject.Named
 
 /**
  * A simple [Fragment] subclass.
  */
-class EntertainmentFragment : Fragment() , ArticleAdapter.ArticleListener{
+class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
+    @Named(Constants.ENTERTAINMENT)
     lateinit var adapter: ArticleAdapter
 
     private lateinit var viewModel: EntertainmentViewModel
@@ -64,7 +68,7 @@ class EntertainmentFragment : Fragment() , ArticleAdapter.ArticleListener{
     }
 
     private fun getEntertainmentNews(){
-        viewModel.observeEntertainmentNews("za")?.removeObservers(viewLifecycleOwner)
+        viewModel.observeEntertainmentNews("za")?.removeObservers(this)
         viewModel.observeEntertainmentNews("za")?.observe(viewLifecycleOwner, Observer { res ->
 
             when(res.status){

@@ -16,8 +16,10 @@ import sphe.inews.R
 import sphe.inews.models.Article
 import sphe.inews.network.INewResource
 import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.util.Constants
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
+import javax.inject.Named
 
 /**
  * A simple [Fragment] subclass.
@@ -28,6 +30,7 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
+    @Named(Constants.BUSINESS)
     lateinit var adapter: ArticleAdapter
 
     private lateinit var viewModel: BusinessViewModel

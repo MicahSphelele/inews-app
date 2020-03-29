@@ -8,9 +8,12 @@ import okhttp3.TlsVersion
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import sphe.inews.di.main.MainScope
+import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.util.Constants
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -41,5 +44,40 @@ class AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client.build())
             .build()
+    }
+
+    @Singleton
+    @Provides
+    @Named(Constants.BUSINESS)
+    fun provideBusinessAdapter(): ArticleAdapter {
+        return ArticleAdapter()
+    }
+
+    @Singleton
+    @Provides
+    @Named(Constants.HEALTH)
+    fun provideHealthAdapter(): ArticleAdapter {
+        return ArticleAdapter()
+    }
+
+    @Singleton
+    @Provides
+    @Named(Constants.SPORT)
+    fun provideSportAdapter(): ArticleAdapter {
+        return ArticleAdapter()
+    }
+
+    @Singleton
+    @Provides
+    @Named(Constants.TECHNOLOGY)
+    fun provideTechnologyAdapter(): ArticleAdapter {
+        return ArticleAdapter()
+    }
+
+    @Singleton
+    @Provides
+    @Named(Constants.ENTERTAINMENT)
+    fun provideEntertainmentAdapter(): ArticleAdapter {
+        return ArticleAdapter()
     }
 }
