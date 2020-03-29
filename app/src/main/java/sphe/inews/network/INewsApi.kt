@@ -3,7 +3,7 @@ package sphe.inews.network
 import io.reactivex.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Query
-import sphe.inews.models.NewsResponse
+import sphe.inews.models.news.NewsResponse
 import sphe.inews.util.Constants
 
 interface INewsApi {

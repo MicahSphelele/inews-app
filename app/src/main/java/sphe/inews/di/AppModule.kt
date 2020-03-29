@@ -21,25 +21,51 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideRetrofitInstance(): Retrofit {
+    fun provideRetrofitNewsInstance(): Retrofit {
         val client = OkHttpClient.Builder()
         client.connectTimeout(35, TimeUnit.SECONDS)
         client.readTimeout(35, TimeUnit.SECONDS)
         client.writeTimeout(35, TimeUnit.SECONDS)
 
-        val specs: MutableList<ConnectionSpec> =
-            ArrayList()
+        val specs: MutableList<ConnectionSpec> = ArrayList()
+
         specs.add(
             ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
                 .tlsVersions(TlsVersion.TLS_1_2)
-                .build()
-        )
+                .build())
         specs.add(ConnectionSpec.COMPATIBLE_TLS)
         specs.add(ConnectionSpec.CLEARTEXT)
         client.connectionSpecs(specs)
         client.hostnameVerifier { _, _ -> true }
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(Constants.BASE_NEWS_URL)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client.build())
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    @Named("covid19")
+    fun provideRetrofitCovid19Instance(): Retrofit {
+        val client = OkHttpClient.Builder()
+        client.connectTimeout(35, TimeUnit.SECONDS)
+        client.readTimeout(35, TimeUnit.SECONDS)
+        client.writeTimeout(35, TimeUnit.SECONDS)
+
+        val specs: MutableList<ConnectionSpec> = ArrayList()
+
+        specs.add(
+            ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                .tlsVersions(TlsVersion.TLS_1_2)
+                .build())
+        specs.add(ConnectionSpec.COMPATIBLE_TLS)
+        specs.add(ConnectionSpec.CLEARTEXT)
+        client.connectionSpecs(specs)
+        client.hostnameVerifier { _, _ -> true }
+        return Retrofit.Builder()
+            .baseUrl(Constants.BASE_COVID_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .client(client.build())

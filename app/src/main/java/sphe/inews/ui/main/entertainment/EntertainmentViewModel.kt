@@ -7,8 +7,8 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
-import sphe.inews.models.NewsResponse
-import sphe.inews.network.INewResource
+import sphe.inews.models.news.NewsResponse
+import sphe.inews.network.Resources
 import sphe.inews.network.INewsApi
 import sphe.inews.util.Constants
 import javax.inject.Inject
@@ -16,31 +16,41 @@ import javax.inject.Inject
 class EntertainmentViewModel @Inject constructor(private var api: INewsApi): ViewModel() {
 
 
-    private var newsResponse: MediatorLiveData<INewResource<NewsResponse>>? = null
+    private var newsResponse: MediatorLiveData<Resources<NewsResponse>>? = null
 
-    fun observeEntertainmentNews(country:String): LiveData<INewResource<NewsResponse>>? {
+    fun observeEntertainmentNews(country:String): LiveData<Resources<NewsResponse>>? {
 
-        newsResponse = MediatorLiveData<INewResource<NewsResponse>>()
-        newsResponse?.value =  INewResource.loading(NewsResponse(null,"loading",0))
+        newsResponse = MediatorLiveData<Resources<NewsResponse>>()
+        newsResponse?.value =  Resources.loading(
+            NewsResponse(
+                null,
+                "loading",
+                0
+            )
+        )
 
-        val source: LiveData<INewResource<NewsResponse>?> =
+        val source: LiveData<Resources<NewsResponse>?> =
             LiveDataReactiveStreams.fromPublisher(
                 api.getEntertainmentNews(country, String(Constants.PACKS))
                     ?.onErrorReturn { throwable ->
                         throwable.stackTrace
                         Log.e("@EntertainmentViewModel","apply error: $throwable")
 
-                        return@onErrorReturn NewsResponse(null,"error",0)
+                        return@onErrorReturn NewsResponse(
+                            null,
+                            "error",
+                            0
+                        )
                     }
                     ?.map(object :
-                        Function<NewsResponse, INewResource<NewsResponse>?> {
+                        Function<NewsResponse, Resources<NewsResponse>?> {
                         @Throws(Exception::class)
-                        override fun apply(response: NewsResponse): INewResource<NewsResponse>? {
+                        override fun apply(response: NewsResponse): Resources<NewsResponse>? {
                             Log.d("@BusinessViewModel","apply data")
                             if (response.totalResults!! == 0) {
-                                return INewResource.error("Something went wrong", null)
+                                return Resources.error("Something went wrong", null)
                             }
-                            return INewResource.success(response)
+                            return Resources.success(response)
                         }
                     })!!.subscribeOn(Schedulers.io())
             )

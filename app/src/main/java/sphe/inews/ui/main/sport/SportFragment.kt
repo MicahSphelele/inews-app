@@ -15,13 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_sport.*
 import sphe.inews.R
-import sphe.inews.models.Article
-import sphe.inews.network.INewResource
+import sphe.inews.models.news.Article
+import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.ArticleAdapter
-import sphe.inews.util.Constants
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
-import javax.inject.Named
 
 /**
  * A simple [Fragment] subclass.
@@ -81,19 +79,19 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         viewModel.observeSportNews("za")?.observe(viewLifecycleOwner, Observer {res ->
 
             when(res.status){
-                INewResource.Status.LOADING -> {
+                Resources.Status.LOADING -> {
                     Log.d("@Sport","LOADING...")
                     this.setButtonRetryVisibility(false)
                     this.setTextViewMessageVisibility(false)
                     this.setShimmerLayoutVisibility(true)
                 }
-                INewResource.Status.ERROR -> {
+                Resources.Status.ERROR -> {
                     Log.d("@Sport","ERROR...")
                     this.setButtonRetryVisibility(true)
                     this.setTextViewMessageVisibility(true)
                     this.setShimmerLayoutVisibility(false)
                 }
-                INewResource.Status.SUCCESS -> {
+                Resources.Status.SUCCESS -> {
                     Log.d("@Sport","SUCCESS...")
                     this.setButtonRetryVisibility(false)
                     this.setTextViewMessageVisibility(false)

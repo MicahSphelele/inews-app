@@ -1,4 +1,4 @@
-package sphe.inews.models
+package sphe.inews.models.news
 
 
 import androidx.annotation.Keep

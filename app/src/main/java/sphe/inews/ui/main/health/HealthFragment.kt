@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_entertainment.*
 import sphe.inews.R
-import sphe.inews.models.Article
-import sphe.inews.network.INewResource
+import sphe.inews.models.news.Article
+import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
@@ -78,17 +78,17 @@ class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         viewModel.observeHealthNews("za")?.removeObservers(this)
         viewModel.observeHealthNews("za")?.observe(viewLifecycleOwner, Observer { res->
             when(res.status){
-                INewResource.Status.LOADING -> {
+                Resources.Status.LOADING -> {
                     this.setButtonRetryVisibility(false)
                     this.setTextViewMessageVisibility(false)
                     this.setShimmerLayoutVisibility(true)
                 }
-                INewResource.Status.ERROR -> {
+                Resources.Status.ERROR -> {
                     this.setButtonRetryVisibility(true)
                     this.setTextViewMessageVisibility(true)
                     this.setShimmerLayoutVisibility(false)
                 }
-                INewResource.Status.SUCCESS -> {
+                Resources.Status.SUCCESS -> {
                     this.setButtonRetryVisibility(false)
                     this.setTextViewMessageVisibility(false)
                     this.setShimmerLayoutVisibility(false)

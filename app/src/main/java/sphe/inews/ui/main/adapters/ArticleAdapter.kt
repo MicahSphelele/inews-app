@@ -11,7 +11,7 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import sphe.inews.R
-import sphe.inews.models.Article
+import sphe.inews.models.news.Article
 
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
@@ -90,7 +90,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
      }
 
     interface ArticleListener{
-        fun onArticleClicked(article:Article)
+        fun onArticleClicked(article: Article)
         fun onShareClicked(article: Article)
     }
  }
