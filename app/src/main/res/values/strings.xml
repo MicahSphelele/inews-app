@@ -16,4 +16,7 @@
     <string name="place_holder_source">inews.com</string>
     <string name="about">About</string>
     <string name="msg_error">Something went wrong</string>
+    <string name="developer_name">Sphelele Micah Ngubane</string>
+    <string name="developer"><u>Developer</u></string>
+    <string name="close">Close</string>
 </resources>

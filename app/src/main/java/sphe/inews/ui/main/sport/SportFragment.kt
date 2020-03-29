@@ -66,6 +66,10 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         Toast.makeText(mainContext,""+article.publishedAt, Toast.LENGTH_SHORT).show()
     }
 
+    override fun onShareClicked(article: Article) {
+        Toast.makeText(mainContext,"Share : ${article.url}",Toast.LENGTH_SHORT).show()
+    }
+
     private fun getSportNews(){
         viewModel.observeSportNews("za")?.removeObservers(this)
         viewModel.observeSportNews("za")?.observe(viewLifecycleOwner, Observer {res ->

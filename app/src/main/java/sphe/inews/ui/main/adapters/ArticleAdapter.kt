@@ -40,8 +40,6 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
                  .into(holder.image)
          }
 
-
-
          val  arrayTitle = article.title.split("-")
 
          //Split title
@@ -50,12 +48,18 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
          }else{
              holder.title.text = article.title
          }
+
          holder.source.text = article.source.name
 
+        holder.title.setOnClickListener{
+            listener.onArticleClicked(article)
+        }
 
-         holder.itemView.setOnClickListener{
-             listener.onArticleClicked(article)
-         }
+        holder.share.setOnClickListener{
+            listener.onShareClicked(article)
+        }
+
+
      }
 
     fun setArticles(list:List<Article>?) {
@@ -77,5 +81,6 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
     interface ArticleListener{
         fun onArticleClicked(article:Article)
+        fun onShareClicked(article: Article)
     }
  }

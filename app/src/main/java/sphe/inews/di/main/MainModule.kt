@@ -5,6 +5,7 @@ import dagger.Provides
 import retrofit2.Retrofit
 import sphe.inews.network.INewsApi
 import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.ui.main.dialogs.AboutDialogFragment
 
 @Module
 class MainModule {
@@ -21,4 +22,5 @@ class MainModule {
     fun provideAdapter(): ArticleAdapter {
         return ArticleAdapter()
     }
+
 }

@@ -2,6 +2,7 @@ package sphe.inews.ui.main
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -12,9 +13,14 @@ import kotlinx.android.synthetic.main.item_article.view.*
 import sphe.inews.BaseApplication
 import sphe.inews.R
 import sphe.inews.ui.BaseActivity
+import sphe.inews.ui.main.dialogs.AboutDialogFragment
+import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
 
+
+    @Inject
+    lateinit var aboutFragmentDialog: AboutDialogFragment
 
     private lateinit var navController : NavController
 
@@ -42,6 +48,15 @@ class MainActivity : BaseActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.app_menu,menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_about -> {
+                aboutFragmentDialog.show(supportFragmentManager,"aboutFragmentDialog")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onBackPressed() {

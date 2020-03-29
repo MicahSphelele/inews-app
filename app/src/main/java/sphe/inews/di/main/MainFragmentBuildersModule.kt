@@ -1,8 +1,10 @@
 package sphe.inews.di.main
 
 import dagger.Module
+import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 import sphe.inews.ui.main.business.BusinessFragment
+import sphe.inews.ui.main.dialogs.AboutDialogFragment
 import sphe.inews.ui.main.entertainment.EntertainmentFragment
 import sphe.inews.ui.main.health.HealthFragment
 import sphe.inews.ui.main.sport.SportFragment
@@ -25,5 +27,8 @@ abstract class MainFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributesEntertainmentFragment(): EntertainmentFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributesAboutFragmentDialog() : AboutDialogFragment
 
 }

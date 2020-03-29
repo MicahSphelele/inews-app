@@ -64,6 +64,10 @@ class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         Toast.makeText(mainContext,""+article.publishedAt, Toast.LENGTH_SHORT).show()
     }
 
+    override fun onShareClicked(article: Article) {
+        Toast.makeText(mainContext,"Share : ${article.url}",Toast.LENGTH_SHORT).show()
+    }
+
     private fun getHealthNews(){
         viewModel.observeHealthNews("za")?.removeObservers(this)
         viewModel.observeHealthNews("za")?.observe(viewLifecycleOwner, Observer { res->

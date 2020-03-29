@@ -61,7 +61,11 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     }
 
     override fun onArticleClicked(article: Article) {
-        Toast.makeText(mainContext,""+article.publishedAt,Toast.LENGTH_SHORT).show()
+        Toast.makeText(mainContext,article.publishedAt,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onShareClicked(article: Article) {
+        Toast.makeText(mainContext,"Share : ${article.url}",Toast.LENGTH_SHORT).show()
     }
 
     private fun getBusinessNews(){

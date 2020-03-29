@@ -64,6 +64,10 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
         Toast.makeText(mainContext,""+article.publishedAt, Toast.LENGTH_SHORT).show()
     }
 
+    override fun onShareClicked(article: Article) {
+        Toast.makeText(mainContext,"Share : ${article.url}",Toast.LENGTH_SHORT).show()
+    }
+
     private fun getEntertainmentNews(){
         viewModel.observeEntertainmentNews("za")?.removeObservers(this)
         viewModel.observeEntertainmentNews("za")?.observe(viewLifecycleOwner, Observer { res ->
