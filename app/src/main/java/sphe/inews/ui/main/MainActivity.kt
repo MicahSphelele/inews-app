@@ -8,6 +8,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_article.view.*
 import sphe.inews.BaseApplication
 import sphe.inews.R
 import sphe.inews.ui.BaseActivity
@@ -22,6 +23,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar as Toolbar)
+
 
         navController = Navigation.findNavController(this,R.id.navigation_host_fragment)
 
