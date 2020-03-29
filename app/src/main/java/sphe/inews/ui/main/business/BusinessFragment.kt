@@ -2,7 +2,6 @@ package sphe.inews.ui.main.business
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_business.*
-import kotlinx.android.synthetic.main.fragment_business.btn_retry
-import kotlinx.android.synthetic.main.fragment_business.txt_message
-import kotlinx.android.synthetic.main.fragment_business.shimmer_view_container
-
 import sphe.inews.R
 import sphe.inews.models.Article
 import sphe.inews.network.INewResource

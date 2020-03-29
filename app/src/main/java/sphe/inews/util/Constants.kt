@@ -3,7 +3,8 @@ package sphe.inews.util
 object Constants {
 
     const val BASE_URL = "http://newsapi.org/v2/"
-    val  PACKS = byteArrayOf(
+
+   val  PACKS = byteArrayOf(
         52,101,51,97,102,
         99,48,50,102,102,
         50,54,52,101,101,
@@ -11,4 +12,6 @@ object Constants {
         98,50,50,52,48,99,
         51,57,56,99,56
     )
+    //https://stackoverflow.com/questions/55748235/kotlin-check-for-words-in-string
+    val KEY_WORDS = listOf("covid-19","shutdown","services")
 }
