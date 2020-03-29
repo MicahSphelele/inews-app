@@ -42,7 +42,18 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
          }
 
 
-         holder.title.text = article.title
+
+         val  arrayTitle = article.title.split("-")
+
+         //Split title
+         if(arrayTitle.size>1){
+             holder.title.text = article.title.split("-")[0]
+         }else{
+             holder.title.text = article.title
+         }
+         holder.source.text = article.source.name
+
+
          holder.itemView.setOnClickListener{
              listener.onArticleClicked(article)
          }
@@ -60,7 +71,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
      class ViewHolder(@NonNull v: View):RecyclerView.ViewHolder(v){
           var image : ImageView = v.findViewById(R.id.image)
           var title : TextView = v.findViewById(R.id.title)
-          var content : TextView = v.findViewById(R.id.content)
+          var source : TextView = v.findViewById(R.id.source)
           var share : ImageButton = v.findViewById(R.id.share)
 
      }

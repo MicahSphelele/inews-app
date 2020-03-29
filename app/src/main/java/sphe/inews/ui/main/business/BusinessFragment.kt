@@ -1,5 +1,6 @@
 package sphe.inews.ui.main.business
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_business.*
+import kotlinx.android.synthetic.main.fragment_business.btn_retry
+import kotlinx.android.synthetic.main.fragment_business.txt_message
+import kotlinx.android.synthetic.main.fragment_business.shimmer_view_container
+
 import sphe.inews.R
 import sphe.inews.models.Article
 import sphe.inews.network.INewResource
@@ -32,24 +37,41 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     lateinit var viewModel: BusinessViewModel
 
+    lateinit var mainContext : Context
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_business, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mainContext = view.context
 
         recyclerView?.layoutManager = LinearLayoutManager(activity)
+
         adapter.setListener(this)
 
         viewModel = ViewModelProvider(this, providerFactory).get(BusinessViewModel::class.java)
+
+        btn_retry.setOnClickListener{
+            getBusinessNews()
+        }
+
+        this.setButtonRetryVisibility(false)
+        this.setTextViewMessageVisibility(false)
+        this.setShimmerLayoutVisibility(false)
 
         this.getBusinessNews()
 
     }
 
     override fun onArticleClicked(article: Article) {
-        Toast.makeText(context,""+article.title,Toast.LENGTH_SHORT).show()
+        Toast.makeText(mainContext,""+article.title,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        shimmer_view_container.startShimmerAnimation()
     }
 
     private fun getBusinessNews(){
@@ -57,13 +79,21 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         viewModel.observeBusinessNews()?.observe(viewLifecycleOwner, Observer { it ->
            when(it.status){
                INewResource.Status.LOADING -> {
-                   Log.d("@MainActivity","Loading...")
+                   setButtonRetryVisibility(false)
+                   setTextViewMessageVisibility(false)
+                   setShimmerLayoutVisibility(true)
                }
                INewResource.Status.ERROR -> {
-                   Log.d("@MainActivity","Something went wrong")
+                   setButtonRetryVisibility(true)
+                   setTextViewMessageVisibility(true)
+                   setShimmerLayoutVisibility(false)
+                   txt_message.text = mainContext.resources?.getString(R.string.msg_error)
                }
                INewResource.Status.SUCCESS -> {
-                    recyclerView.adapter = adapter
+                   this.setButtonRetryVisibility(false)
+                   this.setTextViewMessageVisibility(false)
+                   setShimmerLayoutVisibility(false)
+                   recyclerView.adapter = adapter
                    adapter.setArticles(it.data?.articles)
                }
 
@@ -71,6 +101,30 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
        })
     }
 
+    private fun setButtonRetryVisibility(isVisible:Boolean){
+        if(isVisible){
+            btn_retry.visibility = View.VISIBLE
+        }else{
+            btn_retry.visibility = View.GONE
+        }
+    }
 
+    private fun setTextViewMessageVisibility(isVisible:Boolean){
+        if(isVisible){
+            txt_message.visibility = View.VISIBLE
+        }else{
+            txt_message.visibility = View.GONE
+        }
+    }
+
+    private fun setShimmerLayoutVisibility(isVisible:Boolean){
+        if(isVisible){
+            shimmer_view_container.visibility = View.VISIBLE
+            //shimmer_view_container.startShimmerAnimation()
+        }else{
+            shimmer_view_container.visibility = View.GONE
+            //shimmer_view_container.stopShimmerAnimation()
+        }
+    }
 
 }

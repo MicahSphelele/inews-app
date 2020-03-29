@@ -6,4 +6,5 @@
     <color name="colorWhite">@android:color/white</color>
     <color name="colorLightBlue">#C8F5FF</color>
     <color name="colorDarkNavy">#424A60</color>
+    <color name="colorShimmerBackground">#dddddd</color>
 </resources>

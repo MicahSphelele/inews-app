@@ -13,6 +13,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="retry">Retry</string>
     <string name="todo">TODO</string>
-    <string name="place_holder_content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida lorem vitae sem lobortis, quis faucibus lacus auctor. Mauris viverra quam fringilla mi egestas consequat. Nulla cursus iaculis aliquet....."</string>
+    <string name="place_holder_source">inews.com</string>
     <string name="about">About</string>
+    <string name="msg_error">Something went wrong</string>
 </resources>
