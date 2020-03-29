@@ -69,11 +69,6 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         Toast.makeText(mainContext,""+article.title,Toast.LENGTH_SHORT).show()
     }
 
-    override fun onStart() {
-        super.onStart()
-        shimmer_view_container.startShimmerAnimation()
-    }
-
     private fun getBusinessNews(){
         viewModel.observeBusinessNews()?.removeObservers(this)
         viewModel.observeBusinessNews()?.observe(viewLifecycleOwner, Observer { it ->
@@ -120,10 +115,11 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     private fun setShimmerLayoutVisibility(isVisible:Boolean){
         if(isVisible){
             shimmer_view_container.visibility = View.VISIBLE
-            //shimmer_view_container.startShimmerAnimation()
+            shimmer_view_container.startShimmer()
         }else{
             shimmer_view_container.visibility = View.GONE
-            //shimmer_view_container.stopShimmerAnimation()
+            shimmer_view_container.stopShimmer()
+
         }
     }
 
