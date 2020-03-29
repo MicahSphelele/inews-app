@@ -5,7 +5,7 @@ object Constants {
     const val BASE_URL = "http://newsapi.org/v2/"
     const val BUSINESS = "business"
     const val HEALTH = "health"
-    const val SPORT = "sport"
+    const val SPORTS = "sports"
     const val TECHNOLOGY = "technology"
     const val ENTERTAINMENT = "entertainment"
 

@@ -31,7 +31,6 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
-    @Named(Constants.SPORT)
     lateinit var adapter: ArticleAdapter
 
     private lateinit var viewModel: SportViewModel

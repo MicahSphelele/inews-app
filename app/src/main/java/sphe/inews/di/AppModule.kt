@@ -27,17 +27,17 @@ class AppModule {
         client.readTimeout(35, TimeUnit.SECONDS)
         client.writeTimeout(35, TimeUnit.SECONDS)
 
-//        val specs: MutableList<ConnectionSpec> =
-//            ArrayList()
-//        specs.add(
-//            ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-//                .tlsVersions(TlsVersion.TLS_1_2)
-//                .build()
-//        )
-//        specs.add(ConnectionSpec.COMPATIBLE_TLS)
-//        specs.add(ConnectionSpec.CLEARTEXT)
-//        client.connectionSpecs(specs)
-//        client.hostnameVerifier { _, _ -> true }
+        val specs: MutableList<ConnectionSpec> =
+            ArrayList()
+        specs.add(
+            ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                .tlsVersions(TlsVersion.TLS_1_2)
+                .build()
+        )
+        specs.add(ConnectionSpec.COMPATIBLE_TLS)
+        specs.add(ConnectionSpec.CLEARTEXT)
+        client.connectionSpecs(specs)
+        client.hostnameVerifier { _, _ -> true }
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -46,38 +46,4 @@ class AppModule {
             .build()
     }
 
-    @Singleton
-    @Provides
-    @Named(Constants.BUSINESS)
-    fun provideBusinessAdapter(): ArticleAdapter {
-        return ArticleAdapter()
-    }
-
-    @Singleton
-    @Provides
-    @Named(Constants.HEALTH)
-    fun provideHealthAdapter(): ArticleAdapter {
-        return ArticleAdapter()
-    }
-
-    @Singleton
-    @Provides
-    @Named(Constants.SPORT)
-    fun provideSportAdapter(): ArticleAdapter {
-        return ArticleAdapter()
-    }
-
-    @Singleton
-    @Provides
-    @Named(Constants.TECHNOLOGY)
-    fun provideTechnologyAdapter(): ArticleAdapter {
-        return ArticleAdapter()
-    }
-
-    @Singleton
-    @Provides
-    @Named(Constants.ENTERTAINMENT)
-    fun provideEntertainmentAdapter(): ArticleAdapter {
-        return ArticleAdapter()
-    }
 }
