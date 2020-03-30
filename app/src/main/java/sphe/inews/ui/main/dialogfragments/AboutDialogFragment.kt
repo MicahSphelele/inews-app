@@ -1,4 +1,4 @@
-package sphe.inews.ui.main.dialogs
+package sphe.inews.ui.main.dialogfragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

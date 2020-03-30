@@ -1,4 +1,4 @@
-package sphe.inews.ui.main.entertainment
+package sphe.inews.ui.main.news.technology
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -13,12 +13,11 @@ import sphe.inews.network.INewsApi
 import sphe.inews.util.Constants
 import javax.inject.Inject
 
-class EntertainmentViewModel @Inject constructor(private var api: INewsApi): ViewModel() {
-
+class TechnologyViewModel @Inject constructor(private var api: INewsApi) : ViewModel() {
 
     private var newsResponse: MediatorLiveData<Resources<NewsResponse>>? = null
 
-    fun observeEntertainmentNews(country:String): LiveData<Resources<NewsResponse>>? {
+    fun observeTechnologyNews(country:String): LiveData<Resources<NewsResponse>>? {
 
         newsResponse = MediatorLiveData<Resources<NewsResponse>>()
         newsResponse?.value =  Resources.loading(
@@ -31,10 +30,10 @@ class EntertainmentViewModel @Inject constructor(private var api: INewsApi): Vie
 
         val source: LiveData<Resources<NewsResponse>?> =
             LiveDataReactiveStreams.fromPublisher(
-                api.getEntertainmentNews(country, String(Constants.PACKS))
+                api.getTechNews(country, String(Constants.PACKS))
                     ?.onErrorReturn { throwable ->
                         throwable.stackTrace
-                        Log.e("@EntertainmentViewModel","apply error: $throwable")
+                        Log.e("@TechnologyViewModel","apply error: $throwable")
 
                         return@onErrorReturn NewsResponse(
                             null,

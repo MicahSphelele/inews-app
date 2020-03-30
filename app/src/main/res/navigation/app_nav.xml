@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/businessFragment"
-        android:name="sphe.inews.ui.main.business.BusinessFragment"
+        android:name="sphe.inews.ui.main.news.business.BusinessFragment"
         android:label="Business"
         tools:layout="@layout/fragment_business" />
 
     <fragment
         android:id="@+id/healthFragment"
-        android:name="sphe.inews.ui.main.health.HealthFragment"
+        android:name="sphe.inews.ui.main.news.health.HealthFragment"
         android:label="Health"
         tools:layout="@layout/fragment_health" />
 
     <fragment
         android:id="@+id/sportFragment"
-        android:name="sphe.inews.ui.main.sport.SportFragment"
+        android:name="sphe.inews.ui.main.news.sport.SportFragment"
         android:label="Sport"
         tools:layout="@layout/fragment_sport" />
 
     <fragment
         android:id="@+id/technologyFragment"
-        android:name="sphe.inews.ui.main.technology.TechnologyFragment"
+        android:name="sphe.inews.ui.main.news.technology.TechnologyFragment"
         android:label="Technology"
         tools:layout="@layout/fragment_technology" />
 
     <fragment
         android:id="@+id/entertainmentFragment"
-        android:name="sphe.inews.ui.main.entertainment.EntertainmentFragment"
+        android:name="sphe.inews.ui.main.news.business.entertainment.EntertainmentFragment"
         android:label="Entertainment"
         tools:layout="@layout/fragment_entertainment" />
 </navigation>

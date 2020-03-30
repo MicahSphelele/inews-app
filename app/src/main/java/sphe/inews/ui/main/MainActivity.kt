@@ -10,11 +10,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_article.view.*
-import sphe.inews.BaseApplication
 import sphe.inews.R
 import sphe.inews.ui.BaseActivity
-import sphe.inews.ui.main.dialogs.AboutDialogFragment
+import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {

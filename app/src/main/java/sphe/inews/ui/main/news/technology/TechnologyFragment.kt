@@ -1,4 +1,4 @@
-package sphe.inews.ui.main.entertainment
+package sphe.inews.ui.main.news.technology
 
 import android.content.Context
 import android.content.Intent
@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_entertainment.*
+import kotlinx.android.synthetic.main.fragment_technology.*
 import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
@@ -23,7 +23,7 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
+class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
@@ -31,12 +31,12 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
     @Inject
     lateinit var adapter: ArticleAdapter
 
-    private lateinit var viewModel: EntertainmentViewModel
+    private lateinit var viewModel: TechnologyViewModel
 
     private lateinit var mainContext : Context
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_entertainment, container, false)
+        return inflater.inflate(R.layout.fragment_technology, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,18 +48,16 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
 
         adapter.setListener(this)
 
-        viewModel = ViewModelProvider(this, providerFactory).get(EntertainmentViewModel::class.java)
+        viewModel = ViewModelProvider(this, providerFactory).get(TechnologyViewModel::class.java)
 
         btn_retry.setOnClickListener {
-            this.getEntertainmentNews()
+            this.getTechnologyNews()
         }
         this.setButtonRetryVisibility(false)
         this.setTextViewMessageVisibility(false)
         this.setShimmerLayoutVisibility(false)
-        this.getEntertainmentNews()
-
+        this.getTechnologyNews()
     }
-
 
     override fun onArticleClicked(article: Article) {
         Toast.makeText(mainContext,""+article.publishedAt, Toast.LENGTH_SHORT).show()
@@ -74,9 +72,9 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
         startActivity(Intent.createChooser(shareIntent, null))
     }
 
-    private fun getEntertainmentNews(){
-        viewModel.observeEntertainmentNews("za")?.removeObservers(this)
-        viewModel.observeEntertainmentNews("za")?.observe(viewLifecycleOwner, Observer { res ->
+    private fun getTechnologyNews(){
+        viewModel.observeTechnologyNews("za")?.removeObservers(this)
+        viewModel.observeTechnologyNews("za")?.observe(viewLifecycleOwner, Observer { res ->
 
             when(res.status){
                 Resources.Status.LOADING -> {
@@ -96,11 +94,11 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
                     recyclerView.adapter = adapter
                     adapter.setArticles(res.data?.articles)
                 }
+
             }
 
         })
     }
-
 
     private fun setButtonRetryVisibility(isVisible:Boolean){
         if(isVisible){

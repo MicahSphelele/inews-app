@@ -1,4 +1,4 @@
-package sphe.inews.ui.main.health
+package sphe.inews.ui.main.news.entertainment
 
 import android.content.Context
 import android.content.Intent
@@ -23,7 +23,7 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
+class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
@@ -31,12 +31,12 @@ class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     @Inject
     lateinit var adapter: ArticleAdapter
 
-    private lateinit var viewModel: HealthViewModel
+    private lateinit var viewModel: EntertainmentViewModel
 
     private lateinit var mainContext : Context
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_health, container, false)
+        return inflater.inflate(R.layout.fragment_entertainment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,18 +48,18 @@ class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
         adapter.setListener(this)
 
-        viewModel = ViewModelProvider(this, providerFactory).get(HealthViewModel::class.java)
+        viewModel = ViewModelProvider(this, providerFactory).get(EntertainmentViewModel::class.java)
 
         btn_retry.setOnClickListener {
-            this.getHealthNews()
+            this.getEntertainmentNews()
         }
-
         this.setButtonRetryVisibility(false)
         this.setTextViewMessageVisibility(false)
         this.setShimmerLayoutVisibility(false)
-        this.getHealthNews()
+        this.getEntertainmentNews()
 
     }
+
 
     override fun onArticleClicked(article: Article) {
         Toast.makeText(mainContext,""+article.publishedAt, Toast.LENGTH_SHORT).show()
@@ -74,9 +74,10 @@ class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         startActivity(Intent.createChooser(shareIntent, null))
     }
 
-    private fun getHealthNews(){
-        viewModel.observeHealthNews("za")?.removeObservers(this)
-        viewModel.observeHealthNews("za")?.observe(viewLifecycleOwner, Observer { res->
+    private fun getEntertainmentNews(){
+        viewModel.observeEntertainmentNews("za")?.removeObservers(this)
+        viewModel.observeEntertainmentNews("za")?.observe(viewLifecycleOwner, Observer { res ->
+
             when(res.status){
                 Resources.Status.LOADING -> {
                     this.setButtonRetryVisibility(false)
@@ -96,8 +97,10 @@ class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                     adapter.setArticles(res.data?.articles)
                 }
             }
+
         })
     }
+
 
     private fun setButtonRetryVisibility(isVisible:Boolean){
         if(isVisible){

@@ -1,4 +1,4 @@
-package sphe.inews.ui.main.sport
+package sphe.inews.ui.main.news.sport
 
 import android.content.Context
 import android.content.Intent

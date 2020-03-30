@@ -5,11 +5,11 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import sphe.inews.di.ViewModelKey
-import sphe.inews.ui.main.business.BusinessViewModel
-import sphe.inews.ui.main.entertainment.EntertainmentViewModel
-import sphe.inews.ui.main.health.HealthViewModel
-import sphe.inews.ui.main.sport.SportViewModel
-import sphe.inews.ui.main.technology.TechnologyViewModel
+import sphe.inews.ui.main.news.business.BusinessViewModel
+import sphe.inews.ui.main.news.entertainment.EntertainmentViewModel
+import sphe.inews.ui.main.news.health.HealthViewModel
+import sphe.inews.ui.main.news.sport.SportViewModel
+import sphe.inews.ui.main.news.technology.TechnologyViewModel
 
 @Module
 abstract class MainViewModelsModule {

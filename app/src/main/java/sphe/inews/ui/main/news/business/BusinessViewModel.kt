@@ -1,10 +1,7 @@
-package sphe.inews.ui.main.technology
+package sphe.inews.ui.main.news.business
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.LiveDataReactiveStreams
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import sphe.inews.models.news.NewsResponse
@@ -13,11 +10,11 @@ import sphe.inews.network.INewsApi
 import sphe.inews.util.Constants
 import javax.inject.Inject
 
-class TechnologyViewModel @Inject constructor(private var api: INewsApi) : ViewModel() {
+class BusinessViewModel @Inject constructor(private var api:INewsApi) : ViewModel() {
 
     private var newsResponse: MediatorLiveData<Resources<NewsResponse>>? = null
 
-    fun observeTechnologyNews(country:String): LiveData<Resources<NewsResponse>>? {
+    fun observeBusinessNews(country:String): LiveData<Resources<NewsResponse>>? {
 
         newsResponse = MediatorLiveData<Resources<NewsResponse>>()
         newsResponse?.value =  Resources.loading(
@@ -30,10 +27,10 @@ class TechnologyViewModel @Inject constructor(private var api: INewsApi) : ViewM
 
         val source: LiveData<Resources<NewsResponse>?> =
             LiveDataReactiveStreams.fromPublisher(
-                api.getTechNews(country, String(Constants.PACKS))
+                api.getBusinessNews(country, String(Constants.PACKS))
                     ?.onErrorReturn { throwable ->
                         throwable.stackTrace
-                        Log.e("@TechnologyViewModel","apply error: $throwable")
+                        Log.e("@BusinessViewModel","apply error: $throwable")
 
                         return@onErrorReturn NewsResponse(
                             null,
@@ -47,7 +44,7 @@ class TechnologyViewModel @Inject constructor(private var api: INewsApi) : ViewM
                         override fun apply(response: NewsResponse): Resources<NewsResponse>? {
                             Log.d("@BusinessViewModel","apply data")
                             if (response.totalResults!! == 0) {
-                                return Resources.error("Something went wrong", null)
+                                    return Resources.error("Something went wrong", null)
                             }
                             return Resources.success(response)
                         }

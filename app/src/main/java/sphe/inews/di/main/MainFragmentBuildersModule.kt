@@ -1,14 +1,13 @@
 package sphe.inews.di.main
 
 import dagger.Module
-import dagger.Provides
 import dagger.android.ContributesAndroidInjector
-import sphe.inews.ui.main.business.BusinessFragment
-import sphe.inews.ui.main.dialogs.AboutDialogFragment
-import sphe.inews.ui.main.entertainment.EntertainmentFragment
-import sphe.inews.ui.main.health.HealthFragment
-import sphe.inews.ui.main.sport.SportFragment
-import sphe.inews.ui.main.technology.TechnologyFragment
+import sphe.inews.ui.main.news.business.BusinessFragment
+import sphe.inews.ui.main.news.entertainment.EntertainmentFragment
+import sphe.inews.ui.main.news.health.HealthFragment
+import sphe.inews.ui.main.news.sport.SportFragment
+import sphe.inews.ui.main.news.technology.TechnologyFragment
+import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 
 @Module
 abstract class MainFragmentBuildersModule {

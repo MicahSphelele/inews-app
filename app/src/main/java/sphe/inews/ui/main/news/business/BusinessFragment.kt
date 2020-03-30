@@ -1,4 +1,4 @@
-package sphe.inews.ui.main.technology
+package sphe.inews.ui.main.news.business
 
 import android.content.Context
 import android.content.Intent
@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_technology.*
+import kotlinx.android.synthetic.main.fragment_business.*
 import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
@@ -23,7 +23,7 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
+class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
@@ -31,12 +31,12 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     @Inject
     lateinit var adapter: ArticleAdapter
 
-    private lateinit var viewModel: TechnologyViewModel
+    private lateinit var viewModel: BusinessViewModel
 
     private lateinit var mainContext : Context
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_technology, container, false)
+        return inflater.inflate(R.layout.fragment_business, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,19 +48,21 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
         adapter.setListener(this)
 
-        viewModel = ViewModelProvider(this, providerFactory).get(TechnologyViewModel::class.java)
+        viewModel = ViewModelProvider(this, providerFactory).get(BusinessViewModel::class.java)
 
         btn_retry.setOnClickListener {
-            this.getTechnologyNews()
+            this.getBusinessNews()
         }
+
         this.setButtonRetryVisibility(false)
         this.setTextViewMessageVisibility(false)
         this.setShimmerLayoutVisibility(false)
-        this.getTechnologyNews()
+        this.getBusinessNews()
+
     }
 
     override fun onArticleClicked(article: Article) {
-        Toast.makeText(mainContext,""+article.publishedAt, Toast.LENGTH_SHORT).show()
+        Toast.makeText(mainContext,article.publishedAt,Toast.LENGTH_SHORT).show()
     }
 
     override fun onShareClicked(article: Article) {
@@ -72,32 +74,31 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         startActivity(Intent.createChooser(shareIntent, null))
     }
 
-    private fun getTechnologyNews(){
-        viewModel.observeTechnologyNews("za")?.removeObservers(this)
-        viewModel.observeTechnologyNews("za")?.observe(viewLifecycleOwner, Observer { res ->
+    private fun getBusinessNews(){
+        viewModel.observeBusinessNews("za")?.removeObservers(this)
+        viewModel.observeBusinessNews("za")?.observe(viewLifecycleOwner, Observer { res ->
+           when(res.status){
+               Resources.Status.LOADING -> {
+                   this.setButtonRetryVisibility(false)
+                   this.setTextViewMessageVisibility(false)
+                   this.setShimmerLayoutVisibility(true)
+               }
+               Resources.Status.ERROR -> {
+                   this.setButtonRetryVisibility(true)
+                   this.setTextViewMessageVisibility(true)
+                   this.setShimmerLayoutVisibility(false)
+                   txt_message.text = mainContext.resources?.getString(R.string.msg_error)
+               }
+               Resources.Status.SUCCESS -> {
+                   this.setButtonRetryVisibility(false)
+                   this.setTextViewMessageVisibility(false)
+                   this.setShimmerLayoutVisibility(false)
+                   recyclerView.adapter = adapter
+                   adapter.setArticles(res.data?.articles)
+               }
 
-            when(res.status){
-                Resources.Status.LOADING -> {
-                    this.setButtonRetryVisibility(false)
-                    this.setTextViewMessageVisibility(false)
-                    this.setShimmerLayoutVisibility(true)
-                }
-                Resources.Status.ERROR -> {
-                    this.setButtonRetryVisibility(true)
-                    this.setTextViewMessageVisibility(true)
-                    this.setShimmerLayoutVisibility(false)
-                }
-                Resources.Status.SUCCESS -> {
-                    this.setButtonRetryVisibility(false)
-                    this.setTextViewMessageVisibility(false)
-                    this.setShimmerLayoutVisibility(false)
-                    recyclerView.adapter = adapter
-                    adapter.setArticles(res.data?.articles)
-                }
-
-            }
-
-        })
+           }
+       })
     }
 
     private fun setButtonRetryVisibility(isVisible:Boolean){
@@ -126,6 +127,5 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
         }
     }
-
 
 }
