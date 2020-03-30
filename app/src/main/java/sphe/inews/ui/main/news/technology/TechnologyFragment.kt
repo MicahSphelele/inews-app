@@ -12,7 +12,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_business.*
 import kotlinx.android.synthetic.main.fragment_technology.*
+import kotlinx.android.synthetic.main.fragment_technology.btn_retry
+import kotlinx.android.synthetic.main.fragment_technology.recyclerView
+import kotlinx.android.synthetic.main.fragment_technology.shimmer_view_container
+import kotlinx.android.synthetic.main.fragment_technology.txt_message
 import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
@@ -86,6 +91,7 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                     this.setButtonRetryVisibility(true)
                     this.setTextViewMessageVisibility(true)
                     this.setShimmerLayoutVisibility(false)
+                    txt_message.text = mainContext.resources?.getString(R.string.msg_error)
                 }
                 Resources.Status.SUCCESS -> {
                     this.setButtonRetryVisibility(false)

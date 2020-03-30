@@ -9,9 +9,7 @@ import sphe.inews.util.Constants
 
 interface Covid19Api {
 
-    @Headers(
-        "x-rapidapi-host: coronavirus-monitor.p.rapidapi.com",
-        "x-rapidapi-key : ${Constants.PACKS_COVID}")
+
     @GET("latest_stat_by_country.php")
     fun getCovidStatsByCountry(@Query("country") country: String): Flowable<CovidResponse>?
 }

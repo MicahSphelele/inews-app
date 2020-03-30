@@ -20,7 +20,7 @@ object Constants {
         51,57,56,99,56
     )
     const val BASE_COVID_URL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
-    const val PACKS_COVID = ""
+    const val PACKS_COVID = "aa59f5beeemshc27ac20fc5406f2p1e7377jsnfbff090313e0"
     // https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php
     //https://stackoverflow.com/questions/55748235/kotlin-check-for-words-in-string
     val KEY_WORDS = listOf("covid-19","shutdown","services")

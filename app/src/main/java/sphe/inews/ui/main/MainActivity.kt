@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import sphe.inews.R
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
+import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -20,6 +21,10 @@ class MainActivity : BaseActivity() {
 
     @Inject
     lateinit var aboutFragmentDialog: AboutDialogFragment
+
+    @Inject
+    lateinit var covidStatDialogFragment: CovidStatDialogFragment
+
 
     private lateinit var navController : NavController
 
@@ -55,7 +60,7 @@ class MainActivity : BaseActivity() {
                 aboutFragmentDialog.show(supportFragmentManager,"aboutFragmentDialog")
             }
             R.id.action_corona -> {
-                Toast.makeText(this,"Feature coming soon. Will show COVID-19 stats based on country",Toast.LENGTH_SHORT).show()
+                covidStatDialogFragment.show(supportFragmentManager,"covidStatDialogFragment")
             }
         }
         return super.onOptionsItemSelected(item)

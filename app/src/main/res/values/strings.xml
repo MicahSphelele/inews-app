@@ -15,9 +15,10 @@
     <string name="todo">TODO</string>
     <string name="place_holder_source">inews.com</string>
     <string name="about">About</string>
-    <string name="msg_error">Something went wrong</string>
+    <string name="msg_error">Something went wrong, check Wifi/internet connection</string>
     <string name="developer_name">Sphelele Micah Ngubane</string>
     <string name="developer"><u>Developer</u></string>
     <string name="close">Close</string>
     <string name="covid_19_stats">Covid-19 Stats</string>
+    <string name="covid_19_statistics">Covid 19 Statistics</string>
 </resources>

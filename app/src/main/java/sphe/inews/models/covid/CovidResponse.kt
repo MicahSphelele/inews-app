@@ -8,5 +8,5 @@ import androidx.annotation.Keep
 data class CovidResponse(
     var country: String,
     @SerializedName("latest_stat_by_country")
-    var latestStatByCountry: List<LatestStatByCountry>
+    var latestStatByCountry: List<LatestStatByCountry>?
 )

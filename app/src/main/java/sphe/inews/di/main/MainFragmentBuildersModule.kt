@@ -8,6 +8,7 @@ import sphe.inews.ui.main.news.health.HealthFragment
 import sphe.inews.ui.main.news.sport.SportFragment
 import sphe.inews.ui.main.news.technology.TechnologyFragment
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
+import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
 
 @Module
 abstract class MainFragmentBuildersModule {
@@ -29,5 +30,8 @@ abstract class MainFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributesAboutFragmentDialog() : AboutDialogFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributesCovidStatDialogFragmentDialog() : CovidStatDialogFragment
 
 }

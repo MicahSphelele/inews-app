@@ -5,6 +5,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import sphe.inews.di.ViewModelKey
+import sphe.inews.ui.main.dialogfragments.covid.Covid19StatsViewModel
 import sphe.inews.ui.main.news.business.BusinessViewModel
 import sphe.inews.ui.main.news.entertainment.EntertainmentViewModel
 import sphe.inews.ui.main.news.health.HealthViewModel
@@ -39,4 +40,9 @@ abstract class MainViewModelsModule {
     @IntoMap
     @ViewModelKey(TechnologyViewModel::class)
     abstract fun bindTechnologyViewModel(viewModel: TechnologyViewModel?): ViewModel?
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(Covid19StatsViewModel::class)
+    abstract fun bindCovid19StatsModelView(view: Covid19StatsViewModel) : ViewModel?
 }

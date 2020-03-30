@@ -2,14 +2,10 @@ package sphe.inews.di
 
 import dagger.Module
 import dagger.Provides
-import okhttp3.ConnectionSpec
-import okhttp3.OkHttpClient
-import okhttp3.TlsVersion
+import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import sphe.inews.di.main.MainScope
-import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.util.Constants
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -64,6 +60,18 @@ class AppModule {
         specs.add(ConnectionSpec.CLEARTEXT)
         client.connectionSpecs(specs)
         client.hostnameVerifier { _, _ -> true }
+
+        client.addInterceptor(Interceptor { chain ->
+            val original: Request = chain.request()
+            val request = original.newBuilder()
+                .header("x-rapidapi-host", "coronavirus-monitor.p.rapidapi.com")
+                .header("x-rapidapi-key", "aa59f5beeemshc27ac20fc5406f2p1e7377jsnfbff090313e0")
+                .method(original.method(), original.body())
+                .build()
+
+            return@Interceptor chain.proceed(request)
+        })
+
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_COVID_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
