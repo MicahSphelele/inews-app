@@ -20,17 +20,19 @@ class TechnologyViewModel @Inject constructor(private var api: INewsApi) : ViewM
     fun observeTechnologyNews(country:String): LiveData<Resources<NewsResponse>>? {
 
         newsResponse = MediatorLiveData<Resources<NewsResponse>>()
-        newsResponse?.value =  Resources.loading(
-            NewsResponse(
-                null,
-                "loading",
-                0
-            )
-        )
+       newsResponse?.let {
+           newsResponse?.value =  Resources.loading(
+               NewsResponse(
+                   null,
+                   "loading",
+                   0
+               )
+           )
+       }
 
-        val source: LiveData<Resources<NewsResponse>?> =
-            LiveDataReactiveStreams.fromPublisher(
-                api.getTechNews(country, String(Constants.PACKS))
+        val source: LiveData<Resources<NewsResponse>?> = LiveDataReactiveStreams.fromPublisher(
+
+                api.getTechNews(country, String(Constants.PACKS_NEWS))
                     ?.onErrorReturn { throwable ->
                         throwable.stackTrace
                         Log.e("@TechnologyViewModel","apply error: $throwable")
@@ -46,7 +48,7 @@ class TechnologyViewModel @Inject constructor(private var api: INewsApi) : ViewM
                         @Throws(Exception::class)
                         override fun apply(response: NewsResponse): Resources<NewsResponse>? {
                             Log.d("@BusinessViewModel","apply data")
-                            if (response.totalResults!! == 0) {
+                            if (response.articles.isNullOrEmpty()) {
                                 return Resources.error("Something went wrong", null)
                             }
                             return Resources.success(response)
@@ -54,10 +56,12 @@ class TechnologyViewModel @Inject constructor(private var api: INewsApi) : ViewM
                     })!!.subscribeOn(Schedulers.io())
             )
 
-        newsResponse?.addSource(source) { response ->
-            newsResponse.apply {
-                this?.value = response
-                this?.removeSource(source)
+        newsResponse?.let {
+            newsResponse?.addSource(source) { response ->
+                newsResponse.apply {
+                    this?.value = response
+                    this?.removeSource(source)
+                }
             }
         }
 

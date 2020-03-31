@@ -19,9 +19,12 @@ class Covid19StatsViewModel @Inject constructor(private var api: Covid19Api) : V
     fun observeCovid19Data(country:String): LiveData<Resources<CovidResponse>>? {
 
         covidResponse = MediatorLiveData<Resources<CovidResponse>>()
-        covidResponse?.value =  Resources.loading(
-            CovidResponse("",null)
-        )
+
+        covidResponse?.let {
+            covidResponse?.value =  Resources.loading(
+                CovidResponse("",null)
+            )
+        }
 
         val source: LiveData<Resources<CovidResponse>?> =
             LiveDataReactiveStreams.fromPublisher(
@@ -45,12 +48,15 @@ class Covid19StatsViewModel @Inject constructor(private var api: Covid19Api) : V
                     })!!.subscribeOn(Schedulers.io())
             )
 
-        covidResponse?.addSource(source) { response ->
-            covidResponse.apply {
-                this?.value = response
-                this?.removeSource(source)
+        covidResponse?.let {
+            covidResponse?.addSource(source) { response ->
+                covidResponse.apply {
+                    this?.value = response
+                    this?.removeSource(source)
+                }
             }
         }
+
 
         return covidResponse
     }

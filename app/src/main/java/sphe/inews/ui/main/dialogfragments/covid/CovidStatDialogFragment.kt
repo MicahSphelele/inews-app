@@ -50,25 +50,28 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
 
     override fun onStart() {
         super.onStart()
+
         val dialog = dialog
-        if (dialog != null) {
-            val width = ViewGroup.LayoutParams.MATCH_PARENT
-            val height = ViewGroup.LayoutParams.MATCH_PARENT
-            if (dialog.window != null) {
-                dialog.window!!.setLayout(width, height)
-            }
+        val width = ViewGroup.LayoutParams.MATCH_PARENT
+        val height = ViewGroup.LayoutParams.MATCH_PARENT
+
+        dialog?.window.let {
+            dialog?.window?.setLayout(width, height)
         }
     }
 
     override fun onActivityCreated(args: Bundle?) {
         super.onActivityCreated(args)
-        if (dialog != null) {
+
             //dialog!!.window?.getAttributes()?.windowAnimations = R.style.FullScreenDialogStyle
-            dialog!!.window?.attributes?.windowAnimations = R.style.FullScreenDialogStyle
-        }
+            dialog?.window?.let {
+                dialog?.window?.attributes?.windowAnimations = R.style.FullScreenDialogStyle
+            }
+
     }
 
     private fun getCovid19Stats(){
+
         viewModel.observeCovid19Data("South Africa")?.removeObservers(this)
         viewModel.observeCovid19Data("South Africa")?.observe(viewLifecycleOwner, Observer {res ->
 

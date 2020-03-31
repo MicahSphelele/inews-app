@@ -65,7 +65,7 @@ class AppModule {
             val original: Request = chain.request()
             val request = original.newBuilder()
                 .header("x-rapidapi-host", "coronavirus-monitor.p.rapidapi.com")
-                .header("x-rapidapi-key", "aa59f5beeemshc27ac20fc5406f2p1e7377jsnfbff090313e0")
+                .header("x-rapidapi-key", String(Constants.PACKS_COVID))
                 .method(original.method(), original.body())
                 .build()
 
