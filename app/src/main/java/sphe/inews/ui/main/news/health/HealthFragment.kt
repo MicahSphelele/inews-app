@@ -12,12 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_business.*
 import kotlinx.android.synthetic.main.fragment_entertainment.*
-import kotlinx.android.synthetic.main.fragment_entertainment.btn_retry
-import kotlinx.android.synthetic.main.fragment_entertainment.recyclerView
-import kotlinx.android.synthetic.main.fragment_entertainment.shimmer_view_container
-import kotlinx.android.synthetic.main.fragment_entertainment.txt_message
 import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
@@ -49,7 +44,11 @@ class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
         mainContext = view.context
 
-        recyclerView?.layoutManager = LinearLayoutManager(activity)
+        recyclerView?.let {
+            recyclerView?.apply {
+                layoutManager = LinearLayoutManager(activity)
+            }
+        }
 
         adapter.setListener(this)
 
@@ -80,29 +79,38 @@ class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     }
 
     private fun getHealthNews(){
-        viewModel.observeHealthNews("za")?.removeObservers(this)
-        viewModel.observeHealthNews("za")?.observe(viewLifecycleOwner, Observer { res->
-            when(res.status){
-                Resources.Status.LOADING -> {
-                    this.setButtonRetryVisibility(false)
-                    this.setTextViewMessageVisibility(false)
-                    this.setShimmerLayoutVisibility(true)
+        viewModel.observeHealthNews("za")?.let {
+            viewModel.observeHealthNews("za")?.removeObservers(this)
+            viewModel.observeHealthNews("za")?.observe(viewLifecycleOwner, Observer { res->
+                when(res.status){
+                    Resources.Status.LOADING -> {
+                        this.setButtonRetryVisibility(false)
+                        this.setTextViewMessageVisibility(false)
+                        this.setShimmerLayoutVisibility(true)
+                    }
+                    Resources.Status.ERROR -> {
+                        this.setButtonRetryVisibility(true)
+                        this.setTextViewMessageVisibility(true)
+                        this.setShimmerLayoutVisibility(false)
+
+                        mainContext.resources?.let {
+                            txt_message.text =  mainContext.resources.getString(R.string.msg_error)
+                        }
+                    }
+                    Resources.Status.SUCCESS -> {
+                        this.setButtonRetryVisibility(false)
+                        this.setTextViewMessageVisibility(false)
+                        this.setShimmerLayoutVisibility(false)
+                        recyclerView.adapter = adapter
+                        res.data?.let {
+                            adapter.setArticles(res.data.articles)
+                        }
+
+                    }
                 }
-                Resources.Status.ERROR -> {
-                    this.setButtonRetryVisibility(true)
-                    this.setTextViewMessageVisibility(true)
-                    this.setShimmerLayoutVisibility(false)
-                    txt_message.text = mainContext.resources?.getString(R.string.msg_error)
-                }
-                Resources.Status.SUCCESS -> {
-                    this.setButtonRetryVisibility(false)
-                    this.setTextViewMessageVisibility(false)
-                    this.setShimmerLayoutVisibility(false)
-                    recyclerView.adapter = adapter
-                    adapter.setArticles(res.data?.articles)
-                }
-            }
-        })
+            })
+        }
+
     }
 
     private fun setButtonRetryVisibility(isVisible:Boolean){

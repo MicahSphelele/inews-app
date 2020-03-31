@@ -44,7 +44,11 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
         mainContext = view.context
 
-        recyclerView?.layoutManager = LinearLayoutManager(activity)
+        recyclerView?.let {
+            recyclerView?.apply {
+                layoutManager = LinearLayoutManager(activity)
+            }
+        }
 
         adapter.setListener(this)
 
@@ -75,30 +79,41 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     }
 
     private fun getBusinessNews(){
-        viewModel.observeBusinessNews("za")?.removeObservers(this)
-        viewModel.observeBusinessNews("za")?.observe(viewLifecycleOwner, Observer { res ->
-           when(res.status){
-               Resources.Status.LOADING -> {
-                   this.setButtonRetryVisibility(false)
-                   this.setTextViewMessageVisibility(false)
-                   this.setShimmerLayoutVisibility(true)
-               }
-               Resources.Status.ERROR -> {
-                   this.setButtonRetryVisibility(true)
-                   this.setTextViewMessageVisibility(true)
-                   this.setShimmerLayoutVisibility(false)
-                   txt_message.text = mainContext.resources?.getString(R.string.msg_error)
-               }
-               Resources.Status.SUCCESS -> {
-                   this.setButtonRetryVisibility(false)
-                   this.setTextViewMessageVisibility(false)
-                   this.setShimmerLayoutVisibility(false)
-                   recyclerView.adapter = adapter
-                   adapter.setArticles(res.data?.articles)
-               }
+        viewModel.observeBusinessNews("za")?.let {
+            viewModel.observeBusinessNews("za")?.removeObservers(this)
+            viewModel.observeBusinessNews("za")?.observe(viewLifecycleOwner, Observer { res ->
+                when(res.status){
+                    Resources.Status.LOADING -> {
+                        this.setButtonRetryVisibility(false)
+                        this.setTextViewMessageVisibility(false)
+                        this.setShimmerLayoutVisibility(true)
+                    }
+                    Resources.Status.ERROR -> {
+                        this.setButtonRetryVisibility(true)
+                        this.setTextViewMessageVisibility(true)
+                        this.setShimmerLayoutVisibility(false)
 
-           }
-       })
+                        mainContext.resources?.let {
+                            txt_message.text =  mainContext.resources.getString(R.string.msg_error)
+                        }
+
+                    }
+                    Resources.Status.SUCCESS -> {
+                        this.setButtonRetryVisibility(false)
+                        this.setTextViewMessageVisibility(false)
+                        this.setShimmerLayoutVisibility(false)
+
+                        recyclerView.adapter = adapter
+                        res.data?.let {
+                            adapter.setArticles(res.data.articles)
+                        }
+
+                    }
+
+                }
+            })
+        }
+
     }
 
     private fun setButtonRetryVisibility(isVisible:Boolean){

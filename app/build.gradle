@@ -58,9 +58,8 @@ dependencies {
     def lifecycle_version = '2.2.0' //2.2.0-rc03,2.2.0-alpha03
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
-    // Dagger
-    def dagger_version = "2.25.4" //2.22
-    //def dagger_version = "2.16" // version used by google samples
+    // Dagger version used by google samples
+    def dagger_version = "2.25.4" //2.16,2.22
 
     // Dagger2 core
     implementation "com.google.dagger:dagger:$dagger_version"
@@ -102,7 +101,7 @@ dependencies {
     //Data Binding compiler
     kapt 'com.android.databinding:compiler:3.1.4'
 
-    // architecture comp. navigation
+    // Architecture comp. navigation
     def nav_version = "2.3.0-alpha04" //2.2.0-rc04 ,2.2.0-alpha01 , 2.3.0-alpha02,2.3.0-alpha03
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"

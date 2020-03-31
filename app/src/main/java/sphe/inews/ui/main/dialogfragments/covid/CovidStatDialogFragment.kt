@@ -72,23 +72,26 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
 
     private fun getCovid19Stats(){
 
-        viewModel.observeCovid19Data("South Africa")?.removeObservers(this)
-        viewModel.observeCovid19Data("South Africa")?.observe(viewLifecycleOwner, Observer {res ->
+        viewModel.observeCovid19Data("South Africa")?.let {
+            viewModel.observeCovid19Data("South Africa")?.removeObservers(this)
+            viewModel.observeCovid19Data("South Africa")?.observe(viewLifecycleOwner, Observer {res ->
 
-            when(res.status){
-                Resources.Status.LOADING ->{
-                    Log.d(TAG,"LOADING...")
+                when(res.status){
+                    Resources.Status.LOADING ->{
+                        Log.d(TAG,"LOADING...")
+                    }
+                    Resources.Status.ERROR ->{
+                        Log.d(TAG,"ERROR...")
+                    }
+                    Resources.Status.SUCCESS ->{
+                        Log.d(TAG,"SUCCESS...${res.data?.latestStatByCountry.toString()}")
+
+                    }
+
                 }
-                Resources.Status.ERROR ->{
-                    Log.d(TAG,"ERROR...")
-                }
-                Resources.Status.SUCCESS ->{
-                    Log.d(TAG,"SUCCESS...${res.data?.latestStatByCountry.toString()}")
 
-                }
+            })
+        }
 
-            }
-
-        })
     }
 }

@@ -13,12 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_business.*
 import kotlinx.android.synthetic.main.fragment_sport.*
-import kotlinx.android.synthetic.main.fragment_sport.btn_retry
-import kotlinx.android.synthetic.main.fragment_sport.recyclerView
-import kotlinx.android.synthetic.main.fragment_sport.shimmer_view_container
-import kotlinx.android.synthetic.main.fragment_sport.txt_message
 import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
@@ -50,7 +45,12 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
         mainContext = view.context
 
-        recyclerView?.layoutManager = LinearLayoutManager(activity)
+        recyclerView?.let {
+            recyclerView?.apply {
+                layoutManager = LinearLayoutManager(activity)
+            }
+        }
+
         adapter = ArticleAdapter()
         adapter.setListener(this)
 
@@ -80,35 +80,42 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     }
 
     private fun getSportNews(){
-        viewModel.observeSportNews("za")?.removeObservers(this)
-        viewModel.observeSportNews("za")?.observe(viewLifecycleOwner, Observer {res ->
+        viewModel.observeSportNews("za")?.let {
+            viewModel.observeSportNews("za")?.removeObservers(this)
+            viewModel.observeSportNews("za")?.observe(viewLifecycleOwner, Observer {res ->
 
-            when(res.status){
-                Resources.Status.LOADING -> {
-                    Log.d("@Sport","LOADING...")
-                    this.setButtonRetryVisibility(false)
-                    this.setTextViewMessageVisibility(false)
-                    this.setShimmerLayoutVisibility(true)
-                }
-                Resources.Status.ERROR -> {
-                    Log.d("@Sport","ERROR...")
-                    this.setButtonRetryVisibility(true)
-                    this.setTextViewMessageVisibility(true)
-                    this.setShimmerLayoutVisibility(false)
-                    txt_message.text = mainContext.resources?.getString(R.string.msg_error)
-                }
-                Resources.Status.SUCCESS -> {
-                    Log.d("@Sport","SUCCESS...")
-                    this.setButtonRetryVisibility(false)
-                    this.setTextViewMessageVisibility(false)
-                    this.setShimmerLayoutVisibility(false)
-                    recyclerView.adapter = adapter
-                    adapter.setArticles(res.data?.articles)
-                }
+                when(res.status){
+                    Resources.Status.LOADING -> {
+                        Log.d("@Sport","LOADING...")
+                        this.setButtonRetryVisibility(false)
+                        this.setTextViewMessageVisibility(false)
+                        this.setShimmerLayoutVisibility(true)
+                    }
+                    Resources.Status.ERROR -> {
+                        Log.d("@Sport","ERROR...")
+                        this.setButtonRetryVisibility(true)
+                        this.setTextViewMessageVisibility(true)
+                        this.setShimmerLayoutVisibility(false)
 
-            }
+                        mainContext.resources?.let {
+                            txt_message.text =  mainContext.resources.getString(R.string.msg_error)
+                        }
+                    }
+                    Resources.Status.SUCCESS -> {
+                        Log.d("@Sport","SUCCESS...")
+                        this.setButtonRetryVisibility(false)
+                        this.setTextViewMessageVisibility(false)
+                        this.setShimmerLayoutVisibility(false)
+                        recyclerView.adapter = adapter
+                        res.data?.let {
+                            adapter.setArticles(res.data.articles)
+                        }
+                    }
 
-        })
+                }
+            })
+        }
+
     }
 
     private fun setButtonRetryVisibility(isVisible:Boolean){

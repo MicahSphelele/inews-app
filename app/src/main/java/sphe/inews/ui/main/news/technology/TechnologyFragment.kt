@@ -12,12 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_business.*
 import kotlinx.android.synthetic.main.fragment_technology.*
-import kotlinx.android.synthetic.main.fragment_technology.btn_retry
-import kotlinx.android.synthetic.main.fragment_technology.recyclerView
-import kotlinx.android.synthetic.main.fragment_technology.shimmer_view_container
-import kotlinx.android.synthetic.main.fragment_technology.txt_message
 import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
@@ -49,7 +44,11 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
         mainContext = view.context
 
-        recyclerView?.layoutManager = LinearLayoutManager(activity)
+        recyclerView?.let {
+            recyclerView?.apply {
+                layoutManager = LinearLayoutManager(activity)
+            }
+        }
 
         adapter.setListener(this)
 
@@ -78,6 +77,9 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     }
 
     private fun getTechnologyNews(){
+        viewModel.observeTechnologyNews("za")?.let {
+
+        }
         viewModel.observeTechnologyNews("za")?.removeObservers(this)
         viewModel.observeTechnologyNews("za")?.observe(viewLifecycleOwner, Observer { res ->
 
@@ -91,14 +93,19 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                     this.setButtonRetryVisibility(true)
                     this.setTextViewMessageVisibility(true)
                     this.setShimmerLayoutVisibility(false)
-                    txt_message.text = mainContext.resources?.getString(R.string.msg_error)
+
+                    mainContext.resources?.let {
+                        txt_message.text =  mainContext.resources.getString(R.string.msg_error)
+                    }
                 }
                 Resources.Status.SUCCESS -> {
                     this.setButtonRetryVisibility(false)
                     this.setTextViewMessageVisibility(false)
                     this.setShimmerLayoutVisibility(false)
                     recyclerView.adapter = adapter
-                    adapter.setArticles(res.data?.articles)
+                    res.data?.let {
+                        adapter.setArticles(res.data.articles)
+                    }
                 }
 
             }
