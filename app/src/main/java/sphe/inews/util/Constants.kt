@@ -9,7 +9,6 @@ object Constants {
     const val TECHNOLOGY = "technology"
     const val ENTERTAINMENT = "entertainment"
 
-    //https://coronavirus-monitor.p.rapidapi.com/coronavirus/
 
    val  PACKS_NEWS = byteArrayOf(
         52,101,51,97,102,
@@ -21,7 +20,8 @@ object Constants {
     )
     const val BASE_COVID_URL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
 
-     val PACKS_COVID = byteArrayOf(97,97,53,57,102,
+     val PACKS_COVID = byteArrayOf(
+         97,97,53,57,102,
          53,98,101,101,101,
          109,115,104,99,50,
          55,97,99,50,48,
@@ -32,7 +32,7 @@ object Constants {
          102,102,48,57,48,
          51,49,51,101,48
      )
-    // https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php
+
     //https://stackoverflow.com/questions/55748235/kotlin-check-for-words-in-string
     val KEY_WORDS = listOf("covid-19","shutdown","services")
 }

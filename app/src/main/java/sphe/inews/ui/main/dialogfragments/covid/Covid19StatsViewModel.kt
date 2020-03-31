@@ -40,10 +40,12 @@ class Covid19StatsViewModel @Inject constructor(private var api: Covid19Api) : V
                         @Throws(Exception::class)
                         override fun apply(response: CovidResponse): Resources<CovidResponse>? {
                             Log.d("@Covid19StatsViewModel","apply data")
-                            if (response.latestStatByCountry!!.isEmpty()) {
-                                return Resources.error("Something went wrong", null)
-                            }
-                            return Resources.success(response)
+                           response.let {
+                               if (response.latestStatByCountry.isNullOrEmpty()) {
+                                   return Resources.error("Something went wrong", null)
+                               }
+                               return Resources.success(response)
+                           }
                         }
                     })!!.subscribeOn(Schedulers.io())
             )

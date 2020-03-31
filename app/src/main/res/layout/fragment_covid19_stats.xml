@@ -6,8 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+
     <TextView
-        android:id="@+id/txt_app_name"
+        android:id="@+id/txt_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
@@ -15,9 +20,22 @@
         android:textColor="@color/colorPrimary"
         android:textSize="12pt"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <ImageView
+        android:id="@+id/image_virus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_virus"
+        android:contentDescription="@string/todo"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/txt_title"
+        app:layout_constraintStart_toStartOf="@+id/txt_title"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title"
+        />
 
     <TextView
         android:id="@+id/txt_country"
@@ -28,21 +46,12 @@
         android:textSize="8pt"
         android:textStyle="bold"
         android:textColor="@color/colorAccent"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/image_virus"
         app:layout_constraintStart_toStartOf="@+id/image_virus"
         app:layout_constraintTop_toBottomOf="@+id/image_virus"
         tools:text="South Africa" />
 
-    <ImageView
-        android:id="@+id/image_virus"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_virus"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="@+id/txt_app_name"
-        app:layout_constraintStart_toStartOf="@+id/txt_app_name"
-        app:layout_constraintTop_toBottomOf="@+id/txt_app_name"
-         />
 
 
     <androidx.cardview.widget.CardView
@@ -50,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:visibility="gone"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -80,6 +90,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:visibility="gone"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -110,6 +121,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:visibility="gone"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -140,6 +152,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:visibility="gone"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -170,6 +183,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:visibility="gone"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -195,4 +209,54 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/txt_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textSize="8pt"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Some thing went wrong" />
+
+    <Button
+        android:id="@+id/btn_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_rounded"
+        android:text="@string/retry"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:fontFamily="casual"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_message" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/placeholder_covid19" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
