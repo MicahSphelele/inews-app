@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/entertainmentFragment"
-        android:name="sphe.inews.ui.main.news.business.entertainment.EntertainmentFragment"
+        android:name="sphe.inews.ui.main.news.entertainment.EntertainmentFragment"
         android:label="Entertainment"
         tools:layout="@layout/fragment_entertainment" />
 </navigation>
