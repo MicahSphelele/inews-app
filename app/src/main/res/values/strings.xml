@@ -21,4 +21,9 @@
     <string name="close">Close</string>
     <string name="covid_19_stats">Covid-19 Stats</string>
     <string name="covid_19_statistics">Covid 19 Statistics</string>
+    <string name="covid_19_cases_confirmed"># Confirmed Cases</string>
+    <string name="covid_19_active_cases"># Active Cases</string>
+    <string name="critical_cases"># Critical Cases</string>
+    <string name="covid_19_deaths"># Total Deaths</string>
+    <string name="total_recovered"># Total Recovered</string>
 </resources>

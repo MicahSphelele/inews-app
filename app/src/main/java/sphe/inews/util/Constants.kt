@@ -1,5 +1,8 @@
 package sphe.inews.util
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 object Constants {
 
     const val BASE_NEWS_URL = "http://newsapi.org/v2/"
@@ -32,6 +35,14 @@ object Constants {
          102,102,48,57,48,
          51,49,51,101,48
      )
+
+    fun appDateFormat(date:String) : String?{
+
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS",Locale.getDefault()) //yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
+        
+        return SimpleDateFormat("yyyy-MM-dd HH:mm",Locale.getDefault()).format(dateFormat.parse(date)!!)
+
+    }
 
     //https://stackoverflow.com/questions/55748235/kotlin-check-for-words-in-string
     val KEY_WORDS = listOf("covid-19","shutdown","services")

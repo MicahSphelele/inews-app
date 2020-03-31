@@ -20,7 +20,6 @@
         android:textColor="@color/colorPrimary"
         android:textSize="12pt"
         android:textStyle="bold"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -31,7 +30,6 @@
         android:layout_height="50dp"
         android:src="@drawable/ic_virus"
         android:contentDescription="@string/todo"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/txt_title"
         app:layout_constraintStart_toStartOf="@+id/txt_title"
         app:layout_constraintTop_toBottomOf="@+id/txt_title"
@@ -46,7 +44,6 @@
         android:textSize="8pt"
         android:textStyle="bold"
         android:textColor="@color/colorAccent"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/image_virus"
         app:layout_constraintStart_toStartOf="@+id/image_virus"
         app:layout_constraintTop_toBottomOf="@+id/image_virus"
@@ -59,7 +56,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:visibility="gone"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -82,6 +78,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/covid_19_cases_confirmed"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_cases_confirmed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="1,000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold|italic"
+                app:layout_constraintEnd_toEndOf="@+id/title_1"
+                app:layout_constraintStart_toStartOf="@+id/title_1"
+                app:layout_constraintTop_toBottomOf="@+id/title_1" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -90,7 +111,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:visibility="gone"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -113,6 +133,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/covid_19_active_cases"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_cases_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="900"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold|italic"
+                app:layout_constraintEnd_toEndOf="@+id/title_2"
+                app:layout_constraintStart_toStartOf="@+id/title_2"
+                app:layout_constraintTop_toBottomOf="@+id/title_2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -121,7 +166,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:visibility="gone"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -144,6 +188,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/title_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/critical_cases"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_critical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="9"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold|italic"
+                app:layout_constraintEnd_toEndOf="@+id/title_3"
+                app:layout_constraintStart_toStartOf="@+id/title_3"
+                app:layout_constraintTop_toBottomOf="@+id/title_3" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -152,7 +221,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:visibility="gone"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -175,6 +243,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/title_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/covid_19_deaths"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_deaths"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="5"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold|italic"
+                app:layout_constraintEnd_toEndOf="@+id/title_4"
+                app:layout_constraintStart_toStartOf="@+id/title_4"
+                app:layout_constraintTop_toBottomOf="@+id/title_4" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -183,7 +276,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:visibility="gone"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -206,23 +298,62 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/title_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_recovered"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_recovered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="5"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold|italic"
+                app:layout_constraintEnd_toEndOf="@+id/title_5"
+                app:layout_constraintStart_toStartOf="@+id/title_5"
+                app:layout_constraintTop_toBottomOf="@+id/title_5" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/txt_message"
+        android:id="@+id/txt_date_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:textSize="8pt"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="7pt"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorPrimary"
+        tools:text="The below data was recorded as of 2020-03-31 19:45"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Some thing went wrong" />
+        app:layout_constraintTop_toBottomOf="@+id/card_5"
+        />
+
+        <TextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Some thing went wrong" />
 
     <Button
         android:id="@+id/btn_retry"
