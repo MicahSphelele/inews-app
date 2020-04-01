@@ -25,15 +25,19 @@ import javax.inject.Inject
  */
 class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
 
+    @Suppress("unused")
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
     lateinit var adapter: ArticleAdapter
 
-    private lateinit var viewModel: EntertainmentViewModel
-
+    @Suppress("unused")
     private lateinit var mainContext : Context
+
+    private  val viewModel: EntertainmentViewModel by lazy {
+        ViewModelProvider(this, providerFactory).get(EntertainmentViewModel::class.java)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_entertainment, container, false)
@@ -52,13 +56,12 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
 
         adapter.setListener(this)
 
-        viewModel = ViewModelProvider(this, providerFactory).get(EntertainmentViewModel::class.java)
+
 
         btn_retry.setOnClickListener {
             this.getEntertainmentNews()
         }
-        this.setButtonRetryVisibility(false)
-        this.setTextViewMessageVisibility(false)
+        this.setErrorViewsVisibility(false)
         this.setShimmerLayoutVisibility(false)
         this.getEntertainmentNews()
 
@@ -85,13 +88,11 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
 
                 when(res.status){
                     Resources.Status.LOADING -> {
-                        this.setButtonRetryVisibility(false)
-                        this.setTextViewMessageVisibility(false)
+                        this.setErrorViewsVisibility(false)
                         this.setShimmerLayoutVisibility(true)
                     }
                     Resources.Status.ERROR -> {
-                        this.setButtonRetryVisibility(true)
-                        this.setTextViewMessageVisibility(true)
+                        this.setErrorViewsVisibility(true)
                         this.setShimmerLayoutVisibility(false)
 
                         mainContext.resources?.let {
@@ -99,8 +100,7 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
                         }
                     }
                     Resources.Status.SUCCESS -> {
-                        this.setButtonRetryVisibility(false)
-                        this.setTextViewMessageVisibility(false)
+                        this.setErrorViewsVisibility(false)
                         this.setShimmerLayoutVisibility(false)
 
                         recyclerView.adapter = adapter
@@ -117,18 +117,12 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
     }
 
 
-    private fun setButtonRetryVisibility(isVisible:Boolean){
+    private fun setErrorViewsVisibility(isVisible:Boolean){
         if(isVisible){
             btn_retry.visibility = View.VISIBLE
-        }else{
-            btn_retry.visibility = View.GONE
-        }
-    }
-
-    private fun setTextViewMessageVisibility(isVisible:Boolean){
-        if(isVisible){
             txt_message.visibility = View.VISIBLE
         }else{
+            btn_retry.visibility = View.GONE
             txt_message.visibility = View.GONE
         }
     }

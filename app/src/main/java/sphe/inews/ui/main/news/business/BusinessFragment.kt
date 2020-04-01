@@ -1,3 +1,4 @@
+
 package sphe.inews.ui.main.news.business
 
 import android.content.Context
@@ -25,15 +26,20 @@ import javax.inject.Inject
  */
 class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
+
+    @Suppress("unused")
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
     lateinit var adapter: ArticleAdapter
 
-    private lateinit var viewModel: BusinessViewModel
+    @Suppress("unused")
+    private  lateinit var mainContext : Context
 
-    private lateinit var mainContext : Context
+    private val viewModel: BusinessViewModel by lazy {
+        ViewModelProvider(this, providerFactory).get(BusinessViewModel::class.java)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_business, container, false)
@@ -52,14 +58,12 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
         adapter.setListener(this)
 
-        viewModel = ViewModelProvider(this, providerFactory).get(BusinessViewModel::class.java)
 
         btn_retry.setOnClickListener {
             this.getBusinessNews()
         }
 
-        this.setButtonRetryVisibility(false)
-        this.setTextViewMessageVisibility(false)
+        this.setErrorViewsVisibility(false)
         this.setShimmerLayoutVisibility(false)
         this.getBusinessNews()
 
@@ -84,13 +88,11 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
             viewModel.observeBusinessNews("za")?.observe(viewLifecycleOwner, Observer { res ->
                 when(res.status){
                     Resources.Status.LOADING -> {
-                        this.setButtonRetryVisibility(false)
-                        this.setTextViewMessageVisibility(false)
+                        this.setErrorViewsVisibility(false)
                         this.setShimmerLayoutVisibility(true)
                     }
                     Resources.Status.ERROR -> {
-                        this.setButtonRetryVisibility(true)
-                        this.setTextViewMessageVisibility(true)
+                        this.setErrorViewsVisibility(true)
                         this.setShimmerLayoutVisibility(false)
 
                         mainContext.resources?.let {
@@ -99,8 +101,7 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
                     }
                     Resources.Status.SUCCESS -> {
-                        this.setButtonRetryVisibility(false)
-                        this.setTextViewMessageVisibility(false)
+                        this.setErrorViewsVisibility(false)
                         this.setShimmerLayoutVisibility(false)
 
                         recyclerView.adapter = adapter
@@ -116,18 +117,12 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     }
 
-    private fun setButtonRetryVisibility(isVisible:Boolean){
+    private fun setErrorViewsVisibility(isVisible:Boolean){
         if(isVisible){
             btn_retry.visibility = View.VISIBLE
-        }else{
-            btn_retry.visibility = View.GONE
-        }
-    }
-
-    private fun setTextViewMessageVisibility(isVisible:Boolean){
-        if(isVisible){
             txt_message.visibility = View.VISIBLE
         }else{
+            btn_retry.visibility = View.GONE
             txt_message.visibility = View.GONE
         }
     }

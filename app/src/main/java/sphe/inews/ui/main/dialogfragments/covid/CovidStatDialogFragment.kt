@@ -20,17 +20,23 @@ import sphe.inews.util.Constants
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
 
+
 class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
 
+
+    @Suppress("unused")
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
     lateinit var adapter: ArticleAdapter
 
-    private lateinit var viewModel: Covid19StatsViewModel
-
+    @Suppress("unused")
     private lateinit var mainContext : Context
+
+    private val viewModel: Covid19StatsViewModel by lazy {
+        ViewModelProvider(this, providerFactory).get(Covid19StatsViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +65,6 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
             dismiss()
         }
 
-        viewModel = ViewModelProvider(this, providerFactory).get(Covid19StatsViewModel::class.java)
 
         btn_retry.setOnClickListener{
             this.getCovid19Stats()
@@ -128,7 +133,6 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
                             }
 
                         }
-                        //Log.d(TAG,"SUCCESS...${res.data?.latestStatByCountry.toString()}")
 
                     }
 

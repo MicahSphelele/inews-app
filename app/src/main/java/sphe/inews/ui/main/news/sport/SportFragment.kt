@@ -26,14 +26,19 @@ import javax.inject.Inject
  */
 class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
+
+    @Suppress("unused")
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
     lateinit var adapter: ArticleAdapter
 
-    private lateinit var viewModel: SportViewModel
+    private val viewModel: SportViewModel by lazy {
+        ViewModelProvider(this, providerFactory).get(SportViewModel::class.java)
+    }
 
+    @Suppress("unused")
     private lateinit var mainContext : Context
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
@@ -51,17 +56,13 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
             }
         }
 
-        adapter = ArticleAdapter()
         adapter.setListener(this)
-
-        viewModel = ViewModelProvider(this, providerFactory).get(SportViewModel::class.java)
 
         btn_retry.setOnClickListener {
             this.getSportNews()
         }
 
-        this.setButtonRetryVisibility(false)
-        this.setTextViewMessageVisibility(false)
+        this.setErrorViewsVisibility(false)
         this.setShimmerLayoutVisibility(false)
         this.getSportNews()
     }
@@ -87,14 +88,12 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                 when(res.status){
                     Resources.Status.LOADING -> {
                         Log.d("@Sport","LOADING...")
-                        this.setButtonRetryVisibility(false)
-                        this.setTextViewMessageVisibility(false)
+                        this.setErrorViewsVisibility(false)
                         this.setShimmerLayoutVisibility(true)
                     }
                     Resources.Status.ERROR -> {
                         Log.d("@Sport","ERROR...")
-                        this.setButtonRetryVisibility(true)
-                        this.setTextViewMessageVisibility(true)
+                        this.setErrorViewsVisibility(true)
                         this.setShimmerLayoutVisibility(false)
 
                         mainContext.resources?.let {
@@ -103,8 +102,7 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                     }
                     Resources.Status.SUCCESS -> {
                         Log.d("@Sport","SUCCESS...")
-                        this.setButtonRetryVisibility(false)
-                        this.setTextViewMessageVisibility(false)
+                        this.setErrorViewsVisibility(false)
                         this.setShimmerLayoutVisibility(false)
                         recyclerView.adapter = adapter
                         res.data?.let {
@@ -118,21 +116,16 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     }
 
-    private fun setButtonRetryVisibility(isVisible:Boolean){
+    private fun setErrorViewsVisibility(isVisible:Boolean){
         if(isVisible){
             btn_retry.visibility = View.VISIBLE
-        }else{
-            btn_retry.visibility = View.GONE
-        }
-    }
-
-    private fun setTextViewMessageVisibility(isVisible:Boolean){
-        if(isVisible){
             txt_message.visibility = View.VISIBLE
         }else{
+            btn_retry.visibility = View.GONE
             txt_message.visibility = View.GONE
         }
     }
+
 
     private fun setShimmerLayoutVisibility(isVisible:Boolean){
         if(isVisible){
