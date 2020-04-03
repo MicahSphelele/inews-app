@@ -69,6 +69,14 @@ class ViewYoutubeDialogFragment @Inject constructor(): DaggerDialogFragment(), Y
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        youtube_player_view?.let {
+            youtube_player_view.release()
+        }
+
+    }
+
     override fun onActivityCreated(args: Bundle?) {
         super.onActivityCreated(args)
         dialog?.window?.let {
