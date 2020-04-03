@@ -12,19 +12,22 @@ import kotlinx.android.synthetic.main.activity_main.*
 import sphe.inews.R
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
+import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
 
 
+    @Suppress("unused")
     @Inject
     lateinit var aboutFragmentDialog: AboutDialogFragment
 
+    @Suppress("unused")
     @Inject
     lateinit var covidStatDialogFragment: CovidStatDialogFragment
 
-
+    @Suppress("unused")
     private lateinit var navController : NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +35,6 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar as Toolbar)
-
 
         navController = Navigation.findNavController(this,R.id.navigation_host_fragment)
 

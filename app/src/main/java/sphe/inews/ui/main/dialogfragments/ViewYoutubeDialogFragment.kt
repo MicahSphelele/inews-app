@@ -1,15 +1,118 @@
 package sphe.inews.ui.main.dialogfragments
 
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import dagger.android.support.DaggerDialogFragment
+import kotlinx.android.synthetic.main.fragment_view_youtube.*
 import sphe.inews.R
 import javax.inject.Inject
 
-class ViewYoutubeDialogFragment @Inject constructor(): DaggerDialogFragment() {
+class ViewYoutubeDialogFragment @Inject constructor(): DaggerDialogFragment(), YouTubePlayerListener {
+
+
+    companion object{
+      const val URL = "videoUrl"
+    }
+
+    private lateinit var videoUrl : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_view_youtube, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        videoUrl = arguments?.getString(URL)!!
+        Log.d("@on",videoUrl)
+        youtube_player_view.initialize(this)
+
+        context?.resources?.let {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                (toolbar as Toolbar).navigationIcon = context?.resources?.getDrawable(R.drawable.ic_action_home,null)
+            }else{
+                @Suppress("DEPRECATION")
+                (toolbar as Toolbar).navigationIcon = context?.resources?.getDrawable(R.drawable.ic_action_home)
+            }
+        }
+
+        (toolbar as Toolbar).setNavigationOnClickListener{
+            dismiss()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val dialog = dialog
+        val width = ViewGroup.LayoutParams.MATCH_PARENT
+        val height = ViewGroup.LayoutParams.MATCH_PARENT
+
+        dialog?.window.let {
+            dialog?.window?.setLayout(width, height)
+        }
+
+
+    }
+
+    override fun onActivityCreated(args: Bundle?) {
+        super.onActivityCreated(args)
+        dialog?.window?.let {
+            dialog?.window?.attributes?.windowAnimations = R.style.FullScreenDialogStyle //Property access syntax
+        }
+    }
+
+    override fun onApiChange(youTubePlayer: YouTubePlayer) {
+
+    }
+
+    override fun onCurrentSecond(youTubePlayer: YouTubePlayer, second: Float) {
+
+    }
+
+    override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
+
+    }
+
+    override fun onPlaybackQualityChange(youTubePlayer: YouTubePlayer,playbackQuality: PlayerConstants.PlaybackQuality) {
+
+    }
+
+    override fun onPlaybackRateChange(youTubePlayer: YouTubePlayer,playbackRate: PlayerConstants.PlaybackRate) {
+
+    }
+
+    override fun onReady(youTubePlayer: YouTubePlayer) {
+        youTubePlayer.cueVideo(videoUrl.split("=")[1], 0f)
+    }
+
+    override fun onStateChange(youTubePlayer: YouTubePlayer, state: PlayerConstants.PlayerState) {
+
+    }
+
+    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {
+
+    }
+
+    override fun onVideoId(youTubePlayer: YouTubePlayer, videoId: String) {
+
+    }
+
+    override fun onVideoLoadedFraction(youTubePlayer: YouTubePlayer, loadedFraction: Float) {
+
     }
 }

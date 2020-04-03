@@ -1,6 +1,5 @@
 package sphe.inews.ui.main.news.entertainment
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,12 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.android.support.DaggerAppCompatActivity
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_entertainment.*
 import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
 
@@ -33,7 +34,9 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
     lateinit var adapter: ArticleAdapter
 
     @Suppress("unused")
-    private lateinit var mainContext : Context
+    @Inject
+    lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
+
 
     private  val viewModel: EntertainmentViewModel by lazy {
         ViewModelProvider(this, providerFactory).get(EntertainmentViewModel::class.java)
@@ -46,8 +49,6 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainContext = view.context
-
         recyclerView?.let {
             recyclerView?.apply {
                 layoutManager = LinearLayoutManager(activity)
@@ -55,8 +56,6 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
         }
 
         adapter.setListener(this)
-
-
 
         btn_retry.setOnClickListener {
             this.getEntertainmentNews()
@@ -68,8 +67,18 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
     }
 
 
-    override fun onArticleClicked(article: Article) {
-        Toast.makeText(mainContext,""+article.publishedAt, Toast.LENGTH_SHORT).show()
+    override fun onArticleClicked(article: Article,isVideo:Boolean) {
+        when(isVideo){
+            true ->{
+                val bundle = Bundle()
+                bundle.putString(ViewYoutubeDialogFragment.URL,article.url)
+                viewYoutubeDialogFragment.arguments = bundle
+                viewYoutubeDialogFragment.show((activity as DaggerAppCompatActivity).supportFragmentManager,"viewYoutubeDialogFragment")
+            }
+            false ->{
+                Toast.makeText(activity,"Not Youtube Video " + article.publishedAt, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onShareClicked(article: Article) {
@@ -95,8 +104,8 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
                         this.setErrorViewsVisibility(true)
                         this.setShimmerLayoutVisibility(false)
 
-                        mainContext.resources?.let {
-                            txt_message.text =  mainContext.resources.getString(R.string.msg_error)
+                        context?.resources?.let {
+                            txt_message.text =  context?.resources?.getString(R.string.msg_error)
                         }
                     }
                     Resources.Status.SUCCESS -> {

@@ -17,6 +17,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
 
     private lateinit var list: List<Article>
+
     private lateinit var listener: ArticleListener
 
      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,7 +31,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
      override fun onBindViewHolder(holder: ViewHolder, position: Int) {
          val article = list[position]
-
+         var isVideo = false
          @Suppress("SENSELESS_COMPARISON")
          if(article.urlToImage != null){
              Glide.with(holder.itemView.context)
@@ -40,31 +41,41 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
                  .into(holder.image)
          }
 
+         holder.source.text = article.source.name
+
          val  arrayTitle = article.title.split("-")
 
-         //Split title
          if(arrayTitle.size>1){
              holder.title.text = article.title.split("-")[0]
          }else{
              holder.title.text = article.title
          }
 
-         holder.source.text = article.source.name
-
-        holder.title.setOnClickListener{
-            listener.onArticleClicked(article)
-        }
-
-        holder.share.setOnClickListener{
-            listener.onShareClicked(article)
-        }
-
          if(article.source.name == "Youtube.com"){
 
              holder.youtube.visibility = View.VISIBLE
+             isVideo = true
 
          }else{
              holder.youtube.visibility = View.GONE
+             isVideo = false
+         }
+
+         holder.title.setOnClickListener{
+             if(isVideo){
+                 listener.onArticleClicked(article,true)
+             }else{
+                 listener.onArticleClicked(article,false)
+             }
+
+         }
+
+         holder.youtube.setOnClickListener{
+             listener.onArticleClicked(article,true)
+         }
+
+         holder.share.setOnClickListener{
+             listener.onShareClicked(article)
          }
 
 
@@ -90,7 +101,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
      }
 
     interface ArticleListener{
-        fun onArticleClicked(article: Article)
+        fun onArticleClicked(article: Article,isVideo:Boolean)
         fun onShareClicked(article: Article)
     }
  }

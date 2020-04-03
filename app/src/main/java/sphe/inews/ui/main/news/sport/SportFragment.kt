@@ -1,6 +1,5 @@
 package sphe.inews.ui.main.news.sport
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +17,7 @@ import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
 
@@ -34,12 +34,14 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     @Inject
     lateinit var adapter: ArticleAdapter
 
+    @Suppress("unused")
+    @Inject
+    lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
+
     private val viewModel: SportViewModel by lazy {
         ViewModelProvider(this, providerFactory).get(SportViewModel::class.java)
     }
 
-    @Suppress("unused")
-    private lateinit var mainContext : Context
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_sport, container, false)
@@ -47,8 +49,6 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        mainContext = view.context
 
         recyclerView?.let {
             recyclerView?.apply {
@@ -67,8 +67,16 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         this.getSportNews()
     }
 
-    override fun onArticleClicked(article: Article) {
-        Toast.makeText(mainContext,""+article.publishedAt, Toast.LENGTH_SHORT).show()
+    override fun onArticleClicked(article: Article,isVideo:Boolean) {
+        when(isVideo){
+            true ->{
+                Toast.makeText(activity,"Youtube Video " + article.publishedAt, Toast.LENGTH_SHORT).show()
+            }
+            false ->{
+                Toast.makeText(activity,"Not Youtube Video " + article.publishedAt, Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
 
     override fun onShareClicked(article: Article) {
@@ -96,8 +104,8 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                         this.setErrorViewsVisibility(true)
                         this.setShimmerLayoutVisibility(false)
 
-                        mainContext.resources?.let {
-                            txt_message.text =  mainContext.resources.getString(R.string.msg_error)
+                        context?.resources?.let {
+                            txt_message.text =  context?.resources?.getString(R.string.msg_error)
                         }
                     }
                     Resources.Status.SUCCESS -> {

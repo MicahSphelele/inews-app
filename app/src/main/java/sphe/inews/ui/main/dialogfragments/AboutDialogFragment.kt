@@ -13,8 +13,6 @@ import javax.inject.Inject
 class AboutDialogFragment @Inject constructor(): DaggerDialogFragment() {
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle)
@@ -49,7 +47,6 @@ class AboutDialogFragment @Inject constructor(): DaggerDialogFragment() {
 
     override fun onActivityCreated(args: Bundle?) {
         super.onActivityCreated(args)
-        //dialog!!.window?.getAttributes()?.windowAnimations = R.style.FullScreenDialogStyle
         dialog?.window?.let {
             dialog?.window?.attributes?.windowAnimations = R.style.FullScreenDialogStyle
         }
