@@ -129,7 +129,7 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
                                 txt_critical.text = stats.seriousCritical
                                 txt_deaths.text = stats.totalDeaths
                                 txt_recovered.text = stats.totalRecovered
-                                txt_date_msg.text = String.format("The above stats where recorded on %s",Constants.appDateFormat(stats.recordDate))
+                                txt_date_msg.text = String.format("The above stats were recorded on %s",Constants.appDateFormat(stats.recordDate))
                             }
 
                         }
