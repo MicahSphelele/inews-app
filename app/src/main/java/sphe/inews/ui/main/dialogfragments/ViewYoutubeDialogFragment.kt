@@ -37,7 +37,6 @@ class ViewYoutubeDialogFragment @Inject constructor(): DaggerDialogFragment(), Y
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         videoUrl = arguments?.getString(URL)!!
         Log.d("@on",videoUrl)
         youtube_player_view.initialize(this)
