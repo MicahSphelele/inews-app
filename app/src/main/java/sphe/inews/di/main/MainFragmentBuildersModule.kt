@@ -8,6 +8,7 @@ import sphe.inews.ui.main.news.health.HealthFragment
 import sphe.inews.ui.main.news.sport.SportFragment
 import sphe.inews.ui.main.news.technology.TechnologyFragment
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
+import sphe.inews.ui.main.dialogfragments.ArticlePreviewDialogFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
 
@@ -30,12 +31,15 @@ abstract class MainFragmentBuildersModule {
     abstract fun contributesEntertainmentFragment(): EntertainmentFragment
 
     @ContributesAndroidInjector
-    abstract fun contributesAboutFragmentDialog() : AboutDialogFragment
+    abstract fun contributesAboutDialogFragment() : AboutDialogFragment
 
     @ContributesAndroidInjector
-    abstract fun contributesCovidStatDialogFragmentDialog() : CovidStatDialogFragment
+    abstract fun contributesCovidStatDialogFragment() : CovidStatDialogFragment
 
     @ContributesAndroidInjector
-    abstract fun contributesViewYoutubeDialogFragmentDialog() : ViewYoutubeDialogFragment
+    abstract fun contributesViewYoutubeDialogFragment() : ViewYoutubeDialogFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributesArticlePreviewDialogFragment() : ArticlePreviewDialogFragment
 
 }

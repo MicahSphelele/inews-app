@@ -11,12 +11,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.android.support.DaggerAppCompatActivity
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_sport.*
 import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.ui.main.dialogfragments.ArticlePreviewDialogFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
@@ -37,6 +39,10 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     @Suppress("unused")
     @Inject
     lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
+
+    @Suppress("unused")
+    @Inject
+    lateinit var articlePreviewDialogFragment: ArticlePreviewDialogFragment
 
     private val viewModel: SportViewModel by lazy {
         ViewModelProvider(this, providerFactory).get(SportViewModel::class.java)
@@ -73,7 +79,10 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                 Toast.makeText(activity,"Youtube Video " + article.publishedAt, Toast.LENGTH_SHORT).show()
             }
             false ->{
-                Toast.makeText(activity,"Not Youtube Video " + article.publishedAt, Toast.LENGTH_SHORT).show()
+                val bundle = Bundle()
+               // bundle.putString(ViewYoutubeDialogFragment.URL,article.url)
+                //articlePreviewDialogFragment.arguments = bundle
+                articlePreviewDialogFragment.show((activity as DaggerAppCompatActivity).supportFragmentManager,"articlePreviewDialogFragment")
             }
         }
 
