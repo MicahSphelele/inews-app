@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.android.support.DaggerAppCompatActivity
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_sport.*
 import sphe.inews.R
@@ -70,7 +71,10 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     override fun onArticleClicked(article: Article,isVideo:Boolean) {
         when(isVideo){
             true ->{
-                Toast.makeText(activity,"Youtube Video " + article.publishedAt, Toast.LENGTH_SHORT).show()
+                val bundle = Bundle()
+                bundle.putString(ViewYoutubeDialogFragment.URL,article.url)
+                viewYoutubeDialogFragment.arguments = bundle
+                viewYoutubeDialogFragment.show((activity as DaggerAppCompatActivity).supportFragmentManager,"viewYoutubeDialogFragment")
             }
             false ->{
                 Toast.makeText(activity,"Not Youtube Video " + article.publishedAt, Toast.LENGTH_SHORT).show()
