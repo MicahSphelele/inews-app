@@ -30,8 +30,10 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
      }
 
      override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
          val article = list[position]
-         var isVideo = false
+         val isVideo :Boolean
+
          @Suppress("SENSELESS_COMPARISON")
          if(article.urlToImage != null){
              Glide.with(holder.itemView.context)
@@ -61,17 +63,12 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
              isVideo = false
          }
 
-         holder.title.setOnClickListener{
-             if(isVideo){
-                 listener.onArticleClicked(article,true)
-             }else{
-                 listener.onArticleClicked(article,false)
-             }
-
+         holder.image.setOnClickListener{
+             listener.onArticleClicked(article,isVideo)
          }
 
          holder.youtube.setOnClickListener{
-             listener.onArticleClicked(article,true)
+             listener.onArticleClicked(article,isVideo)
          }
 
          holder.share.setOnClickListener{
