@@ -76,7 +76,10 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     override fun onArticleClicked(article: Article,isVideo:Boolean) {
         when(isVideo){
             true ->{
-                Toast.makeText(activity,"Youtube Video " + article.publishedAt, Toast.LENGTH_SHORT).show()
+                val bundle = Bundle()
+                bundle.putString(ViewYoutubeDialogFragment.URL,article.url)
+                viewYoutubeDialogFragment.arguments = bundle
+                viewYoutubeDialogFragment.show((activity as DaggerAppCompatActivity).supportFragmentManager,"viewYoutubeDialogFragment")
             }
             false ->{
                 val bundle = Bundle()
