@@ -17,6 +17,7 @@ import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.ui.main.dialogfragments.ArticlePreviewDialogFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
@@ -37,6 +38,10 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     @Suppress("unused")
     @Inject
     lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
+
+    @Suppress("unused")
+    @Inject
+    lateinit var articlePreviewDialogFragment:ArticlePreviewDialogFragment
 
 
     private  val viewModel: TechnologyViewModel by lazy {
@@ -77,7 +82,13 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                 viewYoutubeDialogFragment.show((activity as  DaggerAppCompatActivity).supportFragmentManager,"viewYoutubeDialogFragment")
             }
             false ->{
-                Toast.makeText(activity,"Not Youtube Video " + article.publishedAt, Toast.LENGTH_SHORT).show()
+                val bundle = Bundle()
+                bundle.putString(ArticlePreviewDialogFragment.TITLE,article.title)
+                bundle.putString(ArticlePreviewDialogFragment.CONTENT,article.content)
+                bundle.putString(ArticlePreviewDialogFragment.IMAGE,article.urlToImage)
+                bundle.putString(ArticlePreviewDialogFragment.DATE,article.publishedAt)
+                articlePreviewDialogFragment.arguments = bundle
+                articlePreviewDialogFragment.show((activity as DaggerAppCompatActivity).supportFragmentManager,"articlePreviewDialogFragment")
             }
         }
     }

@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layout"
-    app:layoutDescription="@xml/fragment_view_article_scene"
-    tools:context="sphe.inews.ui.main.dialogfragments.ArticlePreviewDialogFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageButton
         android:id="@+id/btn_exit"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/btn_exit"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/todo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@+id/header_image"
@@ -24,6 +23,7 @@
         android:layout_height="0dp"
         android:contentDescription="@string/todo"
         android:scaleType="centerCrop"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/content_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,6 @@
             android:textColor="@color/colorYoutubeViewBackground"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             app:lineHeight="26dp" />
-        
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -99,4 +98,5 @@
             tools:text="See More" />
     </LinearLayout>
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

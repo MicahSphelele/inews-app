@@ -1,5 +1,6 @@
 package sphe.inews.ui.main.dialogfragments
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,19 +11,22 @@ import androidx.fragment.app.DialogFragment
 import androidx.transition.ChangeBounds
 import androidx.transition.Transition
 import androidx.transition.TransitionManager
+import com.bumptech.glide.Glide
 import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.fragment_view_article.*
 import sphe.inews.R
+import sphe.inews.util.Constants
 import javax.inject.Inject
 
 
 class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment() {
 
-
-    private val constraintSetOld = ConstraintSet()
-    private val constraintSetNew = ConstraintSet()
-    private var altLayout = false
-
+    companion object{
+        const val TITLE = "title"
+        const val CONTENT = "content"
+        const val IMAGE = "imgUrl"
+        const val DATE = "date"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,23 +40,19 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        textView2.text = "llslsl sjsjjs sjsjs sjsjs sjsjs sjsjs sjsjs sjsjs sjsj chhwa akajja ajaikm sjjjs jwjw"
-        constraintSetOld.clone(layout);
-        constraintSetNew.clone(context, R.layout.joy)
-        layout.setOnClickListener {
-            val changeBounds: Transition = ChangeBounds()
-            changeBounds.interpolator = OvershootInterpolator()
-
-            TransitionManager.beginDelayedTransition(layout, changeBounds)
-
-            altLayout = if (!altLayout) {
-                constraintSetNew.applyTo(layout)
-                true
-            } else {
-                constraintSetOld.applyTo(layout)
-                false
-            }
+        btn_exit.setOnClickListener {
+            dismiss()
         }
+
+        txt_title.text = arguments?.getString(TITLE)!!
+        txt_content.text = arguments?.getString(CONTENT)!!
+        txt_date.text = Constants.appDateFormatArticle(arguments?.getString(DATE)!!).toString()
+
+        Glide.with(header_image)
+            .load(Uri.parse(arguments?.getString(IMAGE)!!))
+            .placeholder(R.mipmap.ic_launcher)
+            .error(R.mipmap.ic_launcher)
+            .into(header_image)
     }
 
     override fun onStart() {

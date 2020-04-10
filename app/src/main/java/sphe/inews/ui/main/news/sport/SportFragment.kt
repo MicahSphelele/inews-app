@@ -80,8 +80,11 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
             }
             false ->{
                 val bundle = Bundle()
-               // bundle.putString(ViewYoutubeDialogFragment.URL,article.url)
-                //articlePreviewDialogFragment.arguments = bundle
+                bundle.putString(ArticlePreviewDialogFragment.TITLE,article.title)
+                bundle.putString(ArticlePreviewDialogFragment.CONTENT,article.content)
+                bundle.putString(ArticlePreviewDialogFragment.IMAGE,article.urlToImage)
+                bundle.putString(ArticlePreviewDialogFragment.DATE,article.publishedAt)
+                articlePreviewDialogFragment.arguments = bundle
                 articlePreviewDialogFragment.show((activity as DaggerAppCompatActivity).supportFragmentManager,"articlePreviewDialogFragment")
             }
         }

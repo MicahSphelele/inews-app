@@ -44,6 +44,14 @@ object Constants {
 
     }
 
+    fun appDateFormatArticle(date:String) : String?{
+        //2020-04-10T07:44:43Z
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'",Locale.getDefault()) //yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
+
+        return SimpleDateFormat("yyyy-MM-dd HH:mm",Locale.getDefault()).format(dateFormat.parse(date)!!)
+
+    }
+
     //https://stackoverflow.com/questions/55748235/kotlin-check-for-words-in-string
     val KEY_WORDS = listOf("covid-19","shutdown","services")
 }
