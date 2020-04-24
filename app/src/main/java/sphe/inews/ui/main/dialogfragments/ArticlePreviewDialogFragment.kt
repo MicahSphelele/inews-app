@@ -44,9 +44,12 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment()
             dismiss()
         }
 
-        txt_title.text = arguments?.getString(TITLE)!!
-        txt_content.text = arguments?.getString(CONTENT)!!
-        txt_date.text = Constants.appDateFormatArticle(arguments?.getString(DATE)!!).toString()
+        arguments?.apply {
+            txt_title.text = getString(TITLE)
+            txt_content.text = getString(CONTENT)
+            txt_date.text = Constants.appDateFormatArticle(getString(DATE)!!).toString()
+        }
+
 
         Glide.with(header_image)
             .load(Uri.parse(arguments?.getString(IMAGE)!!))
