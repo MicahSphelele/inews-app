@@ -39,10 +39,14 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment()
             dismiss()
         }
 
+        txt_read_more.setOnClickListener {
+
+        }
+
         arguments?.apply {
-            txt_title.text = getString(TITLE)
-            txt_content.text = getString(CONTENT)
-            txt_date.text = this.getString(DATE)?.let { Constants.appDateFormatArticle(it).toString() }
+            txt_title.text = getString(TITLE,"")
+            txt_content.text = getString(CONTENT,"")
+            txt_date.text = this.getString(DATE,"")?.let { Constants.appDateFormatArticle(it).toString() }
             Glide.with(header_image)
                 .load(Uri.parse(""+arguments?.getString(IMAGE)))
                 .placeholder(R.mipmap.ic_launcher)
