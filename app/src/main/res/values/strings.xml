@@ -27,4 +27,5 @@
     <string name="covid_19_deaths"># Total Deaths</string>
     <string name="total_recovered"># Total Recovered</string>
     <string name="dummy_text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a erat tellus. Curabitur hendrerit justo id justo placerat, sed semper nisi lacinia. Curabitur id mattis ligula, eget pellentesque ex."</string>
+    <string name="read_more">Read More</string>
 </resources>
