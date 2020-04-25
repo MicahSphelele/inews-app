@@ -63,6 +63,17 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_title"
             tools:text="10-04-2020 : 12:50" />
 
+        <TextView
+            android:id="@+id/txt_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold|italic"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title"
+            tools:text="Source.com" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -85,18 +96,20 @@
             android:textColor="@color/colorYoutubeViewBackground"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             app:lineHeight="26dp" />
-        
+
         <TextView
+            android:id="@+id/txt_read_more"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
+            android:layout_height="40dp"
+            android:textColor="@color/colorWhite"
             android:textStyle="bold|italic"
             android:layout_marginEnd="16dp"
             android:layout_gravity="end"
-            android:padding="18dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_title"
-            tools:text="See More" />
+            android:focusable="true"
+            android:padding="8dp"
+            android:background="@drawable/btn_rounded_accent"
+            android:layout_marginBottom="8dp"
+            android:text="@string/read_more" />
     </LinearLayout>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

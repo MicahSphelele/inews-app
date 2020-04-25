@@ -1,16 +1,14 @@
 package sphe.inews.ui.main.dialogfragments
 
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.OvershootInterpolator
-import androidx.constraintlayout.widget.ConstraintSet
+import androidx.annotation.RequiresApi
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.DialogFragment
-import androidx.transition.ChangeBounds
-import androidx.transition.Transition
-import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
 import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.fragment_view_article.*
@@ -21,11 +19,15 @@ import javax.inject.Inject
 
 class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment() {
 
+    lateinit var articleUrl:String
+
     companion object{
         const val TITLE = "title"
         const val CONTENT = "content"
         const val IMAGE = "imgUrl"
         const val DATE = "date"
+        const val ARTICLE_URL = "articleUrl"
+        const val SOURCE_NAME = "sourceName"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +39,7 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment()
         return inflater.inflate(R.layout.fragment_view_article, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -44,18 +47,32 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment()
             dismiss()
         }
 
+        txt_read_more.setOnClickListener {
+            val intentBuilder = CustomTabsIntent.Builder()
+
+            context?.getColor(R.color.colorAccent)?.let { it1 -> intentBuilder.setToolbarColor(it1) }
+
+            val customTabsIntent = intentBuilder.build()
+            activity?.let { it1 -> customTabsIntent.launchUrl(it1, Uri.parse(articleUrl)) }
+            //intentBuilder.setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary));
+            //intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        }
+
         arguments?.apply {
-            txt_title.text = getString(TITLE)
-            txt_content.text = getString(CONTENT)
-            txt_date.text = Constants.appDateFormatArticle(getString(DATE)!!).toString()
+            txt_title.text = this.getString(TITLE,"")
+            txt_content.text = this.getString(CONTENT,"No Article content available. Please click on read more to view the article.")
+            txt_date.text = this.getString(DATE,"Date Unknown")?.let { Constants.appDateFormatArticle(it).toString() }
+            txt_source.text = this.getString(SOURCE_NAME,"")
+            Glide.with(header_image)
+                .load(Uri.parse(""+arguments?.getString(IMAGE)))
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
+                .into(header_image)
+            articleUrl = this.getString(ARTICLE_URL,"")
         }
 
 
-        Glide.with(header_image)
-            .load(Uri.parse(arguments?.getString(IMAGE)!!))
-            .placeholder(R.mipmap.ic_launcher)
-            .error(R.mipmap.ic_launcher)
-            .into(header_image)
+
     }
 
     override fun onStart() {

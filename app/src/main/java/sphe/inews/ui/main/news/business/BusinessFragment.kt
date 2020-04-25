@@ -87,6 +87,8 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                 bundle.putString(ArticlePreviewDialogFragment.CONTENT,article.content)
                 bundle.putString(ArticlePreviewDialogFragment.IMAGE,article.urlToImage)
                 bundle.putString(ArticlePreviewDialogFragment.DATE,article.publishedAt)
+                bundle.putString(ArticlePreviewDialogFragment.ARTICLE_URL,article.url)
+                bundle.putString(ArticlePreviewDialogFragment.SOURCE_NAME,article.source.name)
                 articlePreviewDialogFragment.arguments = bundle
                 articlePreviewDialogFragment.show((activity as DaggerAppCompatActivity).supportFragmentManager,"articlePreviewDialogFragment")
             }
