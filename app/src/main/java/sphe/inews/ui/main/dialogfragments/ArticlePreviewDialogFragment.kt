@@ -5,12 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.OvershootInterpolator
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.DialogFragment
-import androidx.transition.ChangeBounds
-import androidx.transition.Transition
-import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
 import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.fragment_view_article.*
@@ -47,15 +42,16 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment()
         arguments?.apply {
             txt_title.text = getString(TITLE)
             txt_content.text = getString(CONTENT)
-            txt_date.text = Constants.appDateFormatArticle(getString(DATE)!!).toString()
+            txt_date.text = this.getString(DATE)?.let { Constants.appDateFormatArticle(it).toString() }
+            Glide.with(header_image)
+                .load(Uri.parse(""+arguments?.getString(IMAGE)))
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
+                .into(header_image)
         }
 
 
-        Glide.with(header_image)
-            .load(Uri.parse(arguments?.getString(IMAGE)!!))
-            .placeholder(R.mipmap.ic_launcher)
-            .error(R.mipmap.ic_launcher)
-            .into(header_image)
+
     }
 
     override fun onStart() {
