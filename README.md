@@ -5,6 +5,6 @@
 A simple news app demo using Dagger 2 and MVVM
 
 # App Screen Shots
+<img src="pics/screen_shot_1.jp" width="48">
 
-![](pics/screen_shot_1.jpg?v=4&s=200) 
 
