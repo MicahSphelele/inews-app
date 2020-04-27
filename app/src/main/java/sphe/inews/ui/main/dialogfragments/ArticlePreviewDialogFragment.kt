@@ -1,5 +1,6 @@
 package sphe.inews.ui.main.dialogfragments
 
+import android.app.Activity
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -48,7 +49,7 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment()
         }
 
         txt_read_more.setOnClickListener {
-            Constants.launchCustomTabIntent(activity,articleUrl)
+            Constants.launchCustomTabIntent(activity as Activity,articleUrl)
         }
 
         arguments?.apply {
