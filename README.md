@@ -4,7 +4,7 @@
   <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png">
 </p>
 
-A simple news app demo using Dagger 2 and MVVM
+A simple news app demo developed in Kotlin, Dagger 2 and MVVM pattern
 
 # App Screen Shots
 <div>
