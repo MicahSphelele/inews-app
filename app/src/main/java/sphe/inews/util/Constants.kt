@@ -1,6 +1,11 @@
 package sphe.inews.util
 
 import android.app.Application
+import android.net.Uri
+import android.os.Build
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.fragment.app.FragmentActivity
+import sphe.inews.R
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -54,8 +59,19 @@ object Constants {
 
     }
 
-    fun launchCustomIntent(application:Application,url:String){
+    fun launchCustomTabIntent(activity: FragmentActivity?, url:String){
+        val intentBuilder = CustomTabsIntent.Builder()
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            activity.resources.getColor(R.color.colorAccent,null).let { it1 -> intentBuilder.setToolbarColor(it1) }
+        }else{
+            activity.resources.getColor(R.color.colorAccent).let { it1 -> intentBuilder.setToolbarColor(it1) }
+        }
+
+        val customTabsIntent = intentBuilder.build()
+        activity.let { it1 -> customTabsIntent.launchUrl(it1, Uri.parse(url)) }
+        //intentBuilder.setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary));
+        //intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
     }
 
     //https://stackoverflow.com/questions/55748235/kotlin-check-for-words-in-string

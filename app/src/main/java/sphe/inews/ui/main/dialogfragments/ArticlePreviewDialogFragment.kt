@@ -40,7 +40,7 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment()
         }
 
         txt_read_more.setOnClickListener {
-
+            Constants.launchCustomTabIntent(activity,"")
         }
 
         arguments?.apply {
