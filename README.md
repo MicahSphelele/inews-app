@@ -1,7 +1,7 @@
 # iNews App
 
 <p align="center">
-  <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png">
+  <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/logo.png">
 </p>
 
 A simple open source news app demo developed in [**Kotlin**](https://kotlinlang.org/), [**Dagger 2 Android**](https://developer.android.com/training/dependency-injection/dagger-android) framework and [**MVVM**](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) pattern.
