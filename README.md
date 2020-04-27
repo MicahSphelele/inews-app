@@ -5,6 +5,6 @@
 A simple news app demo using Dagger 2 and MVVM
 
 # App Screen Shots
-<img src="pics/screen_shot_1.jp" width="48">
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_shot_1.jpg" width="48">
 
 
