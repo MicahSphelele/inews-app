@@ -1,11 +1,9 @@
 package sphe.inews.util
 
 import android.app.Activity
-import android.app.Application
 import android.net.Uri
 import android.os.Build
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.fragment.app.FragmentActivity
 import sphe.inews.R
 import java.text.SimpleDateFormat
 import java.util.*
