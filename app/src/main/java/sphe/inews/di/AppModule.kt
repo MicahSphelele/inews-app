@@ -1,5 +1,6 @@
 package sphe.inews.di
 
+import android.app.Application
 import dagger.Module
 import dagger.Provides
 import okhttp3.*
@@ -78,6 +79,14 @@ class AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client.build())
             .build()
+    }
+
+    @Singleton
+    @Provides
+    @Named(Constants.NAMED_APP_VERSION)
+    fun provideAppVersion(application:Application): String{
+
+        return application.packageManager.getPackageInfo(application.packageName,0).versionName
     }
 
 }

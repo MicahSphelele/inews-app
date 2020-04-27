@@ -51,8 +51,8 @@
         <!-- This is important! Don't forget to set window background -->
         <item name="android:windowBackground">@color/colorWhite</item>
         <!-- Additionally if you want animations when dialog opening -->
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+        <!--<item name="android:windowEnterAnimation">@android:anim/fade_in</item>-->
+        <!--<item name="android:windowExitAnimation">@android:anim/fade_out</item>-->
     </style>
 
 

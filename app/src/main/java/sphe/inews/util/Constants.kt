@@ -1,5 +1,6 @@
 package sphe.inews.util
 
+import android.app.Application
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -11,6 +12,7 @@ object Constants {
     const val SPORTS = "sports"
     const val TECHNOLOGY = "technology"
     const val ENTERTAINMENT = "entertainment"
+    const val NAMED_APP_VERSION="app_version"
 
 
    val  PACKS_NEWS = byteArrayOf(
@@ -52,6 +54,10 @@ object Constants {
 
     }
 
+    fun launchCustomIntent(application:Application,url:String){
+
+    }
+
     //https://stackoverflow.com/questions/55748235/kotlin-check-for-words-in-string
-    val KEY_WORDS = listOf("covid-19","shutdown","services")
+
 }
