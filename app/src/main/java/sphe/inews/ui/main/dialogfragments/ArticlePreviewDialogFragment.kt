@@ -1,5 +1,6 @@
 package sphe.inews.ui.main.dialogfragments
 
+import android.app.Activity
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -48,14 +49,7 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerDialogFragment()
         }
 
         txt_read_more.setOnClickListener {
-            val intentBuilder = CustomTabsIntent.Builder()
-
-            context?.getColor(R.color.colorAccent)?.let { it1 -> intentBuilder.setToolbarColor(it1) }
-
-            val customTabsIntent = intentBuilder.build()
-            activity?.let { it1 -> customTabsIntent.launchUrl(it1, Uri.parse(articleUrl)) }
-            //intentBuilder.setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary));
-            //intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+            Constants.launchCustomTabIntent(activity as Activity,articleUrl)
         }
 
         arguments?.apply {

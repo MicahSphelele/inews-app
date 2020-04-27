@@ -10,10 +10,16 @@ import androidx.fragment.app.DialogFragment
 import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.fragment_about.*
 import sphe.inews.R
+import sphe.inews.util.Constants
 import javax.inject.Inject
+import javax.inject.Named
 
 class AboutDialogFragment @Inject constructor(): DaggerDialogFragment() {
 
+
+    @Inject
+    @Named(Constants.NAMED_APP_VERSION)
+    lateinit var appVersion: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +46,7 @@ class AboutDialogFragment @Inject constructor(): DaggerDialogFragment() {
             dismiss()
         }
 
-        txt_app_version.text = view.context.packageManager.getPackageInfo(view.context.packageName,0).versionName
+        txt_app_version.text = appVersion
 
     }
 

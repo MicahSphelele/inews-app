@@ -1,16 +1,25 @@
 package sphe.inews.util
 
+import android.app.Activity
+import android.app.Application
+import android.net.Uri
+import android.os.Build
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.fragment.app.FragmentActivity
+import sphe.inews.R
 import java.text.SimpleDateFormat
 import java.util.*
 
 object Constants {
 
     const val BASE_NEWS_URL = "http://newsapi.org/v2/"
+    const val BASE_COVID_URL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
     const val BUSINESS = "business"
     const val HEALTH = "health"
     const val SPORTS = "sports"
     const val TECHNOLOGY = "technology"
     const val ENTERTAINMENT = "entertainment"
+    const val NAMED_APP_VERSION="app_version"
 
 
    val  PACKS_NEWS = byteArrayOf(
@@ -21,7 +30,7 @@ object Constants {
         98,50,50,52,48,99,
         51,57,56,99,56
     )
-    const val BASE_COVID_URL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
+
 
      val PACKS_COVID = byteArrayOf(
          97,97,53,57,102,
@@ -52,6 +61,22 @@ object Constants {
 
     }
 
+    fun launchCustomTabIntent(activity: Activity, url:String){
+        val intentBuilder = CustomTabsIntent.Builder()
+        //intentBuilder.setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary));
+        //intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            activity.resources.getColor(R.color.colorAccent,null).let { it1 -> intentBuilder.setToolbarColor(it1) }
+        }else{
+            @Suppress("DEPRECATION")
+            activity.resources.getColor(R.color.colorAccent).let { it1 -> intentBuilder.setToolbarColor(it1) }
+        }
+
+        val customTabsIntent = intentBuilder.build()
+        activity.let { it1 -> customTabsIntent.launchUrl(it1, Uri.parse(url)) }
+
+    }
+
     //https://stackoverflow.com/questions/55748235/kotlin-check-for-words-in-string
-    val KEY_WORDS = listOf("covid-19","shutdown","services")
+
 }
