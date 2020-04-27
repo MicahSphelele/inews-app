@@ -1,4 +1,4 @@
-# INews App
+# iNews App
 
 <p align="center">
   <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png">
