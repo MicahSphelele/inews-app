@@ -13,6 +13,7 @@ import java.util.*
 object Constants {
 
     const val BASE_NEWS_URL = "http://newsapi.org/v2/"
+    const val BASE_COVID_URL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
     const val BUSINESS = "business"
     const val HEALTH = "health"
     const val SPORTS = "sports"
@@ -29,7 +30,7 @@ object Constants {
         98,50,50,52,48,99,
         51,57,56,99,56
     )
-    const val BASE_COVID_URL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
+
 
      val PACKS_COVID = byteArrayOf(
          97,97,53,57,102,
