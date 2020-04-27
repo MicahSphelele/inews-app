@@ -4,7 +4,7 @@
   <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png">
 </p>
 
-A simple news app demo developed in [**Kotlin**](https://kotlinlang.org/), [**Dagger**](https://dagger.dev/) 2 framework and [**MVVM**](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) pattern
+A simple news app demo developed in [**Kotlin**](https://kotlinlang.org/), [**Dagger 2 **](https://dagger.dev/)framework and [**MVVM**](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) pattern
 
 
 # App Screen Shots
