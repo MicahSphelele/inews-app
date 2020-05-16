@@ -20,7 +20,6 @@
         android:layout_margin="16dp"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -105,7 +104,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:visibility="gone"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toStartOf="@+id/card_btn_2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -125,7 +123,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:visibility="gone"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toStartOf="@+id/card_btn_3"
         app:layout_constraintHorizontal_bias="0.5"
@@ -145,12 +142,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:visibility="gone"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toStartOf="@+id/card_btn_4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/card_btn_2"
-        app:layout_constraintTop_toBottomOf="@+id/card_1">
+        app:layout_constraintTop_toBottomOf="@+id/card">
 
         <ImageView
             android:layout_width="90dp"
@@ -166,7 +162,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:visibility="gone"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -178,7 +173,7 @@
             android:layout_height="90dp"
             android:padding="8dp"
             android:src="@drawable/ic_instagram"
-             />
+            />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

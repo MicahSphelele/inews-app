@@ -9,9 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.fragment_about.*
+import kotlinx.android.synthetic.main.fragment_about.toolbar
+import kotlinx.android.synthetic.main.fragment_about.txt_app_version
+import kotlinx.android.synthetic.main.fragment_about_2.*
+import kotlinx.android.synthetic.main.fragment_about_2.card
+import kotlinx.android.synthetic.main.fragment_about_2.layout_about
 import sphe.inews.R
 import sphe.inews.ui.bottomsheet.DaggerBottomSheetDialogFragment
 import sphe.inews.util.Constants
@@ -23,6 +30,16 @@ class AboutDialogFragment @Inject constructor(): DaggerBottomSheetDialogFragment
     @Inject
     @Named(Constants.NAMED_APP_VERSION)
     lateinit var appVersion: String
+
+    @Inject
+    @Named(Constants.NAMED_SET_OLD)
+    lateinit var constraintSetOld: ConstraintSet
+
+    @Inject
+    @Named(Constants.NAMED_SET_NEW)
+    lateinit var constraintSetNew: ConstraintSet
+
+    var altLayout:Boolean = false
 
     @Suppress("RedundantOverride")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,9 +75,15 @@ class AboutDialogFragment @Inject constructor(): DaggerBottomSheetDialogFragment
                 (toolbar as Toolbar).navigationIcon = context?.resources?.getDrawable(R.drawable.ic_action_home)
             }
         }
-
         (toolbar as Toolbar).setNavigationOnClickListener{
             dismiss()
+        }
+
+        constraintSetOld.clone(layout_about)
+        constraintSetNew.clone(context,R.layout.fragment_about_2)
+        
+        card.setOnClickListener {
+            performLayoutTransition()
         }
 
         txt_app_version.text = appVersion
@@ -100,5 +123,16 @@ class AboutDialogFragment @Inject constructor(): DaggerBottomSheetDialogFragment
         val displayMetrics = DisplayMetrics()
         activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
         return displayMetrics.heightPixels
+    }
+
+    private fun performLayoutTransition(){
+        TransitionManager.beginDelayedTransition(layout_about)
+        altLayout = if(!altLayout){
+            constraintSetNew.applyTo(layout_about)
+            true
+        }else{
+            constraintSetOld.applyTo(layout_about)
+            false
+        }
     }
 }

@@ -18,6 +18,8 @@ object Constants {
     const val TECHNOLOGY = "technology"
     const val ENTERTAINMENT = "entertainment"
     const val NAMED_APP_VERSION="app_version"
+    const val NAMED_SET_OLD="constraint_set_old"
+    const val NAMED_SET_NEW="constraint_set_new"
 
 
    val  PACKS_NEWS = byteArrayOf(

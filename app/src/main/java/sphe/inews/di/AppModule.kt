@@ -1,6 +1,7 @@
 package sphe.inews.di
 
 import android.app.Application
+import androidx.constraintlayout.widget.ConstraintSet
 import dagger.Module
 import dagger.Provides
 import okhttp3.*
@@ -87,6 +88,20 @@ class AppModule {
     fun provideAppVersion(application:Application): String{
 
         return application.packageManager.getPackageInfo(application.packageName,0).versionName
+    }
+
+    @Singleton
+    @Provides
+    @Named(Constants.NAMED_SET_OLD)
+    fun provideConstraintSet1() : ConstraintSet{
+        return ConstraintSet()
+    }
+
+    @Singleton
+    @Provides
+    @Named(Constants.NAMED_SET_NEW)
+    fun provideConstraintSet2() : ConstraintSet{
+        return ConstraintSet()
     }
 
 }
