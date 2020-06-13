@@ -28,4 +28,9 @@
     <string name="total_recovered"># Total Recovered</string>
     <string name="dummy_text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a erat tellus. Curabitur hendrerit justo id justo placerat, sed semper nisi lacinia. Curabitur id mattis ligula, eget pellentesque ex."</string>
     <string name="read_more">Read More</string>
+    <string name="message">Contact Sphelele on these platforms</string>
+    <string name="url_github">https://github.com/MicahSphelele</string>
+    <string name="url_linkedin">https://www.linkedin.com/in/sphelele-ngubane-3b2a84123</string>
+    <string name="url_gmail">sphemicah@gmail.com</string>
+    <string name="url_instagram">https://www.instagram.com/sphelele_micah_ngubane/?hl=en</string>
 </resources>
