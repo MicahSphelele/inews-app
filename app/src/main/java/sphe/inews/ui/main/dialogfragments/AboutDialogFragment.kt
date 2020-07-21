@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintSet
@@ -45,8 +44,6 @@ class AboutDialogFragment @Inject constructor(): DaggerBottomSheetDialogFragment
 
     var altLayout:Boolean = false
 
-   private lateinit var imageDrop: ImageView
-
     @Suppress("RedundantOverride")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +69,7 @@ class AboutDialogFragment @Inject constructor(): DaggerBottomSheetDialogFragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageDrop = view.findViewById(R.id.imgController)
+        //imageDrop = view.findViewById(R.id.imgController)
         context?.resources?.let {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 (toolbar as Toolbar).navigationIcon = context?.resources?.getDrawable(R.drawable.ic_action_home,null)

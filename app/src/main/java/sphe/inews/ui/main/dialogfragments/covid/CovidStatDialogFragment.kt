@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.fragment_covid19_stats.*
 import sphe.inews.R
@@ -68,6 +69,12 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
 
         btn_retry.setOnClickListener{
             this.getCovid19Stats()
+        }
+        btnFilter.setOnClickListener {
+            val bottomDialog = BottomSheetDialog(context!!)
+            bottomDialog.dismissWithAnimation=true
+            bottomDialog.setCancelable(true)
+            bottomDialog.show()
         }
         this.setErrorViewsViewsVisibility(false)
         this.getCovid19Stats()
@@ -173,6 +180,7 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
             card_4.visibility = View.VISIBLE
             card_5.visibility = View.VISIBLE
             txt_date_msg.visibility = View.VISIBLE
+            btnFilter.visibility = View.VISIBLE
         }else{
             txt_title.visibility = View.GONE
             image_virus.visibility = View.GONE
@@ -183,6 +191,7 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
             card_4.visibility = View.GONE
             card_5.visibility = View.GONE
             txt_date_msg.visibility = View.GONE
+            btnFilter.visibility = View.GONE
         }
     }
 }
