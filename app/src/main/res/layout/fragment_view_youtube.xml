@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorYoutubeViewBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <include
+    <androidx.appcompat.widget.Toolbar
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorTransparent"
+        android:minHeight="?attr/actionBarSize"
+        android:fitsSystemWindows="true"
         android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        tools:menu="@menu/app_menu"
+        app:subtitle="News on the go"
+        app:subtitleTextColor="@color/colorAccent"
+        app:subtitleTextAppearance="@style/ToolbarSubTitleAppearance"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/colorAccent"
+        app:titleTextAppearance="@style/ToolbarTitleAppearance"
+        app:popupTheme="@style/PopupMenuStyle"
+        app:layout_collapseMode="pin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:theme="@style/ToolBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youtube_player_view"
