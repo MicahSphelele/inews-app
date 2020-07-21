@@ -8,9 +8,6 @@
     <string name="filter_by">Filter By</string>
     <string name="top_headlines">Top Headlines</string>
     <string name="everything">Everything</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="retry">Retry</string>
     <string name="todo">TODO</string>
     <string name="place_holder_source">inews.com</string>
