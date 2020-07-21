@@ -108,19 +108,6 @@
                 app:layout_constraintStart_toStartOf="@+id/txt_developer"
                 app:layout_constraintTop_toBottomOf="@+id/txt_developer" />
 
-            <ImageView
-                android:id="@+id/imgController"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_up"
-                android:tint="@color/colorAccent"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/txt_message"
-                app:layout_constraintStart_toStartOf="@+id/txt_message"
-                app:layout_constraintTop_toBottomOf="@+id/txt_message" />
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
