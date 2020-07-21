@@ -12,3 +12,8 @@
 /captures
 .externalNativeBuild
 .cxx
+.idea/jarRepositories.xml
+app/.idea/.gitignore
+app/.idea/gradle.xml
+app/.idea/misc.xml
+app/.idea/vcs.xml
