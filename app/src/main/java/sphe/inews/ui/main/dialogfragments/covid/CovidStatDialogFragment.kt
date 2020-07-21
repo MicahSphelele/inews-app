@@ -1,5 +1,6 @@
 package sphe.inews.ui.main.dialogfragments.covid
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -48,6 +49,7 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
         return inflater.inflate(R.layout.fragment_covid19_stats, container, false)
     }
 
+    @SuppressLint("InflateParams")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -74,6 +76,8 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
             val bottomDialog = BottomSheetDialog(context!!)
             bottomDialog.dismissWithAnimation=true
             bottomDialog.setCancelable(true)
+            val v = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_countries,null)
+            bottomDialog.setContentView(v)
             bottomDialog.show()
         }
         this.setErrorViewsViewsVisibility(false)
