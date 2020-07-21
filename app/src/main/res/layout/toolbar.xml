@@ -19,5 +19,4 @@
     app:popupTheme="@style/PopupMenuStyle"
     app:layout_collapseMode="pin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:theme="@style/ToolBarTheme">
-</androidx.appcompat.widget.Toolbar>
+    android:theme="@style/ToolBarTheme"/>
