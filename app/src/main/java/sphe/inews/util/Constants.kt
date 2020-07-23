@@ -20,6 +20,8 @@ object Constants {
     const val NAMED_APP_VERSION="app_version"
     const val NAMED_SET_OLD="constraint_set_old"
     const val NAMED_SET_NEW="constraint_set_new"
+    const val NAMED_COUNTRIES="countries"
+    const val NAMED_COVID_19="covid19"
 
 
    val  PACKS_NEWS = byteArrayOf(

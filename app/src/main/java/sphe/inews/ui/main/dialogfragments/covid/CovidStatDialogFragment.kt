@@ -11,19 +11,22 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.fragment_covid19_stats.*
 import sphe.inews.R
+import sphe.inews.models.Country
 import sphe.inews.models.covid.LatestStatByCountry
 import sphe.inews.network.Resources
-import sphe.inews.ui.main.adapters.ArticleAdapter
+import sphe.inews.ui.main.adapters.CountryAdapter
 import sphe.inews.util.Constants
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
 
 
-class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
+class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment(), CountryAdapter.CountryListener  {
 
 
     @Suppress("unused")
@@ -31,10 +34,14 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
     lateinit var providerFactory: ViewModelProviderFactory
 
     @Inject
-    lateinit var adapter: ArticleAdapter
+    lateinit var adapter: CountryAdapter
 
     @Suppress("unused")
     private lateinit var mainContext : Context
+
+    private lateinit var countryBottomDialog: BottomSheetDialog
+
+    private var country: Country? = null
 
     private val viewModel: Covid19StatsViewModel by lazy {
         ViewModelProvider(this, providerFactory).get(Covid19StatsViewModel::class.java)
@@ -49,7 +56,6 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
         return inflater.inflate(R.layout.fragment_covid19_stats, container, false)
     }
 
-    @SuppressLint("InflateParams")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -68,20 +74,17 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
             dismiss()
         }
 
-
         btn_retry.setOnClickListener{
-            this.getCovid19Stats()
+            this.getCovid19Stats("South Africa")
+
         }
+        countryBottomDialog = countryBottomDialog()
         btnFilter.setOnClickListener {
-            val bottomDialog = BottomSheetDialog(context!!)
-            bottomDialog.dismissWithAnimation=true
-            bottomDialog.setCancelable(true)
-            val v = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_countries,null)
-            bottomDialog.setContentView(v)
-            bottomDialog.show()
+            countryBottomDialog.show()
         }
+        this.adapter.setCountryClickListener(this)
         this.setErrorViewsViewsVisibility(false)
-        this.getCovid19Stats()
+        this.getCovid19Stats("South Africa")
     }
 
     override fun onStart() {
@@ -106,11 +109,17 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
 
     }
 
-    private fun getCovid19Stats(){
 
-        viewModel.observeCovid19Data("South Africa")?.let {
-            viewModel.observeCovid19Data("South Africa")?.removeObservers(this)
-            viewModel.observeCovid19Data("South Africa")?.observe(viewLifecycleOwner, Observer {res ->
+    override fun onCountryClicked(country: Country) {
+        countryBottomDialog.dismiss()
+        this.getCovid19Stats(country.countryName)
+    }
+
+    private fun getCovid19Stats(countryName: String){
+
+        viewModel.observeCovid19Data(countryName)?.let {
+            viewModel.observeCovid19Data(countryName)?.removeObservers(this)
+            viewModel.observeCovid19Data(countryName)?.observe(viewLifecycleOwner, Observer {res ->
 
                 when(res.status){
                     Resources.Status.LOADING ->{
@@ -198,4 +207,20 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment()  {
             btnFilter.visibility = View.GONE
         }
     }
+
+    @SuppressLint("InflateParams")
+    private fun countryBottomDialog() : BottomSheetDialog{
+        val bottomDialog = BottomSheetDialog(context!!)
+        bottomDialog.dismissWithAnimation=true
+        bottomDialog.setCancelable(true)
+        bottomDialog.dismissWithAnimation = true
+        val v = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_countries,null)
+        val recyclerView = v.findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = GridLayoutManager(context, 3)
+        recyclerView.adapter = adapter
+        bottomDialog.setContentView(v)
+
+        return bottomDialog
+    }
+
 }

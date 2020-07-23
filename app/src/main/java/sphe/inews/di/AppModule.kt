@@ -8,6 +8,8 @@ import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import sphe.inews.R
+import sphe.inews.models.Country
 import sphe.inews.util.Constants
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -45,7 +47,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    @Named("covid19")
+    @Named(Constants.NAMED_COVID_19)
     fun provideRetrofitCovid19Instance(): Retrofit {
         val client = OkHttpClient.Builder()
         client.connectTimeout(35, TimeUnit.SECONDS)
@@ -102,6 +104,26 @@ class AppModule {
     @Named(Constants.NAMED_SET_NEW)
     fun provideConstraintSet2() : ConstraintSet{
         return ConstraintSet()
+    }
+
+    @Singleton
+    @Provides
+    @Named(Constants.NAMED_COUNTRIES)
+    fun provideCountryData() : List<Country>{
+
+        return listOf(
+            Country("South Africa","za", R.drawable.flag_south_africa),
+            Country("United Arab Emirates","ua", R.drawable.flag_uae),
+            Country("Italy","it", R.drawable.flag_italy),
+            Country("Egypt","eg", R.drawable.flag_egypt),
+            Country("China","ch", R.drawable.flag_china),
+            Country("United States","us", R.drawable.flag__usa),
+            Country("United Kingdom","uk", R.drawable.flag__uk),
+            Country("Morocco","ma", R.drawable.flag__morocco),
+            Country("Japan","jp", R.drawable.flag__japan)
+
+        )
+
     }
 
 }
