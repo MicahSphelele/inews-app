@@ -20,6 +20,13 @@
         <item name="articleCardTitleTextColor">@color/colorBlack</item>
         <item name="articleCardSubTitleTextColor">@color/colorPrimary</item>
         <item name="articleCardShareButtonColor">@drawable/btn_share_original</item>
+        <item name="covidCardBackgroundColor">@color/colorWhite</item>
+        <item name="covidTitleTextColor">@color/colorPrimary</item>
+        <item name="covidSubTitleTextColor">@color/colorAccent</item>
+        <item name="covidSubTextColor">@color/colorPrimary</item>
+        <item name="countryPickerBackgroundColor">@color/colorWhite</item>
+        <item name="countryPickerCardBackgroundColor">@color/colorWhite</item>
+        <item name="countryPickerTextColor">@color/colorPrimary</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -40,6 +47,13 @@
         <item name="articleCardTitleTextColor">@color/colorWhite</item>
         <item name="articleCardSubTitleTextColor">@color/colorAccent</item>
         <item name="articleCardShareButtonColor">@drawable/btn_share_dark</item>
+        <item name="covidCardBackgroundColor">@color/colorDarkNavy</item>
+        <item name="covidTitleTextColor">@color/colorAccent</item>
+        <item name="covidSubTitleTextColor">@color/colorAccent</item>
+        <item name="covidSubTextColor">@color/colorAccent</item>
+        <item name="countryPickerBackgroundColor">@color/colorDarkNavy</item>
+        <item name="countryPickerCardBackgroundColor">@color/colorDarkNavy</item>
+        <item name="countryPickerTextColor">@color/colorAccent</item>
     </style>
 
     <style name="OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">

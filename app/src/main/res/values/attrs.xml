@@ -10,5 +10,12 @@
         <attr name="articleCardTitleTextColor" format="color"/>
         <attr name="articleCardSubTitleTextColor" format="color"/>
         <attr name="articleCardShareButtonColor" format="reference"/>
+        <attr name="covidCardBackgroundColor" format="color"/>
+        <attr name="covidTitleTextColor" format="color"/>
+        <attr name="covidSubTitleTextColor" format="color"/>
+        <attr name="covidSubTextColor" format="color"/>
+        <attr name="countryPickerBackgroundColor" format="color"/>
+        <attr name="countryPickerCardBackgroundColor" format="color"/>
+        <attr name="countryPickerTextColor" format="color"/>
     </declare-styleable>
 </resources>
