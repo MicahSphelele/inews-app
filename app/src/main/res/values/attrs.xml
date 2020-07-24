@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="appThemeAttrs">
+        <attr name="mainBackgroundColor" format="color"/>
+        <attr name="splashTextColor" format="color"/>
+        <attr name="bottomNavBackgroundColor" format="color"/>
+        <attr name="bottomNavItemTextColor" format="color"/>
+        <attr name="bottomNavItemIconColor" format="color"/>
+        <attr name="articleCardBackgroundColor" format="color"/>
+        <attr name="articleCardTitleTextColor" format="color"/>
+        <attr name="articleCardSubTitleTextColor" format="color"/>
+        <attr name="articleCardShareButtonColor" format="reference"/>
+    </declare-styleable>
+</resources>

@@ -11,6 +11,35 @@
         <item name="android:homeAsUpIndicator">@drawable/ic_action_home</item>
         <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTrans</item>
+        <item name="mainBackgroundColor">@color/colorWhite</item>
+        <item name="splashTextColor">@color/colorPrimary</item>
+        <item name="bottomNavBackgroundColor">@color/colorWhite</item>
+        <item name="bottomNavItemTextColor">@color/colorAccent</item>
+        <item name="bottomNavItemIconColor">@color/colorPrimary</item>
+        <item name="articleCardBackgroundColor">@color/colorWhite</item>
+        <item name="articleCardTitleTextColor">@color/colorBlack</item>
+        <item name="articleCardSubTitleTextColor">@color/colorPrimary</item>
+        <item name="articleCardShareButtonColor">@drawable/btn_share_original</item>
+    </style>
+
+    <style name="DarkTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_action_home</item>
+        <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTrans</item>
+        <item name="mainBackgroundColor">@color/colorDarkNavy</item>
+        <item name="splashTextColor">@color/colorAccent</item>
+        <item name="bottomNavBackgroundColor">@color/colorDarkNavy</item>
+        <item name="bottomNavItemTextColor">@color/colorAccent</item>
+        <item name="bottomNavItemIconColor">@color/colorAccent</item>
+        <item name="articleCardBackgroundColor">@color/colorDarkNavy</item>
+        <item name="articleCardTitleTextColor">@color/colorWhite</item>
+        <item name="articleCardSubTitleTextColor">@color/colorAccent</item>
+        <item name="articleCardShareButtonColor">@drawable/btn_share_dark</item>
     </style>
 
     <style name="OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">

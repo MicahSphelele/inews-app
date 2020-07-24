@@ -41,8 +41,6 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment(), Cou
 
     private lateinit var countryBottomDialog: BottomSheetDialog
 
-    private var country: Country? = null
-
     private val viewModel: Covid19StatsViewModel by lazy {
         ViewModelProvider(this, providerFactory).get(Covid19StatsViewModel::class.java)
     }

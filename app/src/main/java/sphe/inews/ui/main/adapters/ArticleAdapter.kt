@@ -38,8 +38,8 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
          if(article.urlToImage != null){
              Glide.with(holder.itemView.context)
                  .load(Uri.parse(article.urlToImage))
-                 .placeholder(R.mipmap.ic_launcher)
-                 .error(R.mipmap.ic_launcher)
+                 .placeholder(R.drawable.logo)
+                 .error(R.drawable.logo)
                  .into(holder.image)
          }
 

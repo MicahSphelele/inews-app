@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import sphe.inews.R
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
-import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
 import javax.inject.Inject
 
@@ -32,7 +31,9 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.DarkTheme)
         setContentView(R.layout.activity_main)
+
 
         setSupportActionBar(toolbar as Toolbar)
 
