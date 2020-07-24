@@ -3,6 +3,7 @@ package sphe.inews.ui
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import sphe.inews.R
@@ -14,6 +15,7 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.DarkTheme)
+        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
 
     }

@@ -27,6 +27,9 @@
         <item name="countryPickerBackgroundColor">@color/colorWhite</item>
         <item name="countryPickerCardBackgroundColor">@color/colorWhite</item>
         <item name="countryPickerTextColor">@color/colorPrimary</item>
+        <item name="abCardBackgroundColor">@color/colorWhite</item>
+        <item name="abTitleTextColor">@color/colorPrimary</item>
+        <item name="abSubTitleTextColor">@color/colorAccent</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -54,6 +57,9 @@
         <item name="countryPickerBackgroundColor">@color/colorDarkNavy</item>
         <item name="countryPickerCardBackgroundColor">@color/colorDarkNavy</item>
         <item name="countryPickerTextColor">@color/colorAccent</item>
+        <item name="abCardBackgroundColor">@color/colorDarkNavy</item>
+        <item name="abTitleTextColor">@color/colorAccent</item>
+        <item name="abSubTitleTextColor">@color/colorAccent</item>
     </style>
 
     <style name="OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">

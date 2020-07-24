@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_about"
+    android:background="?attr/mainBackgroundColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -36,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:cardBackgroundColor="@color/colorWhite"
+        app:cardBackgroundColor="?attr/abCardBackgroundColor"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +68,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="casual"
                 android:text="@string/app_name"
-                android:textColor="@color/colorPrimary"
+                android:textColor="?attr/abTitleTextColor"
                 android:textSize="12pt"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="casual"
-                android:textColor="@color/colorAccent"
+                android:textColor="?attr/abSubTitleTextColor"
                 android:textSize="8pt"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="casual"
                 android:text="@string/developer"
-                android:textColor="@color/colorAccent"
+                android:textColor="?attr/abSubTitleTextColor"
                 android:textSize="8pt"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/txt_app_version"
@@ -106,28 +107,30 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="casual"
                 android:text="@string/developer_name"
-                android:textColor="@color/colorAccent"
+                android:textColor="?attr/abSubTitleTextColor"
                 android:textSize="8pt"
                 android:textStyle="bold|italic"
                 app:layout_constraintEnd_toEndOf="@+id/txt_title_developer"
                 app:layout_constraintStart_toStartOf="@+id/txt_title_developer"
                 app:layout_constraintTop_toBottomOf="@+id/txt_title_developer" />
 
-            <TextView
-                android:id="@+id/txt_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/message"
-                android:fontFamily="casual"
-                android:textStyle="bold|italic"
-                android:textColor="@color/colorAccent"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="@+id/txt_developer"
-                app:layout_constraintStart_toStartOf="@+id/txt_developer"
-                app:layout_constraintTop_toBottomOf="@+id/txt_developer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txt_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="@string/message"
+        android:textColor="?attr/abSubTitleTextColor"
+        android:textStyle="bold|italic"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_btn_1"
@@ -136,18 +139,18 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="?attr/abCardBackgroundColor"
         app:layout_constraintEnd_toStartOf="@+id/card_btn_2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card">
+        app:layout_constraintTop_toBottomOf="@+id/txt_message">
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:padding="8dp"
             android:src="@drawable/ic_github"
-            android:contentDescription="@string/todo"
-            />
+            android:contentDescription="@string/todo" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -157,17 +160,18 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="?attr/abCardBackgroundColor"
         app:layout_constraintEnd_toStartOf="@+id/card_btn_3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/card_btn_1"
-        app:layout_constraintTop_toBottomOf="@+id/card">
+        app:layout_constraintTop_toBottomOf="@+id/txt_message">
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:padding="8dp"
             android:src="@drawable/ic_linkedin"
-            android:contentDescription="@string/todo"/>
+            android:contentDescription="@string/todo" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -177,10 +181,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="?attr/abCardBackgroundColor"
         app:layout_constraintEnd_toStartOf="@+id/card_btn_4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/card_btn_2"
-        app:layout_constraintTop_toBottomOf="@+id/card">
+        app:layout_constraintTop_toBottomOf="@+id/txt_message">
 
         <ImageView
             android:layout_width="70dp"
@@ -198,17 +203,18 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="?attr/abCardBackgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/card_btn_3"
-        app:layout_constraintTop_toBottomOf="@+id/card">
+        app:layout_constraintTop_toBottomOf="@+id/txt_message">
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:padding="8dp"
             android:src="@drawable/ic_instagram"
-            android:contentDescription="@string/todo"/>
+            android:contentDescription="@string/todo" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

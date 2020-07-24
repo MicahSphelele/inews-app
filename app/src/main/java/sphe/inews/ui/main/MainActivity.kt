@@ -34,7 +34,6 @@ class MainActivity : BaseActivity() {
         setTheme(R.style.DarkTheme)
         setContentView(R.layout.activity_main)
 
-
         setSupportActionBar(toolbar as Toolbar)
 
         navController = Navigation.findNavController(this,R.id.navigation_host_fragment)

@@ -17,5 +17,8 @@
         <attr name="countryPickerBackgroundColor" format="color"/>
         <attr name="countryPickerCardBackgroundColor" format="color"/>
         <attr name="countryPickerTextColor" format="color"/>
+        <attr name="abCardBackgroundColor" format="color"/>
+        <attr name="abTitleTextColor" format="color"/>
+        <attr name="abSubTitleTextColor" format="color"/>
     </declare-styleable>
 </resources>
