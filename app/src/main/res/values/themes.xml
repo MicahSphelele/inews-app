@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme.DayNight" parent="AppTheme"/>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_action_home</item>
+        <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTrans</item>
+        <item name="mainBackgroundColor">@color/colorWhite</item>
+        <item name="splashTextColor">@color/colorPrimary</item>
+        <item name="bottomNavBackgroundColor">@color/colorWhite</item>
+        <item name="bottomNavItemTextColor">@color/colorAccent</item>
+        <item name="bottomNavItemIconColor">@color/colorPrimary</item>
+        <item name="articleCardBackgroundColor">@color/colorWhite</item>
+        <item name="articleCardTitleTextColor">@color/colorBlack</item>
+        <item name="articleCardSubTitleTextColor">@color/colorPrimary</item>
+        <item name="articleCardShareButtonColor">@drawable/btn_share_original</item>
+        <item name="covidCardBackgroundColor">@color/colorWhite</item>
+        <item name="covidTitleTextColor">@color/colorPrimary</item>
+        <item name="covidSubTitleTextColor">@color/colorAccent</item>
+        <item name="covidSubTextColor">@color/colorPrimary</item>
+        <item name="countryPickerBackgroundColor">@color/colorWhite</item>
+        <item name="countryPickerCardBackgroundColor">@color/colorWhite</item>
+        <item name="countryPickerTextColor">@color/colorPrimary</item>
+        <item name="abCardBackgroundColor">@color/colorWhite</item>
+        <item name="abTitleTextColor">@color/colorPrimary</item>
+        <item name="abSubTitleTextColor">@color/colorAccent</item>
+        <item name="previewDetailBg">@drawable/title_layout_bg</item>
+        <item name="previewDetailTextColor">@color/colorYoutubeViewBackground</item>
+    </style>
+
+</resources>
