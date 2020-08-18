@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerAppCompatActivity
 import dagger.android.support.DaggerFragment
@@ -17,7 +18,7 @@ import sphe.inews.R
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.ArticleAdapter
-import sphe.inews.ui.main.dialogfragments.ArticlePreviewDialogFragment
+import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
@@ -41,7 +42,7 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     @Suppress("unused")
     @Inject
-    lateinit var articlePreviewDialogFragment: ArticlePreviewDialogFragment
+    lateinit var articlePreviewDialogFragment: ArticlePreviewFragment
 
     private val viewModel: SportViewModel by lazy {
         ViewModelProvider(this, providerFactory).get(SportViewModel::class.java)
@@ -82,14 +83,13 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
             }
             false ->{
                 val bundle = Bundle()
-                bundle.putString(ArticlePreviewDialogFragment.TITLE,article.title)
-                bundle.putString(ArticlePreviewDialogFragment.CONTENT,article.content)
-                bundle.putString(ArticlePreviewDialogFragment.IMAGE,article.urlToImage)
-                bundle.putString(ArticlePreviewDialogFragment.DATE,article.publishedAt)
-                bundle.putString(ArticlePreviewDialogFragment.ARTICLE_URL,article.url)
-                bundle.putString(ArticlePreviewDialogFragment.SOURCE_NAME,article.source.name)
-                articlePreviewDialogFragment.arguments = bundle
-                articlePreviewDialogFragment.show((activity as DaggerAppCompatActivity).supportFragmentManager,"articlePreviewDialogFragment")
+                bundle.putString(ArticlePreviewFragment.TITLE,article.title)
+                bundle.putString(ArticlePreviewFragment.CONTENT,article.content)
+                bundle.putString(ArticlePreviewFragment.IMAGE,article.urlToImage)
+                bundle.putString(ArticlePreviewFragment.DATE,article.publishedAt)
+                bundle.putString(ArticlePreviewFragment.ARTICLE_URL,article.url)
+                bundle.putString(ArticlePreviewFragment.SOURCE_NAME,article.source.name)
+                findNavController().navigate(R.id.articlePreviewFragment,bundle,null,null)
             }
         }
 
