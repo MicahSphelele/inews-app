@@ -30,6 +30,8 @@
         <item name="abCardBackgroundColor">@color/colorWhite</item>
         <item name="abTitleTextColor">@color/colorPrimary</item>
         <item name="abSubTitleTextColor">@color/colorAccent</item>
+        <item name="previewDetailBg">@drawable/title_layout_bg</item>
+        <item name="previewDetailTextColor">@color/colorYoutubeViewBackground</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -60,6 +62,8 @@
         <item name="abCardBackgroundColor">@color/colorDarkNavy</item>
         <item name="abTitleTextColor">@color/colorAccent</item>
         <item name="abSubTitleTextColor">@color/colorAccent</item>
+        <item name="previewDetailBg">@drawable/title_layout_bg_dark</item>
+        <item name="previewDetailTextColor">@color/colorWhite</item>
     </style>
 
     <style name="OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">

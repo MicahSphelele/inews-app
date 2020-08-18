@@ -20,5 +20,7 @@
         <attr name="abCardBackgroundColor" format="color"/>
         <attr name="abTitleTextColor" format="color"/>
         <attr name="abSubTitleTextColor" format="color"/>
+        <attr name="previewDetailBg" format="reference"/>
+        <attr name="previewDetailTextColor" format="color"/>
     </declare-styleable>
 </resources>
