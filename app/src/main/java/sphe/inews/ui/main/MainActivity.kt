@@ -31,7 +31,6 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.DarkTheme)
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar as Toolbar)
