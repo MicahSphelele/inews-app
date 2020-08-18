@@ -3,27 +3,24 @@
 package sphe.inews.ui.main.dialogfragments
 
 import android.app.Activity
-import android.app.Dialog
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.transition.MaterialElevationScale
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_view_article.*
 import sphe.inews.R
-import sphe.inews.ui.bottomsheet.DaggerBottomSheetDialogFragment
 import sphe.inews.util.Constants
 import javax.inject.Inject
 
 
-class ArticlePreviewDialogFragment @Inject constructor(): DaggerBottomSheetDialogFragment() {
+class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
 
     lateinit var articleUrl:String
 
@@ -39,20 +36,8 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerBottomSheetDialo
     @Suppress("RedundantOverride")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle)
-    }
+        enterTransition = MaterialElevationScale(/* growing= */ true)
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog: Dialog = super.onCreateDialog(savedInstanceState)
-        dialog.setOnShowListener {
-            val bottomSheetDialog = it as BottomSheetDialog
-            setupFullHeight(bottomSheetDialog,BottomSheetBehavior.STATE_EXPANDED)
-        }
-        dialog.setOnDismissListener {
-            val bottomSheetDialog = it as BottomSheetDialog
-            setupFullHeight(bottomSheetDialog,BottomSheetBehavior.STATE_COLLAPSED)
-        }
-        return dialog
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -64,7 +49,7 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerBottomSheetDialo
         super.onViewCreated(view, savedInstanceState)
 
         btn_exit.setOnClickListener {
-            dismiss()
+            findNavController().navigateUp()
         }
 
         txt_read_more.setOnClickListener {
@@ -89,13 +74,7 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerBottomSheetDialo
     @Suppress("RedundantOverride")
     override fun onStart() {
         super.onStart()
-//        val dialog = dialog
-//        val width = ViewGroup.LayoutParams.MATCH_PARENT
-//        val height = ViewGroup.LayoutParams.MATCH_PARENT
-//
-//        dialog?.window.let {
-//            dialog?.window?.setLayout(width, height)
-//        }
+
 
 
     }
@@ -103,25 +82,5 @@ class ArticlePreviewDialogFragment @Inject constructor(): DaggerBottomSheetDialo
     @Suppress("RedundantOverride")
     override fun onActivityCreated(args: Bundle?) {
         super.onActivityCreated(args)
-//        dialog?.window?.let {
-//            dialog?.window?.attributes?.windowAnimations = R.style.FullScreenDialogStyle
-//        }
     }
-
-    private fun setupFullHeight(bottomSheetDialog: BottomSheetDialog, state : Int){
-        val bottomSheet: FrameLayout = bottomSheetDialog.findViewById<FrameLayout>(R.id.design_bottom_sheet) as FrameLayout
-        val behavior = BottomSheetBehavior.from(bottomSheet)
-        val layoutParams = bottomSheet.layoutParams
-        val windowHeight:Int = getWindowHeight()
-        layoutParams.height = windowHeight
-        bottomSheet.layoutParams = layoutParams
-        behavior.state = state
-    }
-
-    private fun getWindowHeight() : Int{
-        val displayMetrics = DisplayMetrics()
-        activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
-        return displayMetrics.heightPixels
-    }
-
 }

@@ -34,4 +34,10 @@
         android:name="sphe.inews.ui.main.news.entertainment.EntertainmentFragment"
         android:label="Entertainment"
         tools:layout="@layout/fragment_entertainment" />
+
+    <fragment
+        android:id="@+id/articlePreviewFragment"
+        android:name="sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment"
+        android:label="Article"
+        tools:layout="@layout/fragment_view_article" />
 </navigation>
