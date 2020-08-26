@@ -6,6 +6,13 @@
 
 A simple open source news app demo developed in [**Kotlin**](https://kotlinlang.org/), [**Dagger 2 Android**](https://developer.android.com/training/dependency-injection/dagger-android) framework and [**MVVM**](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) pattern. As more ideas and features come along, I will enusre that I keep everyone updated. I did my best in ensuring that the codebase is easy to understand even for novice devs. I hope this will one day help someone.
 
+###### App Features
+- Can view latest Business, Health, Sport, Technology and Entertainment news
+- View about and contact developer
+- View Covid-19 stats for South Africa, UAE, Italy, Egypt, China, USA, UK, Morocco and Japan
+- Filter Covid-19 stats by country
+- Switch between Default mode and Dark Mode depending on the system
+
 
 # App Screen Shots
 <div>
