@@ -65,8 +65,6 @@ object Constants {
 
     fun launchCustomTabIntent(activity: Activity, url:String){
         val intentBuilder = CustomTabsIntent.Builder()
-        //intentBuilder.setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary));
-        //intentBuilder.setSecondaryToolbarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             activity.resources.getColor(R.color.colorAccent,null).let { it1 -> intentBuilder.setToolbarColor(it1) }
         }else{
@@ -78,7 +76,5 @@ object Constants {
         activity.let { it1 -> customTabsIntent.launchUrl(it1, Uri.parse(url)) }
 
     }
-
-    //https://stackoverflow.com/questions/55748235/kotlin-check-for-words-in-string
 
 }
