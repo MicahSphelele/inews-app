@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
@@ -14,6 +13,7 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -69,15 +69,9 @@ class AboutDialogFragment @Inject constructor(): DaggerBottomSheetDialogFragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //imageDrop = view.findViewById(R.id.imgController)
-        context?.resources?.let {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                (toolbar as Toolbar).navigationIcon = context?.resources?.getDrawable(R.drawable.ic_action_home,null)
-            }else{
-                @Suppress("DEPRECATION")
-                (toolbar as Toolbar).navigationIcon = context?.resources?.getDrawable(R.drawable.ic_action_home)
-            }
-        }
+
+        (toolbar as Toolbar).navigationIcon = ContextCompat.getDrawable(requireContext(),R.drawable.ic_action_home)
+
         (toolbar as Toolbar).setNavigationOnClickListener{
             dismiss()
         }
@@ -103,7 +97,7 @@ class AboutDialogFragment @Inject constructor(): DaggerBottomSheetDialogFragment
             intent.data = Uri.parse("mailto:${resources.getString(R.string.url_gmail)}")
             intent.putExtra(Intent.EXTRA_EMAIL,resources.getString(R.string.url_gmail))
             intent.putExtra(Intent.EXTRA_SUBJECT,"Hi Sphelele")
-            if(intent.resolveActivity(activity!!.packageManager)!=null){
+            if(intent.resolveActivity(requireActivity().packageManager)!=null){
                 startActivity(intent)
             }else{
                 Toast.makeText(activity, "Application not found", Toast.LENGTH_SHORT).show()

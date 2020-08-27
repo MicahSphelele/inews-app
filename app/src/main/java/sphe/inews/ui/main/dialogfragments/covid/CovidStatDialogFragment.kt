@@ -2,12 +2,12 @@ package sphe.inews.ui.main.dialogfragments.covid
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -57,16 +57,7 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment(), Cou
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainContext = view.context
-
-        mainContext.resources?.let {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                (toolbar as Toolbar).navigationIcon = mainContext.resources.getDrawable(R.drawable.ic_action_home,null)
-            }else{
-                @Suppress("DEPRECATION")
-                (toolbar as Toolbar).navigationIcon = mainContext.resources.getDrawable(R.drawable.ic_action_home)
-            }
-        }
+        (toolbar as Toolbar).navigationIcon = ContextCompat.getDrawable(requireContext(),R.drawable.ic_action_home)
 
         (toolbar as Toolbar).setNavigationOnClickListener{
             dismiss()
@@ -208,7 +199,7 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment(), Cou
 
     @SuppressLint("InflateParams")
     private fun countryBottomDialog() : BottomSheetDialog{
-        val bottomDialog = BottomSheetDialog(context!!)
+        val bottomDialog = BottomSheetDialog(requireContext())
         bottomDialog.dismissWithAnimation=true
         bottomDialog.setCancelable(true)
         bottomDialog.dismissWithAnimation = true

@@ -22,7 +22,7 @@ import javax.inject.Inject
 
 class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
 
-    lateinit var articleUrl:String
+    private lateinit var articleUrl: String
 
     companion object{
         const val TITLE = "title"
