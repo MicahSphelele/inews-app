@@ -14,11 +14,16 @@ A simple open source news app demo developed in [**Kotlin**](https://kotlinlang.
 - Switch between Default mode and Dark Mode depending on the system
 
 
-# App Screen Shots
+# App Screen Shots (Default Mode)
 <div>
-  <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_shot_1.jpg" width="250" height="500"/>
-<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_shot_2.jpg" width="250" height="500"/>
-<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_shot_3.jpg" width="250" height="500"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_1.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_2.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_3.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_4.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_5.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_6.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_7.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_8.jpg" width="125" height="250"/>
 </div>
 
 
