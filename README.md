@@ -26,4 +26,14 @@ A simple open source news app demo developed in [**Kotlin**](https://kotlinlang.
 <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_8.jpg" width="125" height="250"/>
 </div>
 
-
+## App Screen Shots (Dark Mode)
+<div>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/dark/screen_dark_1.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/dark/screen_dark_2.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/dark/screen_dark_3.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/dark/screen_dark_4.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/dark/screen_dark_5.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/dark/screen_dark_6.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/dark/screen_dark_7.jpg" width="125" height="250"/>
+<img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/dark/screen_dark_8.jpg" width="125" height="250"/>
+</div>
