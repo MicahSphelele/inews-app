@@ -14,7 +14,7 @@ A simple open source news app demo developed in [**Kotlin**](https://kotlinlang.
 - Switch between Default mode and Dark Mode depending on the system
 
 
-# App Screen Shots (Default Mode)
+## App Screen Shots (Default Mode)
 <div>
 <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_1.jpg" width="125" height="250"/>
 <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_2.jpg" width="125" height="250"/>
