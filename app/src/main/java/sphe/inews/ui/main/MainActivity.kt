@@ -3,8 +3,10 @@ package sphe.inews.ui.main
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -15,7 +17,7 @@ import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
 import javax.inject.Inject
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener {
 
 
     @Suppress("unused")
@@ -73,6 +75,29 @@ class MainActivity : BaseActivity() {
             R.id.businessFragment -> finish()
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        navController.addOnDestinationChangedListener(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        navController.removeOnDestinationChangedListener(this)
+    }
+
+    override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
+        when(destination.label){
+            "Business", "Health",
+            "Sport", "Technology","Entertainment" -> {
+                bottom_navigation.visibility = View.VISIBLE
+            }
+            else -> {
+                bottom_navigation.visibility = View.GONE
+            }
+
+        }
     }
 
 }
