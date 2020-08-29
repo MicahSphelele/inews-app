@@ -33,4 +33,10 @@
         <item name="previewDetailBg">@drawable/title_layout_bg_dark</item>
         <item name="previewDetailTextColor">@color/colorWhite</item>
     </style>
+
+    <style name="PopupMenuStyle" parent="Theme.MaterialComponents.Light">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:backgroundTint">@color/colorDarkNavy</item>
+    </style>
+
 </resources>
