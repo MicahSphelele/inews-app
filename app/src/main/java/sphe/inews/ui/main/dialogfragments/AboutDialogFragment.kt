@@ -42,7 +42,7 @@ class AboutDialogFragment @Inject constructor(): DaggerBottomSheetDialogFragment
     @Named(Constants.NAMED_SET_NEW)
     lateinit var constraintSetNew: ConstraintSet
 
-    var altLayout:Boolean = false
+    private var altLayout:Boolean = false
 
     @Suppress("RedundantOverride")
     override fun onCreate(savedInstanceState: Bundle?) {
