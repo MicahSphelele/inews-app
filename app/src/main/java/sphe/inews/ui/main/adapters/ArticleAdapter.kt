@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.imageview.ShapeableImageView
 import sphe.inews.R
 import sphe.inews.models.news.Article
 
@@ -89,7 +89,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
     }
 
    inner class ViewHolder(@NonNull v: View):RecyclerView.ViewHolder(v){
-          var image : ImageView = v.findViewById(R.id.image)
+          var image : ShapeableImageView = v.findViewById(R.id.image)
           var title : TextView = v.findViewById(R.id.title)
           var source : TextView = v.findViewById(R.id.source)
           var share : ImageButton = v.findViewById(R.id.share)

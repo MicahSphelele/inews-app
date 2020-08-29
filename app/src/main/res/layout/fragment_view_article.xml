@@ -25,6 +25,7 @@
         android:layout_height="0dp"
         android:contentDescription="@string/todo"
         android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/roundedCornerStyle"
         app:layout_constraintBottom_toTopOf="@+id/content_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
