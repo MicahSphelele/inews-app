@@ -38,7 +38,7 @@ xmlns:tools="http://schemas.android.com/tools">
     />
 
 
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     android:id="@+id/_card_1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -64,9 +64,9 @@ xmlns:tools="http://schemas.android.com/tools">
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
 
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     android:id="@+id/_card_2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -92,9 +92,9 @@ xmlns:tools="http://schemas.android.com/tools">
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
 
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     android:id="@+id/_card_3"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -120,9 +120,9 @@ xmlns:tools="http://schemas.android.com/tools">
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
 
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     android:id="@+id/_card_4"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -148,9 +148,9 @@ xmlns:tools="http://schemas.android.com/tools">
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
 
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     android:id="@+id/_card_5"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -176,7 +176,7 @@ xmlns:tools="http://schemas.android.com/tools">
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
