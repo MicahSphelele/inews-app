@@ -8,7 +8,7 @@
     android:background="?attr/mainBackgroundColor"
     tools:context=".ui.SplashActivity">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="100dp"

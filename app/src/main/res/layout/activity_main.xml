@@ -8,7 +8,7 @@
     android:background="?attr/mainBackgroundColor"
     tools:context=".ui.main.MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
