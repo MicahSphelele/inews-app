@@ -34,7 +34,7 @@
         <item name="abSubTitleTextColor">@color/colorAccent</item>
         <item name="previewDetailBg">@drawable/title_layout_bg</item>
         <item name="previewDetailTextColor">@color/colorYoutubeViewBackground</item>
-
+        <item name="articleLoadErrorTextColor">@color/colorPrimaryDark</item>
     </style>
 
     <style name="PopupMenuStyle" parent="Theme.MaterialComponents.Light">

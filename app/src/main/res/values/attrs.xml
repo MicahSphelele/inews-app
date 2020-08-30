@@ -22,5 +22,6 @@
         <attr name="abSubTitleTextColor" format="color"/>
         <attr name="previewDetailBg" format="reference"/>
         <attr name="previewDetailTextColor" format="color"/>
+        <attr name="articleLoadErrorTextColor" format="color"/>
     </declare-styleable>
 </resources>
