@@ -33,6 +33,7 @@
         <item name="previewDetailBg">@drawable/title_layout_bg_dark</item>
         <item name="previewDetailTextColor">@color/colorWhite</item>
         <item name="articleLoadErrorTextColor">@color/colorAccent</item>
+        <item name="toolBarTextColor">@color/colorAccent</item>
     </style>
 
     <style name="PopupMenuStyle" parent="Theme.MaterialComponents.Light">

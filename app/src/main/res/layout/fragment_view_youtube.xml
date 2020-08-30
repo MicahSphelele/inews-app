@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorYoutubeViewBackground"
+    android:background="?attr/mainBackgroundColor"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -17,10 +17,10 @@
         android:id="@+id/toolbar"
         tools:menu="@menu/app_menu"
         app:subtitle="News on the go"
-        app:subtitleTextColor="@color/colorAccent"
+        app:subtitleTextColor="?attr/toolBarTextColor"
         app:subtitleTextAppearance="@style/ToolbarSubTitleAppearance"
         app:title="@string/app_name"
-        app:titleTextColor="@color/colorAccent"
+        app:titleTextColor="?attr/toolBarTextColor"
         app:titleTextAppearance="@style/ToolbarTitleAppearance"
         app:popupTheme="@style/PopupMenuStyle"
         app:layout_collapseMode="pin"

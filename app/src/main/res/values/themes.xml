@@ -35,6 +35,7 @@
         <item name="previewDetailBg">@drawable/title_layout_bg</item>
         <item name="previewDetailTextColor">@color/colorYoutubeViewBackground</item>
         <item name="articleLoadErrorTextColor">@color/colorPrimaryDark</item>
+        <item name="toolBarTextColor">@color/colorPrimaryDark</item>
     </style>
 
     <style name="PopupMenuStyle" parent="Theme.MaterialComponents.Light">
