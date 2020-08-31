@@ -1,9 +1,12 @@
 package sphe.inews.ui.main
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -15,6 +18,7 @@ import sphe.inews.R
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
+import sphe.inews.ui.main.settings.SettingsActivity
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener {
@@ -30,6 +34,9 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     @Suppress("unused")
     private lateinit var navController : NavController
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +71,10 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             R.id.action_corona -> {
                 covidStatDialogFragment.show(supportFragmentManager,"covidStatDialogFragment")
             }
+            R.id.action_settings -> {
+                startActivity(Intent(this,
+                    SettingsActivity::class.java))
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -79,7 +90,18 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     override fun onResume() {
         super.onResume()
+        when(sharedPreferences.getString(SettingsActivity.KEY_THEME_MODE,"")){
+            "light" ->{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+          "dark" ->{
+              AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+          }else ->{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            }
+        }
         navController.addOnDestinationChangedListener(this)
+
     }
 
     override fun onPause() {

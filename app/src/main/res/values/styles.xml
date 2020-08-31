@@ -30,6 +30,10 @@
         <item name="tint">?attr/toolBarTextColor</item>
     </style>
 
+    <style name="prefTheme" parent="@style/PreferenceThemeOverlay">
+
+    </style>
+
     <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
