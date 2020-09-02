@@ -11,6 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import sphe.inews.R
 import sphe.inews.models.Country
 import sphe.inews.util.Constants
+import sphe.inews.util.storage.AppStorage
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
@@ -123,7 +124,12 @@ class AppModule {
             Country("Japan","jp", R.drawable.flag__japan)
 
         )
+    }
 
+    @Singleton
+    @Provides
+    fun provideAppStorage(application: Application) : AppStorage {
+        return AppStorage(application)
     }
 
 }
