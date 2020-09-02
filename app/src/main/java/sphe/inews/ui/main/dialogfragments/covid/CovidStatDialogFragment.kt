@@ -1,7 +1,6 @@
 package sphe.inews.ui.main.dialogfragments.covid
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,9 +34,6 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment(), Cou
 
     @Inject
     lateinit var adapter: CountryAdapter
-
-    @Suppress("unused")
-    private lateinit var mainContext : Context
 
     private lateinit var countryBottomDialog: BottomSheetDialog
 
@@ -120,8 +116,9 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment(), Cou
                         this.setErrorViewsViewsVisibility(true)
                         this.setShimmerLayoutVisibility(false)
                         this.setDataViewsVisibility(false)
-                        mainContext.resources?.let {
-                            txt_message.text =  mainContext.resources.getString(R.string.msg_error)
+
+                        requireActivity().resources?.let {
+                            txt_message.text =  requireActivity().resources.getString(R.string.msg_error)
                         }
                     }
                     Resources.Status.SUCCESS ->{
