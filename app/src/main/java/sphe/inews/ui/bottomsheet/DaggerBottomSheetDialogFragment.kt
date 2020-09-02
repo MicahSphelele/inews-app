@@ -19,6 +19,7 @@ import javax.inject.Inject
 
     }
     override fun androidInjector(): AndroidInjector<Any> {
+        @Suppress("UNCHECKED_CAST")
         return androidInjector as AndroidInjector<Any>
     }
 
