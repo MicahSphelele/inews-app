@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import sphe.inews.R
 import sphe.inews.ui.BaseActivity
@@ -70,7 +70,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 covidStatDialogFragment.show(supportFragmentManager,"covidStatDialogFragment")
             }
             R.id.action_settings -> {
-               Toast.makeText(this,"Feature coming soon",Toast.LENGTH_SHORT).show()
+               showThemeDialog()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -117,6 +117,14 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             }
 
         }
+    }
+
+    private fun showThemeDialog(){
+        val builder = MaterialAlertDialogBuilder(this,R.style.MaterialThemeDialog)
+        builder.setTitle("Choose Mode")
+        builder.setPositiveButton("OK"){dialog, _ ->
+            dialog.dismiss()
+        }.create().show()
     }
 
 }
