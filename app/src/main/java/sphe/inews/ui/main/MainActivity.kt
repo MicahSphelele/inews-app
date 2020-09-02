@@ -1,6 +1,5 @@
 package sphe.inews.ui.main
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -17,6 +16,7 @@ import sphe.inews.R
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
+import sphe.inews.util.Constants
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener {
@@ -33,8 +33,6 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     @Suppress("unused")
     private lateinit var navController : NavController
 
-    @Inject
-    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,9 +118,21 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     }
 
     private fun showThemeDialog(){
-        val builder = MaterialAlertDialogBuilder(this,R.style.MaterialThemeDialog)
-        builder.setTitle("Choose Mode")
-        builder.setPositiveButton("OK"){dialog, _ ->
+
+        val list = resources.getStringArray(R.array.theme_modes)
+        val index = Constants.selectThemeIndex("")
+        var selectedIndex :Int? = null
+
+        MaterialAlertDialogBuilder(this,R.style.MaterialThemeDialog)
+        .setTitle("Select Theme Mode")
+        .setIcon(R.drawable.logo)
+        .setSingleChoiceItems(R.array.theme_modes,index) { _, which ->
+            selectedIndex = which
+        }
+        .setPositiveButton("OK"){dialog, _ ->
+//            if(selectedIndex!=null){
+//
+//            }
             dialog.dismiss()
         }.create().show()
     }
