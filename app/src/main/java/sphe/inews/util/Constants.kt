@@ -22,6 +22,8 @@ object Constants {
     const val NAMED_SET_NEW="constraint_set_new"
     const val NAMED_COUNTRIES="countries"
     const val NAMED_COVID_19="covid19"
+    const val KEY_THEME = "appTheme"
+    const val DEFAULT_THEME = "system_default"
 
 
    val  PACKS_NEWS = byteArrayOf(
@@ -75,6 +77,34 @@ object Constants {
         val customTabsIntent = intentBuilder.build()
         activity.let { it1 -> customTabsIntent.launchUrl(it1, Uri.parse(url)) }
 
+    }
+
+    fun selectThemeValue(theme:String) : String{
+       return when (theme) {
+           "Light Mode" -> {
+               "light"
+           }
+           "Dark Mode" -> {
+               "dark"
+           }
+           else -> {
+               "system_default"
+           }
+       }
+    }
+
+    fun selectThemeIndex(themeValue:String) : Int{
+        return when (themeValue) {
+            "light" -> {
+                0
+            }
+            "dark" -> {
+                1
+            }
+            else -> {
+                2
+            }
+        }
     }
 
 }
