@@ -128,6 +128,7 @@ class AppModule {
 
     @Singleton
     @Provides
+    @Named(Constants.NAMED_STORAGE)
     fun provideAppStorage(application: Application) : AppStorage {
         return AppStorage(application)
     }

@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 
-class AppStorage(private val application: Application) : Storage {
+class AppStorage(application: Application) : Storage {
 
     private var sharedPrefs : SharedPreferences? = null
 
