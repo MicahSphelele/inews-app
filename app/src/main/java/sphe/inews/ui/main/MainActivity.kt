@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -17,10 +18,15 @@ import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
 import sphe.inews.util.Constants
+import sphe.inews.util.storage.AppStorage
 import javax.inject.Inject
+import javax.inject.Named
 
 class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener {
 
+    companion object{
+        const val TAG = "@KTX"
+    }
 
     @Suppress("unused")
     @Inject
@@ -29,6 +35,10 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     @Suppress("unused")
     @Inject
     lateinit var covidStatDialogFragment: CovidStatDialogFragment
+
+    @Inject
+    @Named(Constants.NAMED_STORAGE)
+    lateinit var appStorage: AppStorage
 
     @Suppress("unused")
     private lateinit var navController : NavController
@@ -85,18 +95,8 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     override fun onResume() {
         super.onResume()
-//        when(sharedPreferences.getString(SettingsActivity.KEY_THEME_MODE,"")){
-//            "light" ->{
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//            }
-//          "dark" ->{
-//              AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//          }else ->{
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-//            }
-//        }
+        setTheme()
         navController.addOnDestinationChangedListener(this)
-
     }
 
     override fun onPause() {
@@ -120,8 +120,8 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     private fun showThemeDialog(){
 
         val list = resources.getStringArray(R.array.theme_modes)
-        val index = Constants.selectThemeIndex("")
-        var selectedIndex :Int? = null
+        val index = Constants.selectThemeIndex(appStorage.getStringData(Constants.KEY_THEME,Constants.DEFAULT_THEME))
+        var selectedIndex :Int = index
 
         MaterialAlertDialogBuilder(this,R.style.MaterialThemeDialog)
         .setTitle("Select Theme Mode")
@@ -130,11 +130,23 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             selectedIndex = which
         }
         .setPositiveButton("OK"){dialog, _ ->
-//            if(selectedIndex!=null){
-//
-//            }
+            appStorage.saveStringData(Constants.KEY_THEME,Constants.selectThemeValue(list[selectedIndex]))
+            setTheme()
             dialog.dismiss()
         }.create().show()
+    }
+
+    private fun setTheme(){
+        when(appStorage.getStringData(Constants.KEY_THEME,Constants.DEFAULT_THEME)){
+            "light" ->{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+            "dark" ->{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }else ->{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
+        }
     }
 
 }
