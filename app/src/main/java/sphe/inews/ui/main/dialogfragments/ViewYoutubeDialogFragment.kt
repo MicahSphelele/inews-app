@@ -1,12 +1,11 @@
 package sphe.inews.ui.main.dialogfragments
 
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -41,14 +40,7 @@ class ViewYoutubeDialogFragment @Inject constructor(): DaggerDialogFragment(), Y
         
         youtube_player_view.initialize(this)
 
-        context?.resources?.let {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                (toolbar as Toolbar).navigationIcon = context?.resources?.getDrawable(R.drawable.ic_action_home,null)
-            }else{
-                @Suppress("DEPRECATION")
-                (toolbar as Toolbar).navigationIcon = context?.resources?.getDrawable(R.drawable.ic_action_home)
-            }
-        }
+        (toolbar as Toolbar).navigationIcon = ContextCompat.getDrawable(requireContext(),R.drawable.ic_action_home)
 
         (toolbar as Toolbar).setNavigationOnClickListener{
             dismiss()
