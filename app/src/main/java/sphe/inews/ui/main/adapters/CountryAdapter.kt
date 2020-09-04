@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import sphe.inews.R
 import sphe.inews.models.Country
@@ -28,11 +29,11 @@ class CountryAdapter(private var list: List<Country>) : RecyclerView.Adapter<Cou
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
 
-            holder.image.setImageDrawable(holder.itemView.context.resources.getDrawable(country.image,null))
+            holder.image.setImageDrawable(ContextCompat.getDrawable(holder.itemView.context,country.image))
 
         }else{
             @Suppress("DEPRECATION")
-            holder.image.setImageDrawable(holder.itemView.context.resources.getDrawable(country.image))
+            holder.image.setImageDrawable(ContextCompat.getDrawable(holder.itemView.context,country.image))
         }
         holder.title.text = country.countryName
 
@@ -46,7 +47,7 @@ class CountryAdapter(private var list: List<Country>) : RecyclerView.Adapter<Cou
         this.listener = listener
     }
 
-    inner class ViewHolder(@NonNull v: View): RecyclerView.ViewHolder(v){
+     class ViewHolder(@NonNull v: View): RecyclerView.ViewHolder(v){
         var image : ImageView = v.findViewById(R.id.image)
         var title :TextView  = v.findViewById(R.id.title)
     }
