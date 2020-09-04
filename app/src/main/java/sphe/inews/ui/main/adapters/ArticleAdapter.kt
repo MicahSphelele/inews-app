@@ -88,7 +88,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
         this.listener = listener
     }
 
-   inner class ViewHolder(@NonNull v: View):RecyclerView.ViewHolder(v){
+    class ViewHolder(@NonNull v: View):RecyclerView.ViewHolder(v){
           var image : ShapeableImageView = v.findViewById(R.id.image)
           var title : TextView = v.findViewById(R.id.title)
           var source : TextView = v.findViewById(R.id.source)
