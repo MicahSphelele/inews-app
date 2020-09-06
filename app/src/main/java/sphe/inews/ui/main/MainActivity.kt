@@ -135,6 +135,9 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             appStorage.saveStringData(Constants.KEY_THEME,Constants.selectThemeValue(list[selectedIndex]))
             setTheme()
             dialog.dismiss()
+        }
+        .setNegativeButton("CANCEL"){dialog, _ ->
+            dialog.dismiss()
         }.create().show()
     }
 
