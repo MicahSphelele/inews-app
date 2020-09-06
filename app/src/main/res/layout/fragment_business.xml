@@ -14,7 +14,7 @@
         android:fontFamily="casual"
         android:textSize="8pt"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="?attr/articleLoadErrorTextColor"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
