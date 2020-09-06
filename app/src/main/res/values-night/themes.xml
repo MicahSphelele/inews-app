@@ -37,7 +37,7 @@
         <item name="dialogTextColor">@color/colorWhite</item>
         <item name="dialogBackgroundColor">@color/colorDarkNavy</item>
         <item name="dialogButtonTextColor">@color/colorAccent</item>
-        <item name="articleErrorButtonBackgroundColor">@drawable/btn_rounded_</item>
+        <item name="articleErrorButtonBackgroundColor">@color/colorAccent</item>
     </style>
 
     <style name="PopupMenuStyle" parent="Theme.MaterialComponents.Light">
