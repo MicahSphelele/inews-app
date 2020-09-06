@@ -33,6 +33,8 @@
         android:textStyle="bold"
         android:fontFamily="casual"
         android:visibility="gone"
+        android:padding="8dp"
+        app:backgroundTint="?attr/articleErrorButtonBackgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_message" />
