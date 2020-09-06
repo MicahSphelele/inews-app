@@ -1,5 +1,6 @@
 package sphe.inews.ui.main
 
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -44,6 +45,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     @Suppress("unused")
     private lateinit var navController : NavController
 
+    private var dialog : Dialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,11 +101,19 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     override fun onResume() {
         super.onResume()
         navController.addOnDestinationChangedListener(this)
+        if(dialog!=null){
+            dialog?.show()
+        }
     }
 
     override fun onPause() {
         super.onPause()
         navController.removeOnDestinationChangedListener(this)
+        if(dialog!=null){
+            if(dialog!!.isShowing){
+                dialog?.dismiss()
+            }
+        }
     }
 
     override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
@@ -125,7 +135,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         val index = Constants.selectThemeIndex(appStorage.getStringData(Constants.KEY_THEME,Constants.DEFAULT_THEME))
         var selectedIndex :Int = index
 
-        MaterialAlertDialogBuilder(this,R.style.MaterialThemeDialog)
+        val builder =MaterialAlertDialogBuilder(this,R.style.MaterialThemeDialog)
         .setTitle("Select Mode")
         .setIcon(R.drawable.logo)
         .setSingleChoiceItems(R.array.theme_modes,index) { _, which ->
@@ -138,7 +148,9 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         }
         .setNegativeButton("CANCEL"){dialog, _ ->
             dialog.dismiss()
-        }.create().show()
+        }
+        dialog = builder.create()
+        dialog?.show()
     }
 
     private fun setTheme(){
