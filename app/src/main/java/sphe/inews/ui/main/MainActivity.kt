@@ -126,7 +126,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         var selectedIndex :Int = index
 
         MaterialAlertDialogBuilder(this,R.style.MaterialThemeDialog)
-        .setTitle("Select Theme Mode")
+        .setTitle("Select Mode")
         .setIcon(R.drawable.logo)
         .setSingleChoiceItems(R.array.theme_modes,index) { _, which ->
             selectedIndex = which
