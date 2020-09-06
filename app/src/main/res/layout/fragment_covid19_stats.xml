@@ -81,8 +81,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/image_virus"
                 tools:text="South Africa" />
 
-
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_1"
                 android:layout_width="match_parent"
@@ -403,12 +401,13 @@
                 android:id="@+id/btn_retry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_rounded"
                 android:text="@string/retry"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:fontFamily="casual"
                 android:visibility="gone"
+                android:padding="8dp"
+                app:backgroundTint="?attr/articleErrorButtonBackgroundColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_message" />
