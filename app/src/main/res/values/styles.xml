@@ -37,12 +37,17 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
         <item name="colorSurface">?attr/dialogBackgroundColor</item>
-        <item name="android:textColor">?attr/dialogTextColor</item>
         <item name="buttonBarPositiveButtonStyle">@style/MaterialDialogButton</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialDialogTitle</item>
     </style>
 
     <style name="MaterialDialogButton" parent="@style/Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">?attr/dialogButtonTextColor</item>
+    </style>
+
+    <style name="MaterialDialogTitle" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Text" >
+        <item name="android:textColor">?attr/dialogTextColor</item>
+        <item name="android:textAppearance">?attr/textAppearanceSubtitle2</item>
     </style>
 
     <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
