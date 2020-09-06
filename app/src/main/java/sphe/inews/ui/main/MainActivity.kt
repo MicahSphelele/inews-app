@@ -48,7 +48,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        setTheme()
         Log.d(TAG,"MainActivity")
 
         setSupportActionBar(toolbar as Toolbar)
@@ -98,7 +98,6 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     override fun onResume() {
         super.onResume()
-        setTheme()
         navController.addOnDestinationChangedListener(this)
     }
 
