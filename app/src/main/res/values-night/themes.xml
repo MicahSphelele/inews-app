@@ -36,6 +36,7 @@
         <item name="toolBarTextColor">@color/colorAccent</item>
         <item name="dialogTextColor">@color/colorWhite</item>
         <item name="dialogBackgroundColor">@color/colorDarkNavy</item>
+        <item name="dialogButtonTextColor">@color/colorAccent</item>
     </style>
 
     <style name="PopupMenuStyle" parent="Theme.MaterialComponents.Light">
