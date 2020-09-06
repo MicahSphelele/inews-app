@@ -381,37 +381,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/card_5"
                 />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txt_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="casual"
-                android:textSize="8pt"
-                android:textStyle="bold"
-                android:textColor="?attr/articleLoadErrorTextColor"
-                android:textAlignment="center"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Some thing went wrong" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_retry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/retry"
-                android:textColor="@color/colorWhite"
-                android:textStyle="bold"
-                android:fontFamily="casual"
-                android:visibility="gone"
-                android:padding="8dp"
-                app:backgroundTint="?attr/articleErrorButtonBackgroundColor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_message" />
-
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_view_container"
                 android:layout_width="match_parent"
@@ -452,6 +421,37 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textSize="8pt"
+        android:textStyle="bold"
+        android:textColor="?attr/articleLoadErrorTextColor"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Some thing went wrong" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/retry"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:fontFamily="casual"
+        android:visibility="gone"
+        android:padding="8dp"
+        app:backgroundTint="?attr/articleErrorButtonBackgroundColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_message" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
