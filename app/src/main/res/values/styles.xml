@@ -30,10 +30,14 @@
         <item name="tint">?attr/toolBarTextColor</item>
     </style>
 
-    <style name="MaterialThemeDialog" parent="Theme.MaterialComponents.Light.Dialog" >
+    <style name="MaterialThemeDialog" parent="Theme.MaterialComponents.DayNight.Dialog" >
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+        <item name="colorSurface">?attr/dialogBackgroundColor</item>
+        <item name="android:textColor">?attr/dialogTextColor</item>
     </style>
 
     <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
