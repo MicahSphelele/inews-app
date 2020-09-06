@@ -39,6 +39,7 @@
         <item name="dialogTextColor">@color/colorBlack</item>
         <item name="dialogBackgroundColor">@color/colorWhite</item>
         <item name="dialogButtonTextColor">@color/colorPrimaryDark</item>
+        <item name="errorButtonBackgroundColor">@drawable/btn_rounded</item>
     </style>
 
     <style name="PopupMenuStyle" parent="Theme.MaterialComponents.Light">
