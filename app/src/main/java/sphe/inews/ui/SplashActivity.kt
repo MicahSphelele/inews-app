@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
 import sphe.inews.R
 import sphe.inews.ui.main.MainActivity
 import sphe.inews.util.Constants
+import sphe.inews.util.storage.AppStorage
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Named
@@ -19,6 +20,10 @@ class SplashActivity : BaseActivity() {
     @Inject
     @Named(Constants.NAMED_APP_VERSION)
     lateinit var appVersion: String
+
+    @Inject
+    @Named(Constants.NAMED_STORAGE)
+    lateinit var appStorage: AppStorage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
