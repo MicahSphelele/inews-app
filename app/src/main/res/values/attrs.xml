@@ -27,5 +27,6 @@
         <attr name="dialogTextColor" format="color"/>
         <attr name="dialogBackgroundColor" format="color"/>
         <attr name="dialogButtonTextColor" format="color"/>
+        <attr name="errorButtonBackgroundColor" format="color"/>
     </declare-styleable>
 </resources>
