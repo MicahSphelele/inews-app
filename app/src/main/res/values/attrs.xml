@@ -24,5 +24,7 @@
         <attr name="previewDetailTextColor" format="color"/>
         <attr name="articleLoadErrorTextColor" format="color"/>
         <attr name="toolBarTextColor" format="color"/>
+        <attr name="dialogTextColor" format="color"/>
+        <attr name="dialogBackgroundColor" format="color"/>
     </declare-styleable>
 </resources>
