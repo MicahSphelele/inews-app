@@ -131,7 +131,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         .setSingleChoiceItems(R.array.theme_modes,index) { _, which ->
             selectedIndex = which
         }
-        .setPositiveButton("OK"){dialog, _ ->
+        .setPositiveButton("CHANGE"){dialog, _ ->
             appStorage.saveStringData(Constants.KEY_THEME,Constants.selectThemeValue(list[selectedIndex]))
             setTheme()
             dialog.dismiss()
