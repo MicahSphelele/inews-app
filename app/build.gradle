@@ -4,13 +4,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion Versions.maxSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
         applicationId "sphe.inews"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.maxSdkVersion
         versionCode 2
         versionName "v1.0.1"
 
@@ -40,19 +40,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.13'
+    testImplementation Deps.JUNIT
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test:rules:1.3.0'
 
     implementation Deps.KOTLIN_STD_LIB
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation "androidx.browser:browser:1.2.0"
-    androidTestImplementation 'androidx.test:rules:1.3.0'
+    implementation Deps.ANDROIDX_APPCOMPAT
+    implementation Deps.ANDROIDX_CORE_KTX
+    implementation Deps.ANDROIDX_CONSTRAINT
+    implementation Deps.ANDROIDX_LEGACY
+    implementation Deps.ANDROIDX_RECYCLER_VIEW
+    implementation Deps.ANDROIDX_CARD_VIEW
+    implementation Deps.ANDROIDX_BROWSER
 
     //AndroidX support design (for nav drawer)
     implementation 'com.google.android.material:material:1.2.1'
