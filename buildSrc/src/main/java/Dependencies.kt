@@ -13,6 +13,8 @@ object Versions {
     const val androidxTestExt = "1.1.2"
     const val androidxEspresso = "3.3.0"
     const val androidxTestRules = "1.3.0"
+    const val material = "1.2.1"
+
     const val buildToolsVersion = "29.0.3"
     const val minSdkVersion = 21
     const val maxSdkVersion = 29
@@ -44,9 +46,7 @@ object Deps {
     const val ANDROIDX_CARD_VIEW = "androidx.cardview:cardview:${Versions.androidxCardView}"
     const val ANDROIDX_BROWSER = "androidx.browser:browser:${Versions.androidxBrowser}"
 
-    /*
-    *     androidTestImplementation ''
-    androidTestImplementation ''
-    androidTestImplementation ''
-    * */
+    //Material
+    const val MATERIAL = "com.google.android.material:material:${Versions.material}"
+
 }

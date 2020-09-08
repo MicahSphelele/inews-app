@@ -55,7 +55,7 @@ dependencies {
     implementation Deps.ANDROIDX_BROWSER
 
     //AndroidX support design (for nav drawer)
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation Deps.MATERIAL
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
