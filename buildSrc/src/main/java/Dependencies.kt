@@ -14,7 +14,8 @@ object Versions {
     const val androidxEspresso = "3.3.0"
     const val androidxTestRules = "1.3.0"
     const val material = "1.2.1"
-
+    const val retrofit = "2.9.0"
+    const val androidxLifeCycleExt ="2.2.0"
     const val buildToolsVersion = "29.0.3"
     const val minSdkVersion = 21
     const val maxSdkVersion = 29
@@ -45,8 +46,17 @@ object Deps {
     const val ANDROIDX_RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${Versions.androidxRecyclerView}"
     const val ANDROIDX_CARD_VIEW = "androidx.cardview:cardview:${Versions.androidxCardView}"
     const val ANDROIDX_BROWSER = "androidx.browser:browser:${Versions.androidxBrowser}"
+    const val ANDROIDX_LIFECYCLE_EXT = "androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifeCycleExt}"
 
     //Material
     const val MATERIAL = "com.google.android.material:material:${Versions.material}"
+
+    //Retrofit
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val RETROFIT_GSON_CONVERTER = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+
+
+    /*
+   ''*/
 
 }
