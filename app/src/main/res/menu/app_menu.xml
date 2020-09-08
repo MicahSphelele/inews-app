@@ -6,8 +6,8 @@
         android:title="@string/about"/>
 
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/settings"
+        android:id="@+id/action_theme"
+        android:title="@string/mode"
         />
 
     <item

@@ -82,7 +82,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             R.id.action_corona -> {
                 covidStatDialogFragment.show(supportFragmentManager,"covidStatDialogFragment")
             }
-            R.id.action_settings -> {
+            R.id.action_theme -> {
                showThemeDialog()
             }
         }
@@ -136,12 +136,12 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         var selectedIndex :Int = index
 
         val builder =MaterialAlertDialogBuilder(this,R.style.MaterialThemeDialog)
-        .setTitle("Select Mode")
+        .setTitle("Theme")
         .setIcon(R.drawable.logo)
         .setSingleChoiceItems(R.array.theme_modes,index) { _, which ->
             selectedIndex = which
         }
-        .setPositiveButton("CHANGE"){dialog, _ ->
+        .setPositiveButton("SAVE"){dialog, _ ->
             appStorage.saveStringData(Constants.KEY_THEME,Constants.selectThemeValue(list[selectedIndex]))
             setTheme()
             dialog.dismiss()

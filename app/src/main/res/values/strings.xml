@@ -32,7 +32,7 @@
     <string name="url_instagram">https://www.instagram.com/sphelele_micah_ngubane/?hl=en</string>
     <string name="filter">Filter</string>
     <string name="select_country">Select Country</string>
-    <string name="settings">Settings</string>
+    <string name="mode">Mode</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
     <!-- Preference Titles -->
