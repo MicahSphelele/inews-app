@@ -54,12 +54,13 @@ dependencies {
     implementation Deps.ANDROIDX_CARD_VIEW
     implementation Deps.ANDROIDX_BROWSER
 
-    //AndroidX support design (for nav drawer)
+    //AndroidX support design
     implementation Deps.MATERIAL
 
     //Retrofit
     implementation Deps.RETROFIT
     implementation Deps.RETROFIT_GSON_CONVERTER
+    implementation Deps.RETROFIT_RX_ADAPTER
 
     //ViewModel and LiveData
     implementation Deps.ANDROIDX_LIFECYCLE_EXT
@@ -75,21 +76,17 @@ dependencies {
     kapt Deps.DAGGER_PROCESSOR
 
     //Room Database
-    implementation 'androidx.room:room-rxjava2:2.2.5'
-    implementation 'androidx.room:room-rxjava2:2.2.5'
-    kapt 'androidx.room:room-compiler:2.2.5'
+    implementation Deps.ANDROIDX_ROOM_RXJAVA2
+    kapt Deps.ANDROIDX_ROOM_COMPILER
 
     //RxAndroid
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation Deps.RX_ANDROID
 
     //RxJava
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
-
-    //Rx-Retrofit Call Adapter
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+    implementation Deps.RX_JAVA
 
     // Reactive Streams (convert Observable to LiveData)
-    implementation 'android.arch.lifecycle:reactivestreams:1.1.1'
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams-ktx:2.2.0'
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
