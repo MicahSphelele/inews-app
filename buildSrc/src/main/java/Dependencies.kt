@@ -1,3 +1,4 @@
+@Suppress("unused")
 object Versions {
     const val junit = "4.13"
     const val kotlin = "1.4.0"
@@ -9,6 +10,9 @@ object Versions {
     const val androidxRecyclerView = "1.1.0"
     const val androidxCardView = "1.0.0"
     const val androidxBrowser = "1.2.0"
+    const val androidxTestExt = "1.1.2"
+    const val androidxEspresso = "3.3.0"
+    const val androidxTestRules = "1.3.0"
     const val buildToolsVersion = "29.0.3"
     const val minSdkVersion = 21
     const val maxSdkVersion = 29
@@ -24,7 +28,12 @@ object Deps {
     const val KOTLIN_GRADLE = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val KOTLIN_STD_LIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
 
+    //AndroidX Test
     const val JUNIT = "junit:junit:${Versions.junit}"
+    const val ANDROIDX_TEST_EXT = "androidx.test.ext:junit:${Versions.androidxTestExt}"
+    const val ANDROIDX_ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.androidxEspresso}"
+    const val ANDROIDX_TEST_RULES = "androidx.test:rules:${Versions.androidxTestRules}"
+
 
     //AndroidX
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.androidXAppcompat}"
@@ -34,4 +43,10 @@ object Deps {
     const val ANDROIDX_RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${Versions.androidxRecyclerView}"
     const val ANDROIDX_CARD_VIEW = "androidx.cardview:cardview:${Versions.androidxCardView}"
     const val ANDROIDX_BROWSER = "androidx.browser:browser:${Versions.androidxBrowser}"
+
+    /*
+    *     androidTestImplementation ''
+    androidTestImplementation ''
+    androidTestImplementation ''
+    * */
 }

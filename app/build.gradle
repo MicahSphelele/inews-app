@@ -41,9 +41,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation Deps.JUNIT
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    androidTestImplementation 'androidx.test:rules:1.3.0'
+    androidTestImplementation Deps.ANDROIDX_TEST_EXT
+    androidTestImplementation Deps.ANDROIDX_ESPRESSO
+    androidTestImplementation Deps.ANDROIDX_TEST_RULES
 
     implementation Deps.KOTLIN_STD_LIB
     implementation Deps.ANDROIDX_APPCOMPAT
