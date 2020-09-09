@@ -21,6 +21,8 @@ object Versions {
     const val material = "1.2.1"
     const val retrofit = "2.9.0"
     const val dagger = "2.27"
+    const val glide = "4.11.0"
+    const val dataBinding ="3.1.4"
     const val buildToolsVersion = "29.0.3"
     const val minSdkVersion = 21
     const val maxSdkVersion = 29
@@ -75,5 +77,13 @@ object Deps {
     //RxAndroid
     const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${Versions.rxJavaAndroid}"
     const val RX_JAVA = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
+
+    //Glide
+    const val GLIDE = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.glide}"
+
+    //Data binding
+    const val DATA_BINDING_COMPILER = "com.android.databinding:compiler:${Versions.dataBinding}"
+
 
 }

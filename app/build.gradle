@@ -89,11 +89,11 @@ dependencies {
     implementation Deps.ANDROIDX_LIFECYCLE_STREAM_EXT
 
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation Deps.GLIDE
+    kapt Deps.GLIDE_COMPILER
 
     //Data Binding compiler
-    kapt 'com.android.databinding:compiler:3.1.4'
+    kapt Deps.DATA_BINDING_COMPILER
 
     // Architecture comp. navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
