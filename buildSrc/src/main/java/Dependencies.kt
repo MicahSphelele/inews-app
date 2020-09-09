@@ -24,6 +24,8 @@ object Versions {
     const val dagger = "2.27"
     const val glide = "4.11.0"
     const val dataBinding ="3.1.4"
+    const val customYoutubePlayer = "10.0.5"
+    const val customShimmer = "0.5.0"
     const val buildToolsVersion = "29.0.3"
     const val minSdkVersion = 21
     const val maxSdkVersion = 29
@@ -88,10 +90,8 @@ object Deps {
     //Data binding
     const val DATA_BINDING_COMPILER = "com.android.databinding:compiler:${Versions.dataBinding}"
 
-    /*
-    *     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
-    * */
-
+    //Custom lib
+    const val CUSTOM_YOUTUBE_PLAYER = "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.customYoutubePlayer}"
+    const val CUSTOM_SHIMMER = "com.facebook.shimmer:shimmer:${Versions.customShimmer}"
 
 }

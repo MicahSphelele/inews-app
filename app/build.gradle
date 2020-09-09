@@ -100,6 +100,6 @@ dependencies {
     implementation Deps.ANDROIDX_NAV_UI_KTX
 
     //Custom Libraries
-    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation Deps.CUSTOM_YOUTUBE_PLAYER
+    implementation Deps.CUSTOM_YOUTUBE_PLAYER
 }
