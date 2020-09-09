@@ -86,7 +86,7 @@ dependencies {
     implementation Deps.RX_JAVA
 
     // Reactive Streams (convert Observable to LiveData)
-    implementation 'androidx.lifecycle:lifecycle-reactivestreams-ktx:2.2.0'
+    implementation Deps.ANDROIDX_LIFECYCLE_STREAM_EXT
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'

@@ -15,6 +15,7 @@ object Versions {
     const val androidxTestRules = "1.3.0"
     const val androidxLifeCycleExt ="2.2.0"
     const val androidxRoomRxJava = "2.2.5"
+    const val androidxLifeCycleReactiveStreams ="2.2.0"
     const val rxJavaAndroid = "2.1.1"
     const val rxJava = "2.2.10"
     const val material = "1.2.1"
@@ -53,7 +54,7 @@ object Deps {
     const val ANDROIDX_LIFECYCLE_EXT = "androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifeCycleExt}"
     const val ANDROIDX_ROOM_RXJAVA2 = "androidx.room:room-rxjava2:${Versions.androidxRoomRxJava}"
     const val ANDROIDX_ROOM_COMPILER = "androidx.room:room-compiler:${Versions.androidxRoomRxJava}"
-
+    const val ANDROIDX_LIFECYCLE_STREAM_EXT = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.androidxLifeCycleReactiveStreams}"
     //Material
     const val MATERIAL = "com.google.android.material:material:${Versions.material}"
 
