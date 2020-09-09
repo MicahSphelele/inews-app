@@ -16,6 +16,7 @@ object Versions {
     const val androidxLifeCycleExt ="2.2.0"
     const val androidxRoomRxJava = "2.2.5"
     const val androidxLifeCycleReactiveStreams ="2.2.0"
+    const val androidxNavigation = "2.3.0"
     const val rxJavaAndroid = "2.1.1"
     const val rxJava = "2.2.10"
     const val material = "1.2.1"
@@ -57,6 +58,8 @@ object Deps {
     const val ANDROIDX_ROOM_RXJAVA2 = "androidx.room:room-rxjava2:${Versions.androidxRoomRxJava}"
     const val ANDROIDX_ROOM_COMPILER = "androidx.room:room-compiler:${Versions.androidxRoomRxJava}"
     const val ANDROIDX_LIFECYCLE_STREAM_EXT = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.androidxLifeCycleReactiveStreams}"
+    const val ANDROIDX_NAV_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${Versions.androidxNavigation}"
+    const val ANDROIDX_NAV_UI_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.androidxNavigation}"
     //Material
     const val MATERIAL = "com.google.android.material:material:${Versions.material}"
 
@@ -84,6 +87,11 @@ object Deps {
 
     //Data binding
     const val DATA_BINDING_COMPILER = "com.android.databinding:compiler:${Versions.dataBinding}"
+
+    /*
+    *     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    * */
 
 
 }

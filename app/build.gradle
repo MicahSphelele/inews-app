@@ -96,8 +96,8 @@ dependencies {
     kapt Deps.DATA_BINDING_COMPILER
 
     // Architecture comp. navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    implementation Deps.ANDROIDX_NAV_FRAGMENT_KTX
+    implementation Deps.ANDROIDX_NAV_UI_KTX
 
     //Custom Libraries
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
