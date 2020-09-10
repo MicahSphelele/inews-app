@@ -114,12 +114,12 @@ class AppModule {
 
         return listOf(
             Country("South Africa","za", R.drawable.flag_south_africa),
-            Country("United Arab Emirates","ua", R.drawable.flag_uae),
+            Country("UAE","ua", R.drawable.flag_uae),
             Country("Italy","it", R.drawable.flag_italy),
             Country("Egypt","eg", R.drawable.flag_egypt),
             Country("China","ch", R.drawable.flag_china),
-            Country("United States","us", R.drawable.flag__usa),
-            Country("United Kingdom","uk", R.drawable.flag__uk),
+            Country("USA","us", R.drawable.flag__usa),
+            Country("UK","uk", R.drawable.flag__uk),
             Country("Morocco","ma", R.drawable.flag__morocco),
             Country("Japan","jp", R.drawable.flag__japan)
 
