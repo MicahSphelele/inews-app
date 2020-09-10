@@ -59,7 +59,7 @@ object Deps {
     const val ANDROIDX_LIFECYCLE_EXT = "androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifeCycleExt}"
     const val ANDROIDX_ROOM_RXJAVA2 = "androidx.room:room-rxjava2:${Versions.androidxRoomRxJava}"
     const val ANDROIDX_ROOM_COMPILER = "androidx.room:room-compiler:${Versions.androidxRoomRxJava}"
-    const val ANDROIDX_LIFECYCLE_STREAM_EXT = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.androidxLifeCycleReactiveStreams}"
+    const val ANDROIDX_LIFECYCLE_STREAM_KTX = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.androidxLifeCycleReactiveStreams}"
     const val ANDROIDX_NAV_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${Versions.androidxNavigation}"
     const val ANDROIDX_NAV_UI_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.androidxNavigation}"
     //Material
