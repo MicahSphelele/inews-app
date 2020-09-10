@@ -101,5 +101,5 @@ dependencies {
 
     //Custom Libraries
     implementation Deps.CUSTOM_YOUTUBE_PLAYER
-    implementation Deps.CUSTOM_YOUTUBE_PLAYER
+    implementation Deps.CUSTOM_SHIMMER
 }
