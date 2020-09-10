@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -104,7 +103,7 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment(), Cou
 
         viewModel.observeCovid19Data(countryName)?.let {
             viewModel.observeCovid19Data(countryName)?.removeObservers(this)
-            viewModel.observeCovid19Data(countryName)?.observe(viewLifecycleOwner, Observer {res ->
+            viewModel.observeCovid19Data(countryName)?.observe(viewLifecycleOwner, { res ->
 
                 when(res.status){
                     Resources.Status.LOADING ->{
@@ -132,7 +131,17 @@ class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment(), Cou
                                 val stats : LatestStatByCountry = res.data.latestStatByCountry!![0]
                                 txt_cases_confirmed.text = stats.totalCases
                                 txt_cases_active.text = stats.activeCases
-                                txt_critical.text = stats.seriousCritical
+
+                                if(stats.seriousCritical == ""){
+
+                                    txt_critical.text = "0"
+
+                                }else{
+
+                                    txt_critical.text = stats.seriousCritical
+                                    
+                                }
+
                                 txt_deaths.text = stats.totalDeaths
                                 txt_recovered.text = stats.totalRecovered
                                 txt_date_msg.text = String.format("The above stats were recorded on %s",Constants.appDateFormat(stats.recordDate))
