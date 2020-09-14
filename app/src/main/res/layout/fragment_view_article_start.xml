@@ -20,15 +20,15 @@
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/checkBookmark"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/custom_bookmark_check"
         android:button="@color/colorTransparent"
         android:checked="false"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="@+id/btn_exit"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_exit"
         app:layout_constraintTop_toTopOf="@+id/btn_exit" />
 
 
