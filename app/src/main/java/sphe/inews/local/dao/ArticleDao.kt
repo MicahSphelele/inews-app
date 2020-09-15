@@ -1,4 +1,4 @@
-package sphe.inews.local.room
+package sphe.inews.local.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
