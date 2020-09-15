@@ -26,7 +26,7 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
+class EntertainmentFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     @Suppress("unused")
     @Inject
@@ -41,10 +41,10 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
 
     @Suppress("unused")
     @Inject
-    lateinit var articlePreviewDialogFragment:ArticlePreviewFragment
+    lateinit var articlePreviewDialogFragment: ArticlePreviewFragment
 
 
-    private  val viewModel: EntertainmentViewModel by lazy {
+    private val viewModel: EntertainmentViewModel by lazy {
         ViewModelProvider(this, providerFactory).get(EntertainmentViewModel::class.java)
     }
 
@@ -79,23 +79,26 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
     }
 
 
-    override fun onArticleClicked(article: Article,isVideo:Boolean) {
-        when(isVideo){
-            true ->{
+    override fun onArticleClicked(article: Article, isVideo: Boolean) {
+        when (isVideo) {
+            true -> {
                 val bundle = Bundle()
-                bundle.putString(ViewYoutubeDialogFragment.URL,article.url)
+                bundle.putString(ViewYoutubeDialogFragment.URL, article.url)
                 viewYoutubeDialogFragment.arguments = bundle
-                viewYoutubeDialogFragment.show((activity as DaggerAppCompatActivity).supportFragmentManager,"viewYoutubeDialogFragment")
+                viewYoutubeDialogFragment.show(
+                    (activity as DaggerAppCompatActivity).supportFragmentManager,
+                    "viewYoutubeDialogFragment"
+                )
             }
-            false ->{
+            false -> {
                 val bundle = Bundle()
-                bundle.putString(ArticlePreviewFragment.TITLE,article.title)
-                bundle.putString(ArticlePreviewFragment.CONTENT,article.content)
-                bundle.putString(ArticlePreviewFragment.IMAGE,article.urlToImage)
-                bundle.putString(ArticlePreviewFragment.DATE,article.publishedAt)
-                bundle.putString(ArticlePreviewFragment.ARTICLE_URL,article.url)
-                bundle.putString(ArticlePreviewFragment.SOURCE_NAME,article.source.name)
-                findNavController().navigate(R.id.articlePreviewFragment,bundle,null,null)
+                bundle.putString(ArticlePreviewFragment.TITLE, article.title)
+                bundle.putString(ArticlePreviewFragment.CONTENT, article.content)
+                bundle.putString(ArticlePreviewFragment.IMAGE, article.urlToImage)
+                bundle.putString(ArticlePreviewFragment.DATE, article.publishedAt)
+                bundle.putString(ArticlePreviewFragment.ARTICLE_URL, article.url)
+                bundle.putString(ArticlePreviewFragment.SOURCE_NAME, article.source.name)
+                findNavController().navigate(R.id.articlePreviewFragment, bundle, null, null)
             }
         }
     }
@@ -109,12 +112,12 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
         startActivity(Intent.createChooser(shareIntent, null))
     }
 
-    private fun getEntertainmentNews(){
+    private fun getEntertainmentNews() {
         viewModel.observeEntertainmentNews("za")?.let {
             viewModel.observeEntertainmentNews("za")?.removeObservers(this)
             viewModel.observeEntertainmentNews("za")?.observe(viewLifecycleOwner, Observer { res ->
 
-                when(res.status){
+                when (res.status) {
                     Resources.Status.LOADING -> {
                         this.setErrorViewsVisibility(false)
                         this.setShimmerLayoutVisibility(true)
@@ -124,7 +127,7 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
                         this.setShimmerLayoutVisibility(false)
 
                         context?.resources?.let {
-                            txt_message.text =  context?.resources?.getString(R.string.msg_error)
+                            txt_message.text = context?.resources?.getString(R.string.msg_error)
                         }
                     }
                     Resources.Status.SUCCESS -> {
@@ -145,21 +148,21 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
     }
 
 
-    private fun setErrorViewsVisibility(isVisible:Boolean){
-        if(isVisible){
+    private fun setErrorViewsVisibility(isVisible: Boolean) {
+        if (isVisible) {
             btn_retry.visibility = View.VISIBLE
             txt_message.visibility = View.VISIBLE
-        }else{
+        } else {
             btn_retry.visibility = View.GONE
             txt_message.visibility = View.GONE
         }
     }
 
-    private fun setShimmerLayoutVisibility(isVisible:Boolean){
-        if(isVisible){
+    private fun setShimmerLayoutVisibility(isVisible: Boolean) {
+        if (isVisible) {
             shimmer_view_container.visibility = View.VISIBLE
             shimmer_view_container.startShimmer()
-        }else{
+        } else {
             shimmer_view_container.visibility = View.GONE
             shimmer_view_container.stopShimmer()
 
