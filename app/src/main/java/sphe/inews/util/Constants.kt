@@ -25,8 +25,15 @@ object Constants {
     const val NAMED_STORAGE = "storage"
     const val KEY_THEME = "appTheme"
     const val DEFAULT_THEME = "system_default"
-
-
+    const val TABLE_ARTICLE = "article"
+    const val AUTHOR = "author"
+    const val CONTENT = "content"
+    const val DESC = "description"
+    const val PUBLISH_AT = "publishedAt"
+    const val SOURCE = "source"
+    const val TITLE = "title"
+    const val URL = "url"
+    const val IMAGE_URL = "urlToImage"
 
    val  PACKS_NEWS = byteArrayOf(
         52,101,51,97,102,
