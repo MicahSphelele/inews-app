@@ -6,7 +6,7 @@ import sphe.inews.models.news.Article
 import sphe.inews.util.Constants
 
 @Dao
-interface BookMarkDao {
+interface BookmarkDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(article: Article)
