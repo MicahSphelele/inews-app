@@ -9,10 +9,10 @@ import sphe.inews.util.Constants
 interface BookmarkDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(bookmark: Bookmark)
+    suspend fun insert(bookmark: Bookmark) : Long
 
     @Delete
-    suspend fun delete(bookmark: Bookmark)
+    suspend fun delete(bookmark: Bookmark) : Long
 
     @Query("SELECT * FROM ${Constants.TABLE_BOOKMARK}")
      fun getBooMarks() : LiveData<Bookmark>
