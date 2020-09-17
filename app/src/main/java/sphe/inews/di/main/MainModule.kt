@@ -1,8 +1,10 @@
 package sphe.inews.di.main
 
+import android.app.Application
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import sphe.inews.local.repo.BookmarkRepository
 import sphe.inews.models.Country
 import sphe.inews.network.Covid19Api
 import sphe.inews.network.INewsApi
@@ -37,6 +39,12 @@ class MainModule {
     @Provides
     fun provideCountryAdapter(@Named(Constants.NAMED_COUNTRIES) list: List<Country>): CountryAdapter {
         return CountryAdapter(list)
+    }
+
+    @MainScope
+    @Provides
+    fun provideBookmarkRepository(application: Application) : BookmarkRepository {
+        return BookmarkRepository(application)
     }
 
 

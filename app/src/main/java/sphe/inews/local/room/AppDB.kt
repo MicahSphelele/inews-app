@@ -6,9 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import sphe.inews.local.dao.BookmarkDao
-import sphe.inews.models.news.Article
+import sphe.inews.models.Bookmark
 
-@Database(entities = [Article::class],version = 2,exportSchema = false)
+@Database(entities = [Bookmark::class],version = 2,exportSchema = false)
 abstract class AppDB : RoomDatabase(){
 
     abstract fun bookmarkDao() : BookmarkDao

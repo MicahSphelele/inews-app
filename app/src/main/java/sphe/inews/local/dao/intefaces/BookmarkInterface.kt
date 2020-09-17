@@ -1,15 +1,15 @@
 package sphe.inews.local.dao.intefaces
 
 import androidx.lifecycle.LiveData
-import sphe.inews.models.news.Article
+import sphe.inews.models.Bookmark
 
 interface BookmarkInterface {
 
-   fun insert(article: Article)
+   fun insert(bookmark: Bookmark)
 
-   fun delete(article: Article)
+   fun delete(bookmark: Bookmark)
 
-   fun getBooMarks() : LiveData<Article>
+   fun getBooMarks() : LiveData<Bookmark>
 
-   fun getBooMark(url : String) : Article
+   fun getBooMark(url : String) : Bookmark
 }
