@@ -1,4 +1,4 @@
-package sphe.inews.local.dao
+package sphe.inews.local.dao.intefaces
 
-interface BooMarkInteface {
+interface BooMarkInterface {
 }
