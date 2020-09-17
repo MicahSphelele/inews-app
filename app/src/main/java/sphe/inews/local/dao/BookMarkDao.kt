@@ -6,7 +6,7 @@ import sphe.inews.models.news.Article
 import sphe.inews.util.Constants
 
 @Dao
-interface ArticleDao {
+interface BookMarkDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(article: Article)
@@ -14,10 +14,10 @@ interface ArticleDao {
     @Delete
     suspend fun delete(article: Article)
 
-    @Query("SELECT * FROM ${Constants.TABLE_ARTICLE}")
-    suspend fun getArticles() : LiveData<Article>
+    @Query("SELECT * FROM ${Constants.TABLE_BOOKMARK}")
+    suspend fun getBooMarks() : LiveData<Article>
 
-    @Query("SELECT * FROM ${Constants.TABLE_ARTICLE} WHERE ${Constants.URL} =:url")
-    suspend fun getArticle(url : String) : Article
+    @Query("SELECT * FROM ${Constants.TABLE_BOOKMARK} WHERE ${Constants.URL} =:url")
+    suspend fun getBooMark(url : String) : Article
 
 }

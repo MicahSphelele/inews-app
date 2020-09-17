@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 import sphe.inews.util.Constants
 
 @Keep
-@Entity(tableName = Constants.TABLE_ARTICLE)
+@Entity(tableName = Constants.TABLE_BOOKMARK)
 data class Article(
     @PrimaryKey
     @SerializedName("url")

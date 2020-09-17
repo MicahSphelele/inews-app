@@ -25,7 +25,7 @@ object Constants {
     const val NAMED_STORAGE = "storage"
     const val KEY_THEME = "appTheme"
     const val DEFAULT_THEME = "system_default"
-    const val TABLE_ARTICLE = "article"
+    const val TABLE_BOOKMARK = "bookmark"
     const val AUTHOR = "author"
     const val CONTENT = "content"
     const val DESC = "description"
