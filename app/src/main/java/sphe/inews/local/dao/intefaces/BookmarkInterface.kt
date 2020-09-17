@@ -3,7 +3,7 @@ package sphe.inews.local.dao.intefaces
 import androidx.lifecycle.LiveData
 import sphe.inews.models.news.Article
 
-interface BooMarkInterface {
+interface BookmarkInterface {
 
    fun insert(article: Article)
 
