@@ -7,7 +7,7 @@ interface BookmarkInterface {
 
    fun insert(bookmark: Bookmark) : Long
 
-   fun delete(bookmark: Bookmark) : Long
+   fun delete(bookmark: Bookmark) : Int
 
    fun getBooMarks() : LiveData<Bookmark>
 

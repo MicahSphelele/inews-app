@@ -12,7 +12,7 @@ interface BookmarkDao {
     suspend fun insert(bookmark: Bookmark) : Long
 
     @Delete
-    suspend fun delete(bookmark: Bookmark) : Long
+    suspend fun delete(bookmark: Bookmark) : Int
 
     @Query("SELECT * FROM ${Constants.TABLE_BOOKMARK}")
      fun getBooMarks() : LiveData<Bookmark>

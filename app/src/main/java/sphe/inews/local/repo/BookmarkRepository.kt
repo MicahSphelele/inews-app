@@ -31,8 +31,8 @@ class BookmarkRepository @Inject constructor(application: Application) : Bookmar
         return insert!!
     }
 
-    override fun delete(bookmark: Bookmark) : Long {
-        var delete : Long? = null
+    override fun delete(bookmark: Bookmark) : Int {
+        var delete : Int? = null
         runBlocking {
             launch(Dispatchers.Default){
                 val job = async {bookmarkDao?.delete(bookmark)}
