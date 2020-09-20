@@ -100,8 +100,7 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                 bundle.putParcelable(ArticlePreviewFragment.BOOKMARK_OBJ,
                     Bookmark(0,article.url,article.author,
                         article.content,article.description,article.publishedAt,
-                        article.source.id.toString(),article.source.name,article.title,article.urlToImage)
-                )
+                        article.source.id.toString(),article.source.name,article.title,article.urlToImage))
 
                 findNavController().navigate(R.id.articlePreviewFragment,bundle,null,null)
             }
