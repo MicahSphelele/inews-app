@@ -31,6 +31,7 @@ class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
         const val DATE = "date"
         const val ARTICLE_URL = "articleUrl"
         const val SOURCE_NAME = "sourceName"
+        const val BOOKMARK_OBJ = "bookmarkObject"
     }
 
     @Suppress("RedundantOverride")
