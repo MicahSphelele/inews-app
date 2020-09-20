@@ -15,6 +15,7 @@ import dagger.android.support.DaggerAppCompatActivity
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_entertainment.*
 import sphe.inews.R
+import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.ArticleAdapter
@@ -95,6 +96,13 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
                 bundle.putString(ArticlePreviewFragment.DATE,article.publishedAt)
                 bundle.putString(ArticlePreviewFragment.ARTICLE_URL,article.url)
                 bundle.putString(ArticlePreviewFragment.SOURCE_NAME,article.source.name)
+
+                bundle.putParcelable(ArticlePreviewFragment.BOOKMARK_OBJ,
+                    Bookmark(0,article.url,article.author,
+                        article.content,article.description,article.publishedAt,
+                        article.source.id.toString(),article.source.name,article.title,article.urlToImage)
+                )
+
                 findNavController().navigate(R.id.articlePreviewFragment,bundle,null,null)
             }
         }
