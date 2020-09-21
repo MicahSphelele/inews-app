@@ -6,6 +6,7 @@ import android.app.Activity
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.google.android.material.transition.MaterialElevationScale
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_view_article.*
 import sphe.inews.R
+import sphe.inews.models.Bookmark
 import sphe.inews.util.Constants
 import javax.inject.Inject
 
@@ -70,6 +72,7 @@ class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
             articleUrl = this.getString(ARTICLE_URL,"")
         }
 
+        getDataObject()
     }
 
     @Suppress("RedundantOverride")
@@ -83,5 +86,14 @@ class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
     @Suppress("RedundantOverride")
     override fun onActivityCreated(args: Bundle?) {
         super.onActivityCreated(args)
+    }
+
+    private fun getDataObject(){
+        val bookmark = requireArguments().getParcelable(BOOKMARK_OBJ) as? Bookmark
+        if(bookmark != null){
+            Log.d("@TAG","data : ${bookmark.title}")
+        }else{
+            Log.d("@TAG","bookmark is null")
+        }
     }
 }
