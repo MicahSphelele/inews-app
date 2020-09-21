@@ -14,21 +14,21 @@ data class Bookmark(
     @ColumnInfo(name = Constants.ID)
     var id: Int = 0,
     @ColumnInfo(name = Constants.URL)
-    var url: String = "",
+    var url: String? = "",
     @ColumnInfo(name = Constants.AUTHOR)
-    var author: String = "'",
+    var author: String? = "'",
     @ColumnInfo(name = Constants.CONTENT)
-    var content: String = "",
+    var content: String? = "",
     @ColumnInfo(name = Constants.DESC)
-    var description: String = "",
+    var description: String? = "",
     @ColumnInfo(name = Constants.PUBLISH_AT)
-    var publishedAt: String,
+    var publishedAt: String?,
     @ColumnInfo(name = Constants.SOURCE_ID)
-    var sourceId: String = "",
+    var sourceId: String? = "",
     @ColumnInfo(name = Constants.SOURCE_NAME)
-    var sourceName: String = "",
+    var sourceName: String? = "",
     @ColumnInfo(name = Constants.TITLE)
-    var title: String,
+    var title: String?,
     @ColumnInfo(name = Constants.IMAGE_URL)
-    var urlToImage: String = ""
+    var urlToImage: String? = ""
 ) : Parcelable
