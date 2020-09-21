@@ -21,6 +21,7 @@ import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
+import sphe.inews.util.notNull
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
 
@@ -97,11 +98,18 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
                 bundle.putString(ArticlePreviewFragment.ARTICLE_URL,article.url)
                 bundle.putString(ArticlePreviewFragment.SOURCE_NAME,article.source.name)
 
+                val sourceID = if(article.source.id.notNull()){
+
+                    article.source.id.toString()
+
+                }else{
+                    "N/A"
+                }
+
                 bundle.putParcelable(ArticlePreviewFragment.BOOKMARK_OBJ,
                     Bookmark(0,article.url,article.author,
                         article.content,article.description,article.publishedAt,
-                        article.source.id.toString(),article.source.name,article.title,article.urlToImage)
-                )
+                        sourceID,article.source.name,article.title,article.urlToImage))
 
                 findNavController().navigate(R.id.articlePreviewFragment,bundle,null,null)
             }
