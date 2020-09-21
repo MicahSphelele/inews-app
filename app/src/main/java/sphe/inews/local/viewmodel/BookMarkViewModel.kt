@@ -3,9 +3,11 @@ package sphe.inews.local.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import sphe.inews.local.dao.intefaces.BookmarkInterface
+import sphe.inews.local.repo.BookmarkRepository
 import sphe.inews.models.Bookmark
+import javax.inject.Inject
 
-class BookMarkViewModel : ViewModel(), BookmarkInterface {
+class BookMarkViewModel @Inject constructor(val bookmarkRepository: BookmarkRepository) : ViewModel(), BookmarkInterface {
 
     override fun insert(bookmark: Bookmark): Long {
         TODO("Not yet implemented")
