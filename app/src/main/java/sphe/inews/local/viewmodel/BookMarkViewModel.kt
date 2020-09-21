@@ -7,22 +7,22 @@ import sphe.inews.local.repo.BookmarkRepository
 import sphe.inews.models.Bookmark
 import javax.inject.Inject
 
-class BookMarkViewModel @Inject constructor(val bookmarkRepository: BookmarkRepository) : ViewModel(), BookmarkInterface {
+class BookMarkViewModel @Inject constructor(private val bookmarkRepo: BookmarkRepository) : ViewModel(), BookmarkInterface {
 
     override fun insert(bookmark: Bookmark): Long {
-        TODO("Not yet implemented")
+        return bookmarkRepo.insert(bookmark)
     }
 
     override fun delete(bookmark: Bookmark): Int {
-        TODO("Not yet implemented")
+        return bookmarkRepo.delete(bookmark)
     }
 
     override fun getBooMarks(): LiveData<Bookmark> {
-        TODO("Not yet implemented")
+        return bookmarkRepo.getBooMarks()
     }
 
     override fun getBooMark(url: String): Bookmark {
-        TODO("Not yet implemented")
+        return bookmarkRepo.getBooMark(url)
     }
 
 }
