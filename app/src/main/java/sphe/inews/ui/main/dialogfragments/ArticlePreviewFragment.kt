@@ -6,7 +6,6 @@ import android.app.Activity
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,28 +58,12 @@ class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
             Constants.launchCustomTabIntent(activity as Activity,articleUrl)
         }
 
-        arguments?.apply {
-            txt_title.text = this.getString(TITLE,"")
-            txt_content.text = this.getString(CONTENT,"No Article content available. Please click on read more to view the article.")
-            txt_date.text = this.getString(DATE,"Date Unknown")?.let { Constants.appDateFormatArticle(it).toString() }
-            txt_source.text = this.getString(SOURCE_NAME,"")
-            Glide.with(header_image)
-                .load(Uri.parse(""+arguments?.getString(IMAGE)))
-                .placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher)
-                .into(header_image)
-            articleUrl = this.getString(ARTICLE_URL,"")
-        }
-
-        getDataObject()
+        setUpUIData()
     }
 
     @Suppress("RedundantOverride")
     override fun onStart() {
         super.onStart()
-
-
-
     }
 
     @Suppress("RedundantOverride")
@@ -88,12 +71,46 @@ class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
         super.onActivityCreated(args)
     }
 
-    private fun getDataObject(){
-        val bookmark = requireArguments().getParcelable(BOOKMARK_OBJ) as? Bookmark
-        if(bookmark != null){
-            Log.d("@TAG","data : ${bookmark.title}")
-        }else{
-            Log.d("@TAG","bookmark is null")
+    private fun setUpUIData(){
+        requireArguments().apply {
+            val bookmark = requireArguments().getParcelable(BOOKMARK_OBJ) as? Bookmark
+
+            txt_title.text = if(bookmark?.title == "" || bookmark?.title == null){
+                "No Title"
+            }else{
+                bookmark.title
+            }
+            txt_content.text = if(bookmark?.content == "" || bookmark?.content == null){
+                "No Article content available. Please click on read more to view the article."
+            }else{
+                bookmark.content
+            }
+            txt_date.text = if(bookmark?.publishedAt == "" || bookmark?.publishedAt==null){
+                "Date Unknown"
+            }else{
+                bookmark.publishedAt.let {
+                    Constants.appDateFormatArticle(it!!).toString()
+                }
+            }
+            txt_source.text = if(bookmark?.sourceName == "" || bookmark?.sourceName == null){
+                "No Source"
+            }else{
+                bookmark.sourceName
+            }
+
+            val imageUrl = if (bookmark?.urlToImage == "" || bookmark?.urlToImage == null){
+                "null"
+            }else{
+                bookmark.urlToImage
+            }
+            Glide.with(header_image)
+                .load(Uri.parse(imageUrl))
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
+                .into(header_image)
+
+            articleUrl = bookmark?.url!!
+
         }
     }
 }
