@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -129,7 +128,7 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     private fun getSportNews(){
         viewModel.observeSportNews("za")?.let {
             viewModel.observeSportNews("za")?.removeObservers(this)
-            viewModel.observeSportNews("za")?.observe(viewLifecycleOwner, Observer {res ->
+            viewModel.observeSportNews("za")?.observe(viewLifecycleOwner, { res ->
 
                 when(res.status){
                     Resources.Status.LOADING -> {
