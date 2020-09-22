@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -128,7 +127,7 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
     private fun getEntertainmentNews(){
         viewModel.observeEntertainmentNews("za")?.let {
             viewModel.observeEntertainmentNews("za")?.removeObservers(this)
-            viewModel.observeEntertainmentNews("za")?.observe(viewLifecycleOwner, Observer { res ->
+            viewModel.observeEntertainmentNews("za")?.observe(viewLifecycleOwner, { res ->
 
                 when(res.status){
                     Resources.Status.LOADING -> {
