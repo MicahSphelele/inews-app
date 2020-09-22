@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -128,7 +127,7 @@ class HealthFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     private fun getHealthNews(){
         viewModel.observeHealthNews("za")?.let {
             viewModel.observeHealthNews("za")?.removeObservers(this)
-            viewModel.observeHealthNews("za")?.observe(viewLifecycleOwner, Observer { res->
+            viewModel.observeHealthNews("za")?.observe(viewLifecycleOwner, { res->
                 when(res.status){
                     Resources.Status.LOADING -> {
                         this.setErrorViewsVisibility(false)
