@@ -10,14 +10,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_view_article.*
 import sphe.inews.R
+import sphe.inews.local.viewmodel.BookMarkViewModel
 import sphe.inews.models.Bookmark
 import sphe.inews.util.Constants
+import sphe.inews.util.notNull
+import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
 
 
@@ -35,7 +39,15 @@ class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
         const val BOOKMARK_OBJ = "bookmarkObject"
     }
 
-    @Suppress("RedundantOverride")
+    @Suppress("unused")
+    @Inject
+    lateinit var providerFactory: ViewModelProviderFactory
+
+    private val viewModel: BookMarkViewModel by lazy {
+        ViewModelProvider(this, providerFactory).get(BookMarkViewModel::class.java)
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enterTransition = MaterialElevationScale(/* growing= */ true)
@@ -73,35 +85,35 @@ class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
 
     private fun setUpUIData(){
         requireArguments().apply {
-            val bookmark = requireArguments().getParcelable(BOOKMARK_OBJ) as? Bookmark
+            val article = requireArguments().getParcelable(BOOKMARK_OBJ) as? Bookmark
 
-            txt_title.text = if(bookmark?.title == "" || bookmark?.title == null){
+            txt_title.text = if(article?.title == "" || article?.title == null){
                 "No Title"
             }else{
-                bookmark.title
+                article.title
             }
-            txt_content.text = if(bookmark?.content == "" || bookmark?.content == null){
+            txt_content.text = if(article?.content == "" || article?.content == null){
                 "No Article content available. Please click on read more to view the article."
             }else{
-                bookmark.content
+                article.content
             }
-            txt_date.text = if(bookmark?.publishedAt == "" || bookmark?.publishedAt==null){
+            txt_date.text = if(article?.publishedAt == "" || article?.publishedAt==null){
                 "Date Unknown"
             }else{
-                bookmark.publishedAt.let {
+                article.publishedAt.let {
                     Constants.appDateFormatArticle(it!!).toString()
                 }
             }
-            txt_source.text = if(bookmark?.sourceName == "" || bookmark?.sourceName == null){
+            txt_source.text = if(article?.sourceName == "" || article?.sourceName == null){
                 "No Source"
             }else{
-                bookmark.sourceName
+                article.sourceName
             }
 
-            val imageUrl = if (bookmark?.urlToImage == "" || bookmark?.urlToImage == null){
+            val imageUrl = if (article?.urlToImage == "" || article?.urlToImage == null){
                 "null"
             }else{
-                bookmark.urlToImage
+                article.urlToImage
             }
             Glide.with(header_image)
                 .load(Uri.parse(imageUrl))
@@ -109,8 +121,21 @@ class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
                 .error(R.mipmap.ic_launcher)
                 .into(header_image)
 
-            articleUrl = bookmark?.url!!
+            articleUrl = article?.url!!
+
+            val bookmark = viewModel.getBooMark(articleUrl)
+
+            checkBookmark.isChecked = bookmark.notNull()
+
+            checkBookmark.setOnCheckedChangeListener { _, checked ->
+                if(checked){
+                    viewModel.insert(article)
+                    return@setOnCheckedChangeListener
+                }
+                viewModel.delete(bookmark!!)
+            }
 
         }
+
     }
 }
