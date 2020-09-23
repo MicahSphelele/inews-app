@@ -11,5 +11,5 @@ interface BookmarkInterface {
 
    fun getBooMarks() : LiveData<Bookmark>
 
-   fun getBooMark(url : String) : Bookmark
+   fun getBooMark(url : String) : Bookmark?
 }
