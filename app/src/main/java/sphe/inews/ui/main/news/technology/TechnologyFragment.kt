@@ -91,7 +91,7 @@ class TechnologyFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
             }
             false ->{
                 val bundle = Bundle()
-                
+
                 val sourceID = if(article.source.id.notNull()){
 
                     article.source.id.toString()
