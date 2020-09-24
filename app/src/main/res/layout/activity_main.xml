@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/mainParentLayout"
     android:background="?attr/mainBackgroundColor"
     tools:context=".ui.main.MainActivity">
 
