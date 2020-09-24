@@ -90,13 +90,7 @@ class EntertainmentFragment : DaggerFragment() , ArticleAdapter.ArticleListener{
             }
             false ->{
                 val bundle = Bundle()
-                bundle.putString(ArticlePreviewFragment.TITLE,article.title)
-                bundle.putString(ArticlePreviewFragment.CONTENT,article.content)
-                bundle.putString(ArticlePreviewFragment.IMAGE,article.urlToImage)
-                bundle.putString(ArticlePreviewFragment.DATE,article.publishedAt)
-                bundle.putString(ArticlePreviewFragment.ARTICLE_URL,article.url)
-                bundle.putString(ArticlePreviewFragment.SOURCE_NAME,article.source.name)
-
+                
                 val sourceID = if(article.source.id.notNull()){
 
                     article.source.id.toString()
