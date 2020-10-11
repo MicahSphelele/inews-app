@@ -1,4 +1,3 @@
-
 package sphe.inews.ui.main.news.business
 
 import android.content.Intent
@@ -21,6 +20,7 @@ import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
+import sphe.inews.util.Constants
 import sphe.inews.util.notNull
 import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
@@ -44,7 +44,7 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     @Suppress("unused")
     @Inject
-    lateinit var articlePreviewDialogFragment:ArticlePreviewFragment
+    lateinit var articlePreviewDialogFragment: ArticlePreviewFragment
 
 
     private val viewModel: BusinessViewModel by lazy {
@@ -57,7 +57,11 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         enterTransition = MaterialElevationScale(/* growing= */ true)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_business, container, false)
     }
 
@@ -82,31 +86,46 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     }
 
-    override fun onArticleClicked(article: Article,isVideo:Boolean) {
-        when(isVideo){
-            true ->{
+    override fun onArticleClicked(article: Article, isVideo: Boolean) {
+        when (isVideo) {
+            true -> {
                 val bundle = Bundle()
-                bundle.putString(ViewYoutubeDialogFragment.URL,article.url)
+                bundle.putString(ViewYoutubeDialogFragment.URL, article.url)
                 viewYoutubeDialogFragment.arguments = bundle
-                viewYoutubeDialogFragment.show((activity as DaggerAppCompatActivity).supportFragmentManager,"viewYoutubeDialogFragment")
+                viewYoutubeDialogFragment.show(
+                    (activity as DaggerAppCompatActivity).supportFragmentManager,
+                    "viewYoutubeDialogFragment"
+                )
             }
-            false ->{
+            false -> {
                 val bundle = Bundle()
 
-                val sourceID = if(article.source.id.notNull()){
+                val sourceID = if (article.source.id.notNull()) {
 
                     article.source.id.toString()
 
-                }else{
+                } else {
                     "N/A"
                 }
 
-                bundle.putParcelable(ArticlePreviewFragment.BOOKMARK_OBJ,
-                    Bookmark(0,article.url,article.author,
-                        article.content,article.description,article.publishedAt,
-                        sourceID,article.source.name,article.title,article.urlToImage))
+                bundle.putParcelable(
+                    ArticlePreviewFragment.BOOKMARK_OBJ,
+                    Bookmark(
+                        0,
+                        article.url,
+                        article.author,
+                        article.content,
+                        article.description,
+                        article.publishedAt,
+                        sourceID,
+                        article.source.name,
+                        article.title,
+                        article.urlToImage,
+                        Constants.BUSINESS
+                    )
+                )
 
-                findNavController().navigate(R.id.articlePreviewFragment,bundle,null,null)
+                findNavController().navigate(R.id.articlePreviewFragment, bundle, null, null)
             }
         }
     }
@@ -120,11 +139,11 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
         startActivity(Intent.createChooser(shareIntent, null))
     }
 
-    private fun getBusinessNews(){
+    private fun getBusinessNews() {
         viewModel.observeBusinessNews("za")?.let {
             viewModel.observeBusinessNews("za")?.removeObservers(this)
             viewModel.observeBusinessNews("za")?.observe(viewLifecycleOwner, { res ->
-                when(res.status){
+                when (res.status) {
                     Resources.Status.LOADING -> {
                         this.setErrorViewsVisibility(false)
                         this.setShimmerLayoutVisibility(true)
@@ -134,7 +153,7 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
                         this.setShimmerLayoutVisibility(false)
 
                         context?.resources?.let {
-                            txt_message.text =  context?.resources?.getString(R.string.msg_error)
+                            txt_message.text = context?.resources?.getString(R.string.msg_error)
                         }
 
                     }
@@ -155,21 +174,21 @@ class BusinessFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
 
     }
 
-    private fun setErrorViewsVisibility(isVisible:Boolean){
-        if(isVisible){
+    private fun setErrorViewsVisibility(isVisible: Boolean) {
+        if (isVisible) {
             btn_retry.visibility = View.VISIBLE
             txt_message.visibility = View.VISIBLE
-        }else{
+        } else {
             btn_retry.visibility = View.GONE
             txt_message.visibility = View.GONE
         }
     }
 
-    private fun setShimmerLayoutVisibility(isVisible:Boolean){
-        if(isVisible){
+    private fun setShimmerLayoutVisibility(isVisible: Boolean) {
+        if (isVisible) {
             shimmer_view_container.visibility = View.VISIBLE
             shimmer_view_container.startShimmer()
-        }else{
+        } else {
             shimmer_view_container.visibility = View.GONE
             shimmer_view_container.stopShimmer()
 

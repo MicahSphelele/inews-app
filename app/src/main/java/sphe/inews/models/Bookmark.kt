@@ -30,5 +30,8 @@ data class Bookmark(
     @ColumnInfo(name = Constants.TITLE)
     var title: String?,
     @ColumnInfo(name = Constants.IMAGE_URL)
-    var urlToImage: String? = ""
+    var urlToImage: String? = "",
+    @ColumnInfo(name = Constants.CATEGORY)
+    var category: String? = ""
+
 ) : Parcelable
