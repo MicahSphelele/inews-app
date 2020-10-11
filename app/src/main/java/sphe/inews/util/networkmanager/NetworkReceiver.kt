@@ -23,7 +23,7 @@ class NetworkReceiver(private var networkReceiverInterface: NetworkReceiverInter
 
             if(netInfo == null){ //If it is in airplane mode
                 Log.i(TAG,"Device is on airplane mode...")
-                networkReceiverInterface.onConnectedToNetwork(NetworkType.AIRPLANE_MODE)
+                networkReceiverInterface.onConnectedToNetwork(NetworkType.AIRPLANE_MODE,false)
                 return
             }
 
@@ -35,11 +35,11 @@ class NetworkReceiver(private var networkReceiverInterface: NetworkReceiverInter
 
             if(netInfo.isConnected){
                 Log.i(TAG,"Device is connected to data or wifi..")
-                networkReceiverInterface.onConnectedToNetwork(networkType)
+                networkReceiverInterface.onConnectedToNetwork(networkType,true)
                 return
             }
             Log.i(TAG,"Device is not connected to data or wifi..")
-            networkReceiverInterface.onConnectedToNetwork(networkType)
+            networkReceiverInterface.onConnectedToNetwork(networkType,false)
 
         }
     }
@@ -47,7 +47,7 @@ class NetworkReceiver(private var networkReceiverInterface: NetworkReceiverInter
 
     interface NetworkReceiverInterface {
 
-        fun onConnectedToNetwork(networkType: NetworkType)
+        fun onConnectedToNetwork(networkType: NetworkType,isConnected:Boolean)
 
     }
 
