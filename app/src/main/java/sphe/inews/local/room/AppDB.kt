@@ -4,14 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import sphe.inews.local.dao.BookmarkDao
 import sphe.inews.models.Bookmark
+import sphe.inews.util.Constants
 
-@Database(entities = [Bookmark::class],version = 2,exportSchema = false)
-abstract class AppDB : RoomDatabase(){
+@Database(entities = [Bookmark::class], version = Constants.DB_VERSION, exportSchema = false)
+abstract class AppDB : RoomDatabase() {
 
-    abstract fun bookmarkDao() : BookmarkDao
+    abstract fun bookmarkDao(): BookmarkDao
 
     companion object {
 
@@ -38,12 +38,15 @@ abstract class AppDB : RoomDatabase(){
                 .build()
         }
 
-        private val callBack = object : RoomDatabase.Callback(){
-            override fun onCreate(db: SupportSQLiteDatabase) {
-                super.onCreate(db)
-            }
+        private val callBack = object : RoomDatabase.Callback() {
 
         }
+
+//        private val MIGRATION_1_2 = object : Migration(1, 2) {
+//            override fun migrate(db: SupportSQLiteDatabase) {
+//                db.execSQL("ALTER TABLE ${Constants.TABLE_BOOKMARK} ADD COLUMN ${Constants.CATEGORY} TEXT")
+//            }
+//        }
     }
 
 }
