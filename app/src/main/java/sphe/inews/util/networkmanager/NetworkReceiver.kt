@@ -50,4 +50,10 @@ class NetworkReceiver(private var networkReceiverInterface: NetworkReceiverInter
         fun onConnectedToNetwork(networkType: NetworkType)
 
     }
+
+    enum class NetworkType {
+        MOBILE_DATA,
+        WIFI,
+        AIRPLANE_MODE
+    }
 }
