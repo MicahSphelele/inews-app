@@ -37,6 +37,7 @@ object Constants {
     const val TITLE = "title"
     const val URL = "url"
     const val IMAGE_URL = "urlToImage"
+    const val CATEGORY = "category"
 
    val  PACKS_NEWS = byteArrayOf(
         52,101,51,97,102,
