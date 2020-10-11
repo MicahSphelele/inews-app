@@ -21,7 +21,7 @@ class BookMarkViewModel @Inject constructor(private val bookmarkRepo: BookmarkRe
         return bookmarkRepo.getBooMarks()
     }
 
-    override fun getBooMark(url: String): Bookmark {
+    override fun getBooMark(url: String): Bookmark? {
         return bookmarkRepo.getBooMark(url)
     }
 

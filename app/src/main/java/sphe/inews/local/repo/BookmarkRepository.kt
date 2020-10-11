@@ -47,7 +47,7 @@ class BookmarkRepository @Inject constructor(application: Application) : Bookmar
         return bookmarkDao!!.getBooMarks()
     }
 
-    override fun getBooMark(url: String): Bookmark {
+    override fun getBooMark(url: String): Bookmark? {
         var bookmark : Bookmark? = null
         runBlocking {
             launch(Dispatchers.Default){
@@ -55,7 +55,7 @@ class BookmarkRepository @Inject constructor(application: Application) : Bookmar
                 bookmark = job.await()
             }
         }
-        return bookmark!!
+        return bookmark
     }
 
 
