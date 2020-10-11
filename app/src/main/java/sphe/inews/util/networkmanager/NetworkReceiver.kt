@@ -43,4 +43,11 @@ class NetworkReceiver(private var networkReceiverInterface: NetworkReceiverInter
 
         }
     }
+
+
+    interface NetworkReceiverInterface {
+
+        fun onConnectedToNetwork(networkType: NetworkType)
+
+    }
 }
