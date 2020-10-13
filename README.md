@@ -11,7 +11,7 @@ A simple open source news demo app developed in [**Kotlin**](https://kotlinlang.
 - View about and contact developer
 - View Covid-19 stats for South Africa, UAE, Italy, Egypt, China, USA, UK, Morocco and Japan
 - Filter Covid-19 stats by country
-- Switch between Default mode and Dark Mode depending on the system or you can keep it in dark mode or light mode from a dialog
+- Switch between Default mode and Dark mode depending on the system or you can keep it in dark mode or light mode from a dialog
 
 
 ## App Screen Shots (Light Mode)
