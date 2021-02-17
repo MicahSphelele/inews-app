@@ -10,12 +10,12 @@ import androidx.fragment.app.DialogFragment
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
-import dagger.android.support.DaggerDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_view_youtube.*
 import sphe.inews.R
-import javax.inject.Inject
 
-class ViewYoutubeDialogFragment @Inject constructor(): DaggerDialogFragment(), YouTubePlayerListener {
+@AndroidEntryPoint
+class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
 
 
     companion object{

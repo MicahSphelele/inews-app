@@ -5,10 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.databinding.DataBindingUtil
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import kotlinx.android.synthetic.main.activity_splash.*
 import sphe.inews.R
+import sphe.inews.databinding.ActivitySplashBinding
 import sphe.inews.ui.main.MainActivity
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
@@ -29,7 +30,7 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        setContentView(R.layout.activity_splash)
+        val binding : ActivitySplashBinding = DataBindingUtil.setContentView(this,R.layout.activity_splash)
 
         when(appStorage.getStringData(Constants.KEY_THEME,Constants.DEFAULT_THEME)){
             "light" ->{
@@ -42,7 +43,7 @@ class SplashActivity : BaseActivity() {
             }
         }
 
-        txt_app_version.text = appVersion
+        binding.txtAppVersion.text = appVersion
 
     }
 

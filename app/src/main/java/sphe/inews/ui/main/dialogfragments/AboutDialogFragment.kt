@@ -17,18 +17,19 @@ import androidx.core.content.ContextCompat
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_about.*
 import kotlinx.android.synthetic.main.fragment_about.toolbar
 import kotlinx.android.synthetic.main.fragment_about.txt_app_version
 import kotlinx.android.synthetic.main.fragment_about_2.card
 import kotlinx.android.synthetic.main.fragment_about_2.layout_about
 import sphe.inews.R
-import sphe.inews.ui.bottomsheet.DaggerBottomSheetDialogFragment
 import sphe.inews.util.Constants
 import javax.inject.Inject
 import javax.inject.Named
-
-class AboutDialogFragment @Inject constructor(): DaggerBottomSheetDialogFragment() {
+@AndroidEntryPoint
+class AboutDialogFragment : BottomSheetDialogFragment() {
 
     @Inject
     @Named(Constants.NAMED_APP_VERSION)

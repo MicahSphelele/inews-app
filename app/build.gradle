@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'name.remal.check-dependency-updates'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion Versions.maxSdkVersion
@@ -22,7 +23,12 @@ android {
 
         dataBinding true
         // for view binding:
-        // viewBinding true
+        viewBinding true
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
     }
 
     compileOptions {
@@ -104,4 +110,11 @@ dependencies {
     //Custom Libraries
     implementation Deps.CUSTOM_YOUTUBE_PLAYER
     implementation Deps.CUSTOM_SHIMMER
+
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltCompilerVersion"
+
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltLifecycleViewmodelVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltLifecycleViewmodelVersion"
+
 }

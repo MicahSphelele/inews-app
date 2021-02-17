@@ -5,14 +5,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import sphe.inews.models.news.NewsResponse
-import sphe.inews.network.Resources
 import sphe.inews.network.INewsApi
+import sphe.inews.network.Resources
 import sphe.inews.util.Constants
 import javax.inject.Inject
 
+@HiltViewModel
 class SportViewModel @Inject constructor(private var api: INewsApi) : ViewModel() {
 
     private var newsResponse: MediatorLiveData<Resources<NewsResponse>>? = null

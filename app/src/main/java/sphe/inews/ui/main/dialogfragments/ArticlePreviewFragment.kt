@@ -10,22 +10,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.transition.MaterialElevationScale
-import dagger.android.support.DaggerFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_view_article.*
 import sphe.inews.R
 import sphe.inews.local.viewmodel.BookMarkViewModel
 import sphe.inews.models.Bookmark
 import sphe.inews.util.Constants
 import sphe.inews.util.notNull
-import sphe.inews.viewmodels.ViewModelProviderFactory
-import javax.inject.Inject
 
-
-class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
+@AndroidEntryPoint
+class ArticlePreviewFragment : Fragment() {
 
     private lateinit var articleUrl: String
 
@@ -33,13 +32,8 @@ class ArticlePreviewFragment @Inject constructor(): DaggerFragment() {
         const val BOOKMARK_OBJ = "bookmarkObject"
     }
 
-    @Suppress("unused")
-    @Inject
-    lateinit var providerFactory: ViewModelProviderFactory
 
-    private val viewModel: BookMarkViewModel by lazy {
-        ViewModelProvider(this, providerFactory).get(BookMarkViewModel::class.java)
-    }
+    private val viewModel by viewModels<BookMarkViewModel>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

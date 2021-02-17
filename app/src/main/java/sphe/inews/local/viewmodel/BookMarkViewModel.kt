@@ -2,11 +2,13 @@ package sphe.inews.local.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import sphe.inews.local.dao.intefaces.BookmarkInterface
 import sphe.inews.local.repo.BookmarkRepository
 import sphe.inews.models.Bookmark
 import javax.inject.Inject
 
+@HiltViewModel
 class BookMarkViewModel @Inject constructor(private val bookmarkRepo: BookmarkRepository) : ViewModel(), BookmarkInterface {
 
     override fun insert(bookmark: Bookmark): Long {

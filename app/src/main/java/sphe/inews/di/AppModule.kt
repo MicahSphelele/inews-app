@@ -1,13 +1,18 @@
 package sphe.inews.di
 
 import android.app.Application
+import android.content.Context
 import androidx.constraintlayout.widget.ConstraintSet
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import sphe.inews.BaseApplication
 import sphe.inews.R
 import sphe.inews.models.Country
 import sphe.inews.util.Constants
@@ -17,8 +22,15 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
+@InstallIn(SingletonComponent::class)
 @Module
-class AppModule {
+object AppModule {
+
+    @Singleton
+    @Provides
+    fun providesApplication(@ApplicationContext app: Context) : BaseApplication {
+        return app as BaseApplication
+    }
 
     @Singleton
     @Provides
@@ -88,7 +100,7 @@ class AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_APP_VERSION)
-    fun provideAppVersion(application:Application): String{
+    fun provideAppVersion(application: Application): String{
 
         return application.packageManager.getPackageInfo(application.packageName,0).versionName
     }
@@ -96,14 +108,14 @@ class AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_SET_OLD)
-    fun provideConstraintSet1() : ConstraintSet{
+    fun provideConstraintSet1() : ConstraintSet {
         return ConstraintSet()
     }
 
     @Singleton
     @Provides
     @Named(Constants.NAMED_SET_NEW)
-    fun provideConstraintSet2() : ConstraintSet{
+    fun provideConstraintSet2() : ConstraintSet {
         return ConstraintSet()
     }
 
@@ -132,5 +144,4 @@ class AppModule {
     fun provideAppStorage(application: Application) : AppStorage {
         return AppStorage(application)
     }
-
 }

@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import dagger.android.support.DaggerDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_covid19_stats.*
 import sphe.inews.R
 import sphe.inews.models.Country
@@ -20,29 +20,21 @@ import sphe.inews.models.covid.LatestStatByCountry
 import sphe.inews.network.Resources
 import sphe.inews.ui.main.adapters.CountryAdapter
 import sphe.inews.util.Constants
-import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
 
-
-class CovidStatDialogFragment @Inject constructor(): DaggerDialogFragment(), CountryAdapter.CountryListener  {
-
-
-    @Suppress("unused")
-    @Inject
-    lateinit var providerFactory: ViewModelProviderFactory
+@AndroidEntryPoint
+class CovidStatDialogFragment  : DialogFragment(), CountryAdapter.CountryListener  {
 
     @Inject
     lateinit var adapter: CountryAdapter
 
     private lateinit var countryBottomDialog: BottomSheetDialog
 
-    private val viewModel: Covid19StatsViewModel by lazy {
-        ViewModelProvider(this, providerFactory).get(Covid19StatsViewModel::class.java)
-    }
+    private val viewModel by viewModels<Covid19StatsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle)
+        setStyle(STYLE_NORMAL, R.style.FullScreenDialogStyle)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.android.support.DaggerAppCompatActivity
-import dagger.android.support.DaggerFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_sport.*
 import sphe.inews.R
 import sphe.inews.models.Bookmark
@@ -23,33 +23,22 @@ import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.util.Constants
 import sphe.inews.util.notNull
-import sphe.inews.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
  */
-class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
+@AndroidEntryPoint
+class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
 
+    lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
 
-    @Suppress("unused")
-    @Inject
-    lateinit var providerFactory: ViewModelProviderFactory
+    lateinit var articlePreviewDialogFragment: ArticlePreviewFragment
 
     @Inject
     lateinit var adapter: ArticleAdapter
 
-    @Suppress("unused")
-    @Inject
-    lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
-
-    @Suppress("unused")
-    @Inject
-    lateinit var articlePreviewDialogFragment: ArticlePreviewFragment
-
-    private val viewModel: SportViewModel by lazy {
-        ViewModelProvider(this, providerFactory).get(SportViewModel::class.java)
-    }
+    private val viewModel by viewModels<SportViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,6 +77,7 @@ class SportFragment : DaggerFragment(), ArticleAdapter.ArticleListener {
     override fun onArticleClicked(article: Article, isVideo: Boolean) {
         when (isVideo) {
             true -> {
+                viewYoutubeDialogFragment = ViewYoutubeDialogFragment()
                 val bundle = Bundle()
                 bundle.putString(ViewYoutubeDialogFragment.URL, article.url)
                 viewYoutubeDialogFragment.arguments = bundle

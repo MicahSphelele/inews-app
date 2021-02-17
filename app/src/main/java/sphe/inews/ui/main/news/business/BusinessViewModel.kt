@@ -2,14 +2,16 @@ package sphe.inews.ui.main.news.business
 
 import android.util.Log
 import androidx.lifecycle.*
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import sphe.inews.models.news.NewsResponse
-import sphe.inews.network.Resources
 import sphe.inews.network.INewsApi
+import sphe.inews.network.Resources
 import sphe.inews.util.Constants
 import javax.inject.Inject
 
+@HiltViewModel
 class BusinessViewModel @Inject constructor(private var api:INewsApi) : ViewModel() {
 
     private var newsResponse: MediatorLiveData<Resources<NewsResponse>>? = null

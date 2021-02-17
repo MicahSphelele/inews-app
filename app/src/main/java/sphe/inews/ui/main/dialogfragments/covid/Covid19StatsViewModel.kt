@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import sphe.inews.models.covid.CovidResponse
@@ -12,6 +13,7 @@ import sphe.inews.network.Covid19Api
 import sphe.inews.network.Resources
 import javax.inject.Inject
 
+@HiltViewModel
 class Covid19StatsViewModel @Inject constructor(private var api: Covid19Api) : ViewModel(){
 
     private var covidResponse: MediatorLiveData<Resources<CovidResponse>>? = null
