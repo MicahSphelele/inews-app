@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
@@ -15,7 +16,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
 import sphe.inews.R
 import sphe.inews.databinding.ActivityMainBinding
 import sphe.inews.ui.BaseActivity
@@ -56,7 +56,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
         setSupportActionBar(binding.toolbar as Toolbar)
 
-        navController = Navigation.findNavController(this, R.id.navigation_host_fragment)
+        navController = Navigation.findNavController(this, R.id.navigationHostFragment)
 
         //Setup with bottom navigation
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
@@ -95,7 +95,9 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     override fun onBackPressed() {
         super.onBackPressed()
 
-        when (NavHostFragment.findNavController(navigation_host_fragment).currentDestination?.id) {
+       val fragment = supportFragmentManager.findFragmentById(R.id.navigationHostFragment) as Fragment
+
+        when (NavHostFragment.findNavController(fragment).currentDestination?.id) {
             R.id.businessFragment -> finish()
         }
 
