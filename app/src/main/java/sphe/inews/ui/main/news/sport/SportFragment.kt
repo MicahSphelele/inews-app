@@ -10,13 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.facebook.shimmer.ShimmerFrameLayout
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.textview.MaterialTextView
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
+import sphe.inews.databinding.FragmentSportBinding
 import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
@@ -41,10 +38,7 @@ class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
 
     private val viewModel by viewModels<SportViewModel>()
 
-    private lateinit var btnRetry: MaterialButton
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var txtMessage: MaterialTextView
-    private lateinit var shimmerViewContainer: ShimmerFrameLayout
+    private lateinit var binding: FragmentSportBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,22 +57,20 @@ class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = view.findViewById(R.id.recyclerView)
-        recyclerView.let {
-            recyclerView.apply {
+        binding = FragmentSportBinding.bind(view)
+
+
+        binding.recyclerView.let {
+            it.apply {
                 layoutManager = LinearLayoutManager(activity)
             }
         }
 
         adapter.setListener(this)
 
-        btnRetry = view.findViewById(R.id.btn_retry)
-        btnRetry.setOnClickListener {
+        binding.btnRetry.setOnClickListener {
             this.getSportNews()
         }
-
-        txtMessage = view.findViewById(R.id.txt_message)
-        shimmerViewContainer = view.findViewById(R.id.shimmer_view_container)
 
         this.setErrorViewsVisibility(false)
         this.setShimmerLayoutVisibility(false)
@@ -157,14 +149,15 @@ class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
                         this.setShimmerLayoutVisibility(false)
 
                         context?.resources?.let {
-                            txtMessage.text = context?.resources?.getString(R.string.msg_error)
+                            binding.txtMessage.text =
+                                context?.resources?.getString(R.string.msg_error)
                         }
                     }
                     Resources.Status.SUCCESS -> {
                         Log.d("@Sport", "SUCCESS...")
                         this.setErrorViewsVisibility(false)
                         this.setShimmerLayoutVisibility(false)
-                        recyclerView.adapter = adapter
+                        binding.recyclerView.adapter = adapter
                         res.data?.let {
                             adapter.setArticles(res.data.articles)
                         }
@@ -178,22 +171,22 @@ class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
 
     private fun setErrorViewsVisibility(isVisible: Boolean) {
         if (isVisible) {
-            btnRetry.visibility = View.VISIBLE
-            txtMessage.visibility = View.VISIBLE
+            binding.btnRetry.visibility = View.VISIBLE
+            binding.txtMessage.visibility = View.VISIBLE
         } else {
-            btnRetry.visibility = View.GONE
-            txtMessage.visibility = View.GONE
+            binding.btnRetry.visibility = View.GONE
+            binding.txtMessage.visibility = View.GONE
         }
     }
 
 
     private fun setShimmerLayoutVisibility(isVisible: Boolean) {
         if (isVisible) {
-            shimmerViewContainer.visibility = View.VISIBLE
-            shimmerViewContainer.startShimmer()
+            binding.shimmerViewContainer.visibility = View.VISIBLE
+            binding.shimmerViewContainer.startShimmer()
         } else {
-            shimmerViewContainer.visibility = View.GONE
-            shimmerViewContainer.stopShimmer()
+            binding.shimmerViewContainer.visibility = View.GONE
+            binding.shimmerViewContainer.stopShimmer()
 
         }
     }
