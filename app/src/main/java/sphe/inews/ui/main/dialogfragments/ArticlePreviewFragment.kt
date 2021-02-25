@@ -16,8 +16,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_view_article.*
 import sphe.inews.R
+import sphe.inews.databinding.FragmentViewArticleBinding
 import sphe.inews.local.viewmodel.BookMarkViewModel
 import sphe.inews.models.Bookmark
 import sphe.inews.util.Constants
@@ -32,8 +32,9 @@ class ArticlePreviewFragment : Fragment() {
         const val BOOKMARK_OBJ = "bookmarkObject"
     }
 
-
     private val viewModel by viewModels<BookMarkViewModel>()
+
+    private lateinit var binding: FragmentViewArticleBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,11 +51,13 @@ class ArticlePreviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_exit.setOnClickListener {
+        binding = FragmentViewArticleBinding.bind(view)
+
+        binding.btnExit.setOnClickListener {
             findNavController().navigateUp()
         }
 
-        txt_read_more.setOnClickListener {
+        binding.txtReadMore.setOnClickListener {
             Constants.launchCustomTabIntent(activity as Activity,articleUrl)
         }
 
@@ -75,24 +78,24 @@ class ArticlePreviewFragment : Fragment() {
         requireArguments().apply {
             val article = requireArguments().getParcelable(BOOKMARK_OBJ) as? Bookmark
 
-            txt_title.text = if(article?.title == "" || article?.title == null){
+            binding.txtTitle.text = if(article?.title == "" || article?.title == null){
                 "No Title"
             }else{
                 article.title
             }
-            txt_content.text = if(article?.content == "" || article?.content == null){
+            binding.txtContent.text = if(article?.content == "" || article?.content == null){
                 "No Article content available. Please click on read more to view the article."
             }else{
                 article.content
             }
-            txt_date.text = if(article?.publishedAt == "" || article?.publishedAt==null){
+            binding.txtDate.text = if(article?.publishedAt == "" || article?.publishedAt==null){
                 "Date Unknown"
             }else{
                 article.publishedAt.let {
                     Constants.appDateFormatArticle(it!!).toString()
                 }
             }
-            txt_source.text = if(article?.sourceName == "" || article?.sourceName == null){
+            binding.txtSource.text = if(article?.sourceName == "" || article?.sourceName == null){
                 "No Source"
             }else{
                 article.sourceName
@@ -103,19 +106,19 @@ class ArticlePreviewFragment : Fragment() {
             }else{
                 article.urlToImage
             }
-            Glide.with(header_image)
+            Glide.with(binding.headerImage)
                 .load(Uri.parse(imageUrl))
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
-                .into(header_image)
+                .into(binding.headerImage)
 
             articleUrl = article?.url!!
 
             val bookmark = viewModel.getBooMark(articleUrl)
 
-            checkBookmark.isChecked = bookmark.notNull()
+            binding.checkBookmark.isChecked = bookmark.notNull()
 
-            checkBookmark.setOnCheckedChangeListener { _, checked ->
+            binding.checkBookmark.setOnCheckedChangeListener { _, checked ->
                 if(checked){
                     viewModel.insert(article)
                     return@setOnCheckedChangeListener
