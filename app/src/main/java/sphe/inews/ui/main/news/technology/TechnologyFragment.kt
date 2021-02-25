@@ -10,13 +10,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.transition.MaterialElevationScale
-import dagger.android.support.DaggerAppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_technology.*
 import sphe.inews.R
 import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
+import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
@@ -82,7 +82,7 @@ class TechnologyFragment : Fragment(), ArticleAdapter.ArticleListener {
                 bundle.putString(ViewYoutubeDialogFragment.URL, article.url)
                 viewYoutubeDialogFragment.arguments = bundle
                 viewYoutubeDialogFragment.show(
-                    (activity as DaggerAppCompatActivity).supportFragmentManager,
+                    (activity as BaseActivity).supportFragmentManager,
                     "viewYoutubeDialogFragment"
                 )
             }

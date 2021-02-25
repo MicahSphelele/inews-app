@@ -9,7 +9,7 @@ object Versions {
     const val androidxLegacySupport = "1.0.0"
     const val androidxRecyclerView = "1.1.0"
     const val androidxCardView = "1.0.0"
-    const val androidxBrowser = "1.2.0"
+    const val androidxBrowser = "1.3.0"
     const val androidxTestExt = "1.1.2"
     const val androidxEspresso = "3.3.0"
     const val androidxTestRules = "1.3.0"
@@ -22,14 +22,13 @@ object Versions {
     const val rxJava = "2.2.10"
     const val material = "1.2.1"
     const val retrofit = "2.9.0"
-    const val dagger = "2.27"
     const val glide = "4.11.0"
     const val dataBinding ="3.1.4"
     const val customYoutubePlayer = "10.0.5"
     const val customShimmer = "0.5.0"
     const val buildToolsVersion = "29.0.3"
     const val minSdkVersion = 21
-    const val maxSdkVersion = 29
+    const val maxSdkVersion = 30
 
 }
 
@@ -72,15 +71,6 @@ object Deps {
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val RETROFIT_GSON_CONVERTER = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val RETROFIT_RX_ADAPTER = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
-
-    //Dagger 2
-    const val DAGGER = "com.google.dagger:dagger:${Versions.dagger}"
-    const val DAGGER_COMPILER = "com.google.dagger:dagger-compiler:${Versions.dagger}"
-
-    //Dagger Android
-    const val DAGGER_ANDROID = "com.google.dagger:dagger-android:${Versions.dagger}"
-    const val DAGGER_SUPPORT = "com.google.dagger:dagger-android-support:${Versions.dagger}"
-    const val DAGGER_PROCESSOR = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 
     //RxAndroid
     const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${Versions.rxJavaAndroid}"

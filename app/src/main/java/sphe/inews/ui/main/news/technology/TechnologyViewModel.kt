@@ -48,7 +48,7 @@ class TechnologyViewModel @Inject constructor(private var api: INewsApi) : ViewM
                     ?.map(object :
                         Function<NewsResponse, Resources<NewsResponse>?> {
                         @Throws(Exception::class)
-                        override fun apply(response: NewsResponse): Resources<NewsResponse>? {
+                        override fun apply(response: NewsResponse): Resources<NewsResponse> {
                             Log.d("@BusinessViewModel","apply data")
                             if (response.articles.isNullOrEmpty()) {
                                 return Resources.error("Something went wrong", null)

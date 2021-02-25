@@ -72,16 +72,6 @@ dependencies {
     //ViewModel and LiveData
     implementation Deps.ANDROIDX_LIFECYCLE_EXT
 
-    //Dagger version used by google samples
-    //Dagger 2 core
-    implementation Deps.DAGGER
-    kapt Deps.DAGGER_COMPILER
-
-    //Dagger Android
-    implementation Deps.DAGGER_ANDROID
-    implementation Deps.DAGGER_SUPPORT
-    kapt Deps.DAGGER_PROCESSOR
-
     //Room Database
     implementation Deps.ANDROIDX_ROOM_RXJAVA2
     implementation Deps.ANDROIDX_ROOM
