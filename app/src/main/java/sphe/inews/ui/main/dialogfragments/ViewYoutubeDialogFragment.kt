@@ -11,8 +11,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstan
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_view_youtube.*
 import sphe.inews.R
+import sphe.inews.databinding.FragmentViewYoutubeBinding
 
 @AndroidEntryPoint
 class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
@@ -24,9 +24,11 @@ class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
 
     private lateinit var videoUrl : String
 
+    private lateinit var binding: FragmentViewYoutubeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle)
+        setStyle(STYLE_NORMAL, R.style.FullScreenDialogStyle)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,13 +38,15 @@ class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding = FragmentViewYoutubeBinding.bind(view)
+
         videoUrl = arguments?.getString(URL)!!
         
-        youtube_player_view.initialize(this)
+        binding.youtubePlayerView.initialize(this)
 
-        (toolbar as Toolbar).navigationIcon = ContextCompat.getDrawable(requireContext(),R.drawable.ic_action_home)
+        (binding.toolbar as Toolbar).navigationIcon = ContextCompat.getDrawable(requireContext(),R.drawable.ic_action_home)
 
-        (toolbar as Toolbar).setNavigationOnClickListener{
+        (binding.toolbar as Toolbar).setNavigationOnClickListener{
             dismiss()
         }
     }
@@ -62,8 +66,8 @@ class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
 
     override fun onDestroy() {
         super.onDestroy()
-        youtube_player_view?.let {
-            youtube_player_view.release()
+        binding.youtubePlayerView.let {
+            binding.youtubePlayerView.release()
         }
 
     }
