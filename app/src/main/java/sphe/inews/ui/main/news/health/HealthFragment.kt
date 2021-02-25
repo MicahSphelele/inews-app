@@ -9,9 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textview.MaterialTextView
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_entertainment.*
 import sphe.inews.R
 import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
@@ -32,12 +35,16 @@ class HealthFragment : Fragment(), ArticleAdapter.ArticleListener {
 
     lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
 
-    lateinit var articlePreviewDialogFragment: ArticlePreviewFragment
 
     @Inject
     lateinit var adapter: ArticleAdapter
 
     private val viewModel by viewModels<HealthViewModel>()
+
+    private lateinit var btnRetry: MaterialButton
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var txtMessage: MaterialTextView
+    private lateinit var shimmerViewContainer: ShimmerFrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,18 +63,22 @@ class HealthFragment : Fragment(), ArticleAdapter.ArticleListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        recyclerView?.let {
-            recyclerView?.apply {
+        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.let {
+            recyclerView.apply {
                 layoutManager = LinearLayoutManager(activity)
             }
         }
 
         adapter.setListener(this)
 
-        btn_retry.setOnClickListener {
+        btnRetry = view.findViewById(R.id.btn_retry)
+        btnRetry.setOnClickListener {
             this.getHealthNews()
         }
+
+        txtMessage = view.findViewById(R.id.txt_message)
+        shimmerViewContainer = view.findViewById(R.id.shimmer_view_container)
 
         this.setErrorViewsVisibility(false)
         this.setShimmerLayoutVisibility(false)
@@ -143,7 +154,7 @@ class HealthFragment : Fragment(), ArticleAdapter.ArticleListener {
                         this.setShimmerLayoutVisibility(false)
 
                         context?.resources?.let {
-                            txt_message.text = context?.resources?.getString(R.string.msg_error)
+                            txtMessage.text = context?.resources?.getString(R.string.msg_error)
                         }
                     }
                     Resources.Status.SUCCESS -> {
@@ -163,21 +174,21 @@ class HealthFragment : Fragment(), ArticleAdapter.ArticleListener {
 
     private fun setErrorViewsVisibility(isVisible: Boolean) {
         if (isVisible) {
-            btn_retry.visibility = View.VISIBLE
-            txt_message.visibility = View.VISIBLE
+            btnRetry.visibility = View.VISIBLE
+            txtMessage.visibility = View.VISIBLE
         } else {
-            btn_retry.visibility = View.GONE
-            txt_message.visibility = View.GONE
+            btnRetry.visibility = View.GONE
+            txtMessage.visibility = View.GONE
         }
     }
 
     private fun setShimmerLayoutVisibility(isVisible: Boolean) {
         if (isVisible) {
-            shimmer_view_container.visibility = View.VISIBLE
-            shimmer_view_container.startShimmer()
+            shimmerViewContainer.visibility = View.VISIBLE
+            shimmerViewContainer.startShimmer()
         } else {
-            shimmer_view_container.visibility = View.GONE
-            shimmer_view_container.stopShimmer()
+            shimmerViewContainer.visibility = View.GONE
+            shimmerViewContainer.stopShimmer()
 
         }
     }
