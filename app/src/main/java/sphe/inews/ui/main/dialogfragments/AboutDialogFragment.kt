@@ -4,11 +4,13 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
@@ -106,11 +108,13 @@ class AboutDialogFragment : BottomSheetDialogFragment() {
         }
         //Gmail
         binding.cardBtn3.setOnClickListener {
-            val intent = Intent(Intent.ACTION_SENDTO)
-            intent.type = "text/plain"
-            intent.data = Uri.parse("mailto:${resources.getString(R.string.url_gmail)}")
-            intent.putExtra(Intent.EXTRA_EMAIL, resources.getString(R.string.url_gmail))
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Hi Sphelele")
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                type = "text/plain"
+                data = Uri.parse("mailto:${resources.getString(R.string.url_gmail)}")
+                putExtra(Intent.EXTRA_EMAIL, resources.getString(R.string.url_gmail))
+                putExtra(Intent.EXTRA_SUBJECT, "Hi Sphelele")
+            }
+
             if (intent.resolveActivity(requireActivity().packageManager) != null) {
                 startActivity(intent)
             } else {
@@ -160,7 +164,16 @@ class AboutDialogFragment : BottomSheetDialogFragment() {
         behavior.state = state
     }
 
+    @Suppress("DEPRECATION")
     private fun getWindowHeight(): Int {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+
+            val windowMetrics = requireActivity().windowManager.currentWindowMetrics
+            val insets = windowMetrics.windowInsets
+                .getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
+            return windowMetrics.bounds.height() - insets.top - insets.bottom
+        }
+
         val displayMetrics = DisplayMetrics()
         activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
         return displayMetrics.heightPixels
