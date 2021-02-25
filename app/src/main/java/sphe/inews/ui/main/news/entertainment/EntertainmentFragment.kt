@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_entertainment.*
 import sphe.inews.R
+import sphe.inews.databinding.FragmentEntertainmentBinding
 import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
 import sphe.inews.network.Resources
@@ -32,12 +32,12 @@ class EntertainmentFragment : Fragment(), ArticleAdapter.ArticleListener {
 
     lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
 
-    lateinit var articlePreviewDialogFragment: ArticlePreviewFragment
-
     @Inject
     lateinit var adapter: ArticleAdapter
 
     private val viewModel by viewModels<EntertainmentViewModel>()
+
+    private lateinit var binding: FragmentEntertainmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,17 +56,20 @@ class EntertainmentFragment : Fragment(), ArticleAdapter.ArticleListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView?.let {
-            recyclerView?.apply {
+        binding = FragmentEntertainmentBinding.bind(view)
+
+        binding.recyclerView.let {
+            it.apply {
                 layoutManager = LinearLayoutManager(activity)
             }
         }
 
         adapter.setListener(this)
 
-        btn_retry.setOnClickListener {
+        binding.btnRetry.setOnClickListener {
             this.getEntertainmentNews()
         }
+
         this.setErrorViewsVisibility(false)
         this.setShimmerLayoutVisibility(false)
         this.getEntertainmentNews()
@@ -143,14 +146,14 @@ class EntertainmentFragment : Fragment(), ArticleAdapter.ArticleListener {
                         this.setShimmerLayoutVisibility(false)
 
                         context?.resources?.let {
-                            txt_message.text = context?.resources?.getString(R.string.msg_error)
+                            binding.txtMessage.text = context?.resources?.getString(R.string.msg_error)
                         }
                     }
                     Resources.Status.SUCCESS -> {
                         this.setErrorViewsVisibility(false)
                         this.setShimmerLayoutVisibility(false)
 
-                        recyclerView.adapter = adapter
+                        binding.recyclerView.adapter = adapter
                         res.data?.let {
                             adapter.setArticles(res.data.articles)
                         }
@@ -166,21 +169,21 @@ class EntertainmentFragment : Fragment(), ArticleAdapter.ArticleListener {
 
     private fun setErrorViewsVisibility(isVisible: Boolean) {
         if (isVisible) {
-            btn_retry.visibility = View.VISIBLE
-            txt_message.visibility = View.VISIBLE
+            binding.btnRetry.visibility = View.VISIBLE
+            binding.txtMessage.visibility = View.VISIBLE
         } else {
-            btn_retry.visibility = View.GONE
-            txt_message.visibility = View.GONE
+            binding.btnRetry.visibility = View.GONE
+            binding.txtMessage.visibility = View.GONE
         }
     }
 
     private fun setShimmerLayoutVisibility(isVisible: Boolean) {
         if (isVisible) {
-            shimmer_view_container.visibility = View.VISIBLE
-            shimmer_view_container.startShimmer()
+            binding.shimmerViewContainer.visibility = View.VISIBLE
+            binding.shimmerViewContainer.startShimmer()
         } else {
-            shimmer_view_container.visibility = View.GONE
-            shimmer_view_container.stopShimmer()
+            binding.shimmerViewContainer.visibility = View.GONE
+            binding.shimmerViewContainer.stopShimmer()
 
         }
     }
