@@ -2,8 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'name.remal.check-dependency-updates'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "name.remal.check-updates"
 
 android {
     compileSdkVersion Versions.maxSdkVersion
@@ -14,7 +14,7 @@ android {
         minSdkVersion Versions.minSdkVersion
         targetSdkVersion Versions.maxSdkVersion
         versionCode 2
-        versionName "v1.0.1"
+        versionName "v1.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

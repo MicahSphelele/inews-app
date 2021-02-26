@@ -1,20 +1,18 @@
 package sphe.inews.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.Completable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import sphe.inews.R
 import sphe.inews.databinding.ActivitySplashBinding
 import sphe.inews.ui.main.MainActivity
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -54,15 +52,11 @@ class SplashActivity : BaseActivity() {
 
     }
 
-    @SuppressLint("CheckResult")
     override fun onStart() {
         super.onStart()
-        Completable.timer(
-            3, TimeUnit.SECONDS,
-            AndroidSchedulers.mainThread()
-        ).subscribe {
+        Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        }
+        },3000)
     }
 }

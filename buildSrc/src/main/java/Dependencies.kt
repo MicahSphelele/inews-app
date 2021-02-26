@@ -18,12 +18,12 @@ object Versions {
     const val androidxRoom = "2.2.5"
     const val androidxLifeCycleReactiveStreams ="2.2.0"
     const val androidxNavigation = "2.3.0"
-    const val rxJavaAndroid = "2.1.1"
-    const val rxJava = "2.2.10"
+    const val rxJavaAndroid = "3.0.0" // Last updated 26/02/2021
+    const val rxJava = "3.0.0"
     const val material = "1.2.1"
     const val retrofit = "2.9.0"
     const val glide = "4.11.0"
-    const val dataBinding ="3.1.4"
+    const val dataBinding ="3.5.0" // Last updated 26/02/2021
     const val customYoutubePlayer = "10.0.5"
     const val customShimmer = "0.5.0"
     const val buildToolsVersion = "29.0.3"
@@ -73,8 +73,8 @@ object Deps {
     const val RETROFIT_RX_ADAPTER = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
 
     //RxAndroid
-    const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${Versions.rxJavaAndroid}"
-    const val RX_JAVA = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
+    const val RX_ANDROID = "io.reactivex.rxjava3:rxandroid:${Versions.rxJavaAndroid}"
+    const val RX_JAVA = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
 
     //Glide
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.glide}"
