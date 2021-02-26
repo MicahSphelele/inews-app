@@ -2,9 +2,14 @@ repositories {
   jcenter()
 }
 
+buildscript {
+
+}
+
 plugins {
   `kotlin-dsl`
-  id("name.remal.check-dependency-updates") version "1.0.211"
+  id("name.remal.check-updates") version "1.2.2"
+  id("de.fayard.buildSrcVersions") version "0.3.2"
 }
 
 //buildscript {
