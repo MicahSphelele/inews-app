@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -26,18 +27,17 @@ import sphe.inews.util.storage.AppStorage
 import javax.inject.Inject
 import javax.inject.Named
 
+
 @AndroidEntryPoint
 class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener {
-
-    companion object {
-        //const val TAG = "@KTX"
-    }
 
     lateinit var aboutFragmentDialog: AboutDialogFragment
 
     lateinit var covidStatDialogFragment: CovidStatDialogFragment
 
     lateinit var binding: ActivityMainBinding
+
+    private var _networkState = false
 
     @Inject
     @Named(Constants.NAMED_STORAGE)
@@ -63,6 +63,21 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
         //Setup with action bar
         //NavigationUI.setupActionBarWithNavController(this,navController)
+        val snackbar = showNetworkStateBar()
+
+        networkState.observe(this, {
+
+            _networkState = it.isConnected
+
+            if (!_networkState) {
+                snackbar.show()
+                return@observe
+            }
+
+            if (snackbar.isShown){
+                snackbar.dismiss()
+            }
+        })
 
     }
 
@@ -72,16 +87,25 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.app_menu, menu)
+        menu?.get(0)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_about -> {
+                if (!_networkState){
+                    showToastMessage("Connect to Wifi/internet")
+                    return false
+                }
                 aboutFragmentDialog = AboutDialogFragment()
                 aboutFragmentDialog.show(supportFragmentManager, "aboutFragmentDialog")
             }
             R.id.action_corona -> {
+                if (!_networkState){
+                    showToastMessage("Connect to Wifi/internet")
+                    return false
+                }
                 covidStatDialogFragment = CovidStatDialogFragment()
                 covidStatDialogFragment.show(supportFragmentManager, "covidStatDialogFragment")
             }
@@ -95,7 +119,8 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     override fun onBackPressed() {
         super.onBackPressed()
 
-       val fragment = supportFragmentManager.findFragmentById(R.id.navigationHostFragment) as Fragment
+        val fragment =
+            supportFragmentManager.findFragmentById(R.id.navigationHostFragment) as Fragment
 
         when (NavHostFragment.findNavController(fragment).currentDestination?.id) {
             R.id.businessFragment -> finish()

@@ -40,6 +40,7 @@
         <item name="dialogBackgroundColor">@color/colorWhite</item>
         <item name="dialogButtonTextColor">@color/colorPrimaryDark</item>
         <item name="articleErrorButtonBackgroundColor">@color/colorPrimaryDark</item>
+        <item name="netWorkViewBgColor">@color/colorPrimaryDark</item>
     </style>
 
     <style name="PopupMenuStyle" parent="Theme.MaterialComponents.Light">
