@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -89,7 +90,7 @@ class AboutDialogFragment : BottomSheetDialogFragment() {
         constraintSetOld.clone(binding.layoutAbout)
         constraintSetNew.clone(context, R.layout.fragment_about_2)
 
-        binding.toolbar.setOnClickListener {
+        binding.card.setOnClickListener {
             performLayoutTransition()
         }
         //Github
@@ -180,6 +181,7 @@ class AboutDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun performLayoutTransition() {
+        Log.i(Constants.DEBUG_TAG,"Clone")
         TransitionManager.beginDelayedTransition(binding.layoutAbout)
         altLayout = if (!altLayout) {
             constraintSetNew.applyTo(binding.layoutAbout)

@@ -11,6 +11,7 @@ import java.util.*
 
 object Constants {
 
+    const val DEBUG_TAG = "@InewsDebug"
     const val BASE_NEWS_URL = "http://newsapi.org/v2/"
     const val BASE_COVID_URL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
     const val BUSINESS = "business"
