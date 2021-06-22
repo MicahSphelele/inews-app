@@ -29,62 +29,7 @@ object Versions {
     const val buildToolsVersion = "29.0.3"
     const val minSdkVersion = 21
     const val maxSdkVersion = 30
-
-}
-
-@Suppress("unused")
-object Deps {
-
-    const val ANDROID_TOOLS_GRADLE = "com.android.tools.build:gradle:${Versions.android}"
-
-    //Kotlin
-    const val KOTLIN_GRADLE = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    const val KOTLIN_STD_LIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
-
-    //AndroidX Test
-    const val JUNIT = "junit:junit:${Versions.junit}"
-    const val ANDROIDX_TEST_EXT = "androidx.test.ext:junit:${Versions.androidxTestExt}"
-    const val ANDROIDX_ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.androidxEspresso}"
-    const val ANDROIDX_TEST_RULES = "androidx.test:rules:${Versions.androidxTestRules}"
-
-
-    //AndroidX
-    const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.androidXAppcompat}"
-    const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.androidXCoreKTX}"
-    const val ANDROIDX_CONSTRAINT = "androidx.constraintlayout:constraintlayout:${Versions.androidXConstraints}"
-    const val ANDROIDX_LEGACY = "androidx.legacy:legacy-support-v4:${Versions.androidxLegacySupport}"
-    const val ANDROIDX_RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${Versions.androidxRecyclerView}"
-    const val ANDROIDX_CARD_VIEW = "androidx.cardview:cardview:${Versions.androidxCardView}"
-    const val ANDROIDX_BROWSER = "androidx.browser:browser:${Versions.androidxBrowser}"
-    const val ANDROIDX_LIFECYCLE_EXT = "androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifeCycleExt}"
-    const val ANDROIDX_ROOM = "androidx.room:room-ktx:${Versions.androidxRoom}"
-    const val ANDROIDX_ROOM_RXJAVA2 = "androidx.room:room-rxjava2:${Versions.androidxRoomRxJava}"
-    const val ANDROIDX_ROOM_COMPILER = "androidx.room:room-compiler:${Versions.androidxRoomRxJava}"
-    const val ANDROIDX_LIFECYCLE_STREAM_KTX = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.androidxLifeCycleReactiveStreams}"
-    const val ANDROIDX_NAV_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${Versions.androidxNavigation}"
-    const val ANDROIDX_NAV_UI_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.androidxNavigation}"
-
-    //Material
-    const val MATERIAL = "com.google.android.material:material:${Versions.material}"
-
-    //Retrofit
-    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val RETROFIT_GSON_CONVERTER = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-    const val RETROFIT_RX_ADAPTER = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
-
-    //RxAndroid
-    const val RX_ANDROID = "io.reactivex.rxjava3:rxandroid:${Versions.rxJavaAndroid}"
-    const val RX_JAVA = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
-
-    //Glide
-    const val GLIDE = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.glide}"
-
-    //Data binding
-    const val DATA_BINDING_COMPILER = "com.android.databinding:compiler:${Versions.dataBinding}"
-
-    //Custom lib
-    const val CUSTOM_YOUTUBE_PLAYER = "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.customYoutubePlayer}"
-    const val CUSTOM_SHIMMER = "com.facebook.shimmer:shimmer:${Versions.customShimmer}"
-
+    const val hiltVersion = "2.36"
+    const val hiltCompilerVersion = "2.34.1-beta"
+    const val hiltLifecycleViewModelVersion = "1.0.0-alpha03"
 }

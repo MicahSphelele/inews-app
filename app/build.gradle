@@ -47,64 +47,64 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation Deps.JUNIT
-    androidTestImplementation Deps.ANDROIDX_TEST_EXT
-    androidTestImplementation Deps.ANDROIDX_ESPRESSO
-    androidTestImplementation Deps.ANDROIDX_TEST_RULES
+    testImplementation "junit:junit:${Versions.junit}"
+    androidTestImplementation "androidx.test.ext:junit:${Versions.androidxTestExt}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${Versions.androidxEspresso}"
+    androidTestImplementation "androidx.test:rules:${Versions.androidxTestRules}"
 
-    implementation Deps.KOTLIN_STD_LIB
-    implementation Deps.ANDROIDX_APPCOMPAT
-    implementation Deps.ANDROIDX_CORE_KTX
-    implementation Deps.ANDROIDX_CONSTRAINT
-    implementation Deps.ANDROIDX_LEGACY
-    implementation Deps.ANDROIDX_RECYCLER_VIEW
-    implementation Deps.ANDROIDX_CARD_VIEW
-    implementation Deps.ANDROIDX_BROWSER
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+    implementation "androidx.appcompat:appcompat:${Versions.androidXAppcompat}"
+    implementation "androidx.core:core-ktx:${Versions.androidXCoreKTX}"
+    implementation "androidx.constraintlayout:constraintlayout:${Versions.androidXConstraints}"
+    implementation "androidx.legacy:legacy-support-v4:${Versions.androidxLegacySupport}"
+    implementation "androidx.recyclerview:recyclerview:${Versions.androidxRecyclerView}"
+    implementation "androidx.cardview:cardview:${Versions.androidxCardView}"
+    implementation "androidx.browser:browser:${Versions.androidxBrowser}"
 
     //AndroidX support design
-    implementation Deps.MATERIAL
+    implementation "com.google.android.material:material:${Versions.material}"
 
     //Retrofit
-    implementation Deps.RETROFIT
-    implementation Deps.RETROFIT_GSON_CONVERTER
-    implementation Deps.RETROFIT_RX_ADAPTER
+    implementation "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
 
     //ViewModel and LiveData
-    implementation Deps.ANDROIDX_LIFECYCLE_EXT
+    implementation "androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifeCycleExt}"
 
     //Room Database
-    implementation Deps.ANDROIDX_ROOM_RXJAVA2
-    implementation Deps.ANDROIDX_ROOM
-    kapt Deps.ANDROIDX_ROOM_COMPILER
+    implementation "androidx.room:room-rxjava2:${Versions.androidxRoomRxJava}"
+    implementation "androidx.room:room-ktx:${Versions.androidxRoom}"
+    kapt "androidx.room:room-compiler:${Versions.androidxRoomRxJava}"
 
     //RxAndroid
-    implementation Deps.RX_ANDROID
+    implementation "io.reactivex.rxjava3:rxandroid:${Versions.rxJavaAndroid}"
 
     //RxJava
-    implementation Deps.RX_JAVA
+    implementation "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
 
     // Reactive Streams (convert Observable to LiveData)
-    implementation Deps.ANDROIDX_LIFECYCLE_STREAM_KTX
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.androidxLifeCycleReactiveStreams}"
 
     // Glide
-    implementation Deps.GLIDE
-    kapt Deps.GLIDE_COMPILER
+    implementation "com.github.bumptech.glide:glide:${Versions.glide}"
+    kapt "com.github.bumptech.glide:compiler:${Versions.glide}"
 
     //Data Binding compiler
-    kapt Deps.DATA_BINDING_COMPILER
+    kapt "com.android.databinding:compiler:${Versions.dataBinding}"
 
     // Architecture comp. navigation
-    implementation Deps.ANDROIDX_NAV_FRAGMENT_KTX
-    implementation Deps.ANDROIDX_NAV_UI_KTX
+    implementation "androidx.navigation:navigation-fragment-ktx:${Versions.androidxNavigation}"
+    implementation "androidx.navigation:navigation-ui-ktx:${Versions.androidxNavigation}"
 
     //Custom Libraries
-    implementation Deps.CUSTOM_YOUTUBE_PLAYER
-    implementation Deps.CUSTOM_SHIMMER
+    implementation  "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.customYoutubePlayer}"
+    implementation "com.facebook.shimmer:shimmer:${Versions.customShimmer}"
 
-    implementation "com.google.dagger:hilt-android:$hiltVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$hiltCompilerVersion"
+    implementation "com.google.dagger:hilt-android:${Versions.hiltVersion}"
+    kapt "com.google.dagger:hilt-android-compiler:${Versions.hiltCompilerVersion}"
 
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltLifecycleViewmodelVersion"
-    kapt "androidx.hilt:hilt-compiler:$hiltLifecycleViewmodelVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycleViewModelVersion}"
+    kapt "androidx.hilt:hilt-compiler:${Versions.hiltLifecycleViewModelVersion}"
 
 }
