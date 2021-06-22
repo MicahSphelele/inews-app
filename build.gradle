@@ -3,7 +3,7 @@
 buildscript {
 
     ext {
-        hiltVersion = "2.36"
+        hiltVersion = "2.37"
         hiltCompilerVersion = "2.34.1-beta"
         hiltLifecycleViewmodelVersion = "1.0.0-alpha03"
     }
