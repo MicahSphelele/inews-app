@@ -19,7 +19,7 @@ class BookMarkViewModel @Inject constructor(private val bookmarkRepo: BookmarkRe
         return bookmarkRepo.delete(bookmark)
     }
 
-    override fun getBooMarks(): LiveData<Bookmark> {
+    override fun getBooMarks(): LiveData<List<Bookmark>> {
         return bookmarkRepo.getBooMarks()
     }
 

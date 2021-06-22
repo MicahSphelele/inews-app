@@ -9,7 +9,7 @@ interface BookmarkInterface {
 
    fun delete(bookmark: Bookmark) : Int
 
-   fun getBooMarks() : LiveData<Bookmark>
+   fun getBooMarks() : LiveData<List<Bookmark>>
 
    fun getBooMark(url : String) : Bookmark?
 }

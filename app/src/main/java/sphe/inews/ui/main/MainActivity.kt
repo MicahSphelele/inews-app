@@ -87,7 +87,6 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.app_menu, menu)
-        menu?.get(0)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -131,9 +130,6 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     override fun onResume() {
         super.onResume()
         navController.addOnDestinationChangedListener(this)
-        if (dialog != null) {
-            dialog?.show()
-        }
     }
 
     override fun onPause() {
@@ -175,7 +171,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         var selectedIndex: Int = index
 
         val builder = MaterialAlertDialogBuilder(this, R.style.MaterialThemeDialog)
-            .setTitle("Theme")
+            .setTitle("Select Theme")
             .setIcon(R.drawable.logo)
             .setSingleChoiceItems(R.array.theme_modes, index) { _, which ->
                 selectedIndex = which

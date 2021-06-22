@@ -15,7 +15,7 @@ interface BookmarkDao {
     suspend fun delete(bookmark: Bookmark) : Int
 
     @Query("SELECT * FROM ${Constants.TABLE_BOOKMARK}")
-     fun getBooMarks() : LiveData<Bookmark>
+     fun getBooMarks() : LiveData<List<Bookmark>>
 
     @Query("SELECT * FROM ${Constants.TABLE_BOOKMARK} WHERE ${Constants.URL} = :url")
     suspend fun getBooMark(url : String) : Bookmark

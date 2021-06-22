@@ -43,7 +43,7 @@ class BookmarkRepository @Inject constructor(application: Application) : Bookmar
         return delete!!
     }
 
-    override fun getBooMarks(): LiveData<Bookmark> {
+    override fun getBooMarks(): LiveData<List<Bookmark>> {
         return bookmarkDao!!.getBooMarks()
     }
 
