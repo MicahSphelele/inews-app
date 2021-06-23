@@ -58,7 +58,7 @@ class SplashActivityTest {
     @Test
     fun testSplashScreenIsLaunch() {
         launchActivity<SplashActivity>()
-        //intended(hasComponent(MainActivity::class.java.name))
+
     }
 
     fun tearDown() {
