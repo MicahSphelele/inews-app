@@ -54,9 +54,9 @@ class SplashActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        },3000)
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            startActivity(Intent(this, MainActivity::class.java))
+//            finish()
+//        },3000)
     }
 }

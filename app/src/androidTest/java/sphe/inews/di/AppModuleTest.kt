@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.testing.HiltTestApplication
 import dagger.hilt.components.SingletonComponent
 import okhttp3.ConnectionSpec
 import okhttp3.Interceptor
@@ -104,9 +105,8 @@ object AppModuleTest {
     @Singleton
     @Provides
     @Named(Constants.NAMED_APP_VERSION)
-    fun provideAppVersion(application: Application): String{
-
-        return application.packageManager.getPackageInfo(application.packageName,0).versionName
+    fun provideAppVersion(): String{
+        return "v1.1.0"
     }
 
     @Singleton
