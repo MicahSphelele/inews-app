@@ -53,12 +53,12 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
         setTheme()
 
-        setSupportActionBar(binding.toolbar as Toolbar)
+        setSupportActionBar(binding.appToolbar as Toolbar)
 
         navController = Navigation.findNavController(this, R.id.navigationHostFragment)
 
         //Setup with bottom navigation
-        NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
+        NavigationUI.setupWithNavController(binding.appBottomNavigation, navController)
 
         //Setup with action bar
         //NavigationUI.setupActionBarWithNavController(this,navController)
@@ -149,10 +149,10 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         when (destination.label) {
             "Business", "Health",
             "Sport", "Technology", "Entertainment" -> {
-                binding.bottomNavigation.visibility = View.VISIBLE
+                binding.appBottomNavigation.visibility = View.VISIBLE
             }
             else -> {
-                binding.bottomNavigation.visibility = View.GONE
+                binding.appBottomNavigation.visibility = View.GONE
             }
 
         }
