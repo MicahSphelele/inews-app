@@ -35,7 +35,7 @@ jobs:
         run: ./gradlew lintDebug
 
       - name: Updload test report
-        uses: actions@upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: report.html
           path: app/build/reports/lint-results-debug.html
