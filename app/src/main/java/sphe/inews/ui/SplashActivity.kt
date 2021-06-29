@@ -31,7 +31,7 @@ class SplashActivity : BaseActivity() {
     @JvmField
     @Inject
     @Named(Constants.NAMED_IS_ON_TEST_MODE)
-    var isOnTest: Boolean = false
+    var isOnTestMode: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,10 +60,11 @@ class SplashActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d("@TAG", "isOnTest : $isOnTest")
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        },3000)
+        if(!isOnTestMode) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            },3000)
+        }
     }
 }

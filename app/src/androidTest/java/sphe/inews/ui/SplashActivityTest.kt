@@ -2,6 +2,7 @@ package sphe.inews.ui
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -11,6 +12,7 @@ import dagger.hilt.android.testing.UninstallModules
 import org.junit.*
 import sphe.inews.R
 import sphe.inews.di.AppModule
+import sphe.inews.test.BuildConfig
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
 import javax.inject.Inject
@@ -35,6 +37,11 @@ class SplashActivityTest {
     @Named(Constants.NAMED_STORAGE)
     lateinit var appStorage: AppStorage
 
+    @JvmField
+    @Inject
+    @Named(Constants.NAMED_IS_ON_TEST_MODE)
+    var isOnTestMode: Boolean = false
+
     @Before
     fun setUp() {
         hiltRule.inject()
@@ -43,7 +50,7 @@ class SplashActivityTest {
     @Test
     fun testStringAppVersionIsNotNull() {
         Assert.assertNotNull("Testing app version is not null", appVersion)
-        Assert.assertEquals("Testing app version is not null","v1.1.0", appVersion)
+        Assert.assertEquals("Testing app version is not null", BuildConfig.VERSION_NAME, appVersion)
     }
 
     @Test
@@ -61,6 +68,11 @@ class SplashActivityTest {
     }
 
     @Test
+    fun testIfAppIsInTestMode() {
+        Assert.assertTrue("Test if the app is on test mode", isOnTestMode)
+    }
+
+    @Test
     fun testImageIconViewViewIsDisplayed() {
         onView(withId(R.id.imageAppIcon)).check(matches(isDisplayed()))
     }
@@ -73,6 +85,11 @@ class SplashActivityTest {
     @Test
     fun testTextViewAppNameIsDisplayed() {
         onView(withId(R.id.txt_app_name)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun testTextViewAppName() {
+        onView(withId(R.id.txt_app_name)).check(matches(ViewMatchers.withText("iNews")))
     }
 
     @After

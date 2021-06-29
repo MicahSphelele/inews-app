@@ -105,8 +105,9 @@ object AppModuleTest {
     @Singleton
     @Provides
     @Named(Constants.NAMED_APP_VERSION)
-    fun provideAppVersion(): String{
-        return "v1.1.0"
+    fun provideAppVersion(application: Application): String{
+
+        return application.packageManager.getPackageInfo(application.packageName,0).versionName
     }
 
     @Singleton

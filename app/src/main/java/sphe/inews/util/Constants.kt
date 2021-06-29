@@ -25,7 +25,7 @@ object Constants {
     const val NAMED_COUNTRIES = "countries"
     const val NAMED_COVID_19 = "covid19"
     const val NAMED_STORAGE = "storage"
-    const val NAMED_IS_ON_TEST_MODE = "isOnTest"
+    const val NAMED_IS_ON_TEST_MODE = "isOnTestMode"
     const val KEY_THEME = "appTheme"
     const val DEFAULT_THEME = "system_default"
 
