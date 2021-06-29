@@ -36,8 +36,9 @@ jobs:
 
       - name: Updload test report
         uses: actions@upload-artifact@v2
-        with: report.html
-        path: app/build/reports/lint-results-debug.html
+        with:
+          name: report.html
+          path: app/build/reports/lint-results-debug.html
 
 #      - name: Make Gradlew Executable
 #        run: chmod +x ./gradlew
