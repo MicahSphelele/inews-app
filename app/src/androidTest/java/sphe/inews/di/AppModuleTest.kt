@@ -149,4 +149,11 @@ object AppModuleTest {
         return AppStorage(application)
     }
 
+    @Singleton
+    @Provides
+    @Named(Constants.NAMED_IS_ON_TEST_MODE)
+    fun providesIsOnTestMode() : Boolean {
+        return true
+    }
+
 }

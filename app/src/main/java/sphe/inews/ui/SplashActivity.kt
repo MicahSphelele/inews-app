@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
@@ -26,6 +27,11 @@ class SplashActivity : BaseActivity() {
     @Inject
     @Named(Constants.NAMED_STORAGE)
     lateinit var appStorage: AppStorage
+
+    @JvmField
+    @Inject
+    @Named(Constants.NAMED_IS_ON_TEST_MODE)
+    var isOnTest: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +60,10 @@ class SplashActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            startActivity(Intent(this, MainActivity::class.java))
-//            finish()
-//        },3000)
+        Log.d("@TAG", "isOnTest : $isOnTest")
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        },3000)
     }
 }
