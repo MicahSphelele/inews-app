@@ -2,8 +2,10 @@ package sphe.inews.ui.main
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -53,6 +55,18 @@ class MainActivityTest {
     @Test
     fun testToolbarOverFlowOptionsMenu() {
         openActionBarOverflowOrOptionsMenu(getInstrumentation().context)
+    }
+
+    @Test
+    fun testAppThemeChangedToDarkMode() {
+        //Open Options Menu
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().context)
+        //Click Options Menu Item
+        onView(withText("UI Theme")).perform(click())
+        //Open AlertDialog and click Dark Mode
+        onView(withText("Dark Mode")).perform(click())
+        //Save UI Mode State
+        onView(withText("SAVE")).perform(click())
     }
 
     @Test
