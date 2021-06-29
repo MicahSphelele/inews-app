@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Lint
-        run ./gradlew lintDebug
+        run: ./gradlew lintDebug
 
       - name: Updload test report
         uses: actions@upload-artifact@v2
