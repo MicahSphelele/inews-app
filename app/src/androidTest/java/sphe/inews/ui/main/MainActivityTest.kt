@@ -1,12 +1,15 @@
 package sphe.inews.ui.main
 
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -15,6 +18,7 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.manipulation.Ordering
 import sphe.inews.R
 import sphe.inews.di.AppModule
 import sphe.inews.util.Constants
@@ -36,8 +40,11 @@ class MainActivityTest {
     @Named(Constants.NAMED_STORAGE)
     lateinit var appStorage: AppStorage
 
+    lateinit var context: Context
+
     @Before
     fun setUp() {
+        context = getInstrumentation().targetContext
         hiltRule.inject()
     }
 
@@ -47,20 +54,16 @@ class MainActivityTest {
     }
 
     @Test
-    fun testIfToolbarIsDisplayed() {
-        onView(ViewMatchers.withId(R.id.appToolbar))
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-    }
-
-    @Test
-    fun testToolbarOverFlowOptionsMenu() {
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().context)
+    fun testAboutFragmentScreen() {
+        openActionBarOverflowOrOptionsMenu(ApplicationProvider.getApplicationContext())
+        onView(withText(context.getString(R.string.about) )).perform(click())
+        onView(withId(R.id.constrainLayout)).perform(click())
     }
 
     @Test
     fun testAppThemeChangedToDarkMode() {
         //Open Options Menu
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().context)
+        openActionBarOverflowOrOptionsMenu(ApplicationProvider.getApplicationContext())
         //Click Options Menu Item
         onView(withText("UI Theme")).perform(click())
         //Open AlertDialog and click Dark Mode
@@ -69,9 +72,18 @@ class MainActivityTest {
         onView(withText("SAVE")).perform(click())
     }
 
+
     @Test
     fun testBottomBarOverIsDisplayed() {
-        onView(ViewMatchers.withId(R.id.appBottomNavigation))
+        onView(withId(R.id.appBottomNavigation))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
+
+    @Test
+    fun testIfToolbarIsDisplayed() {
+        onView(withId(R.id.appToolbar))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    }
+
+
 }

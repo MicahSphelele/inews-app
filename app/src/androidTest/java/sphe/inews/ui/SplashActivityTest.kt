@@ -10,9 +10,9 @@ import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
 import org.junit.*
+import sphe.inews.BuildConfig
 import sphe.inews.R
 import sphe.inews.di.AppModule
-import sphe.inews.test.BuildConfig
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
 import javax.inject.Inject
