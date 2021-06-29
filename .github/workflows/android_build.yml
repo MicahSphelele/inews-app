@@ -28,6 +28,9 @@ jobs:
         with:
           java-version: 1.8
 
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
 #      - name: Make Gradlew Executable
 #        run: chmod +x ./gradlew
 #
