@@ -31,6 +31,14 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
 
+      - name: Run Lint
+        run ./gradlew lintDebug
+
+      - name: Updload Test Report
+        uses: actions@upload-artifact@v2
+        with: report.html
+        path: app/build/reports/lint-results-debug.html
+
 #      - name: Make Gradlew Executable
 #        run: chmod +x ./gradlew
 #
