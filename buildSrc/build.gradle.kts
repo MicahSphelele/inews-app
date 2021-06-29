@@ -1,33 +1,22 @@
-repositories {
-  jcenter()
-}
-
-buildscript {
-
-}
-
 plugins {
-  `kotlin-dsl`
-  id("name.remal.check-updates") version "1.2.2"
-  id("de.fayard.buildSrcVersions") version "0.3.2"
+    `kotlin-dsl`
+}
+repositories {
+    jcenter()
+    google()
 }
 
-//buildscript {
-//  repositories {
-//    maven { url = uri("https://plugins.gradle.org/m2/") }
-//  }
-//  dependencies {
-//    classpath("name.remal:gradle-plugins:1.0.211")
-//  }
-//}
-//
-//apply(plugin = "name.remal.check-dependency-updates")
+kotlinDslPluginOptions.experimentalWarning.set(false)
 
-tasks{
+object Plugins {
+    const val AGP = "4.1.3"
+    const val DOKKA = "1.4.20"
+    const val KOTLIN = "1.4.31"
+}
 
-  compileKotlin{
-    kotlinOptions{
-      allWarningsAsErrors = true
-    }
-  }
+dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${Plugins.KOTLIN}")
+    implementation("com.android.tools.build:gradle:${Plugins.AGP}")
+    implementation("org.jetbrains.dokka:dokka-gradle-plugin:${Plugins.DOKKA}")
+    implementation("org.jetbrains.dokka:dokka-core:${Plugins.DOKKA}")
 }
