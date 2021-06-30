@@ -43,6 +43,7 @@ jobs:
   ui-testing:
     needs: [lint-build]
     runs-on: macos-latest
+    continue-on-error: true
     steps:
       - name: Checkout code for ui-test
         uses: actions/checkout@v2

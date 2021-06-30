@@ -41,8 +41,6 @@ abstract class BaseActivity : AppCompatActivity() {
         val customSnackBar = Snackbar.make(window.decorView.rootView, "", Snackbar.LENGTH_INDEFINITE)
         val layout = customSnackBar.view as Snackbar.SnackbarLayout
         val customSnackView: View = layoutInflater.inflate(R.layout.network_error_view, null)
-        val tvConnection = customSnackView.findViewById<View>(R.id.tv_connection) as TextView
-        val ivConnection: ImageView = customSnackView.findViewById<View>(R.id.iv_connection) as ImageView
         // We can also customize the above controls
         layout.setPadding(0, 0, 0, 0)
         layout.addView(customSnackView, 0)
@@ -53,7 +51,6 @@ abstract class BaseActivity : AppCompatActivity() {
             val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
             toast.setGravity(Gravity.BOTTOM, toast.xOffset / 2, toast.yOffset / 2)
             toast.show()
-
     }
 
 }
