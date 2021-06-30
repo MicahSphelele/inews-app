@@ -1,7 +1,6 @@
 package sphe.inews.ui.main
 
 import android.content.Context
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.action.ViewActions.click
@@ -10,9 +9,9 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import dagger.hilt.android.testing.HiltTestApplication
 import dagger.hilt.android.testing.UninstallModules
 import org.junit.Assert
 import org.junit.Before
@@ -36,15 +35,18 @@ class MainActivityTest {
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Inject
+    lateinit var application: HiltTestApplication
+
+    @Inject
     @Named(Constants.NAMED_STORAGE)
     lateinit var appStorage: AppStorage
 
-    lateinit var testContext: Context
+    private lateinit var testContext: Context
 
     @Before
     fun setUp() {
-        testContext = getInstrumentation().targetContext
         hiltRule.inject()
+        testContext = application.applicationContext
     }
 
     @Test
@@ -54,7 +56,7 @@ class MainActivityTest {
 
     @Test
     fun testAboutFragmentScreen() {
-        openActionBarOverflowOrOptionsMenu(ApplicationProvider.getApplicationContext())
+        openActionBarOverflowOrOptionsMenu(testContext)
         onView(withText(testContext.getString(R.string.about) )).perform(click())
         onView(withId(R.id.constrainLayout)).perform(click())
     }
@@ -62,7 +64,7 @@ class MainActivityTest {
     @Test
     fun testAppThemeChangedToDarkMode() {
         //Open Options Menu
-        openActionBarOverflowOrOptionsMenu(ApplicationProvider.getApplicationContext())
+        openActionBarOverflowOrOptionsMenu(testContext)
         //Click Options Menu Item
         onView(withText("UI Theme")).perform(click())
         //Open AlertDialog and click Dark Mode

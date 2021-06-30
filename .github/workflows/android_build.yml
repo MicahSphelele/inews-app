@@ -23,10 +23,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Set Up JDK
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
+#      - name: Set Up JDK
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
 
       - name: Checkout code for lint-build
         uses: actions/checkout@v2
@@ -51,7 +51,9 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
-          script: ./gradlew connectedDebugAndroidTest
+          script: |
+            adb logcat -c
+            adb logcat &./gradlew connectedDebugAndroidTest
       - name: Upload ui test report
         uses: actions/upload-artifact@v2
         with:

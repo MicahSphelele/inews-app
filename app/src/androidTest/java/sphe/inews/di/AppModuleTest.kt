@@ -9,20 +9,15 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.testing.HiltTestApplication
 import dagger.hilt.components.SingletonComponent
-import okhttp3.ConnectionSpec
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.TlsVersion
+import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import sphe.inews.BaseApplication
 import sphe.inews.R
 import sphe.inews.models.Country
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
-import java.util.ArrayList
+import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
@@ -33,8 +28,8 @@ object AppModuleTest {
 
     @Singleton
     @Provides
-    fun providesApplication(@ApplicationContext app: Context) : BaseApplication {
-        return app as BaseApplication
+    fun providesApplication(@ApplicationContext app: Context) : HiltTestApplication {
+        return app as HiltTestApplication
     }
 
     @Singleton
