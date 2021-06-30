@@ -2,10 +2,6 @@ package sphe.inews.local.repo
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import sphe.inews.local.dao.BookmarkDao
 import sphe.inews.local.dao.intefaces.BookmarkInterface
 import sphe.inews.local.room.AppDB
@@ -20,43 +16,24 @@ class BookmarkRepository @Inject constructor(application: Application) : Bookmar
         bookmarkDao = AppDB.getInstance(application).bookmarkDao()
     }
 
-    override fun insert(bookmark: Bookmark) : Long {
-        var insert : Long? = null
-        runBlocking {
-            launch(Dispatchers.Default){
-                val job = async {bookmarkDao?.insert(bookmark)}
-                insert = job.await()
-            }
-        }
-        return insert!!
+    override suspend fun insert(bookmark: Bookmark) : Long {
+        return bookmarkDao?.insert(bookmark)!!
     }
 
-    override fun delete(bookmark: Bookmark) : Int {
-        var delete : Int? = null
-        runBlocking {
-            launch(Dispatchers.Default){
-                val job = async {bookmarkDao?.delete(bookmark)}
-                delete = job.await()
-            }
-
-        }
-        return delete!!
+    override suspend fun delete(bookmark: Bookmark) : Int {
+       return bookmarkDao?.delete(bookmark)!!
     }
 
-    override fun getBooMarks(): LiveData<List<Bookmark>> {
-        return bookmarkDao!!.getBooMarks()
+    override suspend fun getBooMarks(): List<Bookmark> {
+        return bookmarkDao?.getBooMarks()!!
     }
 
-    override fun getBooMark(url: String): Bookmark? {
-        var bookmark : Bookmark? = null
-        runBlocking {
-            launch(Dispatchers.Default){
-                val job = async {bookmarkDao?.getBooMark(url)}
-                bookmark = job.await()
-            }
-        }
-        return bookmark
+    override fun getBooMarksObserved(): LiveData<List<Bookmark>> {
+        return bookmarkDao!!.getBooMarksObserved()
     }
 
+    override suspend fun getBooMark(url: String): Bookmark? {
+      return bookmarkDao?.getBooMark(url)
+    }
 
 }

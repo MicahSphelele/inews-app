@@ -11,19 +11,23 @@ import javax.inject.Inject
 @HiltViewModel
 class BookMarkViewModel @Inject constructor(private val bookmarkRepo: BookmarkRepository) : ViewModel(), BookmarkInterface {
 
-    override fun insert(bookmark: Bookmark): Long {
+    override suspend fun insert(bookmark: Bookmark): Long {
         return bookmarkRepo.insert(bookmark)
     }
 
-    override fun delete(bookmark: Bookmark): Int {
+    override suspend fun delete(bookmark: Bookmark): Int {
         return bookmarkRepo.delete(bookmark)
     }
 
-    override fun getBooMarks(): LiveData<List<Bookmark>> {
+    override suspend fun getBooMarks(): List<Bookmark> {
         return bookmarkRepo.getBooMarks()
     }
 
-    override fun getBooMark(url: String): Bookmark? {
+    override fun getBooMarksObserved(): LiveData<List<Bookmark>> {
+        return bookmarkRepo.getBooMarksObserved()
+    }
+
+    override suspend fun getBooMark(url: String): Bookmark? {
         return bookmarkRepo.getBooMark(url)
     }
 

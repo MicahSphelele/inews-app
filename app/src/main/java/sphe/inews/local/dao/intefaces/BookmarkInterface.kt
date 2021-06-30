@@ -5,11 +5,13 @@ import sphe.inews.models.Bookmark
 
 interface BookmarkInterface {
 
-   fun insert(bookmark: Bookmark) : Long
+  suspend fun insert(bookmark: Bookmark) : Long
 
-   fun delete(bookmark: Bookmark) : Int
+  suspend fun delete(bookmark: Bookmark) : Int
 
-   fun getBooMarks() : LiveData<List<Bookmark>>
+  suspend fun getBooMarks() : List<Bookmark>
 
-   fun getBooMark(url : String) : Bookmark?
+  fun getBooMarksObserved() : LiveData<List<Bookmark>>
+
+  suspend fun getBooMark(url : String) : Bookmark?
 }

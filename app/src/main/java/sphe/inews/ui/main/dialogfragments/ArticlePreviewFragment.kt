@@ -12,10 +12,12 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import sphe.inews.R
 import sphe.inews.databinding.FragmentViewArticleBinding
 import sphe.inews.local.viewmodel.BookMarkViewModel
@@ -75,6 +77,9 @@ class ArticlePreviewFragment : Fragment() {
     }
 
     private fun setUpUIData(){
+
+
+
         requireArguments().apply {
             val article = requireArguments().getParcelable(BOOKMARK_OBJ) as? Bookmark
 
@@ -114,19 +119,23 @@ class ArticlePreviewFragment : Fragment() {
 
             articleUrl = article?.url!!
 
-            val bookmark = viewModel.getBooMark(articleUrl)
+            lifecycleScope.launch {
 
-            binding.checkBookmark.isChecked = bookmark.notNull()
+                val bookmark = viewModel.getBooMark(articleUrl)
 
-            binding.checkBookmark.setOnCheckedChangeListener { _, checked ->
-                if(checked){
-                    viewModel.insert(article)
-                    return@setOnCheckedChangeListener
+                binding.checkBookmark.isChecked = bookmark.notNull()
+
+                binding.checkBookmark.setOnCheckedChangeListener { _, checked ->
+
+                    lifecycleScope.launch {
+                        if(checked){
+                            viewModel.insert(article)
+                        } else {
+                            viewModel.delete(bookmark!!)
+                        }
+                    }
                 }
-                viewModel.delete(bookmark!!)
             }
-
         }
-
     }
 }
