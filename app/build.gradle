@@ -57,7 +57,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:${Versions.androidxEspresso}"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:${Versions.androidxEspresso}"
     androidTestImplementation "androidx.test.espresso:espresso-intents:${Versions.androidxEspresso}"
-    debugImplementation "androidx.fragment:fragment-testing:1.4.0-alpha03"
+    debugImplementation "androidx.fragment:fragment-testing:1.4.0-alpha04"
     androidTestImplementation "androidx.test:rules:${Versions.androidxTestRules}"
     androidTestImplementation "androidx.test:core:1.3.0"
     androidTestImplementation "androidx.test.ext:junit-ktx:1.1.2"
