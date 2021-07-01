@@ -8,14 +8,13 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.After
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import org.junit.*
+import org.junit.runners.MethodSorters
 import sphe.inews.di.AppModule
 import sphe.inews.models.Bookmark
 import sphe.inews.util.Constants
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @UninstallModules(AppModule::class)
 @HiltAndroidTest
 class AppDBTest {

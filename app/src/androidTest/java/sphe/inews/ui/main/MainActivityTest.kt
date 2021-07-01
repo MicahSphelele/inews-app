@@ -13,10 +13,8 @@ import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
 import dagger.hilt.android.testing.UninstallModules
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import org.junit.*
+import org.junit.runners.MethodSorters
 import sphe.inews.R
 import sphe.inews.di.AppModule
 import sphe.inews.util.Constants
@@ -25,6 +23,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 @UninstallModules(AppModule::class)
+@FixMethodOrder(MethodSorters.DEFAULT)
 @HiltAndroidTest
 class MainActivityTest {
 
@@ -58,7 +57,18 @@ class MainActivityTest {
     fun testAboutFragmentScreen() {
         openActionBarOverflowOrOptionsMenu(testContext)
         onView(withText(testContext.getString(R.string.about) )).perform(click())
-        onView(withId(R.id.constrainLayout)).perform(click())
+    }
+
+    @Test
+    fun testAppThemeChangedToLightMode() {
+        //Open Options Menu
+        openActionBarOverflowOrOptionsMenu(testContext)
+        //Click Options Menu Item
+        onView(withText("UI Theme")).perform(click())
+        //Open AlertDialog and click Dark Mode
+        onView(withText("Light Mode")).perform(click())
+        //Save UI Mode State
+        onView(withText("SAVE")).perform(click())
     }
 
     @Test
@@ -85,6 +95,4 @@ class MainActivityTest {
         onView(withId(R.id.appToolbar))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
-
-
 }
