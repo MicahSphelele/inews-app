@@ -1,18 +1,19 @@
 @Suppress("unused")
 object Versions {
     const val junit = "4.13.2"
-    const val kotlin = "1.4.31"
+    const val kotlin = "1.5.0"
+    const val kotlinPlugin = "1.5.0-release-764"
     const val android = "4.0.1"
     const val androidXAppcompat = "1.2.0" // Last updated 13/01/2021
     const val androidXCoreKTX = "1.3.2" // Last updated 26/02/2021
     const val androidXConstraints = "2.0.4" // Last updated 26/02/2021
     const val androidxLegacySupport = "1.0.0"
-    const val androidxRecyclerView = "1.1.0"
+    const val androidxRecyclerView = "1.2.1"
     const val androidxCardView = "1.0.0"
     const val androidxBrowser = "1.3.0"
     const val androidxTestExt = "1.1.2"
     const val androidxEspresso = "3.3.0"
-    const val androidxTestRules = "1.3.0"
+    const val androidxTestRules = "1.4.0"
     const val androidxLifeCycleExt ="2.2.0" //Last updated 26/02/2021
     const val androidxRoomRxJava = "2.2.6" //Last updated 26/02/2021
     const val androidxRoom = "2.2.6" //Last updated 26/02/2021
@@ -32,4 +33,5 @@ object Versions {
     const val hiltVersion = "2.36"
     const val hiltCompilerVersion = "2.34.1-beta"
     const val hiltLifecycleViewModelVersion = "1.0.0-alpha03"
+    const val fragmentTesting = "1.4.0-alpha04"
 }
