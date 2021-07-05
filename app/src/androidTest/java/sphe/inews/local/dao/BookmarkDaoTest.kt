@@ -6,7 +6,6 @@ import androidx.test.core.app.ApplicationProvider
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -35,7 +34,7 @@ class BookmarkDaoTest {
     @ExperimentalCoroutinesApi
     @Test
     fun testDBInsert() = runBlockingTest {
-        val bookMark = Bookmark(
+        val bookMarkEntry = Bookmark(
             id = 1,
             url = "https://www.news24.com/sport/soccer/euro2020/france-fall-out-adrien-rabiots-mother-clashes-with-mbappe-pogba-families-after-euro-exit-20210630",
             author = "sport",
@@ -47,7 +46,7 @@ class BookmarkDaoTest {
             title = "France fall -out | Adrien Rabiot's mother clashes with Mbappe, Pogba families after Euro exit - News24",
             urlToImage = "https://cdn.24.co.za/files/Cms/General/d/4032/780cff14f0bf419eb2414c9baa69ea19.jpg",
             category="sports")
-        dao.insert(bookMark)
+        dao.insert(bookMarkEntry)
 
        val bookmarks = dao.getBooMarks()
         assertThat(bookmarks).isNotEmpty()
@@ -57,7 +56,7 @@ class BookmarkDaoTest {
     @Test
     fun testDBDelete() = runBlockingTest {
 
-        val bookMark = Bookmark(
+        val bookMarkEntry = Bookmark(
             id = 1,
             url = "https://www.news24.com/sport/soccer/euro2020/france-fall-out-adrien-rabiots-mother-clashes-with-mbappe-pogba-families-after-euro-exit-20210630",
             author = "sport",
@@ -69,13 +68,46 @@ class BookmarkDaoTest {
             title = "France fall -out | Adrien Rabiot's mother clashes with Mbappe, Pogba families after Euro exit - News24",
             urlToImage = "https://cdn.24.co.za/files/Cms/General/d/4032/780cff14f0bf419eb2414c9baa69ea19.jpg",
             category="sports")
-        dao.insert(bookMark)
+        dao.insert(bookMarkEntry)
 
         val bookmarks = dao.getBooMarks()
         assertThat(bookmarks).isNotEmpty()
 
-        dao.delete(bookMark)
+        dao.delete(bookMarkEntry)
         assertThat(bookmarks).isNotEmpty()
+    }
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun testDBGetBookmarkList() = runBlockingTest {
+        val bookMarkEntry1 = Bookmark(
+            id = 1,
+            url = "https://www.news24.com/sport/soccer/euro2020/france-fall-out-adrien-rabiots-mother-clashes-with-mbappe-pogba-families-after-euro-exit-20210630",
+            author = "sport",
+            content = "In sensational scenes, France midfielder Adrien Rabiot's mother was shown in video footage clashing with the Mbappe and Pogba families after their shock Euro 2020 exit. Didier Deschamp's side were… [+2150 chars]",
+            description = "In sensational scenes, France midfielder Adrien Rabiot's mother was shown in video footage clashing with the Mbappe and Pogba families after their shock Euro 2020 exit.",
+            publishedAt = "2021-06-30T09:12:30Z",
+            sourceId = "news24",
+            sourceName = "News24",
+            title = "France fall -out | Adrien Rabiot's mother clashes with Mbappe, Pogba families after Euro exit - News24",
+            urlToImage = "https://cdn.24.co.za/files/Cms/General/d/4032/780cff14f0bf419eb2414c9baa69ea19.jpg",
+            category="sports")
+        val bookMarkEntry2 = Bookmark(id = 2,
+            url = "https://www.news24.com/sport/soccer/euro2020/france-fall-out-adrien-rabiots-mother-clashes-with-mbappe-pogba-families-after-euro-exit-20210630, author=sport, content=In sensational scenes, France midfielder Adrien Rabiot's mother was shown in video footage clashing with the Mbappe and Pogba families after their shock Euro 2020 exit.",
+            author = "sport",
+            content = "Didier Deschamp's side were… [+2150 chars], description=In sensational scenes, France midfielder Adrien Rabiot's mother was shown in video footage clashing with the Mbappe and Pogba families after their shock Euro 2020 exit",
+            publishedAt = "2021-06-30T09:12:30Z",
+            sourceId = "news24",
+            sourceName = "News24",
+            title = "France fall-out | Adrien Rabiot's mother clashes with Mbappe, Pogba families after Euro exit - News24",
+            urlToImage = "https://cdn.24.co.za/files/Cms/General/d/4032/780cff14f0bf419eb2414c9baa69ea19.jpg, category=sports")
+        dao.insert(bookMarkEntry1)
+        dao.insert(bookMarkEntry2)
+
+        val bookmarks = dao.getBooMarks()
+        assertThat(bookmarks).isNotEmpty()
+        assertThat(bookmarks.size).isEqualTo(2)
+        assertThat(bookmarks).contains(bookMarkEntry1)
     }
     
     fun tearDown() {
