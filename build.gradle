@@ -2,12 +2,6 @@
 
 buildscript {
 
-    ext {
-        hiltVersion = "2.36"
-        hiltCompilerVersion = "2.34.1-beta"
-        hiltLifecycleViewmodelVersion = "1.0.0-alpha03"
-    }
-
     repositories {
         google()
         jcenter()
@@ -19,7 +13,6 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:${Versions.android}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-        classpath "name.remal:gradle-plugins:1.3.5"
         classpath "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltVersion}"
 
         // NOTE: Do not place your application dependencies here; they belong
