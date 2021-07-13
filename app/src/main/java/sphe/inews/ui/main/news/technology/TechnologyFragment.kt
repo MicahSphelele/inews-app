@@ -28,7 +28,7 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  */
 @AndroidEntryPoint
-class TechnologyFragment : Fragment(), ArticleAdapter.ArticleListener {
+class TechnologyFragment : Fragment(R.layout.fragment_technology), ArticleAdapter.ArticleListener {
 
     private lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
 
@@ -45,20 +45,11 @@ class TechnologyFragment : Fragment(), ArticleAdapter.ArticleListener {
         enterTransition = MaterialElevationScale(/* growing= */ true)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_technology, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentTechnologyBinding.bind(view)
-
-
+        
         binding.recyclerView.let {
             it.apply {
                 layoutManager = LinearLayoutManager(activity)
