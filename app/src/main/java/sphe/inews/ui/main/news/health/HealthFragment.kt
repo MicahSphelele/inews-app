@@ -28,7 +28,7 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  */
 @AndroidEntryPoint
-class HealthFragment : Fragment(), ArticleAdapter.ArticleListener {
+class HealthFragment : Fragment(R.layout.fragment_health), ArticleAdapter.ArticleListener {
 
     lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
 
@@ -44,14 +44,6 @@ class HealthFragment : Fragment(), ArticleAdapter.ArticleListener {
         super.onCreate(savedInstanceState)
         exitTransition = MaterialElevationScale(/* growing= */ false)
         enterTransition = MaterialElevationScale(/* growing= */ true)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_health, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
