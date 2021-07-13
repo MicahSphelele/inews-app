@@ -29,7 +29,7 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  */
 @AndroidEntryPoint
-class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
+class SportFragment : Fragment(R.layout.fragment_sport), ArticleAdapter.ArticleListener {
 
     lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
 
@@ -46,20 +46,11 @@ class SportFragment : Fragment(), ArticleAdapter.ArticleListener {
         enterTransition = MaterialElevationScale(/* growing= */ true)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_sport, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentSportBinding.bind(view)
-
-
+        
         binding.recyclerView.let {
             it.apply {
                 layoutManager = LinearLayoutManager(activity)
