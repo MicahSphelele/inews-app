@@ -23,7 +23,7 @@ import sphe.inews.util.Constants
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CovidStatDialogFragment : DialogFragment(), CountryAdapter.CountryListener {
+class CovidStatDialogFragment : DialogFragment(R.layout.fragment_covid19_stats), CountryAdapter.CountryListener {
 
     @Inject
     lateinit var adapter: CountryAdapter
@@ -37,14 +37,6 @@ class CovidStatDialogFragment : DialogFragment(), CountryAdapter.CountryListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.FullScreenDialogStyle)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_covid19_stats, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

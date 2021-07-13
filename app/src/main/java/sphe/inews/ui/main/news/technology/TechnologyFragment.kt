@@ -49,7 +49,7 @@ class TechnologyFragment : Fragment(R.layout.fragment_technology), ArticleAdapte
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentTechnologyBinding.bind(view)
-        
+
         binding.recyclerView.let {
             it.apply {
                 layoutManager = LinearLayoutManager(activity)
