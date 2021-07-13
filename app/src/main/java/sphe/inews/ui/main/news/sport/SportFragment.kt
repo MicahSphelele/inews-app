@@ -50,7 +50,7 @@ class SportFragment : Fragment(R.layout.fragment_sport), ArticleAdapter.ArticleL
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentSportBinding.bind(view)
-        
+
         binding.recyclerView.let {
             it.apply {
                 layoutManager = LinearLayoutManager(activity)
