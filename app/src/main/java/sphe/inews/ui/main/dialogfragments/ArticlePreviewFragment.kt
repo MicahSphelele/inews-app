@@ -27,7 +27,7 @@ import sphe.inews.util.Constants
 import sphe.inews.util.notNull
 
 @AndroidEntryPoint
-class ArticlePreviewFragment : Fragment() {
+class ArticlePreviewFragment : Fragment(R.layout.fragment_view_article) {
 
     private lateinit var articleUrl: String
 
@@ -39,15 +39,10 @@ class ArticlePreviewFragment : Fragment() {
 
     private lateinit var binding: FragmentViewArticleBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enterTransition = MaterialElevationScale(/* growing= */ true)
 
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_view_article, container, false)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
