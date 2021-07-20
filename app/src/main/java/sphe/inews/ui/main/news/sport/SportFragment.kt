@@ -61,12 +61,12 @@ class SportFragment : Fragment(R.layout.fragment_sport), ArticleAdapter.ArticleL
         adapter.setListener(this)
 
         binding.btnRetry.setOnClickListener {
-            this.getSportNews()
+            getSportNews()
         }
 
-        this.setErrorViewsVisibility(false)
-        this.setShimmerLayoutVisibility(false)
-        this.getSportNews()
+       setErrorViewsVisibility(false)
+       setShimmerLayoutVisibility(false)
+       getSportNews()
     }
 
     override fun onArticleClicked(article: Article, isVideo: Boolean) {
