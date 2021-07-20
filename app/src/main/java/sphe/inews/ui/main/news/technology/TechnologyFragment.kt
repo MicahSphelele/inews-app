@@ -135,7 +135,7 @@ class TechnologyFragment : Fragment(R.layout.fragment_technology), ArticleAdapte
     }
 
     private fun getTechnologyNews() {
-        liveData = newsViewModel.getNews("za", Constants.SPORTS)
+        liveData = newsViewModel.getNews("za", Constants.TECHNOLOGY)
         liveData.removeObservers(viewLifecycleOwner)
         liveData.observe(viewLifecycleOwner) {
             when (it) {
