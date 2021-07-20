@@ -61,12 +61,12 @@ class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.Ar
         adapter.setListener(this)
 
         binding.btnRetry.setOnClickListener {
-            this.getBusinessNews()
+            getBusinessNews()
         }
 
-        this.setErrorViewsVisibility(false)
-        this.setShimmerLayoutVisibility(false)
-        this.getBusinessNews()
+        setErrorViewsVisibility(false)
+        setShimmerLayoutVisibility(false)
+        getBusinessNews()
 
     }
 
@@ -169,8 +169,6 @@ class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.Ar
         } else {
             binding.shimmerViewContainer.visibility = View.GONE
             binding.shimmerViewContainer.stopShimmer()
-
         }
     }
-
 }
