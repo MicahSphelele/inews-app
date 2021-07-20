@@ -61,12 +61,12 @@ class EntertainmentFragment : Fragment(R.layout.fragment_entertainment), Article
         adapter.setListener(this)
 
         binding.btnRetry.setOnClickListener {
-            this.getEntertainmentNews()
+            getEntertainmentNews()
         }
 
-        this.setErrorViewsVisibility(false)
-        this.setShimmerLayoutVisibility(false)
-        this.getEntertainmentNews()
+        setErrorViewsVisibility(false)
+        setShimmerLayoutVisibility(false)
+        getEntertainmentNews()
 
     }
 
