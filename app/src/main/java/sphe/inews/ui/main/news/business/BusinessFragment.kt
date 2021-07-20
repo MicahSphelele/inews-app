@@ -2,11 +2,11 @@ package sphe.inews.ui.main.news.business
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.transition.MaterialElevationScale
@@ -15,13 +15,15 @@ import sphe.inews.R
 import sphe.inews.databinding.FragmentBusinessBinding
 import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
-import sphe.inews.network.Resources
+import sphe.inews.models.news.NewsResponse
+import sphe.inews.models.response.NetworkResult
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.util.Constants
 import sphe.inews.util.notNull
+import sphe.inews.viewmodels.NewsViewModel
 import javax.inject.Inject
 
 /**
@@ -30,11 +32,11 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.ArticleListener {
 
-    lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
-
-    private val viewModel by viewModels<BusinessViewModel>()
-
+    private lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
     private lateinit var binding: FragmentBusinessBinding
+
+    private val newsViewModel by viewModels<NewsViewModel>()
+    private var liveData: LiveData<NetworkResult<NewsResponse>> = MediatorLiveData()
 
     @Inject
     lateinit var adapter: ArticleAdapter
@@ -123,38 +125,31 @@ class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.Ar
     }
 
     private fun getBusinessNews() {
-        viewModel.observeBusinessNews("za")?.let {
-            viewModel.observeBusinessNews("za")?.removeObservers(this)
-            viewModel.observeBusinessNews("za")?.observe(viewLifecycleOwner, { res ->
-                when (res.status) {
-                    Resources.Status.LOADING -> {
-                        this.setErrorViewsVisibility(false)
-                        this.setShimmerLayoutVisibility(true)
-                    }
-                    Resources.Status.ERROR -> {
-                        this.setErrorViewsVisibility(true)
-                        this.setShimmerLayoutVisibility(false)
-
-                        context?.resources?.let {
-                            binding.txtMessage.text = context?.resources?.getString(R.string.msg_error)
-                        }
-
-                    }
-                    Resources.Status.SUCCESS -> {
-                        this.setErrorViewsVisibility(false)
-                        this.setShimmerLayoutVisibility(false)
-
-                        binding.recyclerView.adapter = adapter
-                        res.data?.let {
-                            adapter.setArticles(res.data.articles)
-                        }
-
-                    }
-
+        liveData = newsViewModel.getNews("za", Constants.BUSINESS)
+        liveData.removeObservers(viewLifecycleOwner)
+        liveData.observe(viewLifecycleOwner) {
+            when(it) {
+                is NetworkResult.Loading -> {
+                    setErrorViewsVisibility(false)
+                    setShimmerLayoutVisibility(true)
                 }
-            })
+                is NetworkResult.Error -> {
+                    setErrorViewsVisibility(true)
+                    setShimmerLayoutVisibility(false)
+                    context?.resources?.let {
+                        binding.txtMessage.text = context?.resources?.getString(R.string.msg_error)
+                    }
+                }
+                is NetworkResult.Success -> {
+                    setErrorViewsVisibility(false)
+                    setShimmerLayoutVisibility(false)
+                    binding.recyclerView.adapter = adapter
+                    it.data?.let { results ->
+                        adapter.setArticles(results.articles)
+                    }
+                }
+            }
         }
-
     }
 
     private fun setErrorViewsVisibility(isVisible: Boolean) {
