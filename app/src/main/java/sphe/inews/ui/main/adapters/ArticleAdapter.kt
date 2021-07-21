@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.NonNull
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
@@ -80,8 +82,8 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
      }
 
     fun setArticles(list:List<Article>?) {
-        this.list = list!!
-        notifyDataSetChanged()
+       this.list = list!!
+       this.asyncListDiffer.submitList(this.list)
     }
 
     fun setListener(listener:ArticleListener){
@@ -96,6 +98,19 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
           var youtube: ImageButton = v.findViewById(R.id.youtube)
 
      }
+
+    private val diffCallBack = object : DiffUtil.ItemCallback<Article>(){
+        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem.title == newItem.title
+        }
+
+        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem == newItem
+        }
+
+    }
+
+    private val asyncListDiffer = AsyncListDiffer(this,diffCallBack)
 
     interface ArticleListener{
         fun onArticleClicked(article: Article,isVideo:Boolean)
