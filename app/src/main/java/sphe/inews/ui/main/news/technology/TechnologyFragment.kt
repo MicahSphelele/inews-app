@@ -17,7 +17,7 @@ import sphe.inews.databinding.FragmentTechnologyBinding
 import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
 import sphe.inews.models.news.NewsResponse
-import sphe.inews.models.response.NetworkResult
+import sphe.inews.network.response.NetworkResult
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
