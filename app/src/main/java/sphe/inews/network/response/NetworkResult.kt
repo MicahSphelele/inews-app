@@ -1,4 +1,4 @@
-package sphe.inews.models.response
+package sphe.inews.network.response
 
 sealed class NetworkResult<T>(val data: T? = null, val message: String? = null) {
 
