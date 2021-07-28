@@ -40,4 +40,8 @@
         android:name="sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment"
         android:label="Article"
         tools:layout="@layout/fragment_view_article" />
+    <fragment
+        android:id="@+id/bookmarkFragment"
+        android:name="sphe.inews.ui.main.bookmark.BookmarkFragment"
+        android:label="Bookmark" />
 </navigation>
