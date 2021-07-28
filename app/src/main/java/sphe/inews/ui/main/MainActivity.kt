@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
@@ -91,6 +92,10 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+
+            R.id.action_bookmarks -> {
+                Toast.makeText(this, "Bookmark clicked", Toast.LENGTH_LONG).show()
+            }
             R.id.action_about -> {
                 if (!_networkState){
                     showToastMessage("Connect to Wifi/internet")
