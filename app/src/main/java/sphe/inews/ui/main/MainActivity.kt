@@ -31,9 +31,9 @@ import javax.inject.Named
 @AndroidEntryPoint
 class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener {
 
-    lateinit var aboutFragmentDialog: AboutDialogFragment
+    private lateinit var aboutFragmentDialog: AboutDialogFragment
 
-    lateinit var covidStatDialogFragment: CovidStatDialogFragment
+    private lateinit var covidStatDialogFragment: CovidStatDialogFragment
 
     lateinit var binding: ActivityMainBinding
 
