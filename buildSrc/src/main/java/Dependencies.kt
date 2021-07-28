@@ -12,7 +12,7 @@ object Versions {
     const val androidxCardView = "1.0.0"
     const val androidxBrowser = "1.3.0"
     const val androidxTestExt = "1.1.2"
-    const val androidxEspresso = "3.4.0"
+    const val androidxEspresso = "3.3.0"
     const val androidxTestRules = "1.4.0"
     const val androidxLifeCycleExt ="2.2.0" //Last updated 26/02/2021
     const val androidxRoomRxJava = "2.2.6" //Last updated 26/02/2021

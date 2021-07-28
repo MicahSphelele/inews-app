@@ -40,26 +40,26 @@ jobs:
           name: Lint Report
           path: app/build/reports/lint-results-debug.html
 
-#  ui-testing:
-#    needs: [lint-build]
-#    runs-on: macos-latest
-#    continue-on-error: true
-#    steps:
-#      - name: Checkout code for ui-test
-#        uses: actions/checkout@v2
-#
-#      - name: Run UI Tests
-#        uses: reactivecircus/android-emulator-runner@v2
-#        with:
-#          api-level: 29
-#          script: |
-#            adb logcat -c
-#            adb logcat &./gradlew connectedDebugAndroidTest
-#      - name: Upload ui test report
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: UI Test Report
-#          path: app/build/reports/androidTests/connected/
+  ui-testing:
+    needs: [lint-build]
+    runs-on: macos-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout code for ui-test
+        uses: actions/checkout@v2
+
+      - name: Run UI Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: |
+            adb logcat -c
+            adb logcat &./gradlew connectedDebugAndroidTest
+      - name: Upload ui test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: UI Test Report
+          path: app/build/reports/androidTests/connected/
 
   package-debug-apk:
     name: Generate debug apk

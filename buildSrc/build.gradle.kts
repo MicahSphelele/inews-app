@@ -17,6 +17,6 @@ object Plugins {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${Plugins.KOTLIN}")
     implementation("com.android.tools.build:gradle:${Plugins.AGP}")
-    implementation("org.jetbrains.dokka:dokka-gradle-plugin:${Plugins.DOKKA}")
-    implementation("org.jetbrains.dokka:dokka-core:${Plugins.DOKKA}")
+    //implementation("org.jetbrains.dokka:dokka-gradle-plugin:${Plugins.DOKKA}")
+    //implementation("org.jetbrains.dokka:dokka-core:${Plugins.DOKKA}")
 }
