@@ -62,6 +62,7 @@ jobs:
           path: app/build/reports/androidTests/connected/
 
   package-debug-apk:
+    needs: [lint-build]
     name: Generate debug apk
     runs-on: ubuntu-latest
     steps:
