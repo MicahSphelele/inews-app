@@ -98,8 +98,8 @@ jobs:
           alias: ${{ secrets.KEY_STORE_ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASS }}
           keyPassword: ${{ secrets.KEY_STORE_PASS }}
-          env:
-            BUILD_TOOLS_VERSION: "30.0.2"
+        env:
+          BUILD_TOOLS_VERSION: "30.0.2"
 
      - name: Upload release APK
        uses: actions/upload-artifact@v2
