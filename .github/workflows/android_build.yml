@@ -16,24 +16,24 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "lint-build"
-#  lint-build:
-    # The type of runner that the job will run on
-#    runs-on: ubuntu-latest
+  lint-build:
+     #The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-#    steps:
+     #Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
 
-#      - name: Checkout code for lint-build
-#        uses: actions/checkout@v2
-#
-#      - name: Run Lint
-#        run: ./gradlew lintDebug
-#
-#      - name: Upload lint report
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: Lint Report
-#          path: app/build/reports/lint-results-debug.html
+      - name: Checkout code for lint-build
+        uses: actions/checkout@v2
+
+      - name: Run Lint
+        run: ./gradlew lintDebug
+
+      - name: Upload lint report
+        uses: actions/upload-artifact@v2
+        with:
+          name: Lint Report
+          path: app/build/reports/lint-results-debug.html
 
 #  ui-testing:
 #    needs: [lint-build]
@@ -78,11 +78,13 @@ jobs:
 #          path: app/build/outputs/apk/debug/app-debug.apk
 
   package-release-apk:
+    needs: [lint-build]
     name: Generate release apk
     runs-on: ubuntu-latest
     steps:
       - name: Generate Release APK
         run: ./gradlew assembleRelease
+
       - name: Sign app APK
         uses: r0adkll/sign-android-release@v1
         id: sign_app
