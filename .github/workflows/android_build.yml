@@ -82,8 +82,11 @@ jobs:
     name: Generate release apk
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code for app release
+        uses: actions/checkout@v2
+
       - name: Generate Release APK
-        run: ./gradlew assembleRelease
+        run: ./gradlew assembleRelease --stacktrace
 
       - name: Sign app APK
         uses: r0adkll/sign-android-release@v1
