@@ -27,7 +27,7 @@ object Versions {
     const val dataBinding ="3.5.0" // Last updated 26/02/2021
     const val customYoutubePlayer = "10.0.5"
     const val customShimmer = "0.5.0"
-    const val buildToolsVersion = "29.0.3"
+    const val buildToolsVersion = "30.0.2"
     const val minSdkVersion = 21
     const val maxSdkVersion = 30
     const val hiltVersion = "2.36"
