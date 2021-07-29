@@ -105,5 +105,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: inews-release.apk
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+          path: app/release/app-release.apk
 

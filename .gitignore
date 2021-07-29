@@ -91,3 +91,4 @@ buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab_i.len
 buildSrc/build/pluginUnderTestMetadata/plugin-under-test-metadata.properties
 buildSrc/build/reports/plugin-development/validation-report.txt
 buildSrc/build/tmp/jar/MANIFEST.MF
+app/release/app-release.apk
