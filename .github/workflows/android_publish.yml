@@ -41,7 +41,7 @@ jobs:
 
       - name: Releasing using Hub
         uses: ShaunLWM/action-release-debugapk@master
-          env:
-            GITHUB_TOKEN: ${{ secrets.INEWS_TOKEN }}
-            APP_FOLDER: app
-            RELEASE_TITLE: Inews Signed Apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.INEWS_TOKEN }}
+          APP_FOLDER: app
+          RELEASE_TITLE: Inews Signed Apk
