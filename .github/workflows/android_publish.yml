@@ -38,6 +38,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.INEWS_TOKEN }}
           APP_FOLDER: app
+          SIGNED_RELEASE_FILE: ${{steps.sign_app.outputs.signedReleaseFile}}
 
 #      - name: Upload release APK
 #        uses: actions/upload-artifact@v2
