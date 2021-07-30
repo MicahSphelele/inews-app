@@ -1,4 +1,4 @@
-name: Publish debug APK
+name: Publish release APK
 
 # Controls when the action will run.
 on:
@@ -22,6 +22,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
       - name: Generate release APK
         run: ./gradlew assembleRelease --stacktrace
 
