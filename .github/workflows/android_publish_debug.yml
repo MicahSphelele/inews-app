@@ -1,4 +1,4 @@
-name: Publish APK
+name: Publish debug APK
 
 # Controls when the action will run.
 on:
@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  package-release-apk:
-    name: Generate release apk
+  package-debug-apk:
+    name: Generate debug apk
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code for app release
