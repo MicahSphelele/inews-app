@@ -1,4 +1,4 @@
-name: Android Build
+name: Publish APK
 
 # Controls when the action will run.
 on:

@@ -14,7 +14,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import sphe.inews.R
+import sphe.inews.enums.NewsCategory
 import sphe.inews.models.Country
+import sphe.inews.models.domain.ArticleBookmarkMapper
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
 import java.util.*
@@ -140,6 +142,13 @@ object AppModuleTest {
 
     @Singleton
     @Provides
+    @Named(Constants.NAMED_CATEGORIES)
+    fun provideFilterData() : Array<NewsCategory>{
+        return NewsCategory.values()
+    }
+
+    @Singleton
+    @Provides
     @Named(Constants.NAMED_STORAGE)
     fun provideAppStorage(application: Application) : AppStorage {
         return AppStorage(application)
@@ -150,6 +159,12 @@ object AppModuleTest {
     @Named(Constants.NAMED_IS_ON_TEST_MODE)
     fun providesIsOnTestMode() : Boolean {
         return true
+    }
+
+    @Singleton
+    @Provides
+    fun providesRecipeMapper() : ArticleBookmarkMapper {
+        return ArticleBookmarkMapper()
     }
 
 }
