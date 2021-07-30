@@ -31,4 +31,7 @@ class BookMarkViewModel @Inject constructor(private val bookmarkRepo: BookmarkRe
         return bookmarkRepo.getBooMark(url)
     }
 
+    override suspend fun getBooMarksByCategory(category: String): List<Bookmark>? {
+        return bookmarkRepo.getBooMarksByCategory(category)
+    }
 }

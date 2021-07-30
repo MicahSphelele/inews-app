@@ -36,4 +36,7 @@ class BookmarkRepository @Inject constructor(application: Application) : Bookmar
       return bookmarkDao?.getBooMark(url)
     }
 
+    override suspend fun getBooMarksByCategory(category: String): List<Bookmark>? {
+        return bookmarkDao?.getBooMarksByCategory(category)
+    }
 }

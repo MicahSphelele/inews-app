@@ -23,4 +23,7 @@ interface BookmarkDao {
     @Query("SELECT * FROM ${Constants.TABLE_BOOKMARK} WHERE ${Constants.URL} = :url")
     suspend fun getBooMark(url : String) : Bookmark
 
+    @Query("SELECT * FROM ${Constants.TABLE_BOOKMARK} WHERE ${Constants.CATEGORY} = :category")
+    suspend fun getBooMarksByCategory(category: String) : List<Bookmark>
+
 }

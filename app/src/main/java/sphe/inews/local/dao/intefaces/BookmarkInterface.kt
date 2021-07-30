@@ -14,4 +14,6 @@ interface BookmarkInterface {
   fun getBooMarksObserved() : LiveData<List<Bookmark>>
 
   suspend fun getBooMark(url : String) : Bookmark?
+
+  suspend fun getBooMarksByCategory(category: String) : List<Bookmark>?
 }
