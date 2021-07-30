@@ -12,7 +12,7 @@ on:
 
 jobs:
   package-debug-apk:
-    name: Generate debug apk
+    name: Generate release apk
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code for app release
