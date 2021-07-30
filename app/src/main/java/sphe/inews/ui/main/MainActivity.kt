@@ -92,9 +92,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-
             R.id.action_bookmarks -> {
-                Toast.makeText(this, "Bookmark clicked", Toast.LENGTH_LONG).show()
                 navController.navigate(R.id.bookmarkFragment, null, null, null)
             }
             R.id.action_about -> {
