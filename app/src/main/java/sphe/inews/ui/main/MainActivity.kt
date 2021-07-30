@@ -95,6 +95,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
             R.id.action_bookmarks -> {
                 Toast.makeText(this, "Bookmark clicked", Toast.LENGTH_LONG).show()
+                navController.navigate(R.id.bookmarkFragment, null, null, null)
             }
             R.id.action_about -> {
                 if (!_networkState){
@@ -122,8 +123,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     override fun onBackPressed() {
         super.onBackPressed()
 
-        val fragment =
-            supportFragmentManager.findFragmentById(R.id.navigationHostFragment) as Fragment
+        val fragment = supportFragmentManager.findFragmentById(R.id.navigationHostFragment) as Fragment
 
         when (NavHostFragment.findNavController(fragment).currentDestination?.id) {
             R.id.businessFragment -> finish()

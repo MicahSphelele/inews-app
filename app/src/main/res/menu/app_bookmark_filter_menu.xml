@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/filterBusiness"
+        android:icon="@drawable/ic_business"
+        android:title="@string/business" />
+    <item
+        android:id="@+id/filterHealth"
+        android:icon="@drawable/ic_health"
+        android:title="@string/health" />
+    <item
+        android:id="@+id/filterSport"
+        android:icon="@drawable/ic_sports"
+        android:title="@string/sport" />
+    <item
+        android:id="@+id/filterTechnology"
+        android:icon="@drawable/ic_technology"
+        android:title="@string/technology" />
+    <item
+        android:id="@+id/filterEntertainment"
+        android:icon="@drawable/ic_entertainment"
+        android:title="@string/entertainment" />
+</menu>
