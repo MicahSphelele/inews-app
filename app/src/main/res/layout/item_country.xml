@@ -15,8 +15,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_margin="8dp"
             android:background="?attr/selectableItemBackground"
             android:contentDescription="@string/todo"
