@@ -52,3 +52,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.INEWS_TOKEN }}
           APK_FOLDER: ${{steps.sign_app.outputs.signedReleaseFile}}
+          APP_FOLDER: app
