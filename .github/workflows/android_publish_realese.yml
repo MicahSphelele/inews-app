@@ -45,7 +45,7 @@ jobs:
           path: ${{steps.sign_app.outputs.signedReleaseFile}}
 
       - name: Release signed APK
-        run: echo Signed APK FILE ${{steps.sign_app.outputs.signedReleaseFile}}
+        echo: Signed APK FILE ${{steps.sign_app.outputs.signedReleaseFile}}
         uses: MicahSphelele/action-publish-signed-apk@main
         env:
           GITHUB_TOKEN: ${{ secrets.INEWS_TOKEN }}
