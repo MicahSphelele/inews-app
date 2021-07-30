@@ -33,14 +33,15 @@ jobs:
         env:
           BUILD_TOOLS_VERSION: "30.0.2"
 
-      - name: Upload release APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: inews-release.apk
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
-
       - name: Release Signed APK
         uses: kyze8439690/action-release-releaseapk@master
         env:
           GITHUB_TOKEN: ${{ secrets.INEWS_TOKEN }}
           APP_FOLDER: app
+
+#      - name: Upload release APK
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: inews-release.apk
+#          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+
