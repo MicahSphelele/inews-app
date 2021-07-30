@@ -14,7 +14,9 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import sphe.inews.BaseApplication
 import sphe.inews.R
+import sphe.inews.enums.NewsCategory
 import sphe.inews.models.Country
+import sphe.inews.models.NewsFilter
 import sphe.inews.models.domain.ArticleBookmarkMapper
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
@@ -137,6 +139,12 @@ object AppModule {
             Country("Japan","jp", R.drawable.flag__japan)
 
         )
+    }
+
+    @Singleton
+    @Provides
+    fun provideFilterData() : List<NewsCategory>{
+        return NewsCategory.values().toList()
     }
 
     @Singleton
