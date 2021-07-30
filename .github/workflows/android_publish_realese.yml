@@ -51,4 +51,4 @@ jobs:
         uses: MicahSphelele/action-publish-signed-apk@main
         env:
           GITHUB_TOKEN: ${{ secrets.INEWS_TOKEN }}
-          APK_FOLDER: app/build/outputs/apk/release/app-release-unsigned.apk
+          APK_FOLDER: ${{steps.sign_app.outputs.signedReleaseFile}}
