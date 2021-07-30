@@ -12,7 +12,6 @@ on:
 
 jobs:
   package-release-apk:
-    needs: [package-debug-apk]
     name: Generate release apk
     runs-on: ubuntu-latest
     steps:
