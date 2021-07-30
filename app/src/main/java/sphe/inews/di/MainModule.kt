@@ -18,12 +18,10 @@ import javax.inject.Named
 @Module
 object MainModule {
 
-
     @Provides
     fun provideAdapter(): ArticleAdapter {
         return ArticleAdapter()
     }
-
 
     @Provides
     fun provideCountryAdapter(@Named(Constants.NAMED_COUNTRIES) list: List<Country>): CountryAdapter {
@@ -31,7 +29,7 @@ object MainModule {
     }
 
     @Provides
-    fun provideCategoryAdapter(@Named(Constants.NAMED_CATEGORIES) list: List<NewsCategory>): CategoryAdapter {
+    fun provideCategoryAdapter(@Named(Constants.NAMED_CATEGORIES) list: Array<NewsCategory>): CategoryAdapter {
         return CategoryAdapter(list)
     }
 

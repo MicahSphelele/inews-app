@@ -18,7 +18,7 @@ import sphe.inews.models.news.Article
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
 
-    private lateinit var list: List<Article>
+    private  var list: List<Article> = mutableListOf()
 
     private lateinit var listener: ArticleListener
 

@@ -143,8 +143,8 @@ object AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_CATEGORIES)
-    fun provideFilterData() : List<NewsCategory>{
-        return NewsCategory.values().toList()
+    fun provideFilterData() : Array<NewsCategory>{
+        return NewsCategory.values()
     }
 
     @Singleton

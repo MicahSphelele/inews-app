@@ -11,7 +11,7 @@ import com.google.android.material.imageview.ShapeableImageView
 import sphe.inews.R
 import sphe.inews.enums.NewsCategory
 
-class CategoryAdapter(private var list: List<NewsCategory>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CategoryAdapter(private var list: Array<NewsCategory>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     private lateinit var listener: CategoryListener
 
