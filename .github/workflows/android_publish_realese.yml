@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  package-debug-apk:
-    name: Generate release apk
+  package-release-apk:
+    name: Generate release APK
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code for app release
@@ -23,7 +23,7 @@ jobs:
         with:
           java-version: 11
 
-      - name: Generate release APK
+      - name: Generate signed APK
         run: ./gradlew assembleRelease --stacktrace
 
       - name: Sign APK with keystore
