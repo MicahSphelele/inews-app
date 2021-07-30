@@ -15,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import sphe.inews.BaseApplication
 import sphe.inews.R
 import sphe.inews.models.Country
+import sphe.inews.models.domain.ArticleBookmarkMapper
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
 import java.util.*
@@ -150,5 +151,11 @@ object AppModule {
     @Named(Constants.NAMED_IS_ON_TEST_MODE)
     fun providesIsOnTestMode() : Boolean {
         return false
+    }
+
+    @Singleton
+    @Provides
+    fun providesRecipeMapper() : ArticleBookmarkMapper {
+        return ArticleBookmarkMapper()
     }
 }
