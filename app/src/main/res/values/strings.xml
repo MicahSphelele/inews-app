@@ -30,7 +30,7 @@
     <string name="url_linkedin">https://www.linkedin.com/in/sphelele-ngubane-3b2a84123</string>
     <string name="url_gmail">sphemicah@gmail.com</string>
     <string name="url_instagram">https://www.instagram.com/sphelele_micah_ngubane/?hl=en</string>
-    <string name="filter">Filter</string>
+    <string name="txt_filter">Filter</string>
     <string name="select_country">Select Country</string>
     <string name="txt_ui_mode">UI Theme</string>
     <string name="title_activity_settings">SettingsActivity</string>
@@ -53,5 +53,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txt_bookmarks">Bookmarks</string>
-    <string name="filter">Filter</string>
+    <string name="app_filter">Filter</string>
 </resources>

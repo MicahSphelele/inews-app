@@ -23,6 +23,7 @@ object Constants {
     const val NAMED_SET_OLD = "constraint_set_old"
     const val NAMED_SET_NEW = "constraint_set_new"
     const val NAMED_COUNTRIES = "countries"
+    const val NAMED_CATEGORIES = "categories"
     const val NAMED_COVID_19 = "covid19"
     const val NAMED_STORAGE = "storage"
     const val NAMED_IS_ON_TEST_MODE = "isOnTestMode"

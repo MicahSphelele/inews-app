@@ -16,7 +16,6 @@ import sphe.inews.BaseApplication
 import sphe.inews.R
 import sphe.inews.enums.NewsCategory
 import sphe.inews.models.Country
-import sphe.inews.models.NewsFilter
 import sphe.inews.models.domain.ArticleBookmarkMapper
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
@@ -143,6 +142,7 @@ object AppModule {
 
     @Singleton
     @Provides
+    @Named(Constants.NAMED_CATEGORIES)
     fun provideFilterData() : List<NewsCategory>{
         return NewsCategory.values().toList()
     }
