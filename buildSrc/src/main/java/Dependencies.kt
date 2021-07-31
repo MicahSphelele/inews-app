@@ -34,4 +34,6 @@ object Versions {
     const val hiltCompilerVersion = "2.34.1-beta"
     const val hiltLifecycleViewModelVersion = "1.0.0-alpha03"
     const val fragmentTesting = "1.4.0-alpha04"
+    const val lottie = "3.4.0"
+    const val gson = "2.8.7"
 }

@@ -24,7 +24,7 @@ class CategoryAdapter(private var list: Array<NewsCategory>) : RecyclerView.Adap
         holder.image.setImageDrawable(ContextCompat.getDrawable(holder.itemView.context,category.image))
         holder.title.text = category.title
         holder.itemView.setOnClickListener {
-            listener.onCategoryClicked(category)
+            listener.onCategoryItemClick(category)
         }
     }
 
@@ -42,6 +42,6 @@ class CategoryAdapter(private var list: Array<NewsCategory>) : RecyclerView.Adap
     }
 
     interface CategoryListener {
-        fun onCategoryClicked(category: NewsCategory)
+        fun onCategoryItemClick(category: NewsCategory)
     }
 }

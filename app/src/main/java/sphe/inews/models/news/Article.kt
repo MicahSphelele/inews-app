@@ -9,7 +9,7 @@ data class Article(
     @SerializedName("url")
     var url: String,
     @SerializedName("author")
-    var author: String,
+    var author: String?,
     @SerializedName("content")
     var content: String,
     @SerializedName("description")

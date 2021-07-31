@@ -29,5 +29,6 @@
         <attr name="dialogButtonTextColor" format="color"/>
         <attr name="articleErrorButtonBackgroundColor" format="color"/>
         <attr name="netWorkViewBgColor" format="color"/>
+        <attr name="viewBackgroundColor" format="color"/>
     </declare-styleable>
 </resources>

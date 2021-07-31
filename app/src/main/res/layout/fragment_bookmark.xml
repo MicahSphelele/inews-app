@@ -31,6 +31,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_filter" />
 
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_error" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtErrorMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textAlignment="center"
+        android:textColor="?attr/articleLoadErrorTextColor"
+        android:textSize="8pt"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/lottieView"
+        app:layout_constraintStart_toStartOf="@+id/lottieView"
+        app:layout_constraintTop_toBottomOf="@+id/lottieView"
+        tools:text="Some thing went wrong" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
@@ -43,6 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageFilter"
         tools:itemCount="5"
         tools:listitem="@layout/item_article" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

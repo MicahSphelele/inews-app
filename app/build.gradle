@@ -135,7 +135,8 @@ dependencies {
     //Custom Libraries
     implementation  "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.customYoutubePlayer}"
     implementation "com.facebook.shimmer:shimmer:${Versions.customShimmer}"
-    implementation "com.google.code.gson:gson:2.8.7"
+    implementation "com.google.code.gson:gson:${Versions.gson}"
+    implementation "com.airbnb.android:lottie:${Versions.lottie}"
 
     //Hilt
     implementation "com.google.dagger:hilt-android:${Versions.hiltVersion}"
