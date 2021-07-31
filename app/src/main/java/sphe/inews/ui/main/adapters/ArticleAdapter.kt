@@ -66,11 +66,11 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
          }
 
          holder.image.setOnClickListener{
-             listener.onArticleClicked(article,isVideo)
+             listener.onArticleItemClick(article,isVideo)
          }
 
          holder.youtube.setOnClickListener{
-             listener.onArticleClicked(article,isVideo)
+             listener.onArticleItemClick(article,isVideo)
          }
 
          holder.share.setOnClickListener{
@@ -113,7 +113,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
     private val asyncListDiffer = AsyncListDiffer(this,diffCallBack)
 
     interface ArticleListener{
-        fun onArticleClicked(article: Article,isVideo:Boolean)
+        fun onArticleItemClick(article: Article, isVideo:Boolean)
         fun onShareClicked(article: Article)
     }
  }

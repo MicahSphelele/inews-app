@@ -69,7 +69,7 @@ class SportFragment : Fragment(R.layout.fragment_sport), ArticleAdapter.ArticleL
        getSportNews()
     }
 
-    override fun onArticleClicked(article: Article, isVideo: Boolean) {
+    override fun onArticleItemClick(article: Article, isVideo: Boolean) {
         when (isVideo) {
             true -> {
                 viewYoutubeDialogFragment = ViewYoutubeDialogFragment()

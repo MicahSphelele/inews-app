@@ -80,7 +80,7 @@ class TechnologyFragment : Fragment(R.layout.fragment_technology), ArticleAdapte
         Log.i("@TAG","onDestroyView")
     }
 
-    override fun onArticleClicked(article: Article, isVideo: Boolean) {
+    override fun onArticleItemClick(article: Article, isVideo: Boolean) {
         when (isVideo) {
             true -> {
                 viewYoutubeDialogFragment = ViewYoutubeDialogFragment()

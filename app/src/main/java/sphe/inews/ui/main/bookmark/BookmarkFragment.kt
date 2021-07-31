@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import sphe.inews.R
 import sphe.inews.databinding.FragmentBookmarkBinding
@@ -67,9 +69,9 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
             it.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = articleAdapter
+                itemAnimator = null
             }
         }
-
 
         binding.btnExit.setOnClickListener {
             findNavController().navigateUp()
@@ -82,15 +84,18 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
         lifecycleScope.launch {
             try {
                 val articles = mapper.toDomainList(bookmarkViewModel.getBooMarks())
-                if (articles!!.isNotEmpty()) {
-                    articleAdapter.setArticles(articles)
-                    return@launch
+                CoroutineScope(Dispatchers.Main).launch {
+
+                    if (articles!!.isNotEmpty()) {
+                        articleAdapter.setArticles(articles)
+                    } else {
+                        hideShowLottieView(
+                            state = View.VISIBLE,
+                            animation = R.raw.animation_empty,
+                            errorMsg = "No bookmarks found"
+                        )
+                    }
                 }
-                hideShowLottieView(
-                    state = View.VISIBLE,
-                    animation = R.raw.animation_empty,
-                    errorMsg = "No bookmarks found"
-                )
             } catch (ex: Exception) {
                 ex.printStackTrace()
                 hideShowLottieView(
@@ -105,7 +110,7 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
         categoryAdapter.setCountryClickListener(this)
     }
 
-    override fun onArticleClicked(article: Article, isVideo: Boolean) {
+    override fun onArticleItemClick(article: Article, isVideo: Boolean) {
         Toast.makeText(requireContext(), "Feature coming in soon", Toast.LENGTH_SHORT).show()
     }
 
@@ -124,15 +129,17 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                         category.title.toLowerCase(Locale.ROOT)
                     )
                 )
-                if (articles!!.isNotEmpty()) {
-                    articleAdapter.setArticles(articles)
-                    return@launch
+                CoroutineScope(Dispatchers.Main).launch {
+                    if (articles!!.isNotEmpty()) {
+                        articleAdapter.setArticles(articles)
+                    } else {
+                        hideShowLottieView(
+                            state = View.VISIBLE,
+                            animation = R.raw.animation_empty,
+                            errorMsg = "No ${category.title} bookmarks found"
+                        )
+                    }
                 }
-                hideShowLottieView(
-                    state = View.VISIBLE,
-                    animation = R.raw.animation_empty,
-                    errorMsg = "No ${category.title} bookmarks found"
-                )
             } catch (ex: Exception) {
                 ex.printStackTrace()
                 hideShowLottieView(

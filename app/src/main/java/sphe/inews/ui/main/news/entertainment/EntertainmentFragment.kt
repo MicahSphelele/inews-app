@@ -71,7 +71,7 @@ class EntertainmentFragment : Fragment(R.layout.fragment_entertainment), Article
     }
 
 
-    override fun onArticleClicked(article: Article, isVideo: Boolean) {
+    override fun onArticleItemClick(article: Article, isVideo: Boolean) {
         when (isVideo) {
             true -> {
                 viewYoutubeDialogFragment = ViewYoutubeDialogFragment()

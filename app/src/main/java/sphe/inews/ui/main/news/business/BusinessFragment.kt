@@ -70,7 +70,7 @@ class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.Ar
 
     }
 
-    override fun onArticleClicked(article: Article, isVideo: Boolean) {
+    override fun onArticleItemClick(article: Article, isVideo: Boolean) {
         when (isVideo) {
             true -> {
                 val bundle = Bundle()
