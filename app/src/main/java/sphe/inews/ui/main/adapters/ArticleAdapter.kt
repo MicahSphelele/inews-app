@@ -74,10 +74,8 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
          }
 
          holder.share.setOnClickListener{
-             listener.onShareClicked(article)
+             listener.onShareItemClick(article)
          }
-
-
 
      }
 
@@ -114,6 +112,6 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
     interface ArticleListener{
         fun onArticleItemClick(article: Article, isVideo:Boolean)
-        fun onShareClicked(article: Article)
+        fun onShareItemClick(article: Article)
     }
  }

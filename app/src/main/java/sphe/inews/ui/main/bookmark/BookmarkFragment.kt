@@ -114,7 +114,7 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
         Toast.makeText(requireContext(), "Feature coming in soon", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onShareClicked(article: Article) {
+    override fun onShareItemClick(article: Article) {
         Toast.makeText(requireContext(), "Feature coming in soon", Toast.LENGTH_SHORT).show()
     }
 

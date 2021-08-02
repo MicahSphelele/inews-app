@@ -115,7 +115,7 @@ class HealthFragment : Fragment(R.layout.fragment_health), ArticleAdapter.Articl
         }
     }
 
-    override fun onShareClicked(article: Article) {
+    override fun onShareItemClick(article: Article) {
         val shareIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, article.url)
