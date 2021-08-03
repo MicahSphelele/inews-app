@@ -21,5 +21,4 @@ class ArticleBookmarkMapper: DomainMapper<Bookmark,Article> {
     fun toDomainList(initial: List<Bookmark>?) : List<Article>?{
         return initial?.map { mapToDomainModel(it) }
     }
-
 }

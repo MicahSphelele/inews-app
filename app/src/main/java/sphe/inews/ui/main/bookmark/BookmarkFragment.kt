@@ -147,7 +147,6 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                 bundle.putParcelable(
                     ArticlePreviewFragment.BOOKMARK_OBJ,
                     Bookmark(
-                        0,
                         article.url,
                         article.author,
                         article.content,

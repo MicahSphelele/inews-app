@@ -106,7 +106,6 @@ class TechnologyFragment : Fragment(R.layout.fragment_technology), ArticleAdapte
                 bundle.putParcelable(
                     ArticlePreviewFragment.BOOKMARK_OBJ,
                     Bookmark(
-                        0,
                         article.url,
                         article.author,
                         article.content,

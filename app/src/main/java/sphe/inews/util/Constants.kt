@@ -43,7 +43,7 @@ object Constants {
     const val IMAGE_URL = "urlToImage"
     const val CATEGORY = "category"
 
-    const val DB_VERSION = 1
+    const val DB_VERSION = 2
 
     val PACKS_NEWS = byteArrayOf(
         52, 101, 51, 97, 102,

@@ -1,15 +1,10 @@
-
-
 package sphe.inews.ui.main.dialogfragments
 
 import android.app.Activity
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -31,7 +26,7 @@ class ArticlePreviewFragment : Fragment(R.layout.fragment_view_article) {
 
     private lateinit var articleUrl: String
 
-    companion object{
+    companion object {
         const val BOOKMARK_OBJ = "bookmarkObject"
     }
 
@@ -55,8 +50,8 @@ class ArticlePreviewFragment : Fragment(R.layout.fragment_view_article) {
             findNavController().navigateUp()
         }
 
-        binding.txtReadMore.setOnClickListener {
-            Constants.launchCustomTabIntent(activity as Activity,articleUrl)
+        binding.btnReadMore.setOnClickListener {
+            Constants.launchCustomTabIntent(activity as Activity, articleUrl)
         }
 
         setUpUIData()
@@ -72,41 +67,46 @@ class ArticlePreviewFragment : Fragment(R.layout.fragment_view_article) {
         super.onActivityCreated(args)
     }
 
-    private fun setUpUIData(){
-
+    private fun setUpUIData() {
 
 
         requireArguments().apply {
             val article = requireArguments().getParcelable(BOOKMARK_OBJ) as? Bookmark
 
-            binding.txtTitle.text = if(article?.title == "" || article?.title == null){
+            binding.txtTitle.text = if (article?.title == "" || article?.title == null) {
+                article?.title = "No Title"
                 "No Title"
-            }else{
+            } else {
                 article.title
             }
-            binding.txtContent.text = if(article?.content == "" || article?.content == null){
+            binding.txtContent.text = if (article?.content == "" || article?.content == null) {
+                article?.content = "No Article content available. Please click on read more to view the article."
                 "No Article content available. Please click on read more to view the article."
-            }else{
+            } else {
                 article.content
             }
-            binding.txtDate.text = if(article?.publishedAt == "" || article?.publishedAt==null){
+            binding.txtDate.text = if (article?.publishedAt == "" || article?.publishedAt == null) {
+                article?.publishedAt = "Date Unknown"
                 "Date Unknown"
-            }else{
+            } else {
                 article.publishedAt.let {
                     Constants.appDateFormatArticle(it!!).toString()
                 }
             }
-            binding.txtSource.text = if(article?.sourceName == "" || article?.sourceName == null){
+            binding.txtSource.text = if (article?.sourceName == "" || article?.sourceName == null) {
+                article?.sourceName = "No Source"
                 "No Source"
-            }else{
+            } else {
                 article.sourceName
             }
 
-            val imageUrl = if (article?.urlToImage == "" || article?.urlToImage == null){
+            val imageUrl = if (article?.urlToImage == "" || article?.urlToImage == null) {
+                article?.urlToImage = "null"
                 "null"
-            }else{
+            } else {
                 article.urlToImage
             }
+
             Glide.with(binding.headerImage)
                 .load(Uri.parse(imageUrl))
                 .placeholder(R.mipmap.ic_launcher)
@@ -116,20 +116,19 @@ class ArticlePreviewFragment : Fragment(R.layout.fragment_view_article) {
             articleUrl = article?.url!!
 
             lifecycleScope.launch {
-                val bookmarks = viewModel.getBooMarks()
-                Log.d("@TAG", "Bookmarks = $bookmarks")
 
                 val bookmark = viewModel.getBooMark(articleUrl)
 
                 binding.checkBookmark.isChecked = bookmark.notNull()
 
                 binding.checkBookmark.setOnCheckedChangeListener { _, checked ->
-
                     lifecycleScope.launch {
-                        if(checked){
+                        if (checked) {
                             viewModel.insert(article)
                         } else {
-                            viewModel.delete(bookmark!!)
+                            bookmark?.let {
+                                viewModel.delete(it)
+                            }
                         }
                     }
                 }

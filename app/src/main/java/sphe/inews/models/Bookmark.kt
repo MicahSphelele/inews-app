@@ -1,6 +1,7 @@
 package sphe.inews.models
 
 import android.os.Parcelable
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -10,11 +11,10 @@ import sphe.inews.util.Constants
 @Entity(tableName = Constants.TABLE_BOOKMARK)
 @Parcelize
 data class Bookmark(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = Constants.ID)
-    var id: Int = 0,
+    @PrimaryKey
+    @NonNull
     @ColumnInfo(name = Constants.URL)
-    var url: String? = "",
+    var url: String = "",
     @ColumnInfo(name = Constants.AUTHOR)
     var author: String? = "'",
     @ColumnInfo(name = Constants.CONTENT)

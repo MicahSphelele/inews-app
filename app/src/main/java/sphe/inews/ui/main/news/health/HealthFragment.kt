@@ -96,7 +96,6 @@ class HealthFragment : Fragment(R.layout.fragment_health), ArticleAdapter.Articl
                 bundle.putParcelable(
                     ArticlePreviewFragment.BOOKMARK_OBJ,
                     Bookmark(
-                        0,
                         article.url,
                         article.author,
                         article.content,

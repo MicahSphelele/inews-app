@@ -97,7 +97,6 @@ class EntertainmentFragment : Fragment(R.layout.fragment_entertainment), Article
                 bundle.putParcelable(
                     ArticlePreviewFragment.BOOKMARK_OBJ,
                     Bookmark(
-                        0,
                         article.url,
                         article.author,
                         article.content,

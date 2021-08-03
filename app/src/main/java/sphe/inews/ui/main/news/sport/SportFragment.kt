@@ -95,7 +95,6 @@ class SportFragment : Fragment(R.layout.fragment_sport), ArticleAdapter.ArticleL
                 bundle.putParcelable(
                     ArticlePreviewFragment.BOOKMARK_OBJ,
                     Bookmark(
-                        0,
                         article.url,
                         article.author,
                         article.content,
