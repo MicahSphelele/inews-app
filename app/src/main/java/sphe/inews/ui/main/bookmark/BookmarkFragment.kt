@@ -22,11 +22,16 @@ import sphe.inews.R
 import sphe.inews.databinding.FragmentBookmarkBinding
 import sphe.inews.enums.NewsCategory
 import sphe.inews.local.viewmodel.BookMarkViewModel
+import sphe.inews.models.Bookmark
 import sphe.inews.models.domain.ArticleBookmarkMapper
 import sphe.inews.models.news.Article
+import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.adapters.CategoryAdapter
+import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
+import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.util.AppLogger
+import sphe.inews.util.notNull
 import java.util.*
 import javax.inject.Inject
 
@@ -39,6 +44,10 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
     private val bookmarkViewModel by viewModels<BookMarkViewModel>()
 
     private lateinit var categoryBottomDialog: BottomSheetDialog
+
+    private lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
+
+    private var bookmarkList: List<Bookmark>? = null
 
     @Inject
     lateinit var articleAdapter: ArticleAdapter
@@ -83,12 +92,14 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
 
         lifecycleScope.launch {
             try {
-                val articles = mapper.toDomainList(bookmarkViewModel.getBooMarks())
+                bookmarkList = bookmarkViewModel.getBooMarks()
+                val articles = mapper.toDomainList(bookmarkList)
                 CoroutineScope(Dispatchers.Main).launch {
 
                     if (articles!!.isNotEmpty()) {
                         articleAdapter.setArticles(articles)
                     } else {
+
                         hideShowLottieView(
                             state = View.VISIBLE,
                             animation = R.raw.animation_empty,
@@ -111,7 +122,48 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
     }
 
     override fun onArticleItemClick(article: Article, isVideo: Boolean) {
-        Toast.makeText(requireContext(), "Feature coming in soon", Toast.LENGTH_SHORT).show()
+        when (isVideo) {
+            true -> {
+                val bundle = Bundle()
+                viewYoutubeDialogFragment = ViewYoutubeDialogFragment()
+                bundle.putString(ViewYoutubeDialogFragment.URL, article.url)
+                viewYoutubeDialogFragment.arguments = bundle
+                viewYoutubeDialogFragment.show(
+                    (activity as BaseActivity).supportFragmentManager,
+                    "viewYoutubeDialogFragment"
+                )
+            }
+            false -> {
+                val bundle = Bundle()
+
+                val sourceID = if (article.source.id.notNull()) {
+
+                    article.source.id.toString()
+
+                } else {
+                    "N/A"
+                }
+                val bookmark = bookmarkList?.first{ it.url == article.url }
+                bundle.putParcelable(
+                    ArticlePreviewFragment.BOOKMARK_OBJ,
+                    Bookmark(
+                        0,
+                        article.url,
+                        article.author,
+                        article.content,
+                        article.description,
+                        article.publishedAt,
+                        sourceID,
+                        article.source.name,
+                        article.title,
+                        article.urlToImage,
+                        bookmark?.category
+                    )
+                )
+
+                findNavController().navigate(R.id.articlePreviewFragment, bundle, null, null)
+            }
+        }
     }
 
     override fun onShareItemClick(article: Article) {
@@ -124,11 +176,8 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                 hideShowLottieView(View.INVISIBLE)
                 categoryBottomDialog.dismiss()
                 articleAdapter.setArticles(mutableListOf())
-                val articles = mapper.toDomainList(
-                    bookmarkViewModel.getBooMarksByCategory(
-                        category.title.toLowerCase(Locale.ROOT)
-                    )
-                )
+                bookmarkList = bookmarkViewModel.getBooMarksByCategory(category.title.toLowerCase(Locale.ROOT))
+                val articles = mapper.toDomainList(bookmarkList)
                 CoroutineScope(Dispatchers.Main).launch {
                     if (articles!!.isNotEmpty()) {
                         articleAdapter.setArticles(articles)
@@ -159,6 +208,7 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
         binding.lottieView.visibility = state
         //Only play animation when view is visible
         if (state == View.VISIBLE) {
+            articleAdapter.emptyArticleList()
             binding.lottieView.setAnimation(animation)
             binding.lottieView.repeatCount = ValueAnimator.INFINITE
             binding.lottieView.playAnimation()
@@ -169,7 +219,7 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
         binding.txtErrorMsg.text = errorMsg
     }
 
-    @SuppressLint("InflateParams")
+    @SuppressLint("InflateParams", "UseGetLayoutInflater")
     private fun categoryBottomDialog(): BottomSheetDialog {
         val bottomDialog = BottomSheetDialog(requireContext())
         bottomDialog.dismissWithAnimation = true

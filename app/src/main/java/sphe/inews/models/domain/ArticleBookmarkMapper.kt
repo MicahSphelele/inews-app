@@ -10,12 +10,12 @@ class ArticleBookmarkMapper: DomainMapper<Bookmark,Article> {
         return Article(
             url = entity.url!!,
             author = entity.author,
-            content = entity.content!!,
-            description = entity.description!!,
+            content = entity.content,
+            description = entity.description,
             publishedAt = entity.publishedAt!!,
             source = Source(entity.sourceId!!, entity.sourceName!!),
             title = entity.title!!,
-            urlToImage = entity.urlToImage!!)
+            urlToImage = entity.urlToImage)
     }
 
     fun toDomainList(initial: List<Bookmark>?) : List<Article>?{

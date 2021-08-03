@@ -36,7 +36,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     lateinit var binding: ActivityMainBinding
 
-    private var _networkState = false
+    private var isNetworkConnected = false
 
     @Inject
     @Named(Constants.NAMED_STORAGE)
@@ -66,9 +66,9 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
         networkState.observe(this, {
 
-            _networkState = it.isConnected
+            isNetworkConnected = it.isConnected
 
-            if (!_networkState) {
+            if (!isNetworkConnected) {
                 snackBar.show()
                 return@observe
             }
@@ -77,7 +77,6 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 snackBar.dismiss()
             }
         })
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -92,10 +91,12 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_bookmarks -> {
-                navController.navigate(R.id.bookmarkFragment, null, null, null)
+                if (navController.currentDestination?.label != "Bookmark") {
+                    navController.navigate(R.id.bookmarkFragment, null, null, null)
+                }
             }
             R.id.action_about -> {
-                if (!_networkState){
+                if (!isNetworkConnected){
                     showToastMessage("Connect to Wifi/internet")
                     return false
                 }
@@ -103,7 +104,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 aboutFragmentDialog.show(supportFragmentManager, "aboutFragmentDialog")
             }
             R.id.action_corona -> {
-                if (!_networkState){
+                if (!isNetworkConnected){
                     showToastMessage("Connect to Wifi/internet")
                     return false
                 }

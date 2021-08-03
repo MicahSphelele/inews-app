@@ -11,9 +11,9 @@ data class Article(
     @SerializedName("author")
     var author: String?,
     @SerializedName("content")
-    var content: String,
+    var content: String?,
     @SerializedName("description")
-    var description: String,
+    var description: String?,
     @SerializedName("publishedAt")
     var publishedAt: String,
     @SerializedName("source")
@@ -21,5 +21,5 @@ data class Article(
     @SerializedName("title")
     var title: String,
     @SerializedName("urlToImage")
-    var urlToImage: String
+    var urlToImage: String?
 )

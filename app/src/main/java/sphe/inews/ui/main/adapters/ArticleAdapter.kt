@@ -88,6 +88,10 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
         this.listener = listener
     }
 
+    fun emptyArticleList() {
+        setArticles(mutableListOf())
+    }
+
     class ViewHolder(@NonNull v: View):RecyclerView.ViewHolder(v){
           var image : ShapeableImageView = v.findViewById(R.id.image)
           var title : TextView = v.findViewById(R.id.title)
