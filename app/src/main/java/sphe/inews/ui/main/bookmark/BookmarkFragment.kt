@@ -2,6 +2,7 @@ package sphe.inews.ui.main.bookmark
 
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -166,7 +167,12 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
     }
 
     override fun onShareItemClick(article: Article) {
-        Toast.makeText(requireContext(), "Feature coming in soon", Toast.LENGTH_SHORT).show()
+        val shareIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, article.url)
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(shareIntent, null))
     }
 
     override fun onCategoryItemClick(category: NewsCategory) {
