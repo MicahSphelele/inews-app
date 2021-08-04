@@ -34,14 +34,8 @@ class CountryAdapter(private var list: List<Country>) : RecyclerView.Adapter<Cou
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val country = list[position]
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+        holder.image.setImageDrawable(ContextCompat.getDrawable(holder.itemView.context,country.image))
 
-            holder.image.setImageDrawable(ContextCompat.getDrawable(holder.itemView.context,country.image))
-
-        }else{
-            @Suppress("DEPRECATION")
-            holder.image.setImageDrawable(ContextCompat.getDrawable(holder.itemView.context,country.image))
-        }
         holder.title.text = country.countryName
 
         holder.itemView.setOnClickListener {

@@ -32,6 +32,8 @@ import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.util.AppLogger
 import sphe.inews.util.notNull
+import sphe.inews.util.showLongToast
+import sphe.inews.util.showShortToast
 import java.util.*
 import javax.inject.Inject
 
@@ -113,6 +115,9 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                     state = View.VISIBLE,
                     errorMsg = "Something went wrong"
                 )
+                ex.message?.let {
+                    requireActivity().showShortToast(it)
+                }
                 AppLogger.error("Error on fetching bookmark data", ex)
             }
         }
@@ -199,6 +204,9 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                     state = View.VISIBLE,
                     errorMsg = "Something went wrong"
                 )
+                ex.message?.let {
+                    requireActivity().showLongToast(it)
+                }
                 AppLogger.error("Error on fetching bookmark data category: ${category.title}", ex)
             }
         }
