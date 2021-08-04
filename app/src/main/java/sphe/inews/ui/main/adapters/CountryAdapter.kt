@@ -1,6 +1,5 @@
 package sphe.inews.ui.main.adapters
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -41,7 +40,6 @@ class CountryAdapter(private var list: List<Country>) : RecyclerView.Adapter<Cou
         holder.itemView.setOnClickListener {
             listener.onItemCountryClick(country)
         }
-
     }
 
     fun setCountryClickListener(listener: CountryListener){
