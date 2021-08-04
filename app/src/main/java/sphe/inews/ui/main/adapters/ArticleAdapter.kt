@@ -7,27 +7,30 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.NonNull
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 import sphe.inews.R
+import sphe.inews.databinding.ItemArticleBinding
 import sphe.inews.models.news.Article
-import sphe.inews.util.AppLogger
 
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
-
 
     private var list: List<Article> = mutableListOf()
 
     private lateinit var listener: ArticleListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-        return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_article, parent, false)
+        val viewBinder: ItemArticleBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_article,
+            parent,
+            false
         )
+        return ViewHolder(viewBinder)
     }
 
     override fun getItemCount(): Int {
@@ -95,12 +98,13 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
         setArticles(mutableListOf())
     }
 
-    class ViewHolder(@NonNull v: View) : RecyclerView.ViewHolder(v) {
-        var image: ShapeableImageView = v.findViewById(R.id.image)
-        var title: TextView = v.findViewById(R.id.title)
-        var source: TextView = v.findViewById(R.id.source)
-        var share: ImageButton = v.findViewById(R.id.share)
-        var youtube: ImageButton = v.findViewById(R.id.youtube)
+    class ViewHolder(@NonNull viewBinder: ItemArticleBinding) :
+        RecyclerView.ViewHolder(viewBinder.root) {
+        var image: ShapeableImageView = viewBinder.image
+        var title: TextView = viewBinder.title
+        var source: TextView = viewBinder.source
+        var share: ImageButton = viewBinder.share
+        var youtube: ImageButton = viewBinder.youtube
 
     }
 
