@@ -2,14 +2,15 @@ package sphe.inews.ui.main.adapters
 
 import android.os.Build
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import sphe.inews.R
+import sphe.inews.databinding.ItemCountryBinding
 import sphe.inews.models.Country
 
 class CountryAdapter(private var list: List<Country>) : RecyclerView.Adapter<CountryAdapter.ViewHolder>(){
@@ -17,7 +18,13 @@ class CountryAdapter(private var list: List<Country>) : RecyclerView.Adapter<Cou
     private lateinit var listener: CountryListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return  ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_country, parent, false))
+        val viewBinder: ItemCountryBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_country,
+            parent,
+            false
+        )
+        return  ViewHolder(viewBinder)
     }
 
     override fun getItemCount(): Int {
@@ -47,9 +54,9 @@ class CountryAdapter(private var list: List<Country>) : RecyclerView.Adapter<Cou
         this.listener = listener
     }
 
-     class ViewHolder(@NonNull v: View): RecyclerView.ViewHolder(v){
-        var image : ImageView = v.findViewById(R.id.image)
-        var title :TextView  = v.findViewById(R.id.title)
+     class ViewHolder(@NonNull viewBinder: ItemCountryBinding): RecyclerView.ViewHolder(viewBinder.root){
+        var image : ImageView = viewBinder.image
+        var title :TextView  = viewBinder.title
     }
 
     interface CountryListener{
