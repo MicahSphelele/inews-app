@@ -45,7 +45,7 @@ class CountryAdapter(private var list: List<Country>) : RecyclerView.Adapter<Cou
         holder.title.text = country.countryName
 
         holder.itemView.setOnClickListener {
-            listener.onCountryClicked(country)
+            listener.onItemCountryClick(country)
         }
 
     }
@@ -60,6 +60,6 @@ class CountryAdapter(private var list: List<Country>) : RecyclerView.Adapter<Cou
     }
 
     interface CountryListener{
-        fun onCountryClicked(country: Country)
+        fun onItemCountryClick(country: Country)
     }
 }

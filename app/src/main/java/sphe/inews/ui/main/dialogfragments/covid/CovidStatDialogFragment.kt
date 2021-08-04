@@ -87,7 +87,7 @@ class CovidStatDialogFragment : DialogFragment(R.layout.fragment_covid19_stats),
     }
 
 
-    override fun onCountryClicked(country: Country) {
+    override fun onItemCountryClick(country: Country) {
         countryBottomDialog.dismiss()
         this.getCovid19Stats(country.countryName)
     }
