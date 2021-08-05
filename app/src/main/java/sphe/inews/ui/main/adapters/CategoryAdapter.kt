@@ -1,31 +1,22 @@
 package sphe.inews.ui.main.adapters
 
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import sphe.inews.R
 import sphe.inews.databinding.ItemCategoryBinding
-import sphe.inews.databinding.ItemCountryBinding
 import sphe.inews.enums.NewsCategory
+import sphe.inews.util.viewHolderItemBinding
 
 class CategoryAdapter(private var list: Array<NewsCategory>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     private lateinit var listener: CategoryListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val viewBinder: ItemCategoryBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context),
-            R.layout.item_category,
-            parent,
-            false
-        )
-       return ViewHolder(viewBinder)
+       return ViewHolder(parent.viewHolderItemBinding(R.layout.item_category) as ItemCategoryBinding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
