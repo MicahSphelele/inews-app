@@ -16,6 +16,7 @@ import com.google.android.material.imageview.ShapeableImageView
 import sphe.inews.R
 import sphe.inews.databinding.ItemArticleBinding
 import sphe.inews.models.news.Article
+import sphe.inews.util.viewHolderItemBinding
 
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
@@ -24,13 +25,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
     private lateinit var listener: ArticleListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val viewBinder: ItemArticleBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context),
-            R.layout.item_article,
-            parent,
-            false
-        )
-        return ViewHolder(viewBinder)
+        return ViewHolder(parent.viewHolderItemBinding(R.layout.item_article) as ItemArticleBinding)
     }
 
     override fun getItemCount(): Int {
