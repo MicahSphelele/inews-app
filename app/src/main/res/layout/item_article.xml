@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
+    <data>
+        <import type="sphe.inews.util.ExtensionsKt"/>
+        <variable
+            name="article"
+            type="sphe.inews.models.news.Article" />
+    </data>
+
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,11 +17,11 @@
     android:layout_margin="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image"
@@ -22,6 +30,7 @@
             android:src="@drawable/logo"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
+            app:imageUrl="@{article.urlToImage}"
             app:shapeAppearanceOverlay="@style/roundedCornerStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +43,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="casual"
             android:textColor="?attr/articleCardTitleTextColor"
+            android:text="@{ExtensionsKt.shrinkString(article.title)}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:layout_constraintBottom_toTopOf="@+id/share"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +58,7 @@
             android:textColor="?attr/articleCardSubTitleTextColor"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             android:textStyle="bold"
+            android:text="@{article.source.name}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/youtube"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +74,7 @@
             android:contentDescription="@string/todo"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
+            android:visibility="@{ExtensionsKt.isYoutubeInt(article.source.name)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/share"
             app:layout_constraintTop_toTopOf="@+id/share" />
