@@ -1,10 +1,11 @@
 package sphe.inews.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
+import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
@@ -35,10 +36,18 @@ class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            @Suppress("DEPRECATION")
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+
+
         val binding: ActivitySplashBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_splash)
 
@@ -54,17 +63,18 @@ class SplashActivity : BaseActivity() {
             }
         }
 
-        binding.txtAppVersion.text = appVersion
+
+        binding.appVersion = appVersion
 
     }
 
     override fun onStart() {
         super.onStart()
-        if(!isOnTestMode) {
+        if (!isOnTestMode) {
             Handler(Looper.getMainLooper()).postDelayed({
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
-            },3000)
+            }, 3000)
         }
     }
 }
