@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <import type="sphe.inews.util.ExtensionsKt"/>
+        <variable
+            name="country"
+            type="sphe.inews.models.Country" />
+    </data>
     <com.google.android.material.card.MaterialCardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,10 +28,11 @@
                 android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/todo"
                 android:focusable="true"
-                android:src="@drawable/flag_south_africa"
+                app:imageDrawable="@{country.image}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/flag_south_africa" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/title"
@@ -35,6 +42,7 @@
                 android:textAlignment="center"
                 android:textColor="?attr/countryPickerTextColor"
                 android:textStyle="bold"
+                android:text="@{country.countryName}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
