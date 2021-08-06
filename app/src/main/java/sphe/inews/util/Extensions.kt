@@ -36,7 +36,7 @@ fun Context.showShortToast(message: String) {
 fun ViewGroup.viewHolderItemBinding(resId: Int): ViewDataBinding {
     return DataBindingUtil.inflate(
         LayoutInflater.from(this.context),
-        R.layout.item_article,
+        resId,
         this,
         false
     )
@@ -66,4 +66,11 @@ fun loadImage(view: ShapeableImageView, url: String) = Glide.with(view.context)
     .load(Uri.parse(url))
     .placeholder(R.drawable.logo)
     .error(R.drawable.logo)
+    .into(view)
+
+@BindingAdapter("imageDrawable")
+fun loadImageDrawable(view: ShapeableImageView, imageResource: Int) = Glide.with(view.context)
+    .load("")
+    .placeholder(imageResource)
+    .error(imageResource)
     .into(view)
