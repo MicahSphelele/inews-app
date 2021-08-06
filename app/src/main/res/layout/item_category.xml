@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
+    <data>
+        <variable
+            name="newsCategory"
+            type="sphe.inews.enums.NewsCategory" />
+    </data>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,6 +28,7 @@
             android:layout_marginTop="6dp"
             android:layout_marginBottom="6dp"
             android:src="@drawable/ic_health"
+            app:imageDrawable="@{newsCategory.image}"
             android:tint="?attr/bottomNavItemIconColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:fontFamily="casual"
+            android:text="@{newsCategory.title}"
             tools:text="@string/health"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
@@ -45,7 +53,7 @@
         <View
             android:id="@+id/divider"
             android:layout_width="0dp"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="?attr/viewBackgroundColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
