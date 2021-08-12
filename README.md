@@ -13,7 +13,6 @@ A simple open source news demo app developed in [**Kotlin**](https://kotlinlang.
 - Filter Covid-19 stats by country
 - Switch between Default mode and Dark mode depending on the system or you can keep it in dark mode or light mode from a dialog
 
-
 ## App Screen Shots (Light Mode)
 <div>
 <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/screen_light_1.jpg" width="125" height="250"/>
