@@ -127,7 +127,7 @@ class HealthFragment : Fragment(R.layout.fragment_health), ArticleAdapter.Articl
         liveData = newsViewModel.getNews("za", Constants.HEALTH)
         liveData.removeObservers(viewLifecycleOwner)
         liveData.observe(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 is NetworkResult.Loading -> {
                     setErrorViewsVisibility(false)
                     setShimmerLayoutVisibility(true)
