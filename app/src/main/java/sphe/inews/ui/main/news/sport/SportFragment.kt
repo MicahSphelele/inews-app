@@ -64,9 +64,9 @@ class SportFragment : Fragment(R.layout.fragment_sport), ArticleAdapter.ArticleL
             getSportNews()
         }
 
-       setErrorViewsVisibility(false)
-       setShimmerLayoutVisibility(false)
-       getSportNews()
+        setErrorViewsVisibility(false)
+        setShimmerLayoutVisibility(false)
+        getSportNews()
     }
 
     override fun onArticleItemClick(article: Article, isVideo: Boolean) {
