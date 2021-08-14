@@ -10,18 +10,18 @@ import javax.inject.Inject
 
 class BookmarkRepository @Inject constructor(application: Application) : BookmarkInterface {
 
-    private var bookmarkDao : BookmarkDao ? = null
+    private var bookmarkDao: BookmarkDao? = null
 
     init {
         bookmarkDao = AppDB.getInstance(application).bookmarkDao()
     }
 
-    override suspend fun insert(bookmark: Bookmark) : Long {
+    override suspend fun insert(bookmark: Bookmark): Long {
         return bookmarkDao?.insert(bookmark)!!
     }
 
-    override suspend fun delete(bookmark: Bookmark) : Int {
-       return bookmarkDao?.delete(bookmark)!!
+    override suspend fun delete(bookmark: Bookmark): Int {
+        return bookmarkDao?.delete(bookmark)!!
     }
 
     override suspend fun getBooMarks(): List<Bookmark> {
@@ -33,7 +33,7 @@ class BookmarkRepository @Inject constructor(application: Application) : Bookmar
     }
 
     override suspend fun getBooMark(url: String): Bookmark? {
-      return bookmarkDao?.getBooMark(url)
+        return bookmarkDao?.getBooMark(url)
     }
 
     override suspend fun getBooMarksByCategory(category: String): List<Bookmark>? {
