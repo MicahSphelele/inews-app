@@ -23,7 +23,8 @@ import sphe.inews.util.Constants
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CovidStatDialogFragment : DialogFragment(R.layout.fragment_covid19_stats), CountryAdapter.CountryListener {
+class CovidStatDialogFragment : DialogFragment(R.layout.fragment_covid19_stats),
+    CountryAdapter.CountryListener {
 
     @Inject
     lateinit var adapter: CountryAdapter
