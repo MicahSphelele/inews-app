@@ -148,7 +148,7 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                 } else {
                     "N/A"
                 }
-                val bookmark = bookmarkList?.first{ it.url == article.url }
+                val bookmark = bookmarkList?.first { it.url == article.url }
                 bundle.putParcelable(
                     ArticlePreviewFragment.BOOKMARK_OBJ,
                     Bookmark(
@@ -185,7 +185,8 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                 hideShowLottieView(View.INVISIBLE)
                 categoryBottomDialog.dismiss()
                 articleAdapter.setArticles(mutableListOf())
-                bookmarkList = bookmarkViewModel.getBooMarksByCategory(category.title.toLowerCase(Locale.ROOT))
+                bookmarkList =
+                    bookmarkViewModel.getBooMarksByCategory(category.title.toLowerCase(Locale.ROOT))
                 val articles = mapper.toDomainList(bookmarkList)
                 CoroutineScope(Dispatchers.Main).launch {
                     if (articles!!.isNotEmpty()) {
