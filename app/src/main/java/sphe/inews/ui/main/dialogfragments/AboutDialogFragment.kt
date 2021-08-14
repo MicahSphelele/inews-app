@@ -181,7 +181,7 @@ class AboutDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun performLayoutTransition() {
-        Log.i(Constants.DEBUG_TAG,"Clone")
+        Log.i(Constants.DEBUG_TAG, "Clone")
         TransitionManager.beginDelayedTransition(binding.layoutAbout)
         altLayout = if (!altLayout) {
             constraintSetNew.applyTo(binding.layoutAbout)
