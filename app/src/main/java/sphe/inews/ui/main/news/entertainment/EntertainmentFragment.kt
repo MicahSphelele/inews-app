@@ -30,7 +30,8 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  */
 @AndroidEntryPoint
-class EntertainmentFragment : Fragment(R.layout.fragment_entertainment), ArticleAdapter.ArticleListener {
+class EntertainmentFragment : Fragment(R.layout.fragment_entertainment),
+    ArticleAdapter.ArticleListener {
 
     private lateinit var viewYoutubeDialogFragment: ViewYoutubeDialogFragment
     private lateinit var binding: FragmentEntertainmentBinding
@@ -128,7 +129,7 @@ class EntertainmentFragment : Fragment(R.layout.fragment_entertainment), Article
         liveData = newsViewModel.getNews("za", Constants.ENTERTAINMENT)
         liveData.removeObservers(viewLifecycleOwner)
         liveData.observe(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 is NetworkResult.Loading -> {
                     setErrorViewsVisibility(false)
                     setShimmerLayoutVisibility(true)
