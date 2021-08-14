@@ -22,7 +22,7 @@ object AppLogger {
         Log.e(TAG, "Unknown error", throwable)
     }
 
-    fun error(message: String,throwable: Throwable?) {
+    fun error(message: String, throwable: Throwable?) {
         Log.e(TAG, message, throwable)
     }
 }
