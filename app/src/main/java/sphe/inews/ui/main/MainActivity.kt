@@ -73,7 +73,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 return@observe
             }
 
-            if (snackBar.isShown){
+            if (snackBar.isShown) {
                 snackBar.dismiss()
             }
         })
@@ -96,7 +96,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 }
             }
             R.id.action_about -> {
-                if (!isNetworkConnected){
+                if (!isNetworkConnected) {
                     showToastMessage("Connect to Wifi/internet")
                     return false
                 }
@@ -104,7 +104,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 aboutFragmentDialog.show(supportFragmentManager, "aboutFragmentDialog")
             }
             R.id.action_corona -> {
-                if (!isNetworkConnected){
+                if (!isNetworkConnected) {
                     showToastMessage("Connect to Wifi/internet")
                     return false
                 }
@@ -121,7 +121,8 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     override fun onBackPressed() {
         super.onBackPressed()
 
-        val fragment = supportFragmentManager.findFragmentById(R.id.navigationHostFragment) as Fragment
+        val fragment =
+            supportFragmentManager.findFragmentById(R.id.navigationHostFragment) as Fragment
 
         when (NavHostFragment.findNavController(fragment).currentDestination?.id) {
             R.id.businessFragment -> finish()
