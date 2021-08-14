@@ -11,5 +11,5 @@ interface INewsApi {
         @Query("country") country: String,
         @Query("category") category: String,
         @Query("apiKey") apiKey: String
-    ) : NewsResponse
+    ): NewsResponse
 }
