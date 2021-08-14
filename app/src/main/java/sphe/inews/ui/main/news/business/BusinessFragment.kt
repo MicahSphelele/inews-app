@@ -13,6 +13,7 @@ import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.FragmentBusinessBinding
+import sphe.inews.enums.NewsCategory
 import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
 import sphe.inews.models.news.NewsResponse
@@ -24,6 +25,7 @@ import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.util.Constants
 import sphe.inews.util.notNull
 import sphe.inews.viewmodels.NewsViewModel
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -105,7 +107,7 @@ class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.Ar
                         article.source.name,
                         article.title,
                         article.urlToImage,
-                        Constants.BUSINESS
+                        NewsCategory.BUSINESS.title.toLowerCase(Locale.ENGLISH)
                     )
                 )
 
@@ -124,7 +126,7 @@ class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.Ar
     }
 
     private fun getBusinessNews() {
-        liveData = newsViewModel.getNews("za", Constants.BUSINESS)
+        liveData = newsViewModel.getNews("za", NewsCategory.BUSINESS.title.toLowerCase(Locale.ENGLISH))
         liveData.removeObservers(viewLifecycleOwner)
         liveData.observe(viewLifecycleOwner) {
             when (it) {
