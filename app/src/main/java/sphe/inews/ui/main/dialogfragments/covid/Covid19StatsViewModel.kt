@@ -14,17 +14,17 @@ import sphe.inews.network.Resources
 import javax.inject.Inject
 
 @HiltViewModel
-class Covid19StatsViewModel @Inject constructor(private var api: Covid19Api) : ViewModel(){
+class Covid19StatsViewModel @Inject constructor(private var api: Covid19Api) : ViewModel() {
 
     private var covidResponse: MediatorLiveData<Resources<CovidResponse>>? = null
 
-    fun observeCovid19Data(country:String): LiveData<Resources<CovidResponse>>? {
+    fun observeCovid19Data(country: String): LiveData<Resources<CovidResponse>>? {
 
         covidResponse = MediatorLiveData<Resources<CovidResponse>>()
 
         covidResponse?.let {
-            covidResponse?.value =  Resources.loading(
-                CovidResponse("",null)
+            covidResponse?.value = Resources.loading(
+                CovidResponse("", null)
             )
         }
 
@@ -33,21 +33,21 @@ class Covid19StatsViewModel @Inject constructor(private var api: Covid19Api) : V
                 api.getCovidStatsByCountry(country)
                     ?.onErrorReturn { throwable ->
                         throwable.stackTrace
-                        Log.e("@Covid19StatsViewModel","apply error: $throwable")
+                        Log.e("@Covid19StatsViewModel", "apply error: $throwable")
 
-                        return@onErrorReturn CovidResponse("",null)
+                        return@onErrorReturn CovidResponse("", null)
                     }
                     ?.map(object :
                         Function<CovidResponse, Resources<CovidResponse>?> {
                         @Throws(Exception::class)
                         override fun apply(response: CovidResponse): Resources<CovidResponse>? {
-                            Log.d("@Covid19StatsViewModel","apply data")
-                           response.let {
-                               if (response.latestStatByCountry.isNullOrEmpty()) {
-                                   return Resources.error("Something went wrong", null)
-                               }
-                               return Resources.success(response)
-                           }
+                            Log.d("@Covid19StatsViewModel", "apply data")
+                            response.let {
+                                if (response.latestStatByCountry.isNullOrEmpty()) {
+                                    return Resources.error("Something went wrong", null)
+                                }
+                                return Resources.success(response)
+                            }
                         }
                     })!!.subscribeOn(Schedulers.io())
             )
