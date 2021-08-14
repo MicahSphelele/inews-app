@@ -52,7 +52,7 @@ class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.Ar
 
         binding = FragmentBusinessBinding.bind(view)
 
-            binding.recyclerView.let {
+        binding.recyclerView.let {
             it.apply {
                 layoutManager = LinearLayoutManager(activity)
             }
@@ -127,7 +127,7 @@ class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.Ar
         liveData = newsViewModel.getNews("za", Constants.BUSINESS)
         liveData.removeObservers(viewLifecycleOwner)
         liveData.observe(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 is NetworkResult.Loading -> {
                     setErrorViewsVisibility(false)
                     setShimmerLayoutVisibility(true)
