@@ -9,7 +9,8 @@ import sphe.inews.models.Bookmark
 import javax.inject.Inject
 
 @HiltViewModel
-class BookMarkViewModel @Inject constructor(private val bookmarkRepo: BookmarkRepository) : ViewModel(), BookmarkInterface {
+class BookMarkViewModel @Inject constructor(private val bookmarkRepo: BookmarkRepository) :
+    ViewModel(), BookmarkInterface {
 
     override suspend fun insert(bookmark: Bookmark): Long {
         return bookmarkRepo.insert(bookmark)
