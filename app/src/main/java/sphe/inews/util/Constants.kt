@@ -31,7 +31,6 @@ object Constants {
     const val DEFAULT_THEME = "system_default"
 
     const val TABLE_BOOKMARK = "bookmark"
-    const val ID = "id"
     const val AUTHOR = "author"
     const val CONTENT = "content"
     const val DESC = "description"
