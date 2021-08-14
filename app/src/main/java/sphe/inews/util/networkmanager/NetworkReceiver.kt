@@ -13,39 +13,40 @@ import sphe.inews.util.Constants
 
 class NetworkReceiver : BroadcastReceiver() {
 
-     private var networkReporter: MutableLiveData<NetworkData> =
-         MutableLiveData<NetworkData>().apply { NetworkData(NetworkType.AIRPLANE_MODE,false)}
+    private var networkReporter: MutableLiveData<NetworkData> =
+        MutableLiveData<NetworkData>().apply { NetworkData(NetworkType.AIRPLANE_MODE, false) }
 
     @Suppress("DEPRECATION")
     override fun onReceive(context: Context?, intent: Intent?) {
 
-        if(intent?.action == "android.net.conn.CONNECTIVITY_CHANGE"){
+        if (intent?.action == "android.net.conn.CONNECTIVITY_CHANGE") {
 
-            val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val connectivityManager =
+                context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val netInfo = connectivityManager.activeNetworkInfo //DEPRECATION
 
-            if(netInfo == null){ //If it is in airplane mode
-                Log.i(Constants.DEBUG_TAG,"Device is on airplane mode...")
-                networkReporter.postValue(NetworkData(NetworkType.AIRPLANE_MODE,false))
+            if (netInfo == null) { //If it is in airplane mode
+                Log.i(Constants.DEBUG_TAG, "Device is on airplane mode...")
+                networkReporter.postValue(NetworkData(NetworkType.AIRPLANE_MODE, false))
                 return
             }
 
-            val networkType = if(netInfo.type == ConnectivityManager.TYPE_MOBILE){
+            val networkType = if (netInfo.type == ConnectivityManager.TYPE_MOBILE) {
                 NetworkType.MOBILE_DATA
-            }else{
+            } else {
                 NetworkType.WIFI
             }
 
-            if(netInfo.isConnected){
-                Log.i(Constants.DEBUG_TAG,"Device is connected to data or wifi..")
-                networkReporter.postValue(NetworkData(networkType,true))
+            if (netInfo.isConnected) {
+                Log.i(Constants.DEBUG_TAG, "Device is connected to data or wifi..")
+                networkReporter.postValue(NetworkData(networkType, true))
                 return
             }
-            Log.i(Constants.DEBUG_TAG,"Device is not connected to data or wifi..")
-            networkReporter.postValue(NetworkData(networkType,false))
+            Log.i(Constants.DEBUG_TAG, "Device is not connected to data or wifi..")
+            networkReporter.postValue(NetworkData(networkType, false))
         }
     }
 
-    val networkState : LiveData<NetworkData> get() = networkReporter
+    val networkState: LiveData<NetworkData> get() = networkReporter
 
 }
