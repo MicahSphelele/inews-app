@@ -18,11 +18,11 @@ import sphe.inews.databinding.FragmentViewYoutubeBinding
 class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
 
 
-    companion object{
-      const val URL = "videoUrl"
+    companion object {
+        const val URL = "videoUrl"
     }
 
-    private lateinit var videoUrl : String
+    private lateinit var videoUrl: String
 
     private lateinit var binding: FragmentViewYoutubeBinding
 
@@ -31,7 +31,11 @@ class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
         setStyle(STYLE_NORMAL, R.style.FullScreenDialogStyle)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_view_youtube, container, false)
     }
 
@@ -41,12 +45,13 @@ class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
         binding = FragmentViewYoutubeBinding.bind(view)
 
         videoUrl = arguments?.getString(URL)!!
-        
+
         binding.youtubePlayerView.initialize(this)
 
-        (binding.toolbar as Toolbar).navigationIcon = ContextCompat.getDrawable(requireContext(),R.drawable.ic_action_home)
+        (binding.toolbar as Toolbar).navigationIcon =
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_action_home)
 
-        (binding.toolbar as Toolbar).setNavigationOnClickListener{
+        (binding.toolbar as Toolbar).setNavigationOnClickListener {
             dismiss()
         }
     }
@@ -75,7 +80,8 @@ class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
     override fun onActivityCreated(args: Bundle?) {
         super.onActivityCreated(args)
         dialog?.window?.let {
-            dialog?.window?.attributes?.windowAnimations = R.style.FullScreenDialogStyle //Property access syntax
+            dialog?.window?.attributes?.windowAnimations =
+                R.style.FullScreenDialogStyle //Property access syntax
         }
     }
 
@@ -91,11 +97,17 @@ class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
 
     }
 
-    override fun onPlaybackQualityChange(youTubePlayer: YouTubePlayer,playbackQuality: PlayerConstants.PlaybackQuality) {
+    override fun onPlaybackQualityChange(
+        youTubePlayer: YouTubePlayer,
+        playbackQuality: PlayerConstants.PlaybackQuality
+    ) {
 
     }
 
-    override fun onPlaybackRateChange(youTubePlayer: YouTubePlayer,playbackRate: PlayerConstants.PlaybackRate) {
+    override fun onPlaybackRateChange(
+        youTubePlayer: YouTubePlayer,
+        playbackRate: PlayerConstants.PlaybackRate
+    ) {
 
     }
 
