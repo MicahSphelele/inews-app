@@ -17,13 +17,13 @@ import javax.inject.Inject
 @HiltViewModel
 class NewsViewModel @Inject constructor(private var newsApi: INewsApi) : ViewModel() {
 
-   private var newsResponse: MediatorLiveData<NetworkResult<NewsResponse>> = MediatorLiveData()
+    private var newsResponse: MediatorLiveData<NetworkResult<NewsResponse>> = MediatorLiveData()
 
-   private fun executeNewsFlow(country: String, category: String) : Flow<NewsResponse> = flow {
+    private fun executeNewsFlow(country: String, category: String): Flow<NewsResponse> = flow {
         emit(newsApi.getNews(country, category, String(Constants.PACKS_NEWS)))
     }
 
-    fun getNews(country: String, category: String) : LiveData<NetworkResult<NewsResponse>>{
+    fun getNews(country: String, category: String): LiveData<NetworkResult<NewsResponse>> {
         viewModelScope.launch {
             try {
                 executeNewsFlow(country, category)
