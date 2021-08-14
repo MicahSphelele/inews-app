@@ -4,7 +4,7 @@ import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
 import sphe.inews.models.news.Source
 
-class ArticleBookmarkMapper: DomainMapper<Bookmark,Article> {
+class ArticleBookmarkMapper : DomainMapper<Bookmark, Article> {
 
     override fun mapToDomainModel(entity: Bookmark): Article {
         return Article(
@@ -15,10 +15,11 @@ class ArticleBookmarkMapper: DomainMapper<Bookmark,Article> {
             publishedAt = entity.publishedAt!!,
             source = Source(entity.sourceId!!, entity.sourceName!!),
             title = entity.title!!,
-            urlToImage = entity.urlToImage)
+            urlToImage = entity.urlToImage
+        )
     }
 
-    fun toDomainList(initial: List<Bookmark>?) : List<Article>?{
+    fun toDomainList(initial: List<Bookmark>?): List<Article>? {
         return initial?.map { mapToDomainModel(it) }
     }
 }
