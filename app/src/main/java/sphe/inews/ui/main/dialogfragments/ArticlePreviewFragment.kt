@@ -80,7 +80,8 @@ class ArticlePreviewFragment : Fragment(R.layout.fragment_view_article) {
                 article.title
             }
             binding.txtContent.text = if (article?.content == "" || article?.content == null) {
-                article?.content = "No Article content available. Please click on read more to view the article."
+                article?.content =
+                    "No Article content available. Please click on read more to view the article."
                 "No Article content available. Please click on read more to view the article."
             } else {
                 article.content
