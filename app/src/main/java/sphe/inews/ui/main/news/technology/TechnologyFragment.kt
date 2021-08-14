@@ -72,12 +72,12 @@ class TechnologyFragment : Fragment(R.layout.fragment_technology), ArticleAdapte
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.i("@TAG","onDestroy")
+        Log.i("@TAG", "onDestroy")
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Log.i("@TAG","onDestroyView")
+        Log.i("@TAG", "onDestroyView")
     }
 
     override fun onArticleItemClick(article: Article, isVideo: Boolean) {
