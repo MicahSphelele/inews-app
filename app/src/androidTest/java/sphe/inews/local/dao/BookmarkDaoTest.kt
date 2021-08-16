@@ -14,6 +14,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runners.MethodSorters
 import sphe.inews.di.AppModule
+import sphe.inews.enums.NewsCategory
 import sphe.inews.getOrAwaitValue
 import sphe.inews.local.room.AppDB
 import sphe.inews.models.Bookmark
@@ -203,11 +204,11 @@ class BookmarkDaoTest {
             sourceName = "News24",
             title = "France fall-out | Adrien Rabiot's mother clashes with Mbappe, Pogba families after Euro exit - News24",
             urlToImage = "https://cdn.24.co.za/files/Cms/General/d/4032/780cff14f0bf419eb2414c9baa69ea19.jpg, category=sports",
-            category = Constants.HEALTH)
+            category = NewsCategory.HEALTH.title.toLowerCase())
         dao.insert(bookMarkEntry1)
         dao.insert(bookMarkEntry2)
 
-        val bookmarks = dao.getBooMarksByCategory(Constants.HEALTH)
+        val bookmarks = dao.getBooMarksByCategory(NewsCategory.HEALTH.title.toLowerCase())
         assertThat(bookmarks).isNotEmpty()
         assertThat(bookmarks.size).isEqualTo(1)
         assertThat(bookmarks).contains(bookMarkEntry2)
