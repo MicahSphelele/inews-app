@@ -8,7 +8,7 @@ class ArticleBookmarkMapper : DomainMapper<Bookmark, Article> {
 
     override fun mapToDomainModel(entity: Bookmark): Article {
         return Article(
-            url = entity.url!!,
+            url = entity.url,
             author = entity.author,
             content = entity.content,
             description = entity.description,
