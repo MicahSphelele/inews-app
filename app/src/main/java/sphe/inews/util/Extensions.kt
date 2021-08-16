@@ -58,6 +58,37 @@ fun isYoutubeInt(string: String): Int {
         View.GONE
     }
 }
+fun getArticleTitle(string: String?): String {
+    return if (string == "" || string == null) {
+        "No Title"
+    } else {
+        string
+    }
+}
+
+fun getPublishedAtDate(string: String?): String {
+    return if (string == "" || string == null) {
+        "Date Unknown"
+    } else {
+        Constants.appDateFormatArticle(string).toString()
+    }
+}
+
+fun getSourceName(string: String?): String {
+    return if (string == "" || string == null) {
+        "No Source"
+    } else {
+        string
+    }
+}
+
+fun getArticleContent(string: String?): String {
+    return if (string == "" || string == null) {
+        "No Article content available. Please click on read more to view the article."
+    } else {
+        string
+    }
+}
 
 fun isYoutubeBoolean(string: String): Boolean = (string == "Youtube.com")
 
