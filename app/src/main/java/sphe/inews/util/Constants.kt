@@ -14,7 +14,6 @@ object Constants {
     const val DEBUG_TAG = "@InewsDebug"
     const val BASE_NEWS_URL = "http://newsapi.org/v2/"
     const val BASE_COVID_URL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
-    const val TECHNOLOGY = "technology"
     const val ENTERTAINMENT = "entertainment"
     const val NAMED_APP_VERSION = "app_version"
     const val NAMED_SET_OLD = "constraint_set_old"
