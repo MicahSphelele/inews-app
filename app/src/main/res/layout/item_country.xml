@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <import type="sphe.inews.util.ExtensionsKt"/>
         <variable
             name="country"
             type="sphe.inews.models.Country" />
