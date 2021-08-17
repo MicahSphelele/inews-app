@@ -22,7 +22,7 @@ import sphe.inews.util.notNull
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ArticlePreviewFragment : Fragment(R.layout.fragment_view_article) {
+class ArticleViewFragment : Fragment(R.layout.fragment_view_article) {
 
     private lateinit var articleUrl: String
 
