@@ -60,16 +60,6 @@ class ArticlePreviewFragment : Fragment(R.layout.fragment_view_article) {
         setUpUIData()
     }
 
-    @Suppress("RedundantOverride")
-    override fun onStart() {
-        super.onStart()
-    }
-
-    @Suppress("RedundantOverride")
-    override fun onActivityCreated(args: Bundle?) {
-        super.onActivityCreated(args)
-    }
-
     private fun setUpUIData() {
 
         val bookmarkArticle = requireArguments().getParcelable(BOOKMARK_OBJ) as? Bookmark
