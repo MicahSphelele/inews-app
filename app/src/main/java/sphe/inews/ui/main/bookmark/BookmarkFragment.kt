@@ -28,7 +28,7 @@ import sphe.inews.models.news.Article
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.adapters.CategoryAdapter
-import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
+import sphe.inews.ui.main.dialogfragments.ArticleViewFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.util.AppLogger
 import sphe.inews.util.notNull
@@ -150,7 +150,7 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                 }
                 val bookmark = bookmarkList?.first { it.url == article.url }
                 bundle.putParcelable(
-                    ArticlePreviewFragment.BOOKMARK_OBJ,
+                    ArticleViewFragment.BOOKMARK_OBJ,
                     Bookmark(
                         article.url,
                         article.author,

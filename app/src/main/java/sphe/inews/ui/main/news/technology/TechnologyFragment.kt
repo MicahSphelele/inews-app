@@ -21,9 +21,8 @@ import sphe.inews.models.news.NewsResponse
 import sphe.inews.network.response.NetworkResult
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.adapters.ArticleAdapter
-import sphe.inews.ui.main.dialogfragments.ArticlePreviewFragment
+import sphe.inews.ui.main.dialogfragments.ArticleViewFragment
 import sphe.inews.ui.main.dialogfragments.ViewYoutubeDialogFragment
-import sphe.inews.util.Constants
 import sphe.inews.util.notNull
 import sphe.inews.viewmodels.NewsViewModel
 import java.util.*
@@ -106,7 +105,7 @@ class TechnologyFragment : Fragment(R.layout.fragment_technology), ArticleAdapte
                 }
 
                 bundle.putParcelable(
-                    ArticlePreviewFragment.BOOKMARK_OBJ,
+                    ArticleViewFragment.BOOKMARK_OBJ,
                     Bookmark(
                         article.url,
                         article.author,
