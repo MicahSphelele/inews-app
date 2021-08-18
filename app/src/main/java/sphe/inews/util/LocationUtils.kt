@@ -1,6 +1,7 @@
 package sphe.inews.util
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Address
@@ -14,7 +15,8 @@ object LocationUtils {
     fun isGPSOpen(context: Context): Boolean {
         val manager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return manager.isProviderEnabled(LocationManager.GPS_PROVIDER) || manager.isProviderEnabled(
-            LocationManager.NETWORK_PROVIDER)
+            LocationManager.NETWORK_PROVIDER
+        )
     }
 
     fun isLocationPermissionEnabled(context: Context): Boolean {
@@ -25,6 +27,14 @@ object LocationUtils {
             context,
             Manifest.permission.ACCESS_COARSE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED);
+    }
+
+    fun requestLocationPermission(activity: Activity) {
+        ActivityCompat.requestPermissions(
+            activity,
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            Constants.LOCATION_REQUEST_CODE
+        )
     }
 
     fun getLocationAddress(context: Context, latitude: Double, longitude: Double): Address {

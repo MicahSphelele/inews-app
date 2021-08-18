@@ -38,6 +38,7 @@ object Constants {
     const val CATEGORY = "category"
 
     const val DB_VERSION = 2
+    const val LOCATION_REQUEST_CODE = 1000
 
     val PACKS_NEWS = byteArrayOf(
         52, 101, 51, 97, 102,
@@ -99,7 +100,7 @@ object Constants {
             .setToolbarColor(ContextCompat.getColor(activity, R.color.colorAccent))
         intentBuilder.setDefaultColorSchemeParams(customTabColorSchemeParams.build())
         val customTabsIntent = intentBuilder.build()
-        activity.let { it1 -> customTabsIntent.launchUrl(it1, Uri.parse(url)) }
+        activity.let {  customTabsIntent.launchUrl(it, Uri.parse(url)) }
     }
 
     fun selectThemeValue(theme: String): String {
