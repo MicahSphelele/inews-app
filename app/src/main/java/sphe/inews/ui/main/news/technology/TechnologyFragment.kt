@@ -18,7 +18,7 @@ import sphe.inews.enums.NewsCategory
 import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
 import sphe.inews.models.news.NewsResponse
-import sphe.inews.network.response.NetworkResult
+import sphe.inews.network.results.NetworkResult
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.dialogfragments.ArticleViewFragment
