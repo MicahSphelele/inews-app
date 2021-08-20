@@ -17,7 +17,7 @@ import sphe.inews.R
 import sphe.inews.databinding.FragmentCovid19StatsBinding
 import sphe.inews.models.Country
 import sphe.inews.models.covid.LatestStatByCountry
-import sphe.inews.network.Resources
+import sphe.inews.network.results.Resources
 import sphe.inews.ui.main.adapters.CountryAdapter
 import sphe.inews.util.Constants
 import javax.inject.Inject

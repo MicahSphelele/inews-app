@@ -1,4 +1,4 @@
-package sphe.inews.network
+package sphe.inews.network.results
 
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable

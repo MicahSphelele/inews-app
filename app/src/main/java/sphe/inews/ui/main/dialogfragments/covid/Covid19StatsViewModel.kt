@@ -10,7 +10,7 @@ import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import sphe.inews.models.covid.CovidResponse
 import sphe.inews.network.Covid19Api
-import sphe.inews.network.Resources
+import sphe.inews.network.results.Resources
 import javax.inject.Inject
 
 @HiltViewModel
