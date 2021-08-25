@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/sportFragment"
@@ -40,8 +41,14 @@
         android:name="sphe.inews.ui.main.dialogfragments.ArticleViewFragment"
         android:label="Article"
         tools:layout="@layout/fragment_view_article" />
+
     <fragment
         android:id="@+id/bookmarkFragment"
         android:name="sphe.inews.ui.main.bookmark.BookmarkFragment"
         android:label="Bookmark" />
+
+    <fragment
+        android:id="@+id/permissionsFragment"
+        android:name="sphe.inews.ui.main.permission.PermissionsFragment"
+        android:label="AppPermissions" />
 </navigation>
