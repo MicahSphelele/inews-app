@@ -1,7 +1,7 @@
 @Suppress("unused")
 object Versions {
     const val junit = "4.13.2"
-    const val kotlin = "1.5.20"
+    const val kotlin = "1.5.21"
     const val kotlinPlugin = "1.5.0-release-764"
     const val android = "4.0.1"
     const val androidXAppcompat = "1.3.0" // Last updated 13/01/2021
