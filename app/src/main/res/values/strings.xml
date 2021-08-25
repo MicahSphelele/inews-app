@@ -55,4 +55,7 @@
     <string name="txt_bookmarks">Bookmarks</string>
     <string name="app_filter">Filter</string>
     <string name="weather">Weather</string>
+    <string name="txt_allow">Allow</string>
+    <string name="txt_deny">Deny</string>
+    <string name="txt_permission_required">Permission Required</string>
 </resources>

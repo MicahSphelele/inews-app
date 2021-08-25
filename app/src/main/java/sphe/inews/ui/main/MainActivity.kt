@@ -21,7 +21,9 @@ import sphe.inews.databinding.ActivityMainBinding
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
+import sphe.inews.ui.main.permission.PermissionsFragment
 import sphe.inews.util.Constants
+import sphe.inews.util.LocationUtils
 import sphe.inews.util.storage.AppStorage
 import javax.inject.Inject
 import javax.inject.Named
@@ -102,6 +104,13 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 }
                 aboutFragmentDialog = AboutDialogFragment()
                 aboutFragmentDialog.show(supportFragmentManager, "aboutFragmentDialog")
+            }
+            R.id.action_weather -> {
+                if (!isNetworkConnected) {
+                    showToastMessage("Connect to Wifi/internet")
+                    return false
+                }
+                handleWeatherScreen()
             }
             R.id.action_corona -> {
                 if (!isNetworkConnected) {
@@ -192,6 +201,23 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             }
         dialog = builder.create()
         dialog?.show()
+    }
+
+    private fun handleWeatherScreen() {
+        if (LocationUtils.isLocationPermissionEnabled(this)) {
+            if (LocationUtils.isGPSOpen(this)) {
+                showToastMessage("Location is enabled")
+                return
+            }
+            showToastMessage("Device GPS needs to turned on")
+            return
+        }
+        if (navController.currentDestination?.label != "AppPermissions") {
+            val bundle = Bundle().apply {
+                putString(PermissionsFragment.EXTRA_PERMISSION_TYPE,PermissionsFragment.TYPE_LOCATION)
+            }
+            navController.navigate(R.id.permissionsFragment, bundle, null, null)
+        }
     }
 
     private fun setTheme() {
