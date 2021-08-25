@@ -15,7 +15,7 @@ object Versions {
     const val androidxEspresso = "3.3.0"
     const val androidxTestRules = "1.4.0"
     const val androidxLifeCycleExt ="2.2.0" //Last updated 26/02/2021
-    const val androidxRoomRxJava = "2.2.6" //Last updated 26/02/2021
+    const val androidxRoomRxJava = "2.3.0" //Last updated 26/02/2021
     const val androidxRoom = "2.3.0" //Last updated 26/02/2021
     const val androidxLifeCycleReactiveStreams ="2.2.0"
     const val androidxNavigation = "2.3.0"
@@ -36,4 +36,5 @@ object Versions {
     const val fragmentTesting = "1.4.0-alpha04"
     const val lottie = "4.0.0"
     const val gson = "2.8.7"
+    const val locationService = "18.0.0"
 }

@@ -147,6 +147,7 @@ dependencies {
     //implementation "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycleViewModelVersion}"
     kapt "androidx.hilt:hilt-compiler:${Versions.hiltLifecycleViewModelVersion}"
 
+    implementation "com.google.android.gms:play-services-location:${Versions.locationService}"
 }
 
 kapt {
