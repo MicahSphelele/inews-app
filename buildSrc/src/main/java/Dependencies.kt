@@ -30,7 +30,7 @@ object Versions {
     const val buildToolsVersion = "30.0.2"
     const val minSdkVersion = 21
     const val maxSdkVersion = 30
-    const val hiltVersion = "2.36"
+    const val hiltVersion = "2.38.1"
     const val hiltCompilerVersion = "2.34.1-beta"
     const val hiltLifecycleViewModelVersion = "1.0.0-alpha03"
     const val fragmentTesting = "1.4.0-alpha04"

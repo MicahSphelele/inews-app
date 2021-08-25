@@ -146,7 +146,7 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:${Versions.hiltCompilerVersion}"
     //implementation "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycleViewModelVersion}"
     kapt "androidx.hilt:hilt-compiler:${Versions.hiltLifecycleViewModelVersion}"
-
+    
 }
 
 kapt {
