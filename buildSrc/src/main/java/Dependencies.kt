@@ -4,7 +4,7 @@ object Versions {
     const val kotlin = "1.5.21"
     const val kotlinPlugin = "1.5.0-release-764"
     const val android = "4.0.1"
-    const val androidXAppcompat = "1.3.0" // Last updated 13/01/2021
+    const val androidXAppcompat = "1.3.1" // Last updated 13/01/2021
     const val androidXCoreKTX = "1.6.0" // Last updated 26/02/2021
     const val androidXConstraints = "2.1.0" // Last updated 26/02/2021
     const val androidxLegacySupport = "1.0.0"
