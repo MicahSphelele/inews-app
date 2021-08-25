@@ -101,6 +101,7 @@ object AppModule {
 
     @Singleton
     @Provides
+    @Named(Constants.NAMED_WEATHER_API)
     fun provideRetrofitWeatherInstance(): Retrofit {
         val client = OkHttpClient.Builder()
         client.connectTimeout(35, TimeUnit.SECONDS)
