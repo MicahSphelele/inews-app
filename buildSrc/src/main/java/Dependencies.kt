@@ -6,7 +6,7 @@ object Versions {
     const val android = "4.0.1"
     const val androidXAppcompat = "1.3.0" // Last updated 13/01/2021
     const val androidXCoreKTX = "1.6.0" // Last updated 26/02/2021
-    const val androidXConstraints = "2.0.4" // Last updated 26/02/2021
+    const val androidXConstraints = "2.1.0" // Last updated 26/02/2021
     const val androidxLegacySupport = "1.0.0"
     const val androidxRecyclerView = "1.2.1"
     const val androidxCardView = "1.0.0"
