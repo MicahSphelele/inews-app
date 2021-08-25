@@ -21,7 +21,7 @@ object Versions {
     const val androidxNavigation = "2.3.0"
     const val rxJavaAndroid = "3.0.0" // Last updated 26/02/2021
     const val rxJava = "3.0.0" //Last updated 26/02/2021
-    const val material = "1.3.0"//// Last updated 26/02/2021
+    const val material = "1.4.0"//// Last updated 26/02/2021
     const val retrofit = "2.9.0"
     const val glide = "4.11.0"
     const val dataBinding ="3.5.0" // Last updated 26/02/2021
