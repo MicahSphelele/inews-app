@@ -27,15 +27,18 @@
         tools:targetApi="m"
         tools:ignore="AllowBackup">
 
-
         <activity
             android:name=".ui.main.MainActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
 
         <activity
             android:name=".ui.SplashActivity"
             android:label="@string/app_name"
-            android:noHistory="true">
+            android:screenOrientation="portrait"
+            android:noHistory="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
