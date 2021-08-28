@@ -83,7 +83,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_1"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 app:cardBackgroundColor="?attr/covidCardBackgroundColor"
@@ -140,7 +140,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_2"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 app:cardBackgroundColor="?attr/covidCardBackgroundColor"
@@ -198,7 +198,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_3"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 app:cardBackgroundColor="?attr/covidCardBackgroundColor"
@@ -255,7 +255,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_4"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 app:cardBackgroundColor="?attr/covidCardBackgroundColor"
@@ -312,7 +312,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_5"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 app:cardBackgroundColor="?attr/covidCardBackgroundColor"
