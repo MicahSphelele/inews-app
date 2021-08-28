@@ -26,15 +26,19 @@ class PermissionsFragment : Fragment(R.layout.fragment_permissions) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPermissionsBinding.bind(view)
 
-        val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            AppLogger.info("registerForActivityResult: $it")
-        }
+        val permissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+                AppLogger.info("registerForActivityResult: $it")
+            }
 
         val permissionType = requireArguments().getString(EXTRA_PERMISSION_TYPE, "")
 
         if (permissionType == TYPE_LOCATION) {
             startOrStopAnimation(animation = R.raw.animation_location, startAnimation = true)
-            binding.message = String.format("%s would like to access your device location",getString(R.string.app_name))
+            binding.message = String.format(
+                "%s would like to access your device location",
+                getString(R.string.app_name)
+            )
         }
 
         binding.btnAllow.setOnClickListener {
@@ -48,7 +52,6 @@ class PermissionsFragment : Fragment(R.layout.fragment_permissions) {
             findNavController().navigateUp()
         }
     }
-
 
     @Suppress("SameParameterValue")
     private fun startOrStopAnimation(
