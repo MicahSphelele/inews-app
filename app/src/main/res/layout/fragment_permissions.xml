@@ -14,31 +14,38 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.permission.PermissionsFragment">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:fontFamily="casual"
             android:text="@string/txt_permission_required"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="?attr/articleLoadErrorTextColor"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/lottieView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieView"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="200dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="28dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtMsg"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/animation_error" />
@@ -49,22 +56,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="casual"
+            android:text="@{message}"
             android:textAlignment="center"
             android:textColor="?attr/articleLoadErrorTextColor"
             android:textSize="8pt"
             android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="@+id/lottieView"
             app:layout_constraintStart_toStartOf="@+id/lottieView"
-            app:layout_constraintTop_toBottomOf="@+id/lottieView"
-            android:text="@{message}"
             tools:text="iNews would like to request for your location" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAllow"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="8dp"
+            android:layout_margin="8dp"
             android:text="@string/txt_allow"
             android:textColor="@color/colorWhite"
             android:padding="16dp"
@@ -73,26 +81,32 @@
             app:layout_constraintEnd_toStartOf="@+id/btnDeny"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtMsg"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2"
             app:rippleColor="@color/colorWhite" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDeny"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="8dp"
+            android:layout_margin="8dp"
             android:text="@string/txt_deny"
             android:textColor="@color/colorWhite"
             android:padding="16dp"
             app:cornerRadius="8dp"
             app:backgroundTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAllow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btnAllow"
-            app:layout_constraintTop_toBottomOf="@+id/txtMsg"
+            app:layout_constraintTop_toTopOf="@+id/btnAllow"
             app:rippleColor="@color/colorWhite" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
