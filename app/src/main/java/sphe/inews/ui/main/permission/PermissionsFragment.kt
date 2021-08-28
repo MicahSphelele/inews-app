@@ -38,6 +38,7 @@ class PermissionsFragment : Fragment(R.layout.fragment_permissions) {
         }
 
         binding.btnAllow.setOnClickListener {
+            //val rationalDeniedPermission = shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)
             if (permissionType == TYPE_LOCATION) {
                 permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
             }
