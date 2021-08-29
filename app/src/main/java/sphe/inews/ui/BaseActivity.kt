@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
+import com.google.android.gms.location.LocationRequest
 import com.google.android.material.snackbar.Snackbar
 import sphe.inews.R
 import sphe.inews.models.NetworkData
@@ -16,18 +17,19 @@ import sphe.inews.util.networkmanager.NetworkReceiver
 
 abstract class BaseActivity : AppCompatActivity() {
 
-   private lateinit var networkReceiver: NetworkReceiver
+    private lateinit var networkReceiver: NetworkReceiver
+    private lateinit var locationRequest: LocationRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         networkReceiver = NetworkReceiver()
+        //locationRequest =
     }
 
     override fun onStart() {
         super.onStart()
         val intentFilter = IntentFilter("android.net.conn.CONNECTIVITY_CHANGE")
-        registerReceiver(networkReceiver,intentFilter)
+        registerReceiver(networkReceiver, intentFilter)
     }
 
     override fun onStop() {
@@ -35,10 +37,11 @@ abstract class BaseActivity : AppCompatActivity() {
         unregisterReceiver(networkReceiver)
     }
 
-    val networkState : LiveData<NetworkData> get() = networkReceiver.networkState
+    val networkState: LiveData<NetworkData> get() = networkReceiver.networkState
 
-    fun showNetworkStateBar() : Snackbar {
-        val customSnackBar = Snackbar.make(window.decorView.rootView, "", Snackbar.LENGTH_INDEFINITE)
+    fun showNetworkStateBar(): Snackbar {
+        val customSnackBar =
+            Snackbar.make(window.decorView.rootView, "", Snackbar.LENGTH_INDEFINITE)
         val layout = customSnackBar.view as Snackbar.SnackbarLayout
         val customSnackView: View = layoutInflater.inflate(R.layout.network_error_view, null)
         // We can also customize the above controls
@@ -47,10 +50,10 @@ abstract class BaseActivity : AppCompatActivity() {
         return customSnackBar
     }
 
-     fun showToastMessage(text: String) {
-            val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
-            toast.setGravity(Gravity.BOTTOM, toast.xOffset / 2, toast.yOffset / 2)
-            toast.show()
+    fun showToastMessage(text: String) {
+        val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
+        toast.setGravity(Gravity.BOTTOM, toast.xOffset / 2, toast.yOffset / 2)
+        toast.show()
     }
 
 }

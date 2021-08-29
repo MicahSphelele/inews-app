@@ -14,6 +14,12 @@ import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.LocationSettingsResponse
+import com.google.android.gms.tasks.Task
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
@@ -22,6 +28,7 @@ import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
 import sphe.inews.ui.main.permission.PermissionsFragment
+import sphe.inews.util.AppLogger
 import sphe.inews.util.Constants
 import sphe.inews.util.LocationUtils
 import sphe.inews.util.storage.AppStorage
@@ -36,7 +43,10 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     private lateinit var covidStatDialogFragment: CovidStatDialogFragment
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+
+    private lateinit var locationRequest: LocationRequest
+    private lateinit var locationRequestBuilder: LocationSettingsRequest
 
     private var isNetworkConnected = false
 
@@ -79,6 +89,17 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 snackBar.dismiss()
             }
         })
+
+        locationRequest = LocationRequest.create()
+        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        locationRequest.interval = 5000
+        locationRequest.fastestInterval = 2000
+
+        locationRequestBuilder = LocationSettingsRequest.Builder()
+            .addLocationRequest(locationRequest)
+            .setAlwaysShow(true)
+            .build()
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -209,12 +230,29 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 showToastMessage("Location is enabled")
                 return
             }
+
+           val results: Task<LocationSettingsResponse>  = LocationServices.getSettingsClient(this)
+               .checkLocationSettings(locationRequestBuilder)
+            results.addOnCompleteListener {
+
+                try {
+
+                    val response = it.result
+                    showToastMessage("Location is enabled...")
+                } catch (ex: ApiException) {
+                    AppLogger.error("GPS Error", ex)
+                }
+            }
+
             showToastMessage("Device GPS needs to turned on")
             return
         }
         if (navController.currentDestination?.label != "AppPermissions") {
             val bundle = Bundle().apply {
-                putString(PermissionsFragment.EXTRA_PERMISSION_TYPE,PermissionsFragment.TYPE_LOCATION)
+                putString(
+                    PermissionsFragment.EXTRA_PERMISSION_TYPE,
+                    PermissionsFragment.TYPE_LOCATION
+                )
             }
             navController.navigate(R.id.permissionsFragment, bundle, null, null)
         }
