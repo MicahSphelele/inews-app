@@ -15,10 +15,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.LocationSettingsRequest
-import com.google.android.gms.location.LocationSettingsResponse
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.*
+import com.google.android.gms.tasks.RuntimeExecutionException
 import com.google.android.gms.tasks.Task
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
@@ -231,20 +230,25 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 return
             }
 
-           val results: Task<LocationSettingsResponse>  = LocationServices.getSettingsClient(this)
-               .checkLocationSettings(locationRequestBuilder)
+            val results: Task<LocationSettingsResponse> = LocationServices.getSettingsClient(this)
+                .checkLocationSettings(locationRequestBuilder)
             results.addOnCompleteListener {
 
                 try {
-
                     val response = it.result
                     showToastMessage("Location is enabled...")
-                } catch (ex: ApiException) {
-                    AppLogger.error("GPS Error", ex)
+                } catch (ex: Exception) {
+                    AppLogger.error("GPS RuntimeExecutionException: ${ex.cause}", ex)
+                }
+            }.addOnFailureListener {
+                it as ResolvableApiException
+
+                if (it.statusCode == LocationSettingsStatusCodes.RESOLUTION_REQUIRED) {
+
+                    it.startResolutionForResult(this, Constants.LOCATION_SETTINGS_CODE)
                 }
             }
-
-            showToastMessage("Device GPS needs to turned on")
+            showToastMessage("Device GPS needs to be turned on")
             return
         }
         if (navController.currentDestination?.label != "AppPermissions") {

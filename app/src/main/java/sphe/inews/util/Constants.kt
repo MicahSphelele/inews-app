@@ -41,6 +41,7 @@ object Constants {
 
     const val DB_VERSION = 2
     const val LOCATION_REQUEST_CODE = 1000
+    const val LOCATION_SETTINGS_CODE = 1001
 
     val PACKS_NEWS = byteArrayOf(
         52, 101, 51, 97, 102,
