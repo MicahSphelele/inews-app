@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.IntentSenderRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
@@ -14,11 +17,8 @@ import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
-import com.google.android.gms.tasks.RuntimeExecutionException
-import com.google.android.gms.tasks.Task
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
@@ -27,7 +27,6 @@ import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
 import sphe.inews.ui.main.permission.PermissionsFragment
-import sphe.inews.util.AppLogger
 import sphe.inews.util.Constants
 import sphe.inews.util.LocationUtils
 import sphe.inews.util.storage.AppStorage
@@ -46,6 +45,8 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     private lateinit var locationRequest: LocationRequest
     private lateinit var locationRequestBuilder: LocationSettingsRequest
+
+    private lateinit var settingsLauncher: ActivityResultLauncher<IntentSenderRequest>
 
     private var isNetworkConnected = false
 
@@ -88,6 +89,15 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 snackBar.dismiss()
             }
         })
+
+        settingsLauncher =
+            registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
+                if (it.resultCode == RESULT_OK) {
+                    showToastMessage("Feature is coming soon")
+                } else {
+                    showToastMessage("GPS access has been denied")
+                }
+            }
 
         locationRequest = LocationRequest.create()
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
@@ -225,30 +235,20 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     private fun handleWeatherScreen() {
         if (LocationUtils.isLocationPermissionEnabled(this)) {
-            if (LocationUtils.isGPSOpen(this)) {
-                showToastMessage("Location is enabled")
-                return
-            }
 
-            val results: Task<LocationSettingsResponse> = LocationServices.getSettingsClient(this)
+            LocationServices.getSettingsClient(this)
                 .checkLocationSettings(locationRequestBuilder)
-            results.addOnCompleteListener {
+                .addOnCompleteListener {
 
-                try {
-                    val response = it.result
-                    showToastMessage("Location is enabled...")
-                } catch (ex: Exception) {
-                    AppLogger.error("GPS RuntimeExecutionException: ${ex.cause}", ex)
+                    showToastMessage("Feature coming soon")
+
+                }.addOnFailureListener {
+                    it as ResolvableApiException
+
+                    if (it.statusCode == LocationSettingsStatusCodes.RESOLUTION_REQUIRED) {
+                        settingsLauncher.launch(IntentSenderRequest.Builder(it.resolution).build())
+                    }
                 }
-            }.addOnFailureListener {
-                it as ResolvableApiException
-
-                if (it.statusCode == LocationSettingsStatusCodes.RESOLUTION_REQUIRED) {
-
-                    it.startResolutionForResult(this, Constants.LOCATION_SETTINGS_CODE)
-                }
-            }
-            showToastMessage("Device GPS needs to be turned on")
             return
         }
         if (navController.currentDestination?.label != "AppPermissions") {
