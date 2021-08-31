@@ -51,4 +51,9 @@
         android:id="@+id/permissionsFragment"
         android:name="sphe.inews.ui.main.permission.PermissionsFragment"
         android:label="AppPermissions" />
+
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="sphe.inews.ui.main.weather.WeatherFragment"
+        android:label="Weather" />
 </navigation>
