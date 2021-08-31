@@ -93,9 +93,11 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         settingsLauncher =
             registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
                 if (it.resultCode == RESULT_OK) {
-                    showToastMessage("Feature is coming soon")
+                    if (navController.currentDestination?.label != "Weather") {
+                        navController.navigate(R.id.weatherFragment, null, null, null)
+                    }
                 } else {
-                    showToastMessage("GPS access has been denied")
+                    showToastMessage("GPS access denied")
                 }
             }
 
@@ -240,7 +242,9 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 .checkLocationSettings(locationRequestBuilder)
                 .addOnCompleteListener {
 
-                    showToastMessage("Feature coming soon")
+                    if (navController.currentDestination?.label != "Weather") {
+                        navController.navigate(R.id.weatherFragment, null, null, null)
+                    }
 
                 }.addOnFailureListener {
                     it as ResolvableApiException
