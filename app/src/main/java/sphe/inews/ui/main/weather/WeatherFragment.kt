@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.transition.MaterialElevationScale
 import sphe.inews.R
 
 class WeatherFragment : Fragment(R.layout.fragment_weather) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        exitTransition = MaterialElevationScale(/* growing= */ false)
+        enterTransition = MaterialElevationScale(/* growing= */ true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
