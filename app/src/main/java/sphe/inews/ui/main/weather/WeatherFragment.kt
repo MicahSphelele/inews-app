@@ -10,12 +10,13 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.*
 import com.google.android.material.transition.MaterialElevationScale
+import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.FragmentWeatherBinding
 import sphe.inews.util.AppLogger
 import sphe.inews.util.LocationUtils
 
-
+@AndroidEntryPoint
 class WeatherFragment : Fragment(R.layout.fragment_weather) {
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
