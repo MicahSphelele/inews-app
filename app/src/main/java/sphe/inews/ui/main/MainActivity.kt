@@ -211,7 +211,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         var selectedIndex: Int = index
 
         val builder = MaterialAlertDialogBuilder(this, R.style.MaterialThemeDialog)
-            .setTitle("Select Theme")
+            .setTitle(getString(R.string.title_select_theme))
             .setIcon(R.drawable.logo)
             .setSingleChoiceItems(R.array.theme_modes, index) { _, which ->
                 selectedIndex = which
