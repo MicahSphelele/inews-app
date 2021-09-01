@@ -216,7 +216,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             .setSingleChoiceItems(R.array.theme_modes, index) { _, which ->
                 selectedIndex = which
             }
-            .setPositiveButton("SAVE") { dialog, _ ->
+            .setPositiveButton(getString(R.string.txt_save)) { dialog, _ ->
                 appStorage.saveStringData(
                     Constants.KEY_THEME,
                     Constants.selectThemeValue(list[selectedIndex])
@@ -224,7 +224,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 setTheme()
                 dialog.dismiss()
             }
-            .setNegativeButton("CANCEL") { dialog, _ ->
+            .setNegativeButton(getString(R.string.txt_cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
         dialog = builder.create()

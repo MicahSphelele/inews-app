@@ -61,4 +61,6 @@
     <string name="msg_gps_access_denied">GPS access denied</string>
     <string name="msg_connect_to_wifi">Connect to Wifi/internet</string>
     <string name="title_select_theme">Select Theme</string>
+    <string name="txt_save">SAVE</string>
+    <string name="txt_cancel">CANCEL</string>
 </resources>
