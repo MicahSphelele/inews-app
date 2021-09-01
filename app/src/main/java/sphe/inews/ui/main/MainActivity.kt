@@ -23,6 +23,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.ActivityMainBinding
+import sphe.inews.enums.AppTheme
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment
@@ -200,14 +201,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     }
 
     private fun showThemeDialog() {
-
-        val list = resources.getStringArray(R.array.theme_modes)
-        val index = Constants.selectThemeIndex(
-            appStorage.getStringData(
-                Constants.KEY_THEME,
-                Constants.DEFAULT_THEME
-            )
-        )
+        val index = appStorage.getIntData(Constants.KEY_THEME)
         var selectedIndex: Int = index
 
         val builder = MaterialAlertDialogBuilder(this, R.style.MaterialThemeDialog)
@@ -217,10 +211,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 selectedIndex = which
             }
             .setPositiveButton(getString(R.string.txt_save)) { dialog, _ ->
-                appStorage.saveStringData(
-                    Constants.KEY_THEME,
-                    Constants.selectThemeValue(list[selectedIndex])
-                )
+                appStorage.saveIntData(Constants.KEY_THEME, selectedIndex)
                 setTheme()
                 dialog.dismiss()
             }
@@ -238,7 +229,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 .checkLocationSettings(locationRequestBuilder)
                 .addOnCompleteListener {
 
-                    if(it.isSuccessful) {
+                    if (it.isSuccessful) {
                         if (navController.currentDestination?.label != "Weather") {
                             navController.navigate(R.id.weatherFragment, null, null, null)
                         }
@@ -265,17 +256,16 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     }
 
     private fun setTheme() {
-        when (appStorage.getStringData(Constants.KEY_THEME, Constants.DEFAULT_THEME)) {
-            "light" -> {
+        when (AppTheme.values()[appStorage.getIntData(Constants.KEY_THEME)]) {
+            AppTheme.LIGHT_MODE -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-            "dark" -> {
+            AppTheme.DARK_MODE -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            else -> {
+            AppTheme.SYSTEM_MODE -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
             }
         }
     }
-
 }
