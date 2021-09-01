@@ -80,10 +80,8 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
     }
 
     private fun requestLocationUpdate() {
-        val locationRequest = LocationRequest.create()
-        locationRequest.interval = 10000
-        locationRequest.fastestInterval = 500
-        locationRequest.priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
+        val locationRequest = LocationUtils.getLocationRequest()
+
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
