@@ -13,6 +13,7 @@ import org.junit.*
 import sphe.inews.BuildConfig
 import sphe.inews.R
 import sphe.inews.di.AppModule
+import sphe.inews.enums.AppTheme
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
 import javax.inject.Inject
@@ -62,8 +63,8 @@ class SplashActivityTest {
     fun testAppThemeIsSystemDefault() {
         Assert.assertEquals(
             "Testing app theme is in system default",
-            "system_default",
-            appStorage.getStringData(Constants.KEY_THEME, Constants.DEFAULT_THEME)
+            AppTheme.LIGHT_MODE.ordinal,
+            appStorage.getIntData(Constants.KEY_THEME)
         )
     }
 
