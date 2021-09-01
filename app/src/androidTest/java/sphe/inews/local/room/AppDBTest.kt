@@ -68,7 +68,6 @@ class AppDBTest {
     @ExperimentalCoroutinesApi
     private fun executeDatabaseFunction() = runBlockingTest {
         val bookMark = Bookmark(
-            id = 3,
             url = "https://www.news24.com/sport/soccer/euro2020/france-fall-out-adrien-rabiots-mother-clashes-with-mbappe-pogba-families-after-euro-exit-20210630",
             author = "sport",
             content = "In sensational scenes, France midfielder Adrien Rabiot's mother was shown in video footage clashing with the Mbappe and Pogba families after their shock Euro 2020 exit. Didier Deschamp's side were… [+2150 chars]",
