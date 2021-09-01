@@ -66,6 +66,15 @@ object Constants {
         51, 49, 51, 101, 48
     )
 
+    val PACKS_WEATHER = byteArrayOf(
+        102, 49, 97, 99, 48,
+        49, 57, 56, 97, 50,
+        55, 53, 52, 99, 56,
+        50, 57, 102, 57, 49,
+        51, 48, 56, 52, 54,
+        50, 49, 50, 48, 48, 56
+    )
+
     fun appDateFormat(date: String): String? {
 
         val dateFormat = SimpleDateFormat(
