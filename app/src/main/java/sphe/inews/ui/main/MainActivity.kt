@@ -98,7 +98,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                         navController.navigate(R.id.weatherFragment, null, null, null)
                     }
                 } else {
-                    showToastMessage("GPS access denied")
+                    showToastMessage(getString(R.string.msg_gps_access_denied))
                 }
             }
 
@@ -238,8 +238,10 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 .checkLocationSettings(locationRequestBuilder)
                 .addOnCompleteListener {
 
-                    if (navController.currentDestination?.label != "Weather") {
-                        navController.navigate(R.id.weatherFragment, null, null, null)
+                    if(it.isSuccessful) {
+                        if (navController.currentDestination?.label != "Weather") {
+                            navController.navigate(R.id.weatherFragment, null, null, null)
+                        }
                     }
 
                 }.addOnFailureListener {
