@@ -23,4 +23,15 @@ class AppStorage(application: Application) : Storage {
     override fun getStringData(key: String, default: String): String {
         return sharedPrefs?.getString(key, default)!!
     }
+
+    override fun saveIntData(key: String, data: Int) {
+        sharedPrefs
+            ?.edit()
+            ?.putInt(key, data)
+            ?.apply()
+    }
+
+    override fun getIntData(key: String): Int {
+        return sharedPrefs?.getInt(key, 0)!!
+    }
 }
