@@ -30,13 +30,13 @@ object LocationUtils {
         ) == PackageManager.PERMISSION_GRANTED);
     }
 
-    fun requestLocationPermission(activity: Activity) {
-        ActivityCompat.requestPermissions(
-            activity,
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-            Constants.LOCATION_REQUEST_CODE
-        )
-    }
+//    fun requestLocationPermission(activity: Activity) {
+//        ActivityCompat.requestPermissions(
+//            activity,
+//            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+//            Constants.LOCATION_REQUEST_CODE
+//        )
+//    }
 
     fun getLocationAddress(context: Context, latitude: Double, longitude: Double): Address {
         val geocoder = Geocoder(context, Locale.getDefault())
@@ -44,24 +44,11 @@ object LocationUtils {
         return addressList[0]
     }
 
-    fun locationCallback(context: Context) : LocationCallback {
-
-        val client = LocationServices.getFusedLocationProviderClient(context)
-/*      LocationRequest locationRequest = new LocationRequest();
-        locationRequest.setInterval(1000);
-        locationRequest.setFastestInterval(1000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        client.requestLocationUpdates(locationRequest, locationCallback, getMainLooper());
-        */
-        return object : LocationCallback() {
-            override fun onLocationAvailability(availability: LocationAvailability) {
-                super.onLocationAvailability(availability)
+    fun getLocationRequest(): LocationRequest {
+            return LocationRequest.create().apply {
+                interval = 10000
+                fastestInterval = 500
+                priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
             }
-
-            override fun onLocationResult(p0: LocationResult) {
-                super.onLocationResult(p0)
-            }
-        }
-
     }
 }
