@@ -43,7 +43,6 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var locationRequest: LocationRequest
     private lateinit var locationRequestBuilder: LocationSettingsRequest
 
     private lateinit var settingsLauncher: ActivityResultLauncher<IntentSenderRequest>
@@ -101,13 +100,8 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 }
             }
 
-        locationRequest = LocationRequest.create()
-        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-        locationRequest.interval = 5000
-        locationRequest.fastestInterval = 2000
-
         locationRequestBuilder = LocationSettingsRequest.Builder()
-            .addLocationRequest(locationRequest)
+            .addLocationRequest(LocationUtils.getLocationRequest())
             .setAlwaysShow(true)
             .build()
 
