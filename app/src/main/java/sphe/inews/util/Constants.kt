@@ -105,33 +105,4 @@ object Constants {
         val customTabsIntent = intentBuilder.build()
         activity.let {  customTabsIntent.launchUrl(it, Uri.parse(url)) }
     }
-
-    fun selectThemeValue(theme: String): String {
-        return when (theme) {
-            "Light Mode" -> {
-                "light"
-            }
-            "Dark Mode" -> {
-                "dark"
-            }
-            else -> {
-                "system_default"
-            }
-        }
-    }
-
-    fun selectThemeIndex(themeValue: String): Int {
-        return when (themeValue) {
-            "light" -> {
-                0
-            }
-            "dark" -> {
-                1
-            }
-            else -> {
-                2
-            }
-        }
-    }
-
 }
