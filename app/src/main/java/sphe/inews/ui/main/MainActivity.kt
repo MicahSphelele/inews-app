@@ -127,7 +127,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             }
             R.id.action_about -> {
                 if (!isNetworkConnected) {
-                    showToastMessage("Connect to Wifi/internet")
+                    showToastMessage(getString(R.string.msg_connect_to_wifi))
                     return false
                 }
                 aboutFragmentDialog = AboutDialogFragment()
@@ -135,14 +135,14 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             }
             R.id.action_weather -> {
                 if (!isNetworkConnected) {
-                    showToastMessage("Connect to Wifi/internet")
+                    showToastMessage(getString(R.string.msg_connect_to_wifi))
                     return false
                 }
                 handleWeatherScreen()
             }
             R.id.action_corona -> {
                 if (!isNetworkConnected) {
-                    showToastMessage("Connect to Wifi/internet")
+                    showToastMessage(getString(R.string.msg_connect_to_wifi))
                     return false
                 }
                 covidStatDialogFragment = CovidStatDialogFragment()

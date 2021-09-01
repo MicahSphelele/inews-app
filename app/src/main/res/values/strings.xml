@@ -59,4 +59,5 @@
     <string name="txt_deny">Deny</string>
     <string name="txt_permission_required">Permission Required</string>
     <string name="msg_gps_access_denied">GPS access denied</string>
+    <string name="msg_connect_to_wifi">Connect to Wifi/internet</string>
 </resources>
