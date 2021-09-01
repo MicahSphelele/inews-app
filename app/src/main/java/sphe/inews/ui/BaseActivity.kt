@@ -39,9 +39,9 @@ abstract class BaseActivity : AppCompatActivity() {
 
     val networkState: LiveData<NetworkData> get() = networkReceiver.networkState
 
-    fun showNetworkStateBar(): Snackbar {
+    fun showNetworkStateBar(view: View): Snackbar {
         val customSnackBar =
-            Snackbar.make(window.decorView.rootView, "", Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(view, "", Snackbar.LENGTH_INDEFINITE)
         val layout = customSnackBar.view as Snackbar.SnackbarLayout
         val customSnackView: View = layoutInflater.inflate(R.layout.network_error_view, null)
         // We can also customize the above controls

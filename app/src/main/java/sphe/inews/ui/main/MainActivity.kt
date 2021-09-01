@@ -73,19 +73,21 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
         //Setup with action bar
         //NavigationUI.setupActionBarWithNavController(this,navController)
-        val snackBar = showNetworkStateBar()
+        val snackBar = showNetworkStateBar(binding.mainParentLayout)
 
         networkState.observe(this, {
 
             isNetworkConnected = it.isConnected
 
             if (!isNetworkConnected) {
+                binding.appBottomNavigation.visibility = View.INVISIBLE
                 snackBar.show()
                 return@observe
             }
 
             if (snackBar.isShown) {
                 snackBar.dismiss()
+                binding.appBottomNavigation.visibility = View.VISIBLE
             }
         })
 
