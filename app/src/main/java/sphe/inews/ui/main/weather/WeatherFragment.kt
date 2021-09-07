@@ -2,7 +2,6 @@ package sphe.inews.ui.main.weather
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.location.Address
 import android.os.Bundle
 import android.os.Looper.getMainLooper
 import android.view.View
