@@ -33,8 +33,8 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
                 AppLogger.error("onLocationResult: ${result.lastLocation.latitude},${result.lastLocation.longitude}")
                 val address = LocationUtils.getLocationAddress(
                     context = requireContext(),
-                    latitude = -29.7290961,
-                    longitude = 31.0698632
+                    latitude = result.lastLocation.latitude,
+                    longitude = result.lastLocation.longitude
                 )
                 binding.text.text = String.format("%s # %s #" +
                         " %s # %s # " +
