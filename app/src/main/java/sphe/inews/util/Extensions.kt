@@ -58,6 +58,7 @@ fun isYoutubeInt(string: String): Int {
         View.GONE
     }
 }
+
 fun getArticleTitle(string: String?): String {
     return if (string == "" || string == null) {
         "No Title"
@@ -93,11 +94,18 @@ fun getArticleContent(string: String?): String {
 fun isYoutubeBoolean(string: String): Boolean = (string == "Youtube.com")
 
 @BindingAdapter("imageUrl")
-fun loadImage(view: ShapeableImageView, url: String) = Glide.with(view.context)
-    .load(Uri.parse(url))
-    .placeholder(R.drawable.logo)
-    .error(R.drawable.logo)
-    .into(view)
+fun loadImage(view: ShapeableImageView, url: String?) {
+    var imageUrl = url
+    if (imageUrl == null) {
+        imageUrl = ""
+    }
+
+    Glide.with(view.context)
+        .load(Uri.parse(imageUrl))
+        .placeholder(R.drawable.logo)
+        .error(R.drawable.logo)
+        .into(view)
+}
 
 @BindingAdapter("imageDrawable")
 fun loadImageDrawable(view: ShapeableImageView, imageResource: Int) = Glide.with(view.context)
