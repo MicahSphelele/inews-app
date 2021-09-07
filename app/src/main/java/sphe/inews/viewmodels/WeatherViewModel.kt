@@ -1,4 +1,6 @@
 package sphe.inews.viewmodels
 
-class WeatherViewModel {
+import androidx.lifecycle.ViewModel
+
+class WeatherViewModel : ViewModel() {
 }
