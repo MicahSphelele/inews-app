@@ -26,46 +26,20 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         super.onCreate(savedInstanceState)
         exitTransition = MaterialElevationScale(/* growing= */ false)
         enterTransition = MaterialElevationScale(/* growing= */ true)
-        locationCallback = object : LocationCallback() {
 
-            override fun onLocationResult(result: LocationResult) {
-                super.onLocationResult(result)
-                AppLogger.error("onLocationResult: ${result.lastLocation.latitude},${result.lastLocation.longitude}")
-                val address = LocationUtils.getLocationAddress(
-                    context = requireContext(),
-                    latitude = result.lastLocation.latitude,
-                    longitude = result.lastLocation.longitude
-                )
-                binding.text.text = String.format("%s # %s #" +
-                        " %s # %s # " +
-                        " %s # %s," +
-                        " %s # %s," +
-                        " %s # %s # %s # %s",
-
-                    address.countryCode,
-                    address.adminArea,
-                    address.countryName,
-                    address.featureName,
-                    address.locale,
-                    address.getAddressLine(0),
-                    address.locality,
-                    address.subLocality,
-                    address.premises,
-                    address.phone,
-                    address.postalCode,
-                    address.subThoroughfare)
-
-
-                fusedLocationProviderClient.removeLocationUpdates(locationCallback)
-                //ZA # KwaZulu-Natal # South Africa # 1, en_ZA # 1 Nokwe Ave, Umhlanga Ridge, Umhlanga, 4319, South Africa, Umhlanga
-            // # Umhlanga Ridge,null # null # 4319
-            }
-
-            override fun onLocationAvailability(availability: LocationAvailability) {
-                super.onLocationAvailability(availability)
-                AppLogger.error("onLocationAvailability: ${availability.isLocationAvailable}")
-            }
-        }
+//        locationCallback = object : LocationCallback() {
+//
+//            override fun onLocationResult(result: LocationResult) {
+//                super.onLocationResult(result)
+//
+//                fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+//            }
+//
+//            override fun onLocationAvailability(availability: LocationAvailability) {
+//                super.onLocationAvailability(availability)
+//                AppLogger.error("onLocationAvailability: ${availability.isLocationAvailable}")
+//            }
+//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,6 +49,49 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
 
         fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        fusedLocationProviderClient.lastLocation.addOnSuccessListener {
+            val latitude = it.latitude
+            val longitude = it.longitude
+
+            AppLogger.error("onLocationResult: $latitude,$longitude")
+
+            val address = LocationUtils.getLocationAddress(
+                context = requireContext(),
+                latitude =  latitude,
+                longitude = longitude
+            )
+            binding.text.text = String.format("%s # %s #" +
+                    " %s # %s # " +
+                    " %s # %s," +
+                    " %s # %s," +
+                    " %s # %s # %s # %s",
+
+                address.countryCode,
+                address.adminArea,
+                address.countryName,
+                address.featureName,
+                address.locale,
+                address.getAddressLine(0),
+                address.locality,
+                address.subLocality,
+                address.premises,
+                address.phone,
+                address.postalCode,
+                address.subThoroughfare)
+        }.addOnFailureListener {
+            AppLogger.info("No")
+        }
 
         requestLocationUpdate()
     }
@@ -93,11 +110,11 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
             return
         }
 
-        fusedLocationProviderClient.requestLocationUpdates(
-            locationRequest,
-            locationCallback,
-            getMainLooper()
-        )
+//        fusedLocationProviderClient.requestLocationUpdates(
+//            locationRequest,
+//            locationCallback,
+//            getMainLooper()
+//        )
     }
 
 }

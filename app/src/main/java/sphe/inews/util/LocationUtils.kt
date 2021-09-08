@@ -46,9 +46,9 @@ object LocationUtils {
 
     fun getLocationRequest(): LocationRequest {
             return LocationRequest.create().apply {
-                interval = 10000
-                fastestInterval = 500
-                priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
+                interval = 1000
+                fastestInterval = 1000
+                priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             }
     }
 }
