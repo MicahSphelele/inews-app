@@ -3,11 +3,11 @@ package sphe.inews.ui.main.weather
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Looper.getMainLooper
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
@@ -19,7 +19,6 @@ import sphe.inews.util.LocationUtils
 class WeatherFragment : Fragment(R.layout.fragment_weather) {
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private lateinit var locationCallback: LocationCallback
     private lateinit var binding: FragmentWeatherBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,19 +26,6 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         exitTransition = MaterialElevationScale(/* growing= */ false)
         enterTransition = MaterialElevationScale(/* growing= */ true)
 
-//        locationCallback = object : LocationCallback() {
-//
-//            override fun onLocationResult(result: LocationResult) {
-//                super.onLocationResult(result)
-//
-//                fusedLocationProviderClient.removeLocationUpdates(locationCallback)
-//            }
-//
-//            override fun onLocationAvailability(availability: LocationAvailability) {
-//                super.onLocationAvailability(availability)
-//                AppLogger.error("onLocationAvailability: ${availability.isLocationAvailable}")
-//            }
-//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,7 +50,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
             val latitude = it.latitude
             val longitude = it.longitude
 
-            AppLogger.error("onLocationResult: $latitude,$longitude")
+            AppLogger.error("onLocationResult: $latitude,$longitude}")
 
             val address = LocationUtils.getLocationAddress(
                 context = requireContext(),
@@ -92,29 +78,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         }.addOnFailureListener {
             AppLogger.info("No")
         }
-
-        requestLocationUpdate()
-    }
-
-    private fun requestLocationUpdate() {
-        val locationRequest = LocationUtils.getLocationRequest()
-
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
-
-//        fusedLocationProviderClient.requestLocationUpdates(
-//            locationRequest,
-//            locationCallback,
-//            getMainLooper()
-//        )
+        
     }
 
 }
