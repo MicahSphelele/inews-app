@@ -21,10 +21,10 @@ import kotlinx.coroutines.launch
 import sphe.inews.R
 import sphe.inews.databinding.FragmentBookmarkBinding
 import sphe.inews.domain.enums.NewsCategory
+import sphe.inews.domain.models.bookmark.ArticleBookmarkMapper
 import sphe.inews.local.viewmodel.BookMarkViewModel
-import sphe.inews.models.Bookmark
-import sphe.inews.models.domain.ArticleBookmarkMapper
-import sphe.inews.models.news.Article
+import sphe.inews.domain.models.bookmark.Bookmark
+import sphe.inews.domain.models.news.Article
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.adapters.CategoryAdapter

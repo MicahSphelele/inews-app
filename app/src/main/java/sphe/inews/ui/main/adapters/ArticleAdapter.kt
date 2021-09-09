@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import sphe.inews.R
 import sphe.inews.databinding.ItemArticleBinding
-import sphe.inews.models.news.Article
+import sphe.inews.domain.models.news.Article
 import sphe.inews.util.isYoutubeBoolean
 import sphe.inews.util.viewHolderItemBinding
 

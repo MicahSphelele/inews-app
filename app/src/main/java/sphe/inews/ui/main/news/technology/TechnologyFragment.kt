@@ -15,9 +15,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.FragmentTechnologyBinding
 import sphe.inews.domain.enums.NewsCategory
-import sphe.inews.models.Bookmark
-import sphe.inews.models.news.Article
-import sphe.inews.models.news.NewsResponse
+import sphe.inews.domain.models.bookmark.Bookmark
+import sphe.inews.domain.models.news.Article
+import sphe.inews.domain.models.news.NewsResponse
 import sphe.inews.network.results.NetworkResult
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.adapters.ArticleAdapter

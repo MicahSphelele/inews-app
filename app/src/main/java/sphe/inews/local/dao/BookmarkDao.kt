@@ -2,7 +2,7 @@ package sphe.inews.local.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import sphe.inews.models.Bookmark
+import sphe.inews.domain.models.bookmark.Bookmark
 import sphe.inews.util.Constants
 
 @Dao

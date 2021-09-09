@@ -2,7 +2,7 @@ package sphe.inews.network
 
 import retrofit2.http.GET
 import retrofit2.http.Query
-import sphe.inews.models.news.NewsResponse
+import sphe.inews.domain.models.news.NewsResponse
 
 interface INewsApi {
 

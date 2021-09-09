@@ -9,7 +9,7 @@
 
         <variable
             name="article"
-            type="sphe.inews.models.news.Article" />
+            type="sphe.inews.domain.models.news.Article" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

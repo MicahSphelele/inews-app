@@ -7,7 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.local.repo.BookmarkRepository
-import sphe.inews.models.Country
+import sphe.inews.domain.models.Country
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.adapters.CategoryAdapter
 import sphe.inews.ui.main.adapters.CountryAdapter

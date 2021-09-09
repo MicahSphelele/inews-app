@@ -1,9 +1,9 @@
-package sphe.inews.models.weather.current
+package sphe.inews.domain.models.weather.current
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
-import sphe.inews.models.weather.Current
-import sphe.inews.models.weather.Location
+import sphe.inews.domain.models.weather.Current
+import sphe.inews.domain.models.weather.Location
 
 @Keep
 data class CurrentWeatherResponse(

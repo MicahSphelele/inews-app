@@ -1,4 +1,4 @@
-package sphe.inews.models.covid
+package sphe.inews.domain.models.covid
 
 
 import com.google.gson.annotations.SerializedName

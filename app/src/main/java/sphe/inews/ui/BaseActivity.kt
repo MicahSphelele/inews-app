@@ -4,15 +4,13 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import com.google.android.gms.location.LocationRequest
 import com.google.android.material.snackbar.Snackbar
 import sphe.inews.R
-import sphe.inews.models.NetworkData
+import sphe.inews.domain.models.NetworkData
 import sphe.inews.util.networkmanager.NetworkReceiver
 
 abstract class BaseActivity : AppCompatActivity() {

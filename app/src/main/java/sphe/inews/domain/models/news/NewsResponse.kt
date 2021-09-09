@@ -1,8 +1,9 @@
-package sphe.inews.models.news
+package sphe.inews.domain.models.news
 
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
+import sphe.inews.domain.models.news.Article
 
 @Keep
 data class NewsResponse(

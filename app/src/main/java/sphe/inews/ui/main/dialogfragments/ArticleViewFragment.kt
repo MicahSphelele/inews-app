@@ -14,9 +14,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import sphe.inews.R
 import sphe.inews.databinding.FragmentViewArticleBinding
+import sphe.inews.domain.models.bookmark.ArticleBookmarkMapper
 import sphe.inews.local.viewmodel.BookMarkViewModel
-import sphe.inews.models.Bookmark
-import sphe.inews.models.domain.ArticleBookmarkMapper
+import sphe.inews.domain.models.bookmark.Bookmark
 import sphe.inews.util.Constants
 import sphe.inews.util.notNull
 import javax.inject.Inject

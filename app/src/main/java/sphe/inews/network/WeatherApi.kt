@@ -3,8 +3,8 @@ package sphe.inews.network
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-import sphe.inews.models.weather.current.CurrentWeatherResponse
-import sphe.inews.models.weather.forecast.WeatherForecastResponse
+import sphe.inews.domain.models.weather.current.CurrentWeatherResponse
+import sphe.inews.domain.models.weather.forecast.WeatherForecastResponse
 import sphe.inews.util.Constants
 
 interface WeatherApi {

@@ -5,7 +5,7 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import sphe.inews.R
 import sphe.inews.databinding.ItemCountryBinding
-import sphe.inews.models.Country
+import sphe.inews.domain.models.Country
 import sphe.inews.util.viewHolderItemBinding
 
 class CountryAdapter(private var list: List<Country>) :

@@ -8,7 +8,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import sphe.inews.domain.enums.NetworkType
-import sphe.inews.models.NetworkData
+import sphe.inews.domain.models.NetworkData
 import sphe.inews.util.Constants
 
 class NetworkReceiver : BroadcastReceiver() {

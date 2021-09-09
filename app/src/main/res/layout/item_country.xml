@@ -3,7 +3,7 @@
     <data>
         <variable
             name="country"
-            type="sphe.inews.models.Country" />
+            type="sphe.inews.domain.models.Country" />
     </data>
     <com.google.android.material.card.MaterialCardView
         xmlns:android="http://schemas.android.com/apk/res/android"

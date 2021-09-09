@@ -5,7 +5,7 @@
         <import type="sphe.inews.util.ExtensionsKt"/>
         <variable
             name="article"
-            type="sphe.inews.models.news.Article" />
+            type="sphe.inews.domain.models.news.Article" />
     </data>
 
 <com.google.android.material.card.MaterialCardView

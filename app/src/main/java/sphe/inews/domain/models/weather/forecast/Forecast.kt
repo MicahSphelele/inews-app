@@ -1,4 +1,4 @@
-package sphe.inews.models.weather.forecast
+package sphe.inews.domain.models.weather.forecast
 
 data class Forecast(
     val forecastDay: List<ForecastDay>

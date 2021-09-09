@@ -11,7 +11,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.*
 import org.junit.runners.MethodSorters
 import sphe.inews.di.AppModule
-import sphe.inews.models.Bookmark
+import sphe.inews.domain.models.bookmark.Bookmark
 import sphe.inews.util.Constants
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

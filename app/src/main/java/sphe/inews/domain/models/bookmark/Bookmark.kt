@@ -1,4 +1,4 @@
-package sphe.inews.models
+package sphe.inews.domain.models.bookmark
 
 import android.os.Parcelable
 import androidx.annotation.NonNull

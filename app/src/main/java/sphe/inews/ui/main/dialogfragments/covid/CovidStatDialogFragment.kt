@@ -15,8 +15,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.FragmentCovid19StatsBinding
-import sphe.inews.models.Country
-import sphe.inews.models.covid.LatestStatByCountry
+import sphe.inews.domain.models.Country
+import sphe.inews.domain.models.covid.LatestStatByCountry
 import sphe.inews.network.results.Resources
 import sphe.inews.ui.main.adapters.CountryAdapter
 import sphe.inews.util.Constants

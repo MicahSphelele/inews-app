@@ -12,7 +12,7 @@ import androidx.databinding.ViewDataBinding
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 import sphe.inews.R
-import sphe.inews.models.Bookmark
+import sphe.inews.domain.models.bookmark.Bookmark
 
 
 fun Any?.notNull(): Boolean {

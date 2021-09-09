@@ -1,4 +1,4 @@
-package sphe.inews.models.weather.forecast
+package sphe.inews.domain.models.weather.forecast
 
 data class Hour(
     val chance_of_rain: Int,

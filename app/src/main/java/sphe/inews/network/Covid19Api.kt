@@ -3,7 +3,7 @@ package sphe.inews.network
 import io.reactivex.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Query
-import sphe.inews.models.covid.CovidResponse
+import sphe.inews.domain.models.covid.CovidResponse
 
 interface Covid19Api {
 

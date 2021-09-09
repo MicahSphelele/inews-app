@@ -1,4 +1,4 @@
-package sphe.inews.models.weather.forecast
+package sphe.inews.domain.models.weather
 
 data class Condition(
     val code: Int,

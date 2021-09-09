@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import sphe.inews.local.dao.BookmarkDao
 import sphe.inews.local.dao.intefaces.BookmarkInterface
 import sphe.inews.local.room.AppDB
-import sphe.inews.models.Bookmark
+import sphe.inews.domain.models.bookmark.Bookmark
 import javax.inject.Inject
 
 class BookmarkRepository @Inject constructor(application: Application) : BookmarkInterface {

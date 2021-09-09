@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
-import sphe.inews.models.covid.CovidResponse
+import sphe.inews.domain.models.covid.CovidResponse
 import sphe.inews.network.Covid19Api
 import sphe.inews.network.results.Resources
 import javax.inject.Inject

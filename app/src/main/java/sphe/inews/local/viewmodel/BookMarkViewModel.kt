@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import sphe.inews.local.dao.intefaces.BookmarkInterface
 import sphe.inews.local.repo.BookmarkRepository
-import sphe.inews.models.Bookmark
+import sphe.inews.domain.models.bookmark.Bookmark
 import javax.inject.Inject
 
 @HiltViewModel

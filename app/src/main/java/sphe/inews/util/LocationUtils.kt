@@ -30,14 +30,6 @@ object LocationUtils {
         ) == PackageManager.PERMISSION_GRANTED);
     }
 
-//    fun requestLocationPermission(activity: Activity) {
-//        ActivityCompat.requestPermissions(
-//            activity,
-//            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-//            Constants.LOCATION_REQUEST_CODE
-//        )
-//    }
-
     fun getLocationAddress(context: Context, latitude: Double, longitude: Double): Address {
         val geocoder = Geocoder(context, Locale.getDefault())
         val addressList = geocoder.getFromLocation(latitude, longitude, 1) as ArrayList<Address>

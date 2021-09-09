@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import sphe.inews.models.news.NewsResponse
+import sphe.inews.domain.models.news.NewsResponse
 import sphe.inews.network.results.NetworkResult
 import sphe.inews.network.INewsApi
 import sphe.inews.util.Constants

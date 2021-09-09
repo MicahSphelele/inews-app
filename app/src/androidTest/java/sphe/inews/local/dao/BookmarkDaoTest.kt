@@ -17,8 +17,7 @@ import sphe.inews.di.AppModule
 import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.getOrAwaitValue
 import sphe.inews.local.room.AppDB
-import sphe.inews.models.Bookmark
-import sphe.inews.util.Constants
+import sphe.inews.domain.models.bookmark.Bookmark
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @UninstallModules(AppModule::class)

@@ -1,8 +1,8 @@
-package sphe.inews.models.domain
+package sphe.inews.domain.models.bookmark
 
-import sphe.inews.models.Bookmark
-import sphe.inews.models.news.Article
-import sphe.inews.models.news.Source
+import sphe.inews.domain.models.DomainMapper
+import sphe.inews.domain.models.news.Article
+import sphe.inews.domain.models.news.Source
 
 class ArticleBookmarkMapper : DomainMapper<Bookmark, Article> {
 

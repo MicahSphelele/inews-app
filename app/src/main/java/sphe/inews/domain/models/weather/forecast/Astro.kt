@@ -1,4 +1,4 @@
-package sphe.inews.models.weather.forecast
+package sphe.inews.domain.models.weather.forecast
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName

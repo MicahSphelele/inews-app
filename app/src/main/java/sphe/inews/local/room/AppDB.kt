@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import sphe.inews.local.dao.BookmarkDao
-import sphe.inews.models.Bookmark
+import sphe.inews.domain.models.bookmark.Bookmark
 import sphe.inews.util.Constants
 
 @Database(entities = [Bookmark::class], version = Constants.DB_VERSION, exportSchema = false)

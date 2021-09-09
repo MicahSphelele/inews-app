@@ -1,4 +1,4 @@
-package sphe.inews.models
+package sphe.inews.domain.models
 
 import sphe.inews.domain.enums.NetworkType
 

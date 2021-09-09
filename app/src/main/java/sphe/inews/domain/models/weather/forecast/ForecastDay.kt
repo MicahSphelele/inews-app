@@ -1,4 +1,4 @@
-package sphe.inews.models.weather.forecast
+package sphe.inews.domain.models.weather.forecast
 
 import com.google.gson.annotations.SerializedName
 
