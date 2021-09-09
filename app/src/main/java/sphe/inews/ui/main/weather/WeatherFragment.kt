@@ -78,7 +78,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         }.addOnFailureListener {
             AppLogger.info("No")
         }
-        
+
     }
 
 }

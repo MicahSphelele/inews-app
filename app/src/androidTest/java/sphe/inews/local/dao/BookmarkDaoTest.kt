@@ -14,7 +14,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runners.MethodSorters
 import sphe.inews.di.AppModule
-import sphe.inews.enums.NewsCategory
+import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.getOrAwaitValue
 import sphe.inews.local.room.AppDB
 import sphe.inews.models.Bookmark

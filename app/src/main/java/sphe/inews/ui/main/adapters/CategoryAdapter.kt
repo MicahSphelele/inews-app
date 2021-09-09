@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import sphe.inews.R
 import sphe.inews.databinding.ItemCategoryBinding
-import sphe.inews.enums.NewsCategory
+import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.util.viewHolderItemBinding
 
 class CategoryAdapter(private var list: Array<NewsCategory>) :

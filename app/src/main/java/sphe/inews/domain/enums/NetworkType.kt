@@ -1,4 +1,4 @@
-package sphe.inews.enums
+package sphe.inews.domain.enums
 
 enum class NetworkType {
     MOBILE_DATA,

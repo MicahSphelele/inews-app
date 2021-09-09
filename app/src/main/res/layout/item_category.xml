@@ -4,7 +4,7 @@
     <data>
         <variable
             name="newsCategory"
-            type="sphe.inews.enums.NewsCategory" />
+            type="sphe.inews.domain.enums.NewsCategory" />
     </data>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"

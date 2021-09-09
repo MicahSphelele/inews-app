@@ -23,7 +23,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.ActivityMainBinding
-import sphe.inews.enums.AppTheme
+import sphe.inews.domain.enums.AppTheme
 import sphe.inews.ui.BaseActivity
 import sphe.inews.ui.main.dialogfragments.AboutDialogFragment
 import sphe.inews.ui.main.dialogfragments.covid.CovidStatDialogFragment

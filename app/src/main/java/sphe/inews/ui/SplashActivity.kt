@@ -12,7 +12,7 @@ import androidx.databinding.DataBindingUtil
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.ActivitySplashBinding
-import sphe.inews.enums.AppTheme
+import sphe.inews.domain.enums.AppTheme
 import sphe.inews.ui.main.MainActivity
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage

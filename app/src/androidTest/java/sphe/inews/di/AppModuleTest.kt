@@ -14,7 +14,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import sphe.inews.R
-import sphe.inews.enums.NewsCategory
+import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.models.Country
 import sphe.inews.models.domain.ArticleBookmarkMapper
 import sphe.inews.util.Constants

@@ -1,4 +1,4 @@
-package sphe.inews.enums
+package sphe.inews.domain.enums
 
 import sphe.inews.R
 

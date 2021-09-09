@@ -14,7 +14,7 @@ import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.FragmentTechnologyBinding
-import sphe.inews.enums.NewsCategory
+import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.models.Bookmark
 import sphe.inews.models.news.Article
 import sphe.inews.models.news.NewsResponse
