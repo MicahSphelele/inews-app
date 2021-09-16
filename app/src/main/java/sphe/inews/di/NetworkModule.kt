@@ -20,12 +20,10 @@ object NetworkModule {
         retrofit.create(INewsApi::class.java)
 
     @Provides
-    fun provideCovid19Api(@Named(Constants.NAMED_COVID_19) retrofit: Retrofit) : Covid19Api {
-        return retrofit.create(Covid19Api::class.java)
-    }
+    fun provideCovid19Api(@Named(Constants.NAMED_COVID_19) retrofit: Retrofit) : Covid19Api =
+        retrofit.create(Covid19Api::class.java)
 
     @Provides
-    fun provideWeatherApi(@Named(Constants.NAMED_WEATHER_API) retrofit: Retrofit) : WeatherApi {
-        return retrofit.create(WeatherApi::class.java)
-    }
+    fun provideWeatherApi(@Named(Constants.NAMED_WEATHER_API) retrofit: Retrofit) : WeatherApi =
+        retrofit.create(WeatherApi::class.java)
 }
