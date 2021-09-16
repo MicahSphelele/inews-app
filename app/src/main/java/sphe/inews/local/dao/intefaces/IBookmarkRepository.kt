@@ -3,7 +3,7 @@ package sphe.inews.local.dao.intefaces
 import androidx.lifecycle.LiveData
 import sphe.inews.domain.models.bookmark.Bookmark
 
-interface BookmarkInterface {
+interface IBookmarkRepository {
 
     suspend fun insert(bookmark: Bookmark): Long
 

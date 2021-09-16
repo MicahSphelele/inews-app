@@ -3,12 +3,12 @@ package sphe.inews.local.repo
 import android.app.Application
 import androidx.lifecycle.LiveData
 import sphe.inews.local.dao.BookmarkDao
-import sphe.inews.local.dao.intefaces.BookmarkInterface
+import sphe.inews.local.dao.intefaces.IBookmarkRepository
 import sphe.inews.local.room.AppDB
 import sphe.inews.domain.models.bookmark.Bookmark
 import javax.inject.Inject
 
-class BookmarkRepository @Inject constructor(application: Application) : BookmarkInterface {
+class BookmarkRepository @Inject constructor(application: Application) : IBookmarkRepository {
 
     private var bookmarkDao: BookmarkDao? = null
 
