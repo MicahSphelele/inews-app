@@ -62,7 +62,7 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enterTransition = MaterialElevationScale(/* growing= */ true)
+        enterTransition = MaterialElevationScale( true)
     }
 
     @SuppressLint("RestrictedApi")
