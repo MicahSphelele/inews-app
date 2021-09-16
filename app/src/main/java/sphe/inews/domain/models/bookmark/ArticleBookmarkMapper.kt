@@ -1,6 +1,6 @@
 package sphe.inews.domain.models.bookmark
 
-import sphe.inews.domain.models.DomainMapper
+import sphe.inews.domain.DomainMapper
 import sphe.inews.domain.models.news.Article
 import sphe.inews.domain.models.news.Source
 

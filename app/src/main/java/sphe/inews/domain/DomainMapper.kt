@@ -1,4 +1,4 @@
-package sphe.inews.domain.models
+package sphe.inews.domain
 
 interface DomainMapper<T,D> {
 
