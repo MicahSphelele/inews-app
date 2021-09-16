@@ -146,9 +146,8 @@ object AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_COUNTRIES)
-    fun provideCountryData() : List<Country>{
-
-        return listOf(
+    fun provideCountryData() : List<Country> =
+        listOf(
             Country("South Africa","za", R.drawable.flag_south_africa),
             Country("UAE","ua", R.drawable.flag_uae),
             Country("Italy","it", R.drawable.flag_italy),
@@ -160,7 +159,6 @@ object AppModule {
             Country("Japan","jp", R.drawable.flag__japan)
 
         )
-    }
 
     @Singleton
     @Provides
