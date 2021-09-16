@@ -128,10 +128,8 @@ object AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_APP_VERSION)
-    fun provideAppVersion(application: Application): String {
-
-        return application.packageManager.getPackageInfo(application.packageName,0).versionName
-    }
+    fun provideAppVersion(application: BaseApplication): String =
+        application.packageManager.getPackageInfo(application.packageName,0).versionName
 
     @Singleton
     @Provides
