@@ -168,20 +168,16 @@ object AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_STORAGE)
-    fun provideAppStorage(application: BaseApplication) : AppStorage {
-        return AppStorage(application)
-    }
+    fun provideAppStorage(application: BaseApplication) : AppStorage =
+        AppStorage(application)
 
     @Singleton
     @Provides
     @Named(Constants.NAMED_IS_ON_TEST_MODE)
-    fun providesIsOnTestMode() : Boolean {
-        return false
-    }
+    fun providesIsOnTestMode() : Boolean = false
 
     @Singleton
     @Provides
-    fun providesRecipeMapper() : ArticleBookmarkMapper {
-        return ArticleBookmarkMapper()
-    }
+    fun providesRecipeMapper() : ArticleBookmarkMapper =
+        ArticleBookmarkMapper()
 }
