@@ -134,16 +134,14 @@ object AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_SET_OLD)
-    fun provideConstraintSet1() : ConstraintSet {
-        return ConstraintSet()
-    }
+    fun provideConstraintSet1() : ConstraintSet =
+        ConstraintSet()
 
     @Singleton
     @Provides
     @Named(Constants.NAMED_SET_NEW)
-    fun provideConstraintSet2() : ConstraintSet {
-        return ConstraintSet()
-    }
+    fun provideConstraintSet2() : ConstraintSet =
+        ConstraintSet()
 
     @Singleton
     @Provides
