@@ -16,9 +16,8 @@ import javax.inject.Named
 object NetworkModule {
 
     @Provides
-    fun provideINewsApi(retrofit: Retrofit): INewsApi {
-        return retrofit.create(INewsApi::class.java)
-    }
+    fun provideINewsApi(retrofit: Retrofit): INewsApi =
+        retrofit.create(INewsApi::class.java)
 
     @Provides
     fun provideCovid19Api(@Named(Constants.NAMED_COVID_19) retrofit: Retrofit) : Covid19Api {
