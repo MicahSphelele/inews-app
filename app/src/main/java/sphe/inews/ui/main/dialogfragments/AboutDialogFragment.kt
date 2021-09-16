@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -132,26 +131,6 @@ class AboutDialogFragment : BottomSheetDialogFragment() {
 
         binding.txtAppVersion.text = appVersion
 
-    }
-
-    @Suppress("RedundantOverride")
-    override fun onStart() {
-        super.onStart()
-//        val dialog = dialog
-//        val width = ViewGroup.LayoutParams.MATCH_PARENT
-//        val height = ViewGroup.LayoutParams.MATCH_PARENT
-//        dialog?.window.let {
-//            dialog?.window?.setLayout(width, height)
-//        }
-
-    }
-
-    @Suppress("RedundantOverride")
-    override fun onActivityCreated(args: Bundle?) {
-        super.onActivityCreated(args)
-//        dialog?.window?.let {
-//            dialog?.window?.attributes?.windowAnimations = R.style.FullScreenDialogStyle
-//        }
     }
 
     private fun setupFullHeight(bottomSheetDialog: BottomSheetDialog, state: Int) {
