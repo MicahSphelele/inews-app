@@ -1,6 +1,5 @@
 package sphe.inews.di
 
-import android.app.Application
 import android.content.Context
 import androidx.constraintlayout.widget.ConstraintSet
 import dagger.Module
@@ -163,14 +162,13 @@ object AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_CATEGORIES)
-    fun provideFilterData() : Array<NewsCategory>{
-        return NewsCategory.values()
-    }
+    fun provideFilterData() : Array<NewsCategory> =
+        NewsCategory.values()
 
     @Singleton
     @Provides
     @Named(Constants.NAMED_STORAGE)
-    fun provideAppStorage(application: Application) : AppStorage {
+    fun provideAppStorage(application: BaseApplication) : AppStorage {
         return AppStorage(application)
     }
 
