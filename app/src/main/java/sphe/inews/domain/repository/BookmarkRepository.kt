@@ -1,20 +1,12 @@
-package sphe.inews.local.repo
+package sphe.inews.domain.repository
 
-import android.app.Application
 import androidx.lifecycle.LiveData
-import sphe.inews.local.dao.BookmarkDao
-import sphe.inews.local.dao.intefaces.IBookmarkRepository
-import sphe.inews.local.room.AppDB
 import sphe.inews.domain.models.bookmark.Bookmark
+import sphe.inews.domain.repository.interfaces.IBookmarkRepository
+import sphe.inews.local.dao.BookmarkDao
 import javax.inject.Inject
 
-class BookmarkRepository @Inject constructor(application: Application) : IBookmarkRepository {
-
-    private var bookmarkDao: BookmarkDao? = null
-
-    init {
-        bookmarkDao = AppDB.getInstance(application).bookmarkDao()
-    }
+class BookmarkRepository @Inject constructor(private val bookmarkDao: BookmarkDao?) : IBookmarkRepository {
 
     override suspend fun insert(bookmark: Bookmark): Long {
         return bookmarkDao?.insert(bookmark)!!

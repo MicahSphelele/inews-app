@@ -1,4 +1,4 @@
-package sphe.inews.local.dao.intefaces
+package sphe.inews.domain.repository.interfaces
 
 import androidx.lifecycle.LiveData
 import sphe.inews.domain.models.bookmark.Bookmark

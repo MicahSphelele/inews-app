@@ -1,12 +1,10 @@
 package sphe.inews.di
 
-import android.app.Application
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import sphe.inews.domain.enums.NewsCategory
-import sphe.inews.local.repo.BookmarkRepository
 import sphe.inews.domain.models.Country
 import sphe.inews.ui.main.adapters.ArticleAdapter
 import sphe.inews.ui.main.adapters.CategoryAdapter
@@ -19,22 +17,15 @@ import javax.inject.Named
 object MainModule {
 
     @Provides
-    fun provideAdapter(): ArticleAdapter {
-        return ArticleAdapter()
-    }
+    fun provideAdapter(): ArticleAdapter =
+        ArticleAdapter()
 
     @Provides
-    fun provideCountryAdapter(@Named(Constants.NAMED_COUNTRIES) list: List<Country>): CountryAdapter {
-        return CountryAdapter(list)
-    }
+    fun provideCountryAdapter(@Named(Constants.NAMED_COUNTRIES) list: List<Country>): CountryAdapter =
+        CountryAdapter(list)
 
     @Provides
-    fun provideCategoryAdapter(@Named(Constants.NAMED_CATEGORIES) list: Array<NewsCategory>): CategoryAdapter {
-        return CategoryAdapter(list)
-    }
+    fun provideCategoryAdapter(@Named(Constants.NAMED_CATEGORIES) list: Array<NewsCategory>): CategoryAdapter =
+    CategoryAdapter(list)
 
-    @Provides
-    fun provideBookmarkRepository(application: Application) : BookmarkRepository {
-        return BookmarkRepository(application)
-    }
 }

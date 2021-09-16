@@ -3,8 +3,8 @@ package sphe.inews.local.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import sphe.inews.local.dao.intefaces.IBookmarkRepository
-import sphe.inews.local.repo.BookmarkRepository
+import sphe.inews.domain.repository.interfaces.IBookmarkRepository
+import sphe.inews.domain.repository.BookmarkRepository
 import sphe.inews.domain.models.bookmark.Bookmark
 import javax.inject.Inject
 
