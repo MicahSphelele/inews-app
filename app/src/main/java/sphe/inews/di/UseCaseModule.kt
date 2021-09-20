@@ -5,8 +5,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import sphe.inews.domain.repository.BookmarkRepository
+import sphe.inews.domain.repository.Covid19Repository
 import sphe.inews.domain.repository.NewsRepository
 import sphe.inews.domain.usecases.bookmark.*
+import sphe.inews.domain.usecases.covid19.GetCovidStatsUseCase
 import sphe.inews.domain.usecases.news.GetNewsByCategoryUseCase
 
 @InstallIn(SingletonComponent::class)
@@ -16,6 +18,10 @@ object UseCaseModule {
     @Provides
     fun providesGetNewsByCategoryUseCase(newsRepository: NewsRepository) : GetNewsByCategoryUseCase =
         GetNewsByCategoryUseCase(newsRepository)
+
+    @Provides
+    fun providesGetCovidStatsUseCase(covid19Repository: Covid19Repository) : GetCovidStatsUseCase =
+        GetCovidStatsUseCase(covid19Repository)
 
     @Provides
     fun providesInsertBookmarkUseCase(bookmarkRepository: BookmarkRepository) : InsertBookmarkUseCase =
