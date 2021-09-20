@@ -1,11 +1,15 @@
 package sphe.inews.domain.repository
 
+import androidx.lifecycle.LiveData
+import kotlinx.coroutines.CoroutineScope
+import sphe.inews.domain.NetworkResult
 import sphe.inews.domain.models.news.NewsResponse
 
 interface NewsRepository {
 
-    suspend fun getNews(
+     fun getNews(
+        scope: CoroutineScope,
         country: String,
         category: String
-    ) : NewsResponse
+    ): LiveData<NetworkResult<NewsResponse>>
 }
