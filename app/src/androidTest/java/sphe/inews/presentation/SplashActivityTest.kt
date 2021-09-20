@@ -14,6 +14,7 @@ import sphe.inews.BuildConfig
 import sphe.inews.R
 import sphe.inews.di.AppModule
 import sphe.inews.domain.enums.AppTheme
+import sphe.inews.presentation.ui.activities.SplashActivity
 import sphe.inews.util.Constants
 import sphe.inews.util.storage.AppStorage
 import javax.inject.Inject

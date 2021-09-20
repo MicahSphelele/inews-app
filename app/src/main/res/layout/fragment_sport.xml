@@ -7,7 +7,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.main.news.sport.SportFragment">
+    tools:context=".presentation.ui.news.sport.SportFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txt_message"

@@ -6,11 +6,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import sphe.inews.data.network.INewsApi
 import sphe.inews.domain.NetworkResult
 import sphe.inews.domain.models.news.NewsResponse
 import sphe.inews.domain.repository.NewsRepository
 import sphe.inews.util.Constants
+import java.io.IOException
 import javax.inject.Inject
 
 class RealNewsRepository @Inject constructor(private val newsApi: INewsApi) : NewsRepository {
@@ -37,9 +39,14 @@ class RealNewsRepository @Inject constructor(private val newsApi: INewsApi) : Ne
                     }.collect {
                         newsResponse.value = NetworkResult.Success(data = it)
                     }
-            } catch (ex: Exception) {
+            } catch (ex: HttpException) {
                 newsResponse.value = NetworkResult.Error(
-                    message = "Something went wrong: ${ex.message}",
+                    message = "An unexpected error occurred.",
+                    data = null
+                )
+            } catch (ex: IOException) {
+                newsResponse.value = NetworkResult.Error(
+                    message = "Couldn't reach server. Check internet connection.",
                     data = null
                 )
             }
