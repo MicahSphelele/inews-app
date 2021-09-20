@@ -11,6 +11,7 @@ interface BookmarkRepository {
 
     suspend fun getBooMarks(): List<Bookmark>
 
+    //TODO(You need to change this function)
     fun getBooMarksObserved(): LiveData<List<Bookmark>>
 
     suspend fun getBooMark(url: String): Bookmark?
