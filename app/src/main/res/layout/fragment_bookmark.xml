@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/mainBackgroundColor"
-    tools:context=".ui.main.bookmark.BookmarkFragment">
+    tools:context=".presentation.main.bookmark.BookmarkFragment">
 
     <ImageButton
         android:id="@+id/btnExit"

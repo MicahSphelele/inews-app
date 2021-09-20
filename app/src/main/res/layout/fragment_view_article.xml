@@ -17,7 +17,7 @@
     android:id="@+id/layout"
     android:background="?attr/mainBackgroundColor"
     app:layoutDescription="@xml/fragment_view_article_scene"
-    tools:context="sphe.inews.ui.main.dialogfragments.ArticleViewFragment">
+    tools:context="sphe.inews.presentation.main.dialogfragments.ArticleViewFragment">
 
     <ImageButton
         android:id="@+id/btn_exit"

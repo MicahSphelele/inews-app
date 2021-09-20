@@ -9,8 +9,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import sphe.inews.domain.models.news.NewsResponse
-import sphe.inews.network.results.NetworkResult
-import sphe.inews.network.INewsApi
+import sphe.inews.domain.NetworkResult
+import sphe.inews.data.local.network.INewsApi
 import sphe.inews.util.Constants
 import javax.inject.Inject
 

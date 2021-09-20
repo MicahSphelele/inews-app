@@ -5,7 +5,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import sphe.inews.domain.repository.BookmarkRepository
-import sphe.inews.local.dao.BookmarkDao
+import sphe.inews.data.repository.RealBookmarkRepository
+import sphe.inews.data.local.dao.BookmarkDao
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -13,5 +14,5 @@ object RepositoryModule {
 
     @Provides
     fun provideBookmarkRepository(bookmarkDao: BookmarkDao) : BookmarkRepository =
-        BookmarkRepository(bookmarkDao)
+        RealBookmarkRepository(bookmarkDao)
 }

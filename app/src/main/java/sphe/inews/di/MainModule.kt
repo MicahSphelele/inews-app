@@ -6,9 +6,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.domain.models.Country
-import sphe.inews.ui.main.adapters.ArticleAdapter
-import sphe.inews.ui.main.adapters.CategoryAdapter
-import sphe.inews.ui.main.adapters.CountryAdapter
+import sphe.inews.presentation.main.adapters.ArticleAdapter
+import sphe.inews.presentation.main.adapters.CategoryAdapter
+import sphe.inews.presentation.main.adapters.CountryAdapter
 import sphe.inews.util.Constants
 import javax.inject.Named
 

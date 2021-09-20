@@ -6,8 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import sphe.inews.local.dao.BookmarkDao
-import sphe.inews.local.room.AppDB
+import sphe.inews.data.local.dao.BookmarkDao
+import sphe.inews.data.local.room.AppDB
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)

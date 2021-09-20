@@ -8,52 +8,52 @@
 
     <fragment
         android:id="@+id/businessFragment"
-        android:name="sphe.inews.ui.main.news.business.BusinessFragment"
+        android:name="sphe.inews.presentation.main.news.business.BusinessFragment"
         android:label="Business"
         tools:layout="@layout/fragment_business" />
 
     <fragment
         android:id="@+id/healthFragment"
-        android:name="sphe.inews.ui.main.news.health.HealthFragment"
+        android:name="sphe.inews.presentation.main.news.health.HealthFragment"
         android:label="Health"
         tools:layout="@layout/fragment_health" />
 
     <fragment
         android:id="@+id/sportFragment"
-        android:name="sphe.inews.ui.main.news.sport.SportFragment"
+        android:name="sphe.inews.presentation.main.news.sport.SportFragment"
         android:label="Sport"
         tools:layout="@layout/fragment_sport" />
 
     <fragment
         android:id="@+id/technologyFragment"
-        android:name="sphe.inews.ui.main.news.technology.TechnologyFragment"
+        android:name="sphe.inews.presentation.main.news.technology.TechnologyFragment"
         android:label="Technology"
         tools:layout="@layout/fragment_technology" />
 
     <fragment
         android:id="@+id/entertainmentFragment"
-        android:name="sphe.inews.ui.main.news.entertainment.EntertainmentFragment"
+        android:name="sphe.inews.presentation.main.news.entertainment.EntertainmentFragment"
         android:label="Entertainment"
         tools:layout="@layout/fragment_entertainment" />
 
     <fragment
         android:id="@+id/articlePreviewFragment"
-        android:name="sphe.inews.ui.main.dialogfragments.ArticleViewFragment"
+        android:name="sphe.inews.presentation.main.dialogfragments.ArticleViewFragment"
         android:label="Article"
         tools:layout="@layout/fragment_view_article" />
 
     <fragment
         android:id="@+id/bookmarkFragment"
-        android:name="sphe.inews.ui.main.bookmark.BookmarkFragment"
+        android:name="sphe.inews.presentation.main.bookmark.BookmarkFragment"
         android:label="Bookmark" />
 
     <fragment
         android:id="@+id/permissionsFragment"
-        android:name="sphe.inews.ui.main.permission.PermissionsFragment"
+        android:name="sphe.inews.presentation.main.permission.PermissionsFragment"
         android:label="AppPermissions" />
 
     <fragment
         android:id="@+id/weatherFragment"
-        android:name="sphe.inews.ui.main.weather.WeatherFragment"
+        android:name="sphe.inews.presentation.main.weather.WeatherFragment"
         android:label="Weather" />
 </navigation>

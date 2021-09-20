@@ -5,9 +5,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import sphe.inews.network.Covid19Api
-import sphe.inews.network.INewsApi
-import sphe.inews.network.WeatherApi
+import sphe.inews.data.network.Covid19Api
+import sphe.inews.data.network.INewsApi
+import sphe.inews.data.network.WeatherApi
 import sphe.inews.util.Constants
 import javax.inject.Named
 
