@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.IdRes
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.navigation.NavController
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 import sphe.inews.R
@@ -49,6 +51,14 @@ fun String.shrinkString(): String {
     } else {
         this
     }
+}
+
+fun NavController.navigateAndClearBackStack(
+    @IdRes fragmentFrom: Int,
+    @IdRes fragmentTo: Int = R.id.sportFragment
+) {
+    popBackStack(fragmentFrom, false)
+    navigate(fragmentTo)
 }
 
 fun isYoutubeInt(string: String): Int {
@@ -92,6 +102,7 @@ fun getArticleContent(string: String?): String {
 }
 
 fun isYoutubeBoolean(string: String): Boolean = (string == "Youtube.com")
+
 
 @BindingAdapter("imageUrl")
 fun loadImage(view: ShapeableImageView, url: String?) {
