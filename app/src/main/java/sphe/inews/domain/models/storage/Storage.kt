@@ -1,4 +1,4 @@
-package sphe.inews.util.storage
+package sphe.inews.domain.models.storage
 
 interface Storage {
 

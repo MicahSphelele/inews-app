@@ -17,7 +17,7 @@ import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.domain.models.Country
 import sphe.inews.domain.models.bookmark.ArticleBookmarkMapper
 import sphe.inews.util.Constants
-import sphe.inews.util.storage.AppStorage
+import sphe.inews.data.local.storage.AppStorage
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Named

@@ -1,8 +1,9 @@
-package sphe.inews.util.storage
+package sphe.inews.data.local.storage
 
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import sphe.inews.domain.models.storage.Storage
 
 class AppStorage(application: Application) : Storage {
 

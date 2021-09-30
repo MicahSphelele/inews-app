@@ -29,7 +29,7 @@ import sphe.inews.presentation.ui.dialogfragments.covid.CovidStatDialogFragment
 import sphe.inews.presentation.ui.permission.PermissionsFragment
 import sphe.inews.util.Constants
 import sphe.inews.util.LocationUtils
-import sphe.inews.util.storage.AppStorage
+import sphe.inews.data.local.storage.AppStorage
 import javax.inject.Inject
 import javax.inject.Named
 

@@ -95,13 +95,9 @@ fun isYoutubeBoolean(string: String): Boolean = (string == "Youtube.com")
 
 @BindingAdapter("imageUrl")
 fun loadImage(view: ShapeableImageView, url: String?) {
-    var imageUrl = url
-    if (imageUrl == null) {
-        imageUrl = ""
-    }
 
     Glide.with(view.context)
-        .load(Uri.parse(imageUrl))
+        .load(Uri.parse(url ?: ""))
         .placeholder(R.drawable.logo)
         .error(R.drawable.logo)
         .into(view)
