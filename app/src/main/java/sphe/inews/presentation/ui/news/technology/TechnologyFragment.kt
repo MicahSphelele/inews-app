@@ -24,7 +24,7 @@ import sphe.inews.presentation.ui.adapters.ArticleAdapter
 import sphe.inews.presentation.ui.dialogfragments.ArticleViewFragment
 import sphe.inews.presentation.ui.dialogfragments.ViewYoutubeDialogFragment
 import sphe.inews.util.notNull
-import sphe.inews.viewmodels.NewsViewModel
+import sphe.inews.presentation.ui.news.NewsViewModel
 import java.util.*
 import javax.inject.Inject
 
