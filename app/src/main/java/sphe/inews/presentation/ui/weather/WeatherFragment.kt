@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Looper
 import android.view.View
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,6 +19,7 @@ import sphe.inews.R
 import sphe.inews.databinding.FragmentWeatherBinding
 import sphe.inews.domain.NetworkResult
 import sphe.inews.util.AppLogger
+import sphe.inews.util.Constants
 import sphe.inews.util.LocationUtils
 
 @AndroidEntryPoint
@@ -54,6 +56,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
             return
         }
 
+
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
                 locationResult ?: return
@@ -61,7 +64,6 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
                 val latitude = locationResult.locations[0].latitude
                 val longitude = locationResult.locations[0].longitude
 
-                AppLogger.info("onLocationResult: $latitude,$longitude")
 
                 val address = LocationUtils.getLocationAddress(
                     context = requireContext(),
@@ -69,39 +71,66 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
                     longitude = longitude
                 )
 
+                val data = String.format(
+                    "%s # %s #" +
+                            " %s # %s # " +
+                            " %s # %s #" +
+                            " %s # %s #" +
+                            " %s # %s # %s # %s",
+
+                    address.countryCode,
+                    address.adminArea,
+                    address.countryName,
+                    address.featureName,
+                    address.locale,
+                    address.getAddressLine(0),
+                    address.locality,
+                    address.subLocality,
+                    address.premises,
+                    address.phone,
+                    address.postalCode,
+                    address.subThoroughfare
+                )
+                AppLogger.info("onLocationResult: $data")
+
                 viewModel
-                    .getWeatherForecast(address.getAddressLine(0), 5)
+                    .getWeatherForecast(
+                        String.format("%s,%s", address.locality, address.adminArea),
+                        5
+                    )
                     .observe(viewLifecycleOwner) { weather ->
                         when (weather) {
                             is NetworkResult.Loading -> {
-                                binding.text.text = String.format("%s","Loading...")
+                                binding.progress.visibility = View.VISIBLE
                             }
                             is NetworkResult.Error -> {
-                                binding.text.text = String.format("Error: %s",weather.message)
-                                AppLogger.info("Error: ${weather.message}")
+                                binding.progress.visibility = View.GONE
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Error: ${weather.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                             is NetworkResult.Success -> {
-                                binding.text.text = String.format(
-                                    "%s # %s #" +
-                                            " %s # %s # " +
-                                            " %s # %s," +
-                                            " %s # %s," +
-                                            " %s # %s # %s # %s",
+                                binding.progress.visibility = View.GONE
+                                val response = weather.data
 
-                                    address.countryCode,
-                                    address.adminArea,
-                                    address.countryName,
-                                    address.featureName,
-                                    address.locale,
-                                    address.getAddressLine(0),
-                                    address.locality,
-                                    address.subLocality,
-                                    address.premises,
-                                    address.phone,
-                                    address.postalCode,
-                                    address.subThoroughfare
+                                binding.weatherCondition = response?.current?.condition?.text
+                                binding.lastUpdated = String.format(
+                                    "Last Updated: %s",
+                                    response?.current?.lastUpdated
                                 )
-                                AppLogger.info("Success: ${weather.data?.current?.lastUpdated}")
+                                binding.place = String.format(
+                                    "%s - %s",
+                                    response?.location?.name,
+                                    response?.location?.region
+                                )
+                                binding.weatherInDegree = String.format(
+                                    "%s %s",
+                                    response?.current?.tempInCelsius.toString(),
+                                    Constants.CELSIUS
+                                )
+
                             }
                         }
                     }

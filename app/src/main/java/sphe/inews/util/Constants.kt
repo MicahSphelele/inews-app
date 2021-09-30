@@ -42,6 +42,9 @@ object Constants {
     const val DB_VERSION = 2
     const val LOCATION_REQUEST_CODE = 1000
     const val LOCATION_SETTINGS_CODE = 1001
+    //// Celsius = "\u2103" Fahrenheit = "\u2109"
+    const val CELSIUS = "\u2103"
+    const val FAHRENHEIT = "\u2109"
 
     val PACKS_NEWS = byteArrayOf(
         52, 101, 51, 97, 102,
