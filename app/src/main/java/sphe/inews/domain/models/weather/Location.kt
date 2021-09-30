@@ -7,7 +7,7 @@ data class Location(
     @SerializedName("lat")
     val latitude: Double,
     val localtime: String,
-    @SerializedName("lat")
+    @SerializedName("localtime_epoch") //
     val localTimeInEPOCH: Int,
     @SerializedName("lon")
     val longitude: Double,
