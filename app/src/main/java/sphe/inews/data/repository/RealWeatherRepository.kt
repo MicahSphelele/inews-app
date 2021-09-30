@@ -38,7 +38,14 @@ class RealWeatherRepository @Inject constructor(private val weatherApi: WeatherA
         aqi: String,
         alerts: String
     ): Flow<WeatherForecastResponse> = flow {
-        emit(weatherApi.getWeatherForecast(city = city, days = days, aqi = aqi, alerts = alerts))
+        emit(
+            weatherApi.getWeatherForecast(
+                city = city,
+                days = days,
+                aqi = aqi,
+                alerts = alerts
+            )
+        )
     }
 
     override fun getCurrentWeather(
@@ -53,6 +60,11 @@ class RealWeatherRepository @Inject constructor(private val weatherApi: WeatherA
                     .flowOn(Dispatchers.IO)
                     .onStart {
                         currentWeatherResponse.value = NetworkResult.Loading()
+                    }.catch {
+                        weatherForecastResponse.value = NetworkResult.Error(
+                            message = "Something went wrong.",
+                            data = null
+                        )
                     }.map {
                         it
                     }.collect {
@@ -89,6 +101,11 @@ class RealWeatherRepository @Inject constructor(private val weatherApi: WeatherA
                     .flowOn(Dispatchers.IO)
                     .onStart {
                         weatherForecastResponse.value = NetworkResult.Loading()
+                    }.catch {
+                        weatherForecastResponse.value = NetworkResult.Error(
+                            message = "Something went wrong.",
+                            data = null
+                        )
                     }.map {
                         it
                     }.collect {
