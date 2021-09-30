@@ -11,7 +11,7 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.material.snackbar.Snackbar
 import sphe.inews.R
 import sphe.inews.domain.models.NetworkData
-import sphe.inews.util.networkmanager.NetworkReceiver
+import sphe.inews.presentation.recievers.NetworkReceiver
 
 abstract class BaseActivity : AppCompatActivity() {
 

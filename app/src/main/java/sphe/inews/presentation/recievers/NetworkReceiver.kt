@@ -1,4 +1,4 @@
-package sphe.inews.util.networkmanager
+package sphe.inews.presentation.recievers
 
 import android.content.BroadcastReceiver
 import android.content.Context
