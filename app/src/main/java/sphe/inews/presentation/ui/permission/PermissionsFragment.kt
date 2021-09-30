@@ -11,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.FragmentPermissionsBinding
 import sphe.inews.util.AppLogger
+import sphe.inews.util.navigateAndClearBackStack
 
 @AndroidEntryPoint
 class PermissionsFragment : Fragment(R.layout.fragment_permissions) {
@@ -28,7 +29,9 @@ class PermissionsFragment : Fragment(R.layout.fragment_permissions) {
 
         val permissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-                AppLogger.info("registerForActivityResult: $it")
+                if (it) {
+                    findNavController().navigateAndClearBackStack(fragmentFrom = R.id.permissionsFragment)
+                }
             }
 
         val permissionType = requireArguments().getString(EXTRA_PERMISSION_TYPE, "")
