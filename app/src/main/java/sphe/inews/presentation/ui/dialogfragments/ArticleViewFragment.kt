@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import sphe.inews.R
 import sphe.inews.databinding.FragmentViewArticleBinding
 import sphe.inews.domain.models.bookmark.ArticleBookmarkMapper
-import sphe.inews.viewmodels.BookMarkViewModel
+import sphe.inews.presentation.ui.bookmark.BookMarkViewModel
 import sphe.inews.domain.models.bookmark.Bookmark
 import sphe.inews.util.Constants
 import sphe.inews.util.notNull

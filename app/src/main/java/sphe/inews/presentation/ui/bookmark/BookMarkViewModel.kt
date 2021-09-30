@@ -1,4 +1,4 @@
-package sphe.inews.viewmodels
+package sphe.inews.presentation.ui.bookmark
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

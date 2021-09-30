@@ -22,7 +22,6 @@ import sphe.inews.R
 import sphe.inews.databinding.FragmentBookmarkBinding
 import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.domain.models.bookmark.ArticleBookmarkMapper
-import sphe.inews.viewmodels.BookMarkViewModel
 import sphe.inews.domain.models.bookmark.Bookmark
 import sphe.inews.domain.models.news.Article
 import sphe.inews.presentation.ui.activities.BaseActivity
