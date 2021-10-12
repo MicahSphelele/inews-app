@@ -18,6 +18,7 @@ import sphe.inews.domain.models.Country
 import sphe.inews.domain.models.bookmark.ArticleBookmarkMapper
 import sphe.inews.util.Constants
 import sphe.inews.data.local.storage.AppStorage
+import sphe.inews.domain.models.storage.Storage
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
@@ -168,8 +169,8 @@ object AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_STORAGE)
-    fun provideAppStorage(application: BaseApplication) : AppStorage =
-        AppStorage(application)
+    fun provideAppStorage(application: BaseApplication) : Storage =
+        AppStorage(application.getSharedPreferences("inews_data_prefs", Context.MODE_PRIVATE))
 
     @Singleton
     @Provides

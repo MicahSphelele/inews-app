@@ -30,6 +30,7 @@ import sphe.inews.presentation.ui.permission.PermissionsFragment
 import sphe.inews.util.Constants
 import sphe.inews.util.LocationUtils
 import sphe.inews.data.local.storage.AppStorage
+import sphe.inews.domain.models.storage.Storage
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -51,7 +52,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     @Inject
     @Named(Constants.NAMED_STORAGE)
-    lateinit var appStorage: AppStorage
+    lateinit var appStorage: Storage
 
     @Suppress("unused")
     private lateinit var navController: NavController

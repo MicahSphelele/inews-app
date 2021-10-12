@@ -15,6 +15,7 @@ import sphe.inews.databinding.ActivitySplashBinding
 import sphe.inews.domain.enums.AppTheme
 import sphe.inews.util.Constants
 import sphe.inews.data.local.storage.AppStorage
+import sphe.inews.domain.models.storage.Storage
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -27,7 +28,7 @@ class SplashActivity : BaseActivity() {
 
     @Inject
     @Named(Constants.NAMED_STORAGE)
-    lateinit var appStorage: AppStorage
+    lateinit var appStorage: Storage
 
     @JvmField
     @Inject

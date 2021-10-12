@@ -1,38 +1,29 @@
 package sphe.inews.data.local.storage
 
-import android.app.Application
-import android.content.Context
 import android.content.SharedPreferences
 import sphe.inews.domain.models.storage.Storage
 
-class AppStorage(application: Application) : Storage {
-
-    private var sharedPrefs: SharedPreferences? = null
-
-    init {
-        sharedPrefs = application.getSharedPreferences("inews_data_prefs", Context.MODE_PRIVATE)
-    }
-
+class AppStorage(private val sharedPrefs: SharedPreferences) : Storage {
 
     override fun saveStringData(key: String, data: String) {
         sharedPrefs
-            ?.edit()
+            .edit()
             ?.putString(key, data)
             ?.apply()
     }
 
     override fun getStringData(key: String, default: String): String {
-        return sharedPrefs?.getString(key, default)!!
+        return sharedPrefs.getString(key, default)!!
     }
 
     override fun saveIntData(key: String, data: Int) {
         sharedPrefs
-            ?.edit()
+            .edit()
             ?.putInt(key, data)
             ?.apply()
     }
 
     override fun getIntData(key: String): Int {
-        return sharedPrefs?.getInt(key, 0)!!
+        return sharedPrefs.getInt(key, 0)
     }
 }
