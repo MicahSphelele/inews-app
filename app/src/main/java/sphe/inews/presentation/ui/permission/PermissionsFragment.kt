@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.FragmentPermissionsBinding
-import sphe.inews.util.AppLogger
 import sphe.inews.util.navigateAndClearBackStack
 
 @AndroidEntryPoint
