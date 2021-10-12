@@ -56,7 +56,6 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
             return
         }
 
-
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
                 locationResult ?: return
@@ -91,6 +90,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
                     address.postalCode,
                     address.subThoroughfare
                 )
+
                 AppLogger.info("onLocationResult: $data")
 
                 viewModel
@@ -101,9 +101,11 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
                     .observe(viewLifecycleOwner) { weather ->
                         when (weather) {
                             is NetworkResult.Loading -> {
+                                AppLogger.info("Loading")
                                 binding.progress.visibility = View.VISIBLE
                             }
                             is NetworkResult.Error -> {
+                                AppLogger.info("Error")
                                 binding.progress.visibility = View.GONE
                                 Toast.makeText(
                                     requireContext(),
@@ -112,6 +114,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
                                 ).show()
                             }
                             is NetworkResult.Success -> {
+                                AppLogger.info("Success")
                                 binding.progress.visibility = View.GONE
                                 val response = weather.data
 
