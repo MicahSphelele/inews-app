@@ -42,9 +42,13 @@ object Constants {
     const val DB_VERSION = 2
     const val LOCATION_REQUEST_CODE = 1000
     const val LOCATION_SETTINGS_CODE = 1001
-    //// Celsius = "\u2103" Fahrenheit = "\u2109"
+    // Celsius = "\u2103" Fahrenheit = "\u2109"
     const val CELSIUS = "\u2103"
     const val FAHRENHEIT = "\u2109"
+    // ZA # KwaZulu-Natal # South Africa # 130
+    // # en_ZA # 130 Westrich Dr, Earlsfield, Newlands West, 4037, South Africa
+    // # Newlands West # Earlsfield
+    // # null # null # 4037 # 130
 
     val PACKS_NEWS = byteArrayOf(
         52, 101, 51, 97, 102,
