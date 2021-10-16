@@ -19,6 +19,7 @@ import sphe.inews.domain.models.Country
 import sphe.inews.domain.models.covid.LatestStatByCountry
 import sphe.inews.domain.Resources
 import sphe.inews.presentation.ui.adapters.CountryAdapter
+import sphe.inews.util.AppLogger
 import sphe.inews.util.Constants
 import javax.inject.Inject
 
@@ -79,7 +80,6 @@ class CovidStatDialogFragment : DialogFragment(R.layout.fragment_covid19_stats),
 
     override fun onActivityCreated(args: Bundle?) {
         super.onActivityCreated(args)
-
         //dialog!!.window?.getAttributes()?.windowAnimations = R.style.FullScreenDialogStyle
         dialog?.window?.let {
             dialog?.window?.attributes?.windowAnimations = R.style.FullScreenDialogStyle
@@ -94,18 +94,20 @@ class CovidStatDialogFragment : DialogFragment(R.layout.fragment_covid19_stats),
     }
 
     private fun getCovid19Stats(countryName: String) {
+        AppLogger.info("getCovid19Stats")
+        viewModel.observeCovid19Data(countryName)?.removeObservers(viewLifecycleOwner)
+        viewModel.observeCovid19Data(countryName)
+            ?.observe(viewLifecycleOwner, { response ->
 
-        viewModel.observeCovid19Data(countryName)?.let {
-            viewModel.observeCovid19Data(countryName)?.removeObservers(this)
-            viewModel.observeCovid19Data(countryName)?.observe(viewLifecycleOwner, { res ->
-
-                when (res.status) {
+                when (response.status) {
                     Resources.Status.LOADING -> {
+                        AppLogger.info("Resources.Status.LOADING")
                         this.setErrorViewsViewsVisibility(false)
                         this.setShimmerLayoutVisibility(true)
                         this.setDataViewsVisibility(false)
                     }
                     Resources.Status.ERROR -> {
+                        AppLogger.info("Resources.Status.ERROR")
                         this.setErrorViewsViewsVisibility(true)
                         this.setShimmerLayoutVisibility(false)
                         this.setDataViewsVisibility(false)
@@ -116,14 +118,15 @@ class CovidStatDialogFragment : DialogFragment(R.layout.fragment_covid19_stats),
                         }
                     }
                     Resources.Status.SUCCESS -> {
+                        AppLogger.info("Resources.Status.SUCCESS")
                         this.setShimmerLayoutVisibility(false)
                         this.setErrorViewsViewsVisibility(false)
                         this.setDataViewsVisibility(true)
 
-                        res.data?.let {
-                            binding.txtCountry.text = res.data.country
-                            res.data.latestStatByCountry?.let {
-                                val stats: LatestStatByCountry = res.data.latestStatByCountry!![0]
+                        response.data?.let {
+                            binding.txtCountry.text = it.country
+                            it.latestStatByCountry?.let { statsByCountry ->
+                                val stats: LatestStatByCountry = statsByCountry[0]
                                 binding.txtCasesConfirmed.text = stats.totalCases
                                 binding.txtCasesActive.text = stats.activeCases
 
@@ -144,15 +147,10 @@ class CovidStatDialogFragment : DialogFragment(R.layout.fragment_covid19_stats),
                                     Constants.appDateFormat(stats.recordDate)
                                 )
                             }
-
                         }
-
                     }
-
                 }
-
             })
-        }
     }
 
     private fun setErrorViewsViewsVisibility(isVisible: Boolean) {

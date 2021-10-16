@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 class RealCovid19Repository @Inject constructor(private val covid19Api: Covid19Api) : Covid19Repository {
 
-    private var covidResponse: MediatorLiveData<Resources<CovidResponse>>? = null
+    private var covidResponse: MediatorLiveData<Resources<CovidResponse>>? = MediatorLiveData()
 
     override fun getCovidStatsByCountry(country: String): LiveData<Resources<CovidResponse>>? {
         covidResponse?.let {
