@@ -24,13 +24,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.ActivityMainBinding
 import sphe.inews.domain.enums.AppTheme
+import sphe.inews.domain.models.storage.Storage
 import sphe.inews.presentation.ui.dialogfragments.AboutDialogFragment
 import sphe.inews.presentation.ui.dialogfragments.covid.CovidStatDialogFragment
 import sphe.inews.presentation.ui.permission.PermissionsFragment
 import sphe.inews.util.Constants
 import sphe.inews.util.LocationUtils
-import sphe.inews.data.local.storage.AppStorage
-import sphe.inews.domain.models.storage.Storage
 import javax.inject.Inject
 import javax.inject.Named
 
