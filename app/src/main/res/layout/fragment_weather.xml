@@ -15,6 +15,9 @@
         <variable
             name="weatherInDegree"
             type="String" />
+        <variable
+            name="poweredByImage"
+            type="String" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -30,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textLastUpdated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +47,7 @@
         android:text="@{lastUpdated}"
         tools:text="Last Updated : 2021-09-30 13:00 " />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textWeatherCondition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,7 +75,7 @@
         tools:text="Durban" />
 
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textWeatherConditionDegrees"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,5 +89,23 @@
         app:layout_constraintTop_toBottomOf="@+id/textPlace"
         tools:text="22 &#xb0;" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtPowerBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        android:text="@string/powered_by" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        app:imageUrl="@{poweredByImage}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -25,7 +25,7 @@ object Constants {
     const val NAMED_STORAGE = "storage"
     const val NAMED_IS_ON_TEST_MODE = "isOnTestMode"
     const val KEY_THEME = "appTheme"
-    const val DEFAULT_THEME = "system_default"
+    const val POWERED_BY_IMAGE_URI = "https://cdn.weatherapi.com/v4/images/weatherapi_logo.png"
 
     const val TABLE_BOOKMARK = "bookmark"
     const val AUTHOR = "author"

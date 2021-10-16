@@ -42,6 +42,8 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
 
         binding = FragmentWeatherBinding.bind(view)
 
+        binding.poweredByImage = Constants.POWERED_BY_IMAGE_URI
+
         fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireActivity())
 
