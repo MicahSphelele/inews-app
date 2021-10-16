@@ -25,6 +25,7 @@ import sphe.inews.R
 import sphe.inews.databinding.ActivityMainBinding
 import sphe.inews.domain.enums.AppTheme
 import sphe.inews.domain.models.storage.Storage
+import sphe.inews.presentation.ui.base.BaseActivity
 import sphe.inews.presentation.ui.dialogfragments.AboutDialogFragment
 import sphe.inews.presentation.ui.dialogfragments.covid.CovidStatDialogFragment
 import sphe.inews.presentation.ui.permission.PermissionsFragment

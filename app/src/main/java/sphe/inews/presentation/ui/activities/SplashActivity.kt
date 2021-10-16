@@ -14,8 +14,8 @@ import sphe.inews.R
 import sphe.inews.databinding.ActivitySplashBinding
 import sphe.inews.domain.enums.AppTheme
 import sphe.inews.util.Constants
-import sphe.inews.data.local.storage.AppStorage
 import sphe.inews.domain.models.storage.Storage
+import sphe.inews.presentation.ui.base.BaseActivity
 import javax.inject.Inject
 import javax.inject.Named
 

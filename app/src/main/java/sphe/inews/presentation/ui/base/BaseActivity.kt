@@ -1,4 +1,4 @@
-package sphe.inews.presentation.ui.activities
+package sphe.inews.presentation.ui.base
 
 import android.content.IntentFilter
 import android.os.Bundle

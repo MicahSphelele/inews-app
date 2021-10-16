@@ -24,7 +24,7 @@ import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.domain.models.bookmark.ArticleBookmarkMapper
 import sphe.inews.domain.models.bookmark.Bookmark
 import sphe.inews.domain.models.news.Article
-import sphe.inews.presentation.ui.activities.BaseActivity
+import sphe.inews.presentation.ui.base.BaseActivity
 import sphe.inews.presentation.ui.adapters.ArticleAdapter
 import sphe.inews.presentation.ui.adapters.CategoryAdapter
 import sphe.inews.presentation.ui.dialogfragments.ArticleViewFragment

@@ -19,7 +19,7 @@ import sphe.inews.domain.models.bookmark.Bookmark
 import sphe.inews.domain.models.news.Article
 import sphe.inews.domain.models.news.NewsResponse
 import sphe.inews.domain.NetworkResult
-import sphe.inews.presentation.ui.activities.BaseActivity
+import sphe.inews.presentation.ui.base.BaseActivity
 import sphe.inews.presentation.ui.adapters.ArticleAdapter
 import sphe.inews.presentation.ui.dialogfragments.ArticleViewFragment
 import sphe.inews.presentation.ui.dialogfragments.ViewYoutubeDialogFragment
