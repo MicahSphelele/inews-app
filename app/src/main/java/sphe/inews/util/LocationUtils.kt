@@ -26,7 +26,7 @@ object LocationUtils {
         ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
             context,
             Manifest.permission.ACCESS_COARSE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED);
+        ) == PackageManager.PERMISSION_GRANTED)
     }
 
     fun getLocationAddress(context: Context, latitude: Double, longitude: Double): Address {
