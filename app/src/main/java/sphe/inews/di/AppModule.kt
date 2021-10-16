@@ -11,7 +11,7 @@ import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import sphe.inews.BaseApplication
+import sphe.inews.InewsApplication
 import sphe.inews.R
 import sphe.inews.domain.enums.NewsCategory
 import sphe.inews.domain.models.Country
@@ -30,8 +30,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesApplication(@ApplicationContext context: Context) : BaseApplication =
-        context as BaseApplication
+    fun providesApplication(@ApplicationContext context: Context) : InewsApplication =
+        context as InewsApplication
 
     @Singleton
     @Provides
@@ -128,7 +128,7 @@ object AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_APP_VERSION)
-    fun provideAppVersion(application: BaseApplication): String =
+    fun provideAppVersion(application: InewsApplication): String =
         application.packageManager.getPackageInfo(application.packageName,0).versionName
 
     @Singleton
@@ -169,7 +169,7 @@ object AppModule {
     @Singleton
     @Provides
     @Named(Constants.NAMED_STORAGE)
-    fun provideAppStorage(application: BaseApplication) : Storage =
+    fun provideAppStorage(application: InewsApplication) : Storage =
         AppStorage(application.getSharedPreferences("inews_data_prefs", Context.MODE_PRIVATE))
 
     @Singleton
