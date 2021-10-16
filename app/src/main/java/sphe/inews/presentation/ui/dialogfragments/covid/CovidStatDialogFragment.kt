@@ -15,11 +15,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import sphe.inews.R
 import sphe.inews.databinding.FragmentCovid19StatsBinding
+import sphe.inews.domain.Resources
 import sphe.inews.domain.models.Country
 import sphe.inews.domain.models.covid.LatestStatByCountry
-import sphe.inews.domain.Resources
 import sphe.inews.presentation.ui.adapters.CountryAdapter
-import sphe.inews.util.AppLogger
 import sphe.inews.util.Constants
 import javax.inject.Inject
 
@@ -78,36 +77,23 @@ class CovidStatDialogFragment : DialogFragment(R.layout.fragment_covid19_stats),
         }
     }
 
-    override fun onActivityCreated(args: Bundle?) {
-        super.onActivityCreated(args)
-        //dialog!!.window?.getAttributes()?.windowAnimations = R.style.FullScreenDialogStyle
-        dialog?.window?.let {
-            dialog?.window?.attributes?.windowAnimations = R.style.FullScreenDialogStyle
-        }
-
-    }
-
-
     override fun onItemCountryClick(country: Country) {
         countryBottomDialog.dismiss()
         this.getCovid19Stats(country.countryName)
     }
 
     private fun getCovid19Stats(countryName: String) {
-        AppLogger.info("getCovid19Stats")
         viewModel.observeCovid19Data(countryName)?.removeObservers(viewLifecycleOwner)
         viewModel.observeCovid19Data(countryName)
             ?.observe(viewLifecycleOwner, { response ->
 
                 when (response.status) {
                     Resources.Status.LOADING -> {
-                        AppLogger.info("Resources.Status.LOADING")
                         this.setErrorViewsViewsVisibility(false)
                         this.setShimmerLayoutVisibility(true)
                         this.setDataViewsVisibility(false)
                     }
                     Resources.Status.ERROR -> {
-                        AppLogger.info("Resources.Status.ERROR")
                         this.setErrorViewsViewsVisibility(true)
                         this.setShimmerLayoutVisibility(false)
                         this.setDataViewsVisibility(false)
@@ -118,7 +104,6 @@ class CovidStatDialogFragment : DialogFragment(R.layout.fragment_covid19_stats),
                         }
                     }
                     Resources.Status.SUCCESS -> {
-                        AppLogger.info("Resources.Status.SUCCESS")
                         this.setShimmerLayoutVisibility(false)
                         this.setErrorViewsViewsVisibility(false)
                         this.setDataViewsVisibility(true)
