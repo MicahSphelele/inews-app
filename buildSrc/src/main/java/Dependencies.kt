@@ -18,7 +18,7 @@ object Versions {
     const val androidxRoomRxJava = "2.3.0" //Last updated 26/02/2021
     const val androidxRoom = "2.3.0" //Last updated 26/02/2021
     const val androidxLifeCycleReactiveStreams ="2.2.0"
-    const val androidxNavigation = "2.3.0"
+    const val androidxNavigation = "2.3.5"
     const val rxJavaAndroid = "3.0.0" // Last updated 26/02/2021
     const val rxJava = "3.0.0" //Last updated 26/02/2021
     const val material = "1.4.0"//// Last updated 26/02/2021
