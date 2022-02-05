@@ -41,4 +41,3 @@ A simple open source news demo app developed in [**Kotlin**](https://kotlinlang.
 
 
 
-
