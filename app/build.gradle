@@ -19,6 +19,7 @@ android {
         versionCode 4
         versionName "v1.2.3"
         testInstrumentationRunner "sphe.inews.HiltTestRunner"
+        multiDexEnabled true
         buildConfigField("String", "TEST_STRING", gradleProperties['TEST_STRING'])
     }
 
@@ -100,6 +101,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:${Versions.androidxRecyclerView}"
     implementation "androidx.cardview:cardview:${Versions.androidxCardView}"
     implementation "androidx.browser:browser:${Versions.androidxBrowser}"
+    implementation "androidx.multidex:multidex:2.0.1"
 
     //AndroidX support design
     implementation "com.google.android.material:material:${Versions.material}"
