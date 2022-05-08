@@ -21,8 +21,9 @@ jobs:
             TEST_STRING: ${{ secrets.TEST_STRING }}
           run: echo TEST_STRING = \"$TEST_STRING\" KEY_STORE = \"$KEY_STORE\" KEY_STORE_PASS = \"$KEY_STORE_PASS\" KEY_STORE_ALIAS = \"$KEY_STORE_ALIAS\" > ./local.properties
 
+
         - name: Build Release
-          run: ./gradlew assembleRelease --stacktrace
+          run: ./gradlew clean assembleRelease --stacktrace
 
         - name: Upload APK
           uses: actions/upload-artifact@v2
