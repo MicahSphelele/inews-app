@@ -23,7 +23,12 @@ jobs:
             KEY_STORE_PASS:  ${{ secrets.KEY_STORE_PASS }}
             TEST_STRING: ${{ secrets.TEST_STRING }}
           run: |
-                  bash  ./.github/workflows/set_local_properties.sh $KEY_STORE $KEY_STORE_ALIAS $KEY_STORE_PASS $TEST_STRING
+            touch app.properties
+            echo  KEY_STORE = $KEY_STORE >> app.properties
+            echo  KEY_STORE_ALIAS = $KEY_STORE_ALIAS >> app.properties
+            echo  KEY_STORE_PASS = $KEY_STORE_PASS >> app.properties
+            echo  TEST_STRING= $TEST_STRING >> app.properties
+            cat app.properties
 
         - name: Build Release
           run: bash ./gradlew clean build assembleRelease --stacktrace
