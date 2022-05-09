@@ -8,7 +8,7 @@ def gradleProps = rootProject.file("./local.properties")
 def gradleProperties = new Properties()
 gradleProperties.load(new FileInputStream(gradleProps))
 
-System.err.println("TEST_STRING = " + gradleProperties['TEST_STRING'])
+System.err.println("KEY_STORE_ALIAS = " + gradleProperties['KEY_STORE_ALIAS'])
 
 android {
     compileSdkVersion Versions.maxSdkVersion
