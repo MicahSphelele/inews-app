@@ -8,7 +8,7 @@ def gradleProps = rootProject.file("./app.properties")
 def gradleProperties = new Properties()
 gradleProperties.load(new FileInputStream(gradleProps))
 
-System.err.println("gradleProperties = " + gradleProperties.getProperty('TEST_STRING'))
+System.err.println("TEST-STRING = " + gradleProperties.getProperty('TEST_STRING'))
 
 android {
     compileSdkVersion Versions.maxSdkVersion
@@ -21,7 +21,7 @@ android {
         versionCode 4
         versionName "v1.2.3"
         testInstrumentationRunner "sphe.inews.HiltTestRunner"
-        //buildConfigField("String", "TEST_STRING", "This is a test string")
+        buildConfigField("String", "TEST_STRING", gradleProperties.getProperty('TEST_STRING'))
         multiDexEnabled true
     }
 
