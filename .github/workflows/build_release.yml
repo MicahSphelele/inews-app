@@ -22,7 +22,7 @@ jobs:
             KEY_STORE_PASS:  ${{ secrets.KEY_STORE_PASS }}
             TEST_STRING: ${{ secrets.TEST_STRING }}
           run: |
-                  bash set_local_propeties.sh $KEY_STORE $KEY_STORE_ALIAS $KEY_STORE_PASS $TEST_STRING
+                  bash set_local_properties.sh $KEY_STORE $KEY_STORE_ALIAS $KEY_STORE_PASS $TEST_STRING
 
         - name: Build Release
           run: bash ./gradlew clean assembleRelease
