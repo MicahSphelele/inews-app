@@ -19,8 +19,8 @@ jobs:
             KEY_STORE_ALIAS: ${{ secrets.KEY_STORE_ALIAS }}
             KEY_STORE_PASS:  ${{ secrets.KEY_STORE_PASS }}
             TEST_STRING: ${{ secrets.TEST_STRING }}
-          run: echo TEST_STRING = \"$TEST_STRING"\ KEY_STORE = \"$KEY_STORE"\ KEY_STORE_PASS = \"$KEY_STORE_PASS"\ KEY_STORE_ALIAS = \"$KEY_STORE_ALIAS"\ > ./local.properties
-
+          run: echo TEST_STRING = ${{ secrets.TEST_STRING }} KEY_STORE = ${{ secrets.KEY_STORE }} KEY_STORE_PASS = ${{ secrets.KEY_STORE_PASS }} KEY_STORE_ALIAS = ${{ secrets.KEY_STORE_ALIAS }} > ./local.properties
+          shell: bash
 
         - name: Build Release
           run: ./gradlew clean
