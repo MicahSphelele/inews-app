@@ -31,7 +31,7 @@ jobs:
             cat app.properties
 
         - name: Build Release
-          run: bash ./gradlew clean build assembleRelease --stacktrace
+          run: bash ./gradlew clean build assembleDebug --stacktrace
 
         - name: Upload Lint Report
           uses: actions/upload-artifact@v2

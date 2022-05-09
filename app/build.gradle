@@ -25,6 +25,15 @@ android {
         multiDexEnabled true
     }
 
+    signingConfigs {
+        release {
+            storeFile file(gradleProperties.getProperty('KEY_STORE'))
+            storePassword gradleProperties.getProperty('KEY_STORE_PASS')
+            keyPassword gradleProperties.getProperty('KEY_STORE_PASS')
+            keyAlias gradleProperties.getProperty('KEY_STORE_ALIAS')
+        }
+    }
+
     buildFeatures {
 
         dataBinding true
