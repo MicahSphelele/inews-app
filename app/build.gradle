@@ -21,7 +21,7 @@ android {
         versionCode 4
         versionName "v1.2.3"
         testInstrumentationRunner "sphe.inews.HiltTestRunner"
-        buildConfigField("String", "TEST_STRING", gradleProperties.getProperty('TEST_STRING'))
+        buildConfigField "String", "TEST_STRING", gradleProperties.getProperty('TEST_STRING')
         multiDexEnabled true
     }
 
