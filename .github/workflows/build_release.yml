@@ -8,6 +8,7 @@ jobs:
     build:
       runs-on: ubuntu-latest
       steps:
+
         - uses: actions/checkout@v2
 
         - name: Set up JDK 1.8
@@ -44,10 +45,10 @@ jobs:
           id: sign_app
           with:
               releaseDirectory: app/build/outputs/apk/release
-              signingKeyBase64: $KEY_STORE
-              alias: $KEY_STORE_ALIAS
-              keyStorePassword: $KEY_STORE_PASS
-              keyPassword: $KEY_STORE_PASS
+              signingKeyBase64: ${{ secrets.KEY_STORE }}
+              alias: ${{ secrets.KEY_STORE_ALIAS }}
+              keyStorePassword: ${{ secrets.KEY_STORE_PASS }}
+              keyPassword: ${{ secrets.KEY_STORE_PASS }}
           env:
             # override default build-tools version (29.0.3) -- optional
             BUILD_TOOLS_VERSION: "30.0.2"
