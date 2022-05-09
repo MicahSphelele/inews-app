@@ -23,7 +23,7 @@ jobs:
 
 
         - name: Build Release
-          run: ./gradlew clean assembleRelease
+          run: ./gradlew clean
 
         - name: Upload APK
           uses: actions/upload-artifact@v2
