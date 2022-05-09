@@ -28,8 +28,8 @@ jobs:
         - name: Build Release
           run: bash ./gradlew clean build assembleRelease --stacktrace
 
-        - name: Upload APK
+        - name: Upload Lint Report
           uses: actions/upload-artifact@v2
           with:
-            name: App
-            path: ${{ github.workspace}} /app/build/outputs/apk/release/app-release.apk
+            name: Lint Report
+            path: ${{ github.workspace}}/app/build/reports/lint-results.xml
