@@ -30,7 +30,7 @@ jobs:
             echo  TEST_STRING= $TEST_STRING >> app.properties
             cat app.properties
 
-        - name: Build Release
+        - name: Build Debug APK
           run: bash ./gradlew clean build assembleDebug --stacktrace
 
         - name: Upload Lint Report
@@ -38,3 +38,21 @@ jobs:
           with:
             name: Lint Report
             path: ${{ github.workspace}}/app/build/reports/lint-results.html
+
+        - name: Sign app APK
+        - uses: r0adkll/sign-android-release@v1
+          id: sign_app
+          with:
+              releaseDirectory: app/build/outputs/apk/release
+              signingKeyBase64: $KEY_STORE
+              alias: $KEY_STORE_ALIAS
+              keyStorePassword: $KEY_STORE_PASS
+              keyPassword: $KEY_STORE_PASS
+          env:
+            # override default build-tools version (29.0.3) -- optional
+            BUILD_TOOLS_VERSION: "30.0.2"
+         # Example use of `signedReleaseFile` output -- not needed
+        - uses: actions/upload-artifact@v2
+          with:
+            name: Signed app bundle
+            path: ${{steps.sign_app.outputs.signedReleaseFile}}
