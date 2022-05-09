@@ -8,7 +8,7 @@ def gradleProps = rootProject.file("./app.properties")
 def gradleProperties = new Properties()
 gradleProperties.load(new FileInputStream(gradleProps))
 
-System.err.println("gradleProperties = " + gradleProperties)
+System.err.println("gradleProperties = " + gradleProperties['TEST_STRING'])
 
 android {
     compileSdkVersion Versions.maxSdkVersion
