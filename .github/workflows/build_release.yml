@@ -25,7 +25,7 @@ jobs:
                   bash  ./.github/workflows/set_local_properties.sh $KEY_STORE $KEY_STORE_ALIAS $KEY_STORE_PASS $TEST_STRING
 
         - name: Build Release
-          run: bash ./gradlew clean assembleRelease --stacktrace
+          run: bash ./gradlew clean build assembleRelease --stacktrace
 
         - name: Upload APK
           uses: actions/upload-artifact@v2
