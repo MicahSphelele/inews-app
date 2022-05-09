@@ -4,9 +4,9 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
-def gradleProps = rootProject.file("./local.properties")
-def gradleProperties = new Properties()
-gradleProperties.load(new FileInputStream(gradleProps))
+//def gradleProps = rootProject.file("./local.properties")
+//def gradleProperties = new Properties()
+//gradleProperties.load(new FileInputStream(gradleProps))
 
 android {
     compileSdkVersion Versions.maxSdkVersion
@@ -19,7 +19,7 @@ android {
         versionCode 4
         versionName "v1.2.3"
         testInstrumentationRunner "sphe.inews.HiltTestRunner"
-        buildConfigField("String", "TEST_STRING", gradleProperties['TEST_STRING'])
+        buildConfigField("String", "TEST_STRING", "gradleProperties['TEST_STRING']")
     }
 
     buildFeatures {
