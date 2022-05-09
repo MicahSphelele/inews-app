@@ -4,9 +4,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
-def gradleProps = rootProject.file("./local.properties")
+def gradleProps = rootProject.file("./app.properties")
 def gradleProperties = new Properties()
 gradleProperties.load(new FileInputStream(gradleProps))
+
+System.err.println("TEST-STRING = " + gradleProperties.getProperty('TEST_STRING'))
 
 android {
     compileSdkVersion Versions.maxSdkVersion
@@ -19,8 +21,17 @@ android {
         versionCode 4
         versionName "v1.2.3"
         testInstrumentationRunner "sphe.inews.HiltTestRunner"
+       // buildConfigField "String", "TEST_STRING", gradleProperties.getProperty('TEST_STRING')
         multiDexEnabled true
-        buildConfigField("String", "TEST_STRING", gradleProperties['TEST_STRING'])
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(gradleProperties.getProperty('KEY_STORE'))
+            storePassword gradleProperties.getProperty('KEY_STORE_PASS')
+            keyPassword gradleProperties.getProperty('KEY_STORE_PASS')
+            keyAlias gradleProperties.getProperty('KEY_STORE_ALIAS')
+        }
     }
 
     buildFeatures {

@@ -64,7 +64,7 @@ class SplashActivity : BaseActivity() {
             }
         }
 
-        binding.appVersion = BuildConfig.TEST_STRING
+        binding.appVersion = BuildConfig.VERSION_NAME
 
     }
 
