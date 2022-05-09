@@ -4,9 +4,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
-//def gradleProps = rootProject.file("./local.properties")
-//def gradleProperties = new Properties()
-//gradleProperties.load(new FileInputStream(gradleProps))
+def gradleProps = rootProject.file("./local.properties")
+def gradleProperties = new Properties()
+gradleProperties.load(new FileInputStream(gradleProps))
+
+System.err.println("TEST_STRING = " + gradleProperties['TEST_STRING'])
 
 android {
     compileSdkVersion Versions.maxSdkVersion
