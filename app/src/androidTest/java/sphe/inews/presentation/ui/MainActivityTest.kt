@@ -57,7 +57,7 @@ class MainActivityTest {
     @Test
     fun testAboutFragmentScreen() {
         openActionBarOverflowOrOptionsMenu(testContext)
-        onView(withText(testContext.getString(R.string.about) )).perform(click())
+        onView(withText(testContext.getString(R.string.about))).perform(click())
     }
 
     @Test
