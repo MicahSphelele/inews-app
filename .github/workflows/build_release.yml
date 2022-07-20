@@ -38,7 +38,13 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             name: Lint Report
-            path: ${{ github.workspace}}/app/build/reports/lint-results.html
+            path: ${{ github.workspace }}/app/build/reports/lint-results.html
+
+        - name: Upload debug apk
+          uses: actions/upload-artifact@v2
+          with:
+            name: Debug APK
+            path: ${{ github.workspace }}/app/build/outputs/apk/debug
 
         - name: Sign app APK
           uses: r0adkll/sign-android-release@v1
@@ -72,7 +78,7 @@ jobs:
             # override default build-tools version (29.0.3) -- optional
             BUILD_TOOLS_VERSION: "30.0.2"
         # Example use of `signedReleaseFile` output -- not needed
-        - name: Upload signed apk
+        - name: Upload signed aab
           uses: actions/upload-artifact@v2
           with:
             name: Signed AAB
