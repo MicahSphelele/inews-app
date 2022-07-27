@@ -1,69 +1,72 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+import java.util.Properties
+import java.io.FileInputStream
 
-def gradleProps = rootProject.file("./app.properties")
-def gradleProperties = new Properties()
-gradleProperties.load(new FileInputStream(gradleProps))
+plugins {
+    id("com.android.application")
+    kotlin("android")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
+    id("kotlin-android-extensions")
+}
 
-System.err.println("TEST-STRING = " + gradleProperties.getProperty('TEST_STRING'))
+val gradleProps = rootProject.file("./app.properties")
+val gradleProperties = Properties()
+gradleProperties.load(FileInputStream(gradleProps))
 
 android {
-    compileSdkVersion Versions.maxSdkVersion
-    buildToolsVersion Versions.buildToolsVersion
+    compileSdkVersion(Versions.maxSdkVersion)
+    //buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
-        applicationId "sphe.inews"
-        minSdkVersion Versions.minSdkVersion
-        targetSdkVersion Versions.maxSdkVersion
-        versionCode 4
-        versionName "v1.2.3"
-        testInstrumentationRunner "sphe.inews.HiltTestRunner"
+        applicationId = "sphe.inews"
+        minSdkVersion(Versions.minSdkVersion)
+        targetSdkVersion(Versions.maxSdkVersion)
+        versionCode =4
+        versionName = "v1.2.3"
+        testInstrumentationRunner = "sphe.inews.HiltTestRunner"
         // buildConfigField "String", "TEST_STRING", gradleProperties.getProperty('TEST_STRING')
-        multiDexEnabled true
+        multiDexEnabled = true
     }
 
     signingConfigs {
-        release {
-            storeFile file(gradleProperties.getProperty('KEY_STORE'))
-            storePassword gradleProperties.getProperty('KEY_STORE_PASS')
-            keyPassword gradleProperties.getProperty('KEY_STORE_PASS')
-            keyAlias gradleProperties.getProperty('KEY_STORE_ALIAS')
+        create("release") {
+            storeFile = file(gradleProperties.getProperty("KEY_STORE"))
+            storePassword = gradleProperties.getProperty("KEY_STORE_PASS")
+            keyPassword = gradleProperties.getProperty("KEY_STORE_PASS")
+            keyAlias = gradleProperties.getProperty("KEY_STORE_ALIAS")
         }
     }
 
     buildFeatures {
 
-        dataBinding true
+        dataBinding = true
         // for view binding:
-        viewBinding true
+        viewBinding = true
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
-        useIR = true
+        jvmTarget = "1.8"
+        //useIR = true
     }
 
     compileOptions {
-        coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
     packagingOptions {
-        exclude "**/attach_hotspot_windows.dll"
-        exclude "META-INF/licenses/**"
-        exclude "META-INF/AL2.0"
-        exclude "META-INF/LGPL2.1"
+        exclude("**/attach_hotspot_windows.dll")
+        exclude("META-INF/licenses/**")
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
     }
 }
 
@@ -74,13 +77,14 @@ android {
 //}
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //implementation(fileTree(dir: "libs", include: arrayOf('*.jar')))
     testImplementation("junit:junit:${Versions.junit}")
     //noinspection GradleDependency
     androidTestImplementation("androidx.test.espresso:espresso-core:${Versions.androidxEspresso}")
     //noinspection GradleDependency
     androidTestImplementation("androidx.test.espresso:espresso-contrib:${Versions.androidxEspresso}") {
-        exclude group: 'org.checkerframework', module: 'checker'
+        //exclude group = "org.checkerframework", module = "checker"
+        exclude(group = "org.checkerframework", module = "checker")
     }
     //noinspection GradleDependency
     androidTestImplementation("androidx.test.espresso:espresso-intents:${Versions.androidxEspresso}")
@@ -92,7 +96,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit-ktx:1.1.3")
     //noinspection GradleDependency
     androidTestImplementation("androidx.test.espresso:espresso-idling-resource:${Versions.androidxEspresso}") {
-        exclude group: 'org.checkerframework', module: 'checker'
+        exclude(group = "org.checkerframework", module = "checker")
     }
     androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0-native-mt") //1.2.1
     androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
