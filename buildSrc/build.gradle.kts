@@ -1,22 +1,19 @@
 plugins {
     `kotlin-dsl`
 }
+
 repositories {
     mavenCentral()
     google()
 }
 
-kotlinDslPluginOptions.experimentalWarning.set(false)
-
-object Plugins {
-    const val AGP = "4.1.3"
-    const val DOKKA = "1.4.20"
-    const val KOTLIN = "1.4.31"
-}
+//kotlinDslPluginOptions.experimentalWarning.set(false)
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${Plugins.KOTLIN}")
-    implementation("com.android.tools.build:gradle:7.0.0")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
+    implementation("com.android.tools.build:gradle:7.2.1")
+    implementation("com.squareup:javapoet:1.13.0")
+    implementation("com.google.dagger:hilt-android-gradle-plugin:2.42")
     //implementation("org.jetbrains.dokka:dokka-gradle-plugin:${Plugins.DOKKA}")
     //implementation("org.jetbrains.dokka:dokka-core:${Plugins.DOKKA}")
 }

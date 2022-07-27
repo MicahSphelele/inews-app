@@ -106,7 +106,7 @@ class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.Ar
                         article.source.name,
                         article.title,
                         article.urlToImage,
-                        NewsCategory.BUSINESS.title.toLowerCase(Locale.ENGLISH)
+                        NewsCategory.BUSINESS.title.lowercase(Locale.ENGLISH)
                     )
                 )
 
@@ -125,7 +125,7 @@ class BusinessFragment : Fragment(R.layout.fragment_business), ArticleAdapter.Ar
     }
 
     private fun getBusinessNews() {
-        liveData = newsViewModel.getNews("za", NewsCategory.BUSINESS.title.toLowerCase(Locale.ENGLISH))
+        liveData = newsViewModel.getNews("za", NewsCategory.BUSINESS.title.lowercase(Locale.ENGLISH))
         liveData.removeObservers(viewLifecycleOwner)
         liveData.observe(viewLifecycleOwner) {
             when (it) {

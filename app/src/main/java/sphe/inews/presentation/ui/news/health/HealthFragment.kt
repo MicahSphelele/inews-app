@@ -106,7 +106,7 @@ class HealthFragment : Fragment(R.layout.fragment_health), ArticleAdapter.Articl
                         article.source.name,
                         article.title,
                         article.urlToImage,
-                        NewsCategory.HEALTH.title.toLowerCase(Locale.ENGLISH)
+                        NewsCategory.HEALTH.title.lowercase(Locale.ENGLISH)
                     )
                 )
 
@@ -125,7 +125,7 @@ class HealthFragment : Fragment(R.layout.fragment_health), ArticleAdapter.Articl
     }
 
     private fun getHealthNews() {
-        liveData = newsViewModel.getNews("za", NewsCategory.HEALTH.title.toLowerCase(Locale.ENGLISH))
+        liveData = newsViewModel.getNews("za", NewsCategory.HEALTH.title.lowercase(Locale.ENGLISH))
         liveData.removeObservers(viewLifecycleOwner)
         liveData.observe(viewLifecycleOwner) {
             when (it) {

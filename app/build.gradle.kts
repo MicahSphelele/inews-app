@@ -1,12 +1,16 @@
+@file:Suppress("ImplicitThis")
+
 import java.util.Properties
 import java.io.FileInputStream
 
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
-    id("kotlin-android-extensions")
+    //kotlin("android.extensions")
+
+    id("kotlin-parcelize")
+    id("dagger.hilt.android.plugin") apply true
+    kotlin("kapt")
 }
 
 val gradleProps = rootProject.file("./app.properties")
@@ -14,18 +18,18 @@ val gradleProperties = Properties()
 gradleProperties.load(FileInputStream(gradleProps))
 
 android {
-    compileSdkVersion(Versions.maxSdkVersion)
+    compileSdk = Versions.maxSdkVersion
     //buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
         applicationId = "sphe.inews"
-        minSdkVersion(Versions.minSdkVersion)
-        targetSdkVersion(Versions.maxSdkVersion)
-        versionCode =4
+        minSdk = Versions.minSdkVersion
+        targetSdk  = Versions.maxSdkVersion
+        versionCode = 4
         versionName = "v1.2.3"
         testInstrumentationRunner = "sphe.inews.HiltTestRunner"
         // buildConfigField "String", "TEST_STRING", gradleProperties.getProperty('TEST_STRING')
-        multiDexEnabled = true
+        //multiDexEnabled = true
     }
 
     signingConfigs {
@@ -45,14 +49,14 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
         //useIR = true
     }
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     buildTypes {
@@ -62,11 +66,17 @@ android {
         }
     }
 
+
     packagingOptions {
-        exclude("**/attach_hotspot_windows.dll")
-        exclude("META-INF/licenses/**")
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
+
+        resources.excludes.add("**/attach_hotspot_windows.dll")
+        //exclude("**/attach_hotspot_windows.dll")
+        resources.excludes.add("META-INF/licenses/**")
+        //exclude("META-INF/licenses/**")
+        resources.excludes.add("META-INF/AL2.0")
+        //exclude("META-INF/AL2.0")
+        resources.excludes.add("META-INF/LGPL2.1")
+        //exclude("META-INF/LGPL2.1")
     }
 }
 
@@ -77,7 +87,7 @@ android {
 //}
 
 dependencies {
-    //implementation(fileTree(dir: "libs", include: arrayOf('*.jar')))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     testImplementation("junit:junit:${Versions.junit}")
     //noinspection GradleDependency
     androidTestImplementation("androidx.test.espresso:espresso-core:${Versions.androidxEspresso}")
@@ -91,24 +101,25 @@ dependencies {
     //noinspection GradleDependency
     debugImplementation("androidx.fragment:fragment-testing:${Versions.fragmentTesting}")
     androidTestImplementation("androidx.test:rules:${Versions.androidxTestRules}")
-    //androidTestImplementation "androidx.test:core:${Versions.androidxTestRules}"
+
     androidTestImplementation("androidx.test:core-ktx:${Versions.androidxTestRules}")
     androidTestImplementation("androidx.test.ext:junit-ktx:1.1.3")
     //noinspection GradleDependency
     androidTestImplementation("androidx.test.espresso:espresso-idling-resource:${Versions.androidxEspresso}") {
         exclude(group = "org.checkerframework", module = "checker")
     }
-    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0-native-mt") //1.2.1
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2") //1.2.1
     androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
     androidTestImplementation("com.google.truth:truth:1.1.3")
 
     //Nav Controller Testing
-    androidTestImplementation("androidx.navigation:navigation-testing:2.3.5")
+    androidTestImplementation("androidx.navigation:navigation-testing:2.5.0")
     //Hilt Testing
     androidTestImplementation("com.google.dagger:hilt-android-testing:${Versions.hiltVersion}")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}")
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0")
+    implementation(kotlin("stdlib-jdk8", "1.7.10"))
+    //implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0")
     implementation("androidx.appcompat:appcompat:${Versions.androidXAppcompat}")
     implementation("androidx.core:core-ktx:${Versions.androidXCoreKTX}")
     implementation("androidx.constraintlayout:constraintlayout:${Versions.androidXConstraints}")
@@ -160,7 +171,7 @@ dependencies {
     implementation("com.google.code.gson:gson:${Versions.gson}")
     implementation("com.airbnb.android:lottie:${Versions.lottie}")
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.6")
 
     //Hilt
     implementation("com.google.dagger:hilt-android:${Versions.hiltVersion}")
@@ -175,6 +186,12 @@ kapt {
     correctErrorTypes = true
 }
 
-hilt {
-    enableTransformForLocalTests = true
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(11))
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
+
+//hilt {
+//    enableTransformForLocalTests = true
+//}

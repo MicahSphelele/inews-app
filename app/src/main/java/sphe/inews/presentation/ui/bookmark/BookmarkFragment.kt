@@ -185,7 +185,7 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                 categoryBottomDialog.dismiss()
                 articleAdapter.setArticles(mutableListOf())
                 bookmarkList =
-                    bookmarkViewModel.getBooMarksByCategory(category.title.toLowerCase(Locale.ROOT))
+                    bookmarkViewModel.getBooMarksByCategory(category.title.lowercase(Locale.ROOT))
                 val articles = mapper.toDomainList(bookmarkList)
                 CoroutineScope(Dispatchers.Main).launch {
                     if (articles!!.isNotEmpty()) {

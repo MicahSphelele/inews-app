@@ -8,6 +8,7 @@ import android.location.Geocoder
 import android.location.LocationManager
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.Priority
 import java.util.*
 
 object LocationUtils {
@@ -39,7 +40,7 @@ object LocationUtils {
             return LocationRequest.create().apply {
                 interval = 1000
                 fastestInterval = 1000
-                priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+                priority = Priority.PRIORITY_HIGH_ACCURACY
             }
     }
 }

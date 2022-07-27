@@ -116,7 +116,7 @@ class TechnologyFragment : Fragment(R.layout.fragment_technology), ArticleAdapte
                         article.source.name,
                         article.title,
                         article.urlToImage,
-                        NewsCategory.TECHNOLOGY.title.toLowerCase(Locale.ENGLISH)
+                        NewsCategory.TECHNOLOGY.title.lowercase(Locale.ENGLISH)
                     )
                 )
 
@@ -135,7 +135,7 @@ class TechnologyFragment : Fragment(R.layout.fragment_technology), ArticleAdapte
     }
 
     private fun getTechnologyNews() {
-        liveData = newsViewModel.getNews("za", NewsCategory.TECHNOLOGY.title.toLowerCase(Locale.ENGLISH))
+        liveData = newsViewModel.getNews("za", NewsCategory.TECHNOLOGY.title.lowercase(Locale.ENGLISH))
         liveData.removeObservers(viewLifecycleOwner)
         liveData.observe(viewLifecycleOwner) {
             when (it) {

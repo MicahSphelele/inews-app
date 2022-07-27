@@ -108,7 +108,7 @@ class EntertainmentFragment : Fragment(R.layout.fragment_entertainment),
                         article.source.name,
                         article.title,
                         article.urlToImage,
-                        NewsCategory.ENTERTAINMENT.title.toLowerCase(Locale.ENGLISH)
+                        NewsCategory.ENTERTAINMENT.title.lowercase(Locale.ENGLISH)
                     )
                 )
 
@@ -127,7 +127,7 @@ class EntertainmentFragment : Fragment(R.layout.fragment_entertainment),
     }
 
     private fun getEntertainmentNews() {
-        liveData = newsViewModel.getNews("za", NewsCategory.ENTERTAINMENT.title.toLowerCase(Locale.ENGLISH))
+        liveData = newsViewModel.getNews("za", NewsCategory.ENTERTAINMENT.title.lowercase(Locale.ENGLISH))
         liveData.removeObservers(viewLifecycleOwner)
         liveData.observe(viewLifecycleOwner) {
             when (it) {

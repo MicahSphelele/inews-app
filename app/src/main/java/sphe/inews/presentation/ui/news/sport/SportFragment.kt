@@ -105,7 +105,7 @@ class SportFragment : Fragment(R.layout.fragment_sport), ArticleAdapter.ArticleL
                         article.source.name,
                         article.title,
                         article.urlToImage,
-                        NewsCategory.SPORTS.title.toLowerCase(Locale.ENGLISH)
+                        NewsCategory.SPORTS.title.lowercase(Locale.ENGLISH)
                     )
                 )
 
@@ -125,7 +125,7 @@ class SportFragment : Fragment(R.layout.fragment_sport), ArticleAdapter.ArticleL
     }
 
     private fun getSportNews() {
-        liveData = newsViewModel.getNews("za",NewsCategory.SPORTS.title.toLowerCase(Locale.ENGLISH))
+        liveData = newsViewModel.getNews("za",NewsCategory.SPORTS.title.lowercase(Locale.ENGLISH))
         liveData.removeObservers(viewLifecycleOwner)
         liveData.observe(viewLifecycleOwner) {
             when (it) {

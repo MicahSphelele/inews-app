@@ -29,6 +29,11 @@ class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.FullScreenDialogStyle)
+
+//        dialog?.window?.let {
+//            dialog?.window?.attributes?.windowAnimations =
+//                R.style.FullScreenDialogStyle //Property access syntax
+//        }
     }
 
     override fun onCreateView(
@@ -75,14 +80,6 @@ class ViewYoutubeDialogFragment : DialogFragment(), YouTubePlayerListener {
             binding.youtubePlayerView.release()
         }
 
-    }
-
-    override fun onActivityCreated(args: Bundle?) {
-        super.onActivityCreated(args)
-        dialog?.window?.let {
-            dialog?.window?.attributes?.windowAnimations =
-                R.style.FullScreenDialogStyle //Property access syntax
-        }
     }
 
     override fun onApiChange(youTubePlayer: YouTubePlayer) {
