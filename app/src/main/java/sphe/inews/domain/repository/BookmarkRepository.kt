@@ -1,20 +1,20 @@
 package sphe.inews.domain.repository
 
 import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
 import sphe.inews.domain.models.bookmark.Bookmark
 
 interface BookmarkRepository {
 
-    suspend fun insert(bookmark: Bookmark): Long
+    suspend fun insert(bookmark: Bookmark)
 
     suspend fun delete(bookmark: Bookmark): Int
 
-    suspend fun getBooMarks(): List<Bookmark>
+    fun getBooMarks(): Flow<List<Bookmark>?>?
 
-    //TODO(You need to change this function)
     fun getBooMarksObserved(): LiveData<List<Bookmark>>
 
-    suspend fun getBooMark(url: String): Bookmark?
+    fun getBooMark(url: String): Flow<Bookmark?>
 
-    suspend fun getBooMarksByCategory(category: String): List<Bookmark>?
+    fun getBooMarksByCategory(category: String): Flow<List<Bookmark>?>
 }

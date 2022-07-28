@@ -11,6 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import sphe.inews.R
 import sphe.inews.databinding.FragmentViewArticleBinding
@@ -96,15 +98,17 @@ class ArticleViewFragment : Fragment(R.layout.fragment_view_article) {
             binding.checkBookmark.isChecked = savedBookmark.notNull()
 
             binding.checkBookmark.setOnCheckedChangeListener { _, checked ->
-                lifecycleScope.launch {
+                lifecycleScope.launch(Dispatchers.Default) {
                     if (checked) {
                         bookmarkArticle?.let {
                             viewModel.insert(it)
                         }
 
                     } else {
-                        savedBookmark?.let {
-                            viewModel.delete(it)
+                        savedBookmark.collect {
+                            it?.let { bookmark ->
+                                viewModel.delete(bookmark)
+                            }
                         }
                     }
                 }

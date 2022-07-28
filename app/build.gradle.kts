@@ -10,6 +10,7 @@ plugins {
 
     id("kotlin-parcelize")
     id("dagger.hilt.android.plugin") apply true
+    //id("com.google.devtools.ksp") version "1.7.10-1.0.6"
     kotlin("kapt")
 }
 
@@ -118,7 +119,7 @@ dependencies {
     androidTestImplementation("com.google.dagger:hilt-android-testing:${Versions.hiltVersion}")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}")
 
-    implementation(kotlin("stdlib-jdk8", "1.7.10"))
+    implementation(kotlin("stdlib-jdk8", "1.6.21"))
     //implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0")
     implementation("androidx.appcompat:appcompat:${Versions.androidXAppcompat}")
     implementation("androidx.core:core-ktx:${Versions.androidXCoreKTX}")
@@ -141,9 +142,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifeCycleExt}")
 
     //Room Database
-    implementation("androidx.room:room-rxjava2:${Versions.androidxRoomRxJava}")
+    //implementation("androidx.room:room-rxjava2:${Versions.androidxRoomRxJava}")
     implementation("androidx.room:room-ktx:${Versions.androidxRoom}")
     kapt("androidx.room:room-compiler:${Versions.androidxRoomRxJava}")
+    kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
 
     //RxAndroid
     implementation("io.reactivex.rxjava3:rxandroid:${Versions.rxJavaAndroid}")

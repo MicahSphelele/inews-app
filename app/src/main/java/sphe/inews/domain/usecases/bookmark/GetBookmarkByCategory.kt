@@ -1,12 +1,13 @@
 package sphe.inews.domain.usecases.bookmark
 
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import sphe.inews.domain.models.bookmark.Bookmark
 import sphe.inews.domain.repository.BookmarkRepository
 import javax.inject.Inject
 
-class GetBookmarkByCatUseCase @Inject constructor(private val bookmarkRepository: BookmarkRepository) {
+class GetBookmarkByCategory @Inject constructor(private val bookmarkRepository: BookmarkRepository) {
 
     operator fun invoke(
         scope: CoroutineScope,
@@ -14,8 +15,9 @@ class GetBookmarkByCatUseCase @Inject constructor(private val bookmarkRepository
         onBookmarks: (List<Bookmark>?) -> Unit
     ) {
         scope.launch {
-            val bookmarks = bookmarkRepository.getBooMarksByCategory(category)
-            onBookmarks(bookmarks)
+            bookmarkRepository.getBooMarksByCategory(category).collect { bookmarks ->
+                onBookmarks(bookmarks)
+            }
         }
     }
 }

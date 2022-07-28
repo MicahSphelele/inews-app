@@ -6,7 +6,7 @@ import sphe.inews.domain.models.bookmark.Bookmark
 import sphe.inews.domain.repository.BookmarkRepository
 import javax.inject.Inject
 
-class DeleteBookmarkUseCase @Inject constructor(private val bookmarkRepository: BookmarkRepository) {
+class DeleteBookmark @Inject constructor(private val bookmarkRepository: BookmarkRepository) {
 
     operator fun invoke(scope: CoroutineScope, bookmark: Bookmark) {
         scope.launch {

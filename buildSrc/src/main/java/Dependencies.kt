@@ -28,7 +28,7 @@ object Versions {
     const val customShimmer = "0.5.0"
     const val buildToolsVersion = "30.0.2"
     const val minSdkVersion = 21
-    const val maxSdkVersion = 31
+    const val maxSdkVersion = 32
     const val hiltVersion = "2.42"
     const val hiltCompilerVersion = "2.42"
     const val hiltLifecycleViewModelVersion = "1.0.0"

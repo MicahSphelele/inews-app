@@ -17,6 +17,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -236,11 +237,19 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                     }
 
                 }.addOnFailureListener {
-                    it as ResolvableApiException
 
-                    if (it.statusCode == LocationSettingsStatusCodes.RESOLUTION_REQUIRED) {
-                        settingsLauncher.launch(IntentSenderRequest.Builder(it.resolution).build())
+                    if (it is ResolvableApiException) {
+                        if (it.statusCode == LocationSettingsStatusCodes.RESOLUTION_REQUIRED) {
+                            settingsLauncher.launch(IntentSenderRequest.Builder(it.resolution).build())
+                        }
+                    } else {
+                        if (it is ApiException) {
+                            if (it.statusCode == LocationSettingsStatusCodes.RESOLUTION_REQUIRED) {
+
+                            }
+                        }
                     }
+
                 }
             return
         }

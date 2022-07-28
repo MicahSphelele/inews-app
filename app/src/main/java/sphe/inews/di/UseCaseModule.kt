@@ -35,26 +35,26 @@ object UseCaseModule {
         GetWeatherForecastUseCase(weatherRepository)
 
     @Provides
-    fun providesInsertBookmarkUseCase(bookmarkRepository: BookmarkRepository): InsertBookmarkUseCase =
-        InsertBookmarkUseCase(bookmarkRepository)
+    fun providesInsertBookmarkUseCase(bookmarkRepository: BookmarkRepository): InsertBookmark =
+        InsertBookmark(bookmarkRepository)
 
     @Provides
-    fun providesDeleteBookmarkUseCase(bookmarkRepository: BookmarkRepository): DeleteBookmarkUseCase =
-        DeleteBookmarkUseCase(bookmarkRepository)
+    fun providesDeleteBookmarkUseCase(bookmarkRepository: BookmarkRepository): DeleteBookmark =
+        DeleteBookmark(bookmarkRepository)
 
     @Provides
-    fun providesGetBookmarkListUseCase(bookmarkRepository: BookmarkRepository): GetBookmarkListUseCase =
-        GetBookmarkListUseCase(bookmarkRepository)
+    fun providesGetBookmarkListUseCase(bookmarkRepository: BookmarkRepository): GetBookmarkList =
+        GetBookmarkList(bookmarkRepository)
 
     @Provides
-    fun providesGetBookmarksLiveDataUseCase(bookmarkRepository: BookmarkRepository): GetBookmarkLiveDataUseCase =
-        GetBookmarkLiveDataUseCase(bookmarkRepository)
+    fun providesGetBookmarksLiveDataUseCase(bookmarkRepository: BookmarkRepository): GetBookmarkLiveData =
+        GetBookmarkLiveData(bookmarkRepository)
 
     @Provides
-    fun providesGetBookmarkByUrlUseCase(bookmarkRepository: BookmarkRepository): GetSingleBookmarkByUrlUseCase =
-        GetSingleBookmarkByUrlUseCase(bookmarkRepository)
+    fun providesGetBookmarkByUrlUseCase(bookmarkRepository: BookmarkRepository): GetSingleBookmarkByUrl =
+        GetSingleBookmarkByUrl(bookmarkRepository)
 
     @Provides
-    fun providesGetGetBookmarkByCatUseCase(bookmarkRepository: BookmarkRepository): GetBookmarkByCatUseCase =
-        GetBookmarkByCatUseCase(bookmarkRepository)
+    fun providesGetGetBookmarkByCatUseCase(bookmarkRepository: BookmarkRepository): GetBookmarkByCategory =
+        GetBookmarkByCategory(bookmarkRepository)
 }

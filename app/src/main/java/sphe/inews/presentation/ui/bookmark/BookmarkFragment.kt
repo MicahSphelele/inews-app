@@ -17,6 +17,7 @@ import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import sphe.inews.R
 import sphe.inews.databinding.FragmentBookmarkBinding
@@ -93,21 +94,25 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
 
         lifecycleScope.launch {
             try {
-                bookmarkList = bookmarkViewModel.getBooMarks()
-                val articles = mapper.toDomainList(bookmarkList)
-                CoroutineScope(Dispatchers.Main).launch {
+                bookmarkViewModel.getBooMarks()?.collect {
+                    bookmarkList = it
+                    val articles = mapper.toDomainList(bookmarkList)
+                    CoroutineScope(Dispatchers.Main).launch {
 
-                    if (articles!!.isNotEmpty()) {
-                        articleAdapter.setArticles(articles)
-                    } else {
+                        if (articles!!.isNotEmpty()) {
+                            articleAdapter.setArticles(articles)
+                        } else {
 
-                        hideShowLottieView(
-                            state = View.VISIBLE,
-                            animation = R.raw.animation_empty,
-                            errorMsg = "No bookmarks found"
-                        )
+                            hideShowLottieView(
+                                state = View.VISIBLE,
+                                animation = R.raw.animation_empty,
+                                errorMsg = "No bookmarks found"
+                            )
+                        }
                     }
                 }
+
+
             } catch (ex: Exception) {
                 ex.printStackTrace()
                 hideShowLottieView(
@@ -115,7 +120,7 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                     errorMsg = "Something went wrong"
                 )
                 ex.message?.let {
-                    requireActivity().showShortToast(it)
+                    requireContext().showShortToast(it)
                 }
                 AppLogger.error("Error on fetching bookmark data", ex)
             }
@@ -184,20 +189,21 @@ class BookmarkFragment : Fragment(R.layout.fragment_bookmark), ArticleAdapter.Ar
                 hideShowLottieView(View.INVISIBLE)
                 categoryBottomDialog.dismiss()
                 articleAdapter.setArticles(mutableListOf())
-                bookmarkList =
-                    bookmarkViewModel.getBooMarksByCategory(category.title.lowercase(Locale.ROOT))
-                val articles = mapper.toDomainList(bookmarkList)
-                CoroutineScope(Dispatchers.Main).launch {
-                    if (articles!!.isNotEmpty()) {
-                        articleAdapter.setArticles(articles)
-                    } else {
-                        hideShowLottieView(
-                            state = View.VISIBLE,
-                            animation = R.raw.animation_empty,
-                            errorMsg = "No ${category.title} bookmarks found"
-                        )
+                    bookmarkViewModel.getBooMarksByCategory(category.title.lowercase(Locale.ROOT)).collect {
+                        bookmarkList = it
+                        val articles = mapper.toDomainList(bookmarkList)
+                        CoroutineScope(Dispatchers.Main).launch {
+                            if (articles!!.isNotEmpty()) {
+                                articleAdapter.setArticles(articles)
+                            } else {
+                                hideShowLottieView(
+                                    state = View.VISIBLE,
+                                    animation = R.raw.animation_empty,
+                                    errorMsg = "No ${category.title} bookmarks found"
+                                )
+                            }
+                        }
                     }
-                }
             } catch (ex: Exception) {
                 ex.printStackTrace()
                 hideShowLottieView(

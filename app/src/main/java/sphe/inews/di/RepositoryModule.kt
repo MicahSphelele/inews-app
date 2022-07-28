@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import sphe.inews.domain.repository.BookmarkRepository
-import sphe.inews.data.repository.RealBookmarkRepository
+import sphe.inews.data.repository.BookmarkRepositoryImpl
 import sphe.inews.data.local.dao.BookmarkDao
 import sphe.inews.data.network.Covid19Api
 import sphe.inews.data.network.INewsApi
@@ -23,7 +23,7 @@ object RepositoryModule {
 
     @Provides
     fun provideBookmarkRepository(bookmarkDao: BookmarkDao) : BookmarkRepository =
-        RealBookmarkRepository(bookmarkDao)
+        BookmarkRepositoryImpl(bookmarkDao)
 
     @Provides
     fun provideNewsRepository(newsApi: INewsApi) : NewsRepository =
