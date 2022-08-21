@@ -38,5 +38,3 @@ A simple open source news demo app developed in [**Kotlin**](https://kotlinlang.
 <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/dark/screen_dark_8.jpg" width="125" height="250"/>
 </div>
 
-
-
