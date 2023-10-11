@@ -1,11 +1,7 @@
 package sphe.inews.data.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MediatorLiveData
-import io.reactivex.functions.Function
-import io.reactivex.schedulers.Schedulers
 import sphe.inews.data.network.Covid19Api
 import sphe.inews.domain.Resources
 import sphe.inews.domain.models.covid.CovidResponse
@@ -17,11 +13,13 @@ class RealCovid19Repository @Inject constructor(private val covid19Api: Covid19A
     private var covidResponse: MediatorLiveData<Resources<CovidResponse>>? = MediatorLiveData()
 
     override fun getCovidStatsByCountry(country: String): LiveData<Resources<CovidResponse>>? {
-        covidResponse?.let {
+       /* covidResponse?.let {
             covidResponse?.value = Resources.loading(
                 CovidResponse("", null)
             )
         }
+
+
         val source: LiveData<Resources<CovidResponse>?> =
             LiveDataReactiveStreams.fromPublisher(
                 covid19Api.getCovidStatsByCountry(country)
@@ -53,8 +51,9 @@ class RealCovid19Repository @Inject constructor(private val covid19Api: Covid19A
                     this?.removeSource(source)
                 }
             }
-        }
-        return covidResponse
+        }*/
+
+        return null
     }
 
 

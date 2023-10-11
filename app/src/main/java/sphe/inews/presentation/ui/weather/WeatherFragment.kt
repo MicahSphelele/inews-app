@@ -59,8 +59,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         }
 
         locationCallback = object : LocationCallback() {
-            override fun onLocationResult(locationResult: LocationResult?) {
-                locationResult ?: return
+            override fun onLocationResult(locationResult: LocationResult) {
 
                 val latitude = locationResult.locations[0].latitude
                 val longitude = locationResult.locations[0].longitude
