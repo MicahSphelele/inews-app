@@ -1,0 +1,24 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "03:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: com.google.dagger:hilt-android-compiler
+    versions:
+    - 2.34-beta
+    - "2.35"
+  - dependency-name: com.google.dagger:hilt-android
+    versions:
+    - 2.34-beta
+    - "2.35"
+  - dependency-name: com.google.dagger:hilt-android-gradle-plugin
+    versions:
+    - 2.34-beta
+    - "2.35"
+  - dependency-name: name.remal:gradle-plugins
+    versions:
+    - 1.3.0
