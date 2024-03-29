@@ -137,6 +137,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:${Versions.retrofit}")
     implementation("com.squareup.retrofit2:converter-gson:${Versions.retrofit}")
     implementation("com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
     //ViewModel and LiveData
     implementation("androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifeCycleExt}")

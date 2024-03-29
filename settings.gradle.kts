@@ -17,5 +17,5 @@
 //    }
 //}
 
-rootProject.name="INews"
+rootProject.name="i-news-app"
 include(":app")
