@@ -96,3 +96,12 @@ app/release/app-release.apk
 .idea/copilot/chatSessions/00000000000.xd
 .idea/copilot/chatSessions/blobs/version
 .idea/copilot/chatSessions/xd.lck
+.idea/.name
+.idea/appInsightsSettings.xml
+.idea/compiler.xml
+.idea/deploymentTargetDropDown.xml
+.idea/dictionaries/sphelelengubane.xml
+.idea/gradle.xml
+.idea/kotlinScripting.xml
+.idea/migrations.xml
+.idea/misc.xml
