@@ -93,3 +93,6 @@ buildSrc/build/reports/plugin-development/validation-report.txt
 buildSrc/build/tmp/jar/MANIFEST.MF
 app/release/app-release.apk
 /app.properties
+.idea/copilot/chatSessions/00000000000.xd
+.idea/copilot/chatSessions/blobs/version
+.idea/copilot/chatSessions/xd.lck
