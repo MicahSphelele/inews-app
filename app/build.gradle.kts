@@ -7,7 +7,6 @@ plugins {
     id("com.android.application")
     kotlin("android")
     //kotlin("android.extensions")
-
     id("kotlin-parcelize")
     id("dagger.hilt.android.plugin") apply true
     //id("com.google.devtools.ksp") version "1.7.10-1.0.6"
