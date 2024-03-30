@@ -20,7 +20,7 @@ gradleProperties.load(FileInputStream(gradleProps))
 
 android {
 
-    compileSdk = 33
+    compileSdk = 34
     //buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
