@@ -1,0 +1,98 @@
+[versions]
+junitVersion = "4.13.2"
+espressoVersion = "3.4.0"
+fragmentTestingVersion = "1.4.1"
+testRulesVersion = "1.4.0"
+junitKTXVersion = "1.1.3"
+coroutinesVersion = "1.6.2"
+archCoreTestingVersion = "2.1.0"
+hiltVersion = "2.49"
+hiltCompilerVersion = "1.0.0"
+googleTruthVersion = "1.1.3"
+navigationTestingVersion = "2.5.0"
+appcompatVersion = "1.4.1"
+coreKTXVersion = "1.7.0"
+constraintLayoutVersion = "2.1.4"
+legacySupportVersion = "1.0.0"
+recyclerViewVersion = "1.2.1"
+cardViewVersion = "1.0.0"
+browserVersion = "1.4.0"
+multiDexVersion = "2.0.1"
+materialVersion = "1.4.0"
+retrofitVersion = "2.9.0"
+okHttpVersion = "4.11.0"
+lifecycleExtVersion = "2.2.0"
+roomVersion = "2.4.2"
+metadataJVMVersion = "0.5.0"
+rxAndroidVersion = "3.0.0"
+rxJavaVersion = "3.1.5"
+lifecycleStreamsVersion = "2.4.0"
+glideVersion = "4.13.2"
+databindingCompilerVersion = "3.1.4"
+navigationVersion = "2.4.0"
+youtubePlayerVersion = "11.0.1"
+shimmerVersion = "0.5.0"
+gsonVersion = "2.9.0"
+lottieVersion = "5.2.0"
+desugarVersion = "1.1.6"
+servicesLocationVersion = "20.0.0"
+minSdk = "21"
+maxSdk = "34"
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junitVersion" }
+android-databinding-compiler = { group = "com.android.databinding", name = "compiler", version.ref = "databindingCompilerVersion" }
+android-desugar = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugarVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoVersion" }
+androidx-espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espressoVersion" }
+androidx-espresso-intents = { group = "androidx.test.espresso", name = "espresso-intents", version.ref = "espressoVersion" }
+androidx-espresso-idling-resource = { group = "androidx.test.espresso", name = "espresso-idling-resource", version.ref = "espressoVersion" }
+androidx-fragment-testing = { group = "androidx.fragment", name = "fragment-testing", version.ref = "fragmentTestingVersion" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "testRulesVersion" }
+androidx-test-core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "testRulesVersion" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKTXVersion" }
+androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigationTestingVersion" }
+androidx-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "archCoreTestingVersion" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompatVersion" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKTXVersion" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintLayoutVersion" }
+androidx-legacy-support = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportVersion" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerViewVersion" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardViewVersion" }
+androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "browserVersion" }
+androidx-multidex = { group = "androidx.multidex", name = "multidex", version.ref = "multiDexVersion" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationVersion" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationVersion" }
+androidx-lifecycle-extensions = { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "lifecycleExtVersion" }
+androidx-lifecycle-reactivestreams-ktx = { group = "androidx.lifecycle", name = "lifecycle-reactivestreams-ktx", version.ref = "lifecycleStreamsVersion" }
+androidx-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltCompilerVersion" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesVersion" }
+kotlinx-metadata-jvm = { group = "org.jetbrains.kotlinx", name = "kotlinx-metadata-jvm", version.ref = "metadataJVMVersion" }
+google-truth = { group = "com.google.truth", name = "truth", version.ref = "googleTruthVersion" }
+google-hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hiltVersion" }
+google-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
+google-hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltVersion" }
+google-android-material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
+google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion" }
+google-play-services-location= { group = "com.google.android.gms", name = "play-services-location", version.ref = "servicesLocationVersion" }
+retrofit2 = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+retrofit2-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion" }
+retrofit2-adapter-rxjava2 = { group = "com.squareup.retrofit2", name = "adapter-rxjava2", version.ref = "retrofitVersion" }
+okhttp3-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttpVersion" }
+io-reactivex-rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxAndroidVersion" }
+io-reactivex-rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxJavaVersion" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideVersion" }
+youtube-player-core = { group = "com.pierfrancescosoffritti.androidyoutubeplayer", name = "core", version.ref = "youtubePlayerVersion" }
+facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmerVersion" }
+airbnb-lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottieVersion" }
+
+#    implementation("com.google.dagger:hilt-android:2.42")
+#    kapt("com.google.dagger:hilt-android-compiler:2.42")
+#    //implementation "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycleViewModelVersion}"
+#    kapt("androidx.hilt:hilt-compiler:1.0.0")
+#
+#    implementation("com.google.android.gms:play-services-location:20.0.0")
+[plugins]

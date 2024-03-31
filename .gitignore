@@ -106,3 +106,6 @@ app/release/app-release.apk
 .idea/migrations.xml
 .idea/misc.xml
 .idea/misc.xml
+.idea/kotlinc.xml
+.idea/vcs.xml
+buildSrc/build/libs/buildSrc.jar
