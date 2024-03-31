@@ -1,28 +1,8 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-
-    repositories {
-        google()
-        jcenter()
-        //maven(url = uri("https://plugins.gradle.org/m2/"))
-        mavenCentral()
-        
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven(url = "https://jitpack.io")
-        mavenCentral()
-        
-    }
-}
-
-tasks {
-    register("clean", Delete::class.java) {
-        delete(rootProject.buildDir)
-    }
+plugins {
+    alias(libs.plugins.android.application).apply(false)
+    alias(libs.plugins.kotlin.android).apply(false)
+    alias(libs.plugins.kotlin.parcelize).apply(false)
+//    alias(libs.plugins.kotlin.kapt).apply(false)
+    alias(libs.plugins.kotlin.symbol.processor).apply(false)
+    alias(libs.plugins.dagger.hilt).apply(false)
 }

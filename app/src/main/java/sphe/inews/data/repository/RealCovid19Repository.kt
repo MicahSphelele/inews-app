@@ -2,7 +2,6 @@ package sphe.inews.data.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MediatorLiveData
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
@@ -22,38 +21,38 @@ class RealCovid19Repository @Inject constructor(private val covid19Api: Covid19A
                 CovidResponse("", null)
             )
         }
-        val source: LiveData<Resources<CovidResponse>?> =
-            LiveDataReactiveStreams.fromPublisher(
-                covid19Api.getCovidStatsByCountry(country)
-                    ?.onErrorReturn { throwable ->
-                        throwable.stackTrace
-                        Log.e("@Covid19StatsViewModel", "apply error: $throwable")
+//        val source: LiveData<Resources<CovidResponse>?> =
+//            LiveDataReactiveStreams.fromPublisher(
+//                covid19Api.getCovidStatsByCountry(country)
+//                    ?.onErrorReturn { throwable ->
+//                        throwable.stackTrace
+//                        Log.e("@Covid19StatsViewModel", "apply error: $throwable")
+//
+//                        return@onErrorReturn CovidResponse("", null)
+//                    }
+//                    ?.map(object :
+//                        Function<CovidResponse, Resources<CovidResponse>?> {
+//                        @Throws(Exception::class)
+//                        override fun apply(response: CovidResponse): Resources<CovidResponse>? {
+//                            Log.d("@Covid19StatsViewModel", "apply data")
+//                            response.let {
+//                                if (response.latestStatByCountry.isNullOrEmpty()) {
+//                                    return Resources.error("Something went wrong", null)
+//                                }
+//                                return Resources.success(response)
+//                            }
+//                        }
+//                    })!!.subscribeOn(Schedulers.io())
+//            )
 
-                        return@onErrorReturn CovidResponse("", null)
-                    }
-                    ?.map(object :
-                        Function<CovidResponse, Resources<CovidResponse>?> {
-                        @Throws(Exception::class)
-                        override fun apply(response: CovidResponse): Resources<CovidResponse>? {
-                            Log.d("@Covid19StatsViewModel", "apply data")
-                            response.let {
-                                if (response.latestStatByCountry.isNullOrEmpty()) {
-                                    return Resources.error("Something went wrong", null)
-                                }
-                                return Resources.success(response)
-                            }
-                        }
-                    })!!.subscribeOn(Schedulers.io())
-            )
-
-        covidResponse?.let {
-            covidResponse?.addSource(source) { response ->
-                covidResponse.apply {
-                    this?.value = response
-                    this?.removeSource(source)
-                }
-            }
-        }
+//        covidResponse?.let {
+//            covidResponse?.addSource(source) { response ->
+//                covidResponse.apply {
+//                    this?.value = response
+//                    this?.removeSource(source)
+//                }
+//            }
+//        }
         return covidResponse
     }
 

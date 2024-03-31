@@ -16,7 +16,7 @@
     </queries>
 
     <application
-        android:name=".InewsApplication"
+        android:name="sphe.inews.InewsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -29,14 +29,12 @@
 
         <activity
             android:name=".presentation.ui.activities.MainActivity"
-            android:label="@string/app_name"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
             android:name=".presentation.ui.activities.SplashActivity"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:noHistory="true"
             android:exported="true"

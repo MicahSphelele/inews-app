@@ -1,21 +1,23 @@
-//pluginManagement {
-//    resolutionStrategy {
-//        eachPlugin {
-//            if (requested.id.id == "com.android.library") {
-//                useModule("com.android.tools.build:gradle:${requested.version}")
-//            }
-//            if (requested.id.id == "com.android.application") {
-//                useModule("com.android.tools.build:gradle:${requested.version}")
-//            }
-//        }
-//    }
-//    repositories {
-//        gradlePluginPortal()
-//        google()
-//        mavenCentral()
-//        jcenter()
-//    }
-//}
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 
 rootProject.name="i-news-app"
 include(":app")

@@ -135,7 +135,7 @@ class AboutDialogFragment : BottomSheetDialogFragment() {
 
     private fun setupFullHeight(bottomSheetDialog: BottomSheetDialog, state: Int) {
         val bottomSheet: FrameLayout =
-            bottomSheetDialog.findViewById<FrameLayout>(R.id.design_bottom_sheet) as FrameLayout
+            bottomSheetDialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
         val behavior = BottomSheetBehavior.from(bottomSheet)
         val layoutParams = bottomSheet.layoutParams
         val windowHeight: Int = getWindowHeight()

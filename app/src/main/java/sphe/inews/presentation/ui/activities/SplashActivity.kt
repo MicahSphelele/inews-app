@@ -10,7 +10,6 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import dagger.hilt.android.AndroidEntryPoint
-import sphe.inews.BuildConfig
 import sphe.inews.R
 import sphe.inews.databinding.ActivitySplashBinding
 import sphe.inews.domain.enums.AppTheme
@@ -42,7 +41,7 @@ class SplashActivity : BaseActivity() {
         val binding: ActivitySplashBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_splash)
 
-        when (AppTheme.values()[appStorage.getIntData(Constants.KEY_THEME)]) {
+        when (AppTheme.entries[appStorage.getIntData(Constants.KEY_THEME)]) {
             AppTheme.LIGHT_MODE -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
@@ -54,7 +53,7 @@ class SplashActivity : BaseActivity() {
             }
         }
 
-        binding.appVersion = BuildConfig.VERSION_NAME
+        binding.appVersion = "BuildConfig.VERSION_NAME"
 
     }
 

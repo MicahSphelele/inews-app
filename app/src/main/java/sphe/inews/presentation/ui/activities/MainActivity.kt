@@ -68,7 +68,8 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
         setSupportActionBar(binding.appToolbar as Toolbar)
 
-        navController = Navigation.findNavController(this, R.id.navigationHostFragment)
+        //navController = Navigation.findNavController(this, R.id.navigationHostFragment)
+        navController = binding.navigationHostFragment.getFragment<NavHostFragment>().navController
 
         //Setup with bottom navigation
         NavigationUI.setupWithNavController(binding.appBottomNavigation, navController)
@@ -77,7 +78,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         //NavigationUI.setupActionBarWithNavController(this,navController)
         val snackBar = showNetworkStateBar(binding.mainParentLayout)
 
-        networkState.observe(this, {
+        networkState.observe(this) {
 
             isNetworkConnected = it.isConnected
 
@@ -91,7 +92,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 snackBar.dismiss()
                 binding.appBottomNavigation.visibility = View.VISIBLE
             }
-        })
+        }
 
         settingsLauncher =
             registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {

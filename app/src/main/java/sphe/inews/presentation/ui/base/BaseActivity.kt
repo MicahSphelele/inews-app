@@ -4,6 +4,7 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
@@ -40,11 +41,12 @@ abstract class BaseActivity : AppCompatActivity() {
     fun showNetworkStateBar(view: View): Snackbar {
         val customSnackBar =
             Snackbar.make(view, "", Snackbar.LENGTH_INDEFINITE)
-        val layout = customSnackBar.view as Snackbar.SnackbarLayout
-        val customSnackView: View = layoutInflater.inflate(R.layout.network_error_view, null)
+        //val layout = customSnackBar.view as Snackbar.SnackbarLayout
+        val viewGroup = findViewById<ViewGroup>(android.R.id.content)
+        val customSnackView: View = layoutInflater.inflate(R.layout.network_error_view, viewGroup, false)
         // We can also customize the above controls
-        layout.setPadding(0, 0, 0, 0)
-        layout.addView(customSnackView, 0)
+        //layout.setPadding(0, 0, 0, 0)
+        //layout.addView(customSnackView, 0)
         return customSnackBar
     }
 

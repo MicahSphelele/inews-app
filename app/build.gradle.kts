@@ -4,21 +4,29 @@ import java.util.Properties
 import java.io.FileInputStream
 
 plugins {
-    id("com.android.application")
+    /*id("com.android.application")
     kotlin("android")
     //kotlin("android.extensions")
     id("kotlin-parcelize")
     id("dagger.hilt.android.plugin") apply true
     id("com.google.devtools.ksp") version "1.6.21-1.0.5"
+
+    kotlin("kapt")*/
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+//    alias(libs.plugins.kotlin.kapt)
     kotlin("kapt")
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.kotlin.symbol.processor)
 }
 
-val gradleProps = rootProject.file("./app.properties")
-val gradleProperties = Properties()
-gradleProperties.load(FileInputStream(gradleProps))
+val gradleProperties = Properties().apply {
+    load(FileInputStream(rootProject.file("./app.properties")))
+}
 
 android {
-
+    namespace = "sphe.inews"
     compileSdk = 34
     //buildToolsVersion Versions.buildToolsVersion
 
@@ -30,7 +38,7 @@ android {
         versionName = "v1.2.3"
         testInstrumentationRunner = "sphe.inews.HiltTestRunner"
         // buildConfigField "String", "TEST_STRING", gradleProperties.getProperty('TEST_STRING')
-        //multiDexEnabled = true
+        multiDexEnabled = true
     }
 
     signingConfigs {
@@ -43,9 +51,7 @@ android {
     }
 
     buildFeatures {
-
         dataBinding = true
-        // for view binding:
         viewBinding = true
     }
 
@@ -68,7 +74,7 @@ android {
     }
 
 
-    packagingOptions {
+    packaging {
 
         resources.excludes.add("**/attach_hotspot_windows.dll")
         //exclude("**/attach_hotspot_windows.dll")
@@ -134,7 +140,7 @@ dependencies {
     androidTestImplementation(libs.google.hilt.android.testing)
 //    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.42")
     kspAndroidTest(libs.google.hilt.android.compiler)
-    implementation(kotlin("stdlib-jdk8", "1.6.21"))
+ //   implementation(kotlin("stdlib-jdk8", "1.6.21"))
 //    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0")
 //    implementation("androidx.appcompat:appcompat:1.4.1")
     implementation(libs.androidx.appcompat)
@@ -198,7 +204,7 @@ dependencies {
 
     //Data Binding compiler
 //    kapt("com.android.databinding:compiler:3.1.4")
-    ksp(libs.android.databinding.compiler)
+    kapt(libs.android.databinding.compiler)
 
     // Architecture comp. navigation
 //    implementation("androidx.navigation:navigation-fragment-ktx:2.4.0")
@@ -234,11 +240,11 @@ kapt {
     correctErrorTypes = true
 }
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(11))
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
+//java {
+//    toolchain.languageVersion.set(JavaLanguageVersion.of(11))
+//    sourceCompatibility = JavaVersion.VERSION_11
+//    targetCompatibility = JavaVersion.VERSION_11
+//}
 
 //hilt {
 //    enableTransformForLocalTests = true
