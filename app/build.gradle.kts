@@ -9,7 +9,7 @@ plugins {
     //kotlin("android.extensions")
     id("kotlin-parcelize")
     id("dagger.hilt.android.plugin") apply true
-    //id("com.google.devtools.ksp") version "1.7.10-1.0.6"
+    id("com.google.devtools.ksp") version "1.6.21-1.0.5"
     kotlin("kapt")
 }
 
@@ -220,12 +220,14 @@ dependencies {
     coreLibraryDesugaring(libs.android.desugar)
 
     //Hilt
-    implementation("com.google.dagger:hilt-android:2.42")
-    kapt("com.google.dagger:hilt-android-compiler:2.42")
+//    implementation("com.google.dagger:hilt-android:2.42")
+    implementation(libs.google.hilt.android)
+//    kapt("com.google.dagger:hilt-android-compiler:2.42")
+    kapt(libs.google.hilt.android.compiler)
     //implementation "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycleViewModelVersion}"
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    kapt(libs.androidx.hilt.compiler)
 
-    implementation("com.google.android.gms:play-services-location:20.0.0")
+    implementation(libs.google.play.services.location)
 }
 
 kapt {

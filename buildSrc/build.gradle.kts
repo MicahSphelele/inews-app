@@ -1,7 +1,3 @@
-plugins {
-    `kotlin-dsl`
-}
-
 repositories {
     mavenCentral()
     google()
@@ -16,4 +12,9 @@ dependencies {
     implementation("com.google.dagger:hilt-android-gradle-plugin:2.42")
     //implementation("org.jetbrains.dokka:dokka-gradle-plugin:${Plugins.DOKKA}")
     //implementation("org.jetbrains.dokka:dokka-core:${Plugins.DOKKA}")
+}
+
+plugins {
+    `kotlin-dsl`
+    id("com.google.devtools.ksp") version "1.6.21-1.0.5" apply false
 }

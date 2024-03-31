@@ -1,4 +1,7 @@
 [versions]
+agpVersion = "8.3.1"
+kotlinVersion = "1.9.23"
+kotlinSymbolProcessorVersion = "1.9.23-1.0.19"
 junitVersion = "4.13.2"
 espressoVersion = "3.4.0"
 fragmentTestingVersion = "1.4.1"
@@ -6,7 +9,7 @@ testRulesVersion = "1.4.0"
 junitKTXVersion = "1.1.3"
 coroutinesVersion = "1.6.2"
 archCoreTestingVersion = "2.1.0"
-hiltVersion = "2.49"
+hiltVersion = "2.42"
 hiltCompilerVersion = "1.0.0"
 googleTruthVersion = "1.1.3"
 navigationTestingVersion = "2.5.0"
@@ -89,10 +92,14 @@ youtube-player-core = { group = "com.pierfrancescosoffritti.androidyoutubeplayer
 facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmerVersion" }
 airbnb-lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottieVersion" }
 
-#    implementation("com.google.dagger:hilt-android:2.42")
-#    kapt("com.google.dagger:hilt-android-compiler:2.42")
-#    //implementation "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycleViewModelVersion}"
-#    kapt("androidx.hilt:hilt-compiler:1.0.0")
-#
-#    implementation("com.google.android.gms:play-services-location:20.0.0")
 [plugins]
+android-application = { id = "com.android.application", version.ref = "agpVersion" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "kotlinVersion"  }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt",  version.ref = "kotlinVersion"  }
+# kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+# androidx-navigation-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidxNavigationPlugin" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+# google-play-services = { id = "com.google.gms.google-services", version.ref = "googlePlayServices" }
+kotlin-symbol-processor = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessorVersion" }
+# mapsplatform-secrets-gradle = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretPlugin" }
