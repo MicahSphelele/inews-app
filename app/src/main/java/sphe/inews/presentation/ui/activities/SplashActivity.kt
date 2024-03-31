@@ -10,6 +10,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import dagger.hilt.android.AndroidEntryPoint
+import sphe.inews.BuildConfig
 import sphe.inews.R
 import sphe.inews.databinding.ActivitySplashBinding
 import sphe.inews.domain.enums.AppTheme
@@ -53,7 +54,7 @@ class SplashActivity : BaseActivity() {
             }
         }
 
-        binding.appVersion = "BuildConfig.VERSION_NAME"
+        binding.appVersion = BuildConfig.VERSION_NAME
 
     }
 
