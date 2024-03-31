@@ -133,7 +133,7 @@ dependencies {
 //    androidTestImplementation("com.google.dagger:hilt-android-testing:2.42")
     androidTestImplementation(libs.google.hilt.android.testing)
 //    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.42")
-    kaptAndroidTest(libs.google.hilt.android.compiler)
+    kspAndroidTest(libs.google.hilt.android.compiler)
     implementation(kotlin("stdlib-jdk8", "1.6.21"))
 //    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0")
 //    implementation("androidx.appcompat:appcompat:1.4.1")
@@ -174,9 +174,9 @@ dependencies {
 //    implementation("androidx.room:room-ktx:2.4.2")
     implementation(libs.androidx.room.ktx)
 //    kapt("androidx.room:room-compiler:2.4.2")
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 //    kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
-    kapt(libs.kotlinx.metadata.jvm)
+    ksp(libs.kotlinx.metadata.jvm)
 
     //RxAndroid
 //    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
@@ -194,11 +194,11 @@ dependencies {
 //    implementation("com.github.bumptech.glide:glide:4.13.2")
     implementation(libs.glide)
 //    kapt("com.github.bumptech.glide:compiler:4.13.2")
-    kapt(libs.glide.compiler)
+    ksp(libs.glide.compiler)
 
     //Data Binding compiler
 //    kapt("com.android.databinding:compiler:3.1.4")
-    kapt(libs.android.databinding.compiler)
+    ksp(libs.android.databinding.compiler)
 
     // Architecture comp. navigation
 //    implementation("androidx.navigation:navigation-fragment-ktx:2.4.0")
@@ -223,9 +223,9 @@ dependencies {
 //    implementation("com.google.dagger:hilt-android:2.42")
     implementation(libs.google.hilt.android)
 //    kapt("com.google.dagger:hilt-android-compiler:2.42")
-    kapt(libs.google.hilt.android.compiler)
+    ksp(libs.google.hilt.android.compiler)
     //implementation "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycleViewModelVersion}"
-    kapt(libs.androidx.hilt.compiler)
+    ksp(libs.androidx.hilt.compiler)
 
     implementation(libs.google.play.services.location)
 }

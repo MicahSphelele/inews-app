@@ -16,5 +16,5 @@ dependencies {
 
 plugins {
     `kotlin-dsl`
-    id("com.google.devtools.ksp") version "1.6.21-1.0.5" apply false
+    id("com.google.devtools.ksp").version("1.6.21-1.0.5").apply(false)
 }
