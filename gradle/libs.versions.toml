@@ -99,7 +99,7 @@ kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref 
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt",  version.ref = "kotlinVersion"  }
 # kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 # androidx-navigation-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidxNavigationPlugin" }
-dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+google-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 # google-play-services = { id = "com.google.gms.google-services", version.ref = "googlePlayServices" }
 kotlin-symbol-processor = { id = "com.google.devtools.ksp", version.ref = "kotlinSymbolProcessorVersion" }
 # mapsplatform-secrets-gradle = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretPlugin" }

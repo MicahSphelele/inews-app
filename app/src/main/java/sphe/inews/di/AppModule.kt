@@ -167,7 +167,7 @@ object AppModule {
     @Provides
     @Named(Constants.NAMED_CATEGORIES)
     fun provideFilterData() : Array<NewsCategory> =
-        NewsCategory.values()
+        NewsCategory.entries.toTypedArray()
 
     @Singleton
     @Provides

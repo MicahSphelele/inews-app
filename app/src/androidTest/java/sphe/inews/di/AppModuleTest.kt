@@ -85,7 +85,7 @@ object AppModuleTest {
             val request = original.newBuilder()
                 .header("x-rapidapi-host", "coronavirus-monitor.p.rapidapi.com")
                 .header("x-rapidapi-key", String(Constants.PACKS_COVID))
-                .method(original.method(), original.body())
+                .method(original.method, original.body)
                 .build()
 
             return@Interceptor chain.proceed(request)
@@ -171,14 +171,14 @@ object AppModuleTest {
     @Provides
     @Named(Constants.NAMED_CATEGORIES)
     fun provideFilterData() : Array<NewsCategory>{
-        return NewsCategory.values()
+        return NewsCategory.entries.toTypedArray()
     }
 
     @Singleton
     @Provides
     @Named(Constants.NAMED_STORAGE)
     fun provideAppStorage(application: Application) : AppStorage {
-        return AppStorage(application)
+        return AppStorage(application.getSharedPreferences("inews_data_prefs", Context.MODE_PRIVATE))
     }
 
     @Singleton

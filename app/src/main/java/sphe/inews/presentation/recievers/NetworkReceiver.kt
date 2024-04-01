@@ -23,7 +23,7 @@ class NetworkReceiver : BroadcastReceiver() {
 
             val connectivityManager =
                 context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            val netInfo = connectivityManager.activeNetworkInfo //DEPRECATION
+            val netInfo = connectivityManager.activeNetworkInfo
 
             if (netInfo == null) { //If it is in airplane mode
                 Log.i(Constants.DEBUG_TAG, "Device is on airplane mode...")
