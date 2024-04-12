@@ -1,4 +1,4 @@
-# iNews App
+iNews App
 
 <p align="center">
   <img src="https://github.com/MicahSphelele/Inewsapp/blob/master/pics/logo.png" width="100" height="100">
