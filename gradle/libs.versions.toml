@@ -39,8 +39,6 @@ gsonVersion = "2.9.0"
 lottieVersion = "5.2.0"
 desugarVersion = "1.1.6"
 servicesLocationVersion = "20.0.0"
-minSdk = "21"
-maxSdk = "34"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junitVersion" }
