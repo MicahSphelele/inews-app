@@ -132,7 +132,7 @@ object AppModule {
     @Provides
     @Named(Constants.NAMED_APP_VERSION)
     fun provideAppVersion(application: InewsApplication): String =
-        application.packageManager.getPackageInfo(application.packageName,0).versionName
+        application.packageManager.getPackageInfo(application.packageName,0).versionName ?: ""
 
     @Singleton
     @Provides

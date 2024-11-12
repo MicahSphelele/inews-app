@@ -27,13 +27,13 @@ val gradleProperties = Properties().apply {
 
 android {
     namespace = "sphe.inews"
-    compileSdk = 34
+    compileSdk = 35
     //buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
         applicationId = "sphe.inews"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 4
         versionName = "v1.2.3"
         testInstrumentationRunner = "sphe.inews.HiltTestRunner"
